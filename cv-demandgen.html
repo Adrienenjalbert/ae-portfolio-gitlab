@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Adrien Enjalbert — CV tailored for Demand Gen / Performance roles." />
+<title>Adrien Enjalbert — CV (Demand Gen / Performance)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
+  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
+  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--gold:#b17a1b;
+  --maxw:920px;--r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+.page{max-width:var(--maxw);margin:26px auto;background:var(--card);position:relative;z-index:1;
+  border:1px solid var(--line);border-radius:var(--r);box-shadow:0 1px 0 var(--line),0 24px 60px -40px rgba(20,18,12,.4)}
+.pad{padding:46px 52px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+/* top utility bar (screen only) */
+.util{max-width:var(--maxw);margin:0 auto;padding:0 6px;display:flex;justify-content:space-between;
+  align-items:center;position:relative;z-index:1}
+.util .back{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--slate)}
+.util .print{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--accent);
+  border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 15px;cursor:pointer}
+.util .uleft{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.util .variants{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--mute)}
+.util .variants a{color:var(--slate);padding:3px 7px;border-radius:999px}
+.util .variants a:hover{color:var(--ink);text-decoration:none;background:var(--paper-2)}
+.util .variants a.on{color:#fff;background:var(--ink-2)}
+@media(max-width:560px){.util{flex-direction:column;align-items:flex-start;gap:8px}}
+
+/* header */
+.cvhead{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;
+  padding-bottom:20px;border-bottom:2px solid var(--ink)}
+.cvhead .name{font-size:clamp(34px,6vw,52px);line-height:.96;color:var(--ink);margin:0;font-weight:500}
+.cvhead .title{margin-top:8px;font-size:clamp(14px,2vw,17px);color:var(--accent-dk);font-weight:600}
+.cvhead .contact{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate);line-height:1.9}
+.cvhead .contact a{color:var(--slate)}
+.cvhead .contact .work{display:inline-block;margin-top:6px;color:var(--accent);border:1px solid var(--accent);
+  border-radius:999px;padding:5px 12px;font-weight:500}
+@media(max-width:640px){.cvhead{grid-template-columns:1fr}.cvhead .contact{text-align:left}}
+
+/* profile */
+.profile{margin-top:22px;font-size:15.5px;color:var(--ink);line-height:1.62;max-width:62ch}
+
+/* section heads */
+.s-head{display:flex;align-items:center;gap:12px;margin:30px 0 14px}
+.s-head .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent)}
+.s-head .rule{flex:1;height:1px;background:var(--line);box-shadow:0 3px 0 -2px var(--line)}
+
+/* competencies */
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px}
+.comp .row{display:flex;gap:10px;font-size:13.5px;color:var(--ink);align-items:baseline;
+  padding:5px 0;border-bottom:1px dotted var(--line-2)}
+.comp .row .b{color:var(--accent);font-family:"IBM Plex Mono",monospace;font-size:11px;flex:0 0 auto}
+@media(max-width:640px){.comp{grid-template-columns:1fr}}
+
+/* metrics strip */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:6px 0 0;
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.metrics .m{padding:14px 16px;border-right:1px solid var(--line)}
+.metrics .m:last-child{border-right:0}
+.metrics .m .n{font-family:"Fraunces",serif;font-size:clamp(20px,3vw,26px);color:var(--ink);line-height:1}
+.metrics .m .n .u{color:var(--accent)}
+.metrics .m .l{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--mute);line-height:1.3}
+@media(max-width:640px){.metrics{grid-template-columns:1fr 1fr}.metrics .m:nth-child(2n){border-right:0}}
+
+/* experience */
+.job{padding:16px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0}
+.job .jh{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+.job .role{font-family:"Fraunces",serif;font-size:18px;color:var(--ink)}
+.job .role .co{color:var(--accent-dk);font-weight:600}
+.job .dates{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--mute);white-space:nowrap}
+.job .sub{margin-top:4px;font-size:12.5px;color:var(--slate)}
+.job ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:7px}
+.job li{position:relative;padding-left:18px;font-size:13.5px;color:var(--ink);line-height:1.5}
+.job li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:1px;
+  background:var(--accent);transform:rotate(45deg)}
+.job li b{font-weight:600}
+
+/* education / awards two-col */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:640px){.twocol{grid-template-columns:1fr;gap:8px}}
+.edu .e{padding:9px 0;border-bottom:1px dotted var(--line-2)}
+.edu .e .d{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute)}
+.edu .e b{display:block;font-weight:600;color:var(--ink);font-size:13.5px}
+.awards p{font-size:13.5px;color:var(--ink);line-height:1.6}
+.awards .star{color:var(--gold)}
+
+.footnote{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--mute);letter-spacing:.03em}
+
+@media print{
+  @page{size:A4;margin:10mm}
+  body{background:#fff;font-size:10px}
+  body::before{display:none}
+  .util{display:none}
+  .page{margin:0;border:0;box-shadow:none;border-radius:0;max-width:100%;background:#fff}
+  .pad{padding:0}
+  .cvhead{padding-bottom:14px}
+  .cvhead .contact .work{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .metrics,.comp,.job,.s-head,.twocol{break-inside:avoid}
+  .s-head{margin:13px 0 7px}
+  .job{padding:7px 0}
+  .job ul{margin-top:7px;gap:5px}
+  .profile{margin-top:11px;line-height:1.5}
+  .footnote{margin-top:14px;padding-top:9px}
+}
+</style>
+</head>
+<body>
+<div class="util">
+  <div class="uleft"><a class="back" href="for-demandgen.html">&larr; For Demand gen</a>
+    <span class="variants">CV: <a href="cv-ai.html">AI</a><a href="cv-growth.html">Growth</a><a class="on" href="cv-demandgen.html">Demand gen</a><a href="cv-analytics.html">Analytics</a></span></div>
+  <button class="print" id="printbtn" type="button">Print / Save PDF</button>
+</div>
+
+<div class="page">
+ <div class="pad">
+  <header class="cvhead">
+    <div>
+      <h1 class="name">Adrien Enjalbert</h1>
+      <div class="title">B2B Demand Generation &amp; Performance Leader &middot; pipeline-accountable</div>
+    </div>
+    <div class="contact">
+      <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a><br>
+      <a href="https://linkedin.com/in/adrien-enjalbert">linkedin.com/in/adrien-enjalbert</a><br>
+      <a href="https://github.com/Adrienenjalbert">github.com/Adrienenjalbert</a><br>
+      Guildford, UK &middot; remote<br>
+      <a class="work" href="for-demandgen.html">See the work &rarr;</a>
+    </div>
+  </header>
+
+  <p class="profile">Pipeline-accountable demand generation and performance leader: CPL -81% (&pound;1,072 &rarr; &pound;207) at 17&times; ROAS across an &pound;11M budget, US MQLs +170% in a quarter, and the first ABM programme in the business (5,849 accounts). Ten years deep in paid across Google, Meta, LinkedIn, Microsoft and Programmatic, with three European Search Awards. Defends every pound with attribution; uses AI as efficiency weaponry. Finishing an MSc in AI &amp; Data Science.</p>
+
+  <div class="s-head"><span class="lbl">Verified impact</span><span class="rule"></span></div>
+  <div class="metrics">
+    <div class="m"><div class="n"><span class="u">-</span>81%</div><div class="l">B2B cost per lead</div></div>
+    <div class="m"><div class="n">17<span class="u">&times;</span></div><div class="l">ROAS, Q2 2024</div></div>
+    <div class="m"><div class="n"><span class="u">+</span>170%</div><div class="l">US MQLs / quarter</div></div>
+    <div class="m"><div class="n"><span class="u">-</span>79%</div><div class="l">Cost / booked job</div></div>
+  </div>
+
+  <div class="s-head"><span class="lbl">Core competencies</span><span class="rule"></span></div>
+  <div class="comp">
+    <div class="row"><span class="b">&#9654;</span><span>B2B demand generation &amp; paid acquisition, &pound;11M+ budget ownership</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>Channels: Google, Microsoft, LinkedIn, Meta, TikTok, Programmatic</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>CPL / ROAS / MQL&rarr;SQL optimisation, intent-based bidding, creative testing</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>ABM: Demandbase, 6sense, account-level tracking, sales-marketing alignment</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>Attribution modelling, full-funnel measurement, GA4, GTM, Looker Studio</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>Lifecycle &amp; remarketing, peak-season planning, B2C performance at scale</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>AI for efficiency: enrichment &amp; scoring, content at near-zero marginal cost</span></div>
+    <div class="row"><span class="b">&#9654;</span><span>Python, SQL, cost engineering, MSc AI &amp; Data Science</span></div>
+  </div>
+
+  <div class="s-head"><span class="lbl">Experience</span><span class="rule"></span></div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Head of Digital &amp; MarTech &middot; <span class="co">Indeed Flex</span></div>
+      <div class="dates">Jan 2026 – present</div>
+    </div>
+    <div class="sub">UK/US remit &middot; &pound;11M+ annual digital budget &middot; demand gen, paid, ABM, organic, CRO &middot; manages a senior manager + external partners</div>
+    <ul>
+      <li><b>Run the full B2B demand engine on &pound;11M:</b> CPL -81% (&pound;1,072 &rarr; &pound;207) at 17&times; ROAS, US MQLs +170% / UK +60% in a quarter, website CVR up across both markets.</li>
+      <li><b>Own paid efficiency at peak:</b> the most efficient peak in company history &mdash; cost per booked job &pound;4.57 &rarr; &pound;0.96 (-79%), PPC booked shifts +123% YoY.</li>
+      <li><b>Add AI as efficiency weaponry:</b> a sales intelligence system enriched 14,500+ contacts and built &pound;440K+ pipeline in three months, with +12% SQL conversion.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Head of Digital — Applied AI &middot; <span class="co">Indeed Flex</span></div>
+      <div class="dates">Dec 2023 – Dec 2025</div>
+    </div>
+    <div class="sub">Built applied-AI capability from zero &middot; 5-person UK/US team &middot; paid, organic, lifecycle, ABM, content, AI automation</div>
+    <ul>
+      <li><b>Shipped a 5-agent SEO content engine:</b> article cost &pound;600 &rarr; &pound;1 (-99.8%), output 4–6 &rarr; 50+ articles/month, production 5–7 days &rarr; 2 hours; 90% of B2B web traffic came from AI-generated content and lead magnets.</li>
+      <li><b>Owned a fleet of 16 AI conversion chatbots:</b> 4.7% lead conversion vs a 1.9% form baseline, 65% higher ICP fit, 30% shorter sales cycle. Re-evaluated after model and data changes; rebuilt rather than patched when better approaches emerged.</li>
+      <li><b>Mapped and rebuilt the sales workflow:</b> found reps spending 60%+ of time on manual research against 6–12 month cycles, and aimed AI at the order-of-magnitude steps rather than decorating the existing flow.</li>
+      <li><b>Ran the full B2B demand engine on &pound;11M:</b> B2B CPL -81% (&pound;1,072 &rarr; &pound;207), 17&times; ROAS, first ABM programme (&pound;1M, 5,849 accounts, +30% engagement lift).</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Senior Digital Marketing Manager &middot; <span class="co">Indeed Flex</span></div>
+      <div class="dates">Feb 2022 – Dec 2023</div>
+    </div>
+    <ul>
+      <li><b>Built the digital function and embedded automation early:</b> &pound;4.5M UK + &pound;6.5M US budget; website redesign and CRO took B2C conversion 5.1% &rarr; 30.4% (+592%).</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Performance Marketing Manager &middot; <span class="co">Indeed Flex</span></div>
+      <div class="dates">Apr 2021 – Feb 2022</div>
+    </div>
+    <ul>
+      <li><b>Built the UK performance team from scratch,</b> laying the foundation for the later 17&times; ROAS and the most efficient peak season in company history (cost per booked job &pound;4.57 &rarr; &pound;0.96, -79%).</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Head of PPC &middot; <span class="co">Sub2tech</span></div>
+      <div class="dates">Apr 2020 – Mar 2021</div>
+    </div>
+    <ul>
+      <li><b>Led Search, Video and Display across EMEA</b> for B2B and e-commerce clients.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Senior Growth Marketing Manager &middot; <span class="co">StatusToday</span></div>
+      <div class="dates">Aug 2018 – Apr 2020</div>
+    </div>
+    <ul>
+      <li><b>Led growth for an HR-analytics SaaS;</b> the growth strategy was central to the company's acquisition.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jh">
+      <div class="role">Digital Specialist / PPC Account Manager &middot; <span class="co">Precis Digital</span></div>
+      <div class="dates">Sep 2015 – Aug 2018</div>
+    </div>
+    <ul>
+      <li><b>Led Klarna's B2B EMEA expansion across 9 markets simultaneously;</b> 3&times; European Search Awards winner during this period.</li>
+    </ul>
+  </div>
+
+  <div class="twocol">
+    <div>
+      <div class="s-head"><span class="lbl">Education</span><span class="rule"></span></div>
+      <div class="edu">
+        <div class="e"><b>MSc Artificial Intelligence &amp; Data Science (Level 7)</b><span class="d">QA University &middot; 2024–2026 (in progress)</span></div>
+        <div class="e"><b>MSc Digital Business Strategy</b><span class="d">Grenoble Business School, Paris &middot; 2017</span></div>
+        <div class="e"><b>BSc Business Management</b><span class="d">Oxford Brookes University &middot; 2015</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="s-head"><span class="lbl">Awards &amp; certifications</span><span class="rule"></span></div>
+      <div class="awards">
+        <p><span class="star">&#9733;</span> 3&times; Winner, Best Large PPC Agency, European Search Awards (2017, 2018, 2019).</p>
+        <p style="margin-top:8px">Google AI-Powered Performance Ads &middot; Google Ads &amp; Analytics &middot; Meta Blueprint &middot; IBM SQL for Data Science with Python.</p>
+        <p style="margin-top:8px"><b>Languages:</b> English (native), French (native), Italian (intermediate).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">Adrien Enjalbert &middot; CV tailored for Demand Gen / Performance roles &middot; figures reflect verified impact from platform, CRM and analytics data &middot; references available on request.</div>
+ </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById("printbtn");
+  if(b) b.addEventListener("click",function(){window.print();});
+})();
+</script>
+</body>
+</html>
