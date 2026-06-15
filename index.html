@@ -194,6 +194,24 @@ blockquote cite{display:block;margin-top:6px;font-style:normal;font-family:"IBM 
 .creds .c .t span{color:var(--slate);font-size:14px}
 @media(max-width:640px){.creds{grid-template-columns:1fr}.creds .c{border-right:0}}
 
+/* ---------------- spotlight teaser ---------------- */
+.spotcard{display:block;margin-top:24px;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--card);overflow:hidden;text-decoration:none;transition:border-color .25s,transform .25s,box-shadow .25s}
+.spotcard:hover{text-decoration:none;border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 16px 40px -28px rgba(30,73,230,.5)}
+.spotcard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.spotcard-grid .s{padding:22px 22px;border-right:1px solid var(--line)}
+.spotcard-grid .s:last-child{border-right:0}
+.spotcard-grid .s .n{font-family:"Fraunces",serif;font-size:clamp(24px,3.2vw,34px);color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.spotcard-grid .s .n .u{color:var(--accent)}
+.spotcard-grid .s .l{margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.spotcard-cta{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;
+  background:var(--ink-2);color:#e9ecf3;font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.06em}
+.spotcard-cta .arr{color:var(--accent-lt);font-size:16px;transition:transform .25s}
+.spotcard:hover .spotcard-cta .arr{transform:translateX(5px)}
+@media(max-width:640px){.spotcard-grid{grid-template-columns:1fr 1fr}.spotcard-grid .s:nth-child(2n){border-right:0}
+  .spotcard-grid .s:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
 /* ---------------- contact (dark) ---------------- */
 #contact .bound{padding-top:0;padding-bottom:0}
 .contactcard{background:var(--ink-2);border-radius:var(--r);padding:44px 40px;color:#e9ecf3;position:relative;overflow:hidden}
@@ -274,7 +292,8 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="#timeline"><span class="bar"></span><span class="ix">04</span>Career timeline</a>
       <a href="#toolkit"><span class="bar"></span><span class="ix">05</span>Tools &amp; methods</a>
       <a href="#credentials"><span class="bar"></span><span class="ix">06</span>Credentials</a>
-      <a href="#contact"><span class="bar"></span><span class="ix">07</span>Contact</a>
+      <a href="#spotlight"><span class="bar"></span><span class="ix">07</span>Monthly spotlight</a>
+      <a href="#contact"><span class="bar"></span><span class="ix">08</span>Contact</a>
     </nav>
     <div class="foot">
       <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a><br>
@@ -522,7 +541,31 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         </article>
 
         <article class="case green reveal">
-          <div class="cno">Project 09 &middot; Lifecycle &middot; Meta, Google Display, Programmatic, email automation, CRM</div>
+          <div class="cno">Project 09 &middot; AI &amp; CRO &middot; AI-first chatbot, A/B testing</div>
+          <h3>An AI-first chatbot lifted discussion-to-lead 913%</h3>
+          <div class="period">Dec 2025 &middot; quality over volume</div>
+          <div class="scorecard stagger">
+            <div class="tile hero"><div class="n" data-count="913" data-prefix="+" data-suffix="%">+913%</div><div class="l">Discussion &rarr; lead</div></div>
+            <div class="tile"><div class="n" data-count="4.47" data-dec="2" data-suffix="%">4.47%</div><div class="l">Conversion vs 0.44%</div></div>
+            <div class="tile"><div class="n" data-count="10" data-suffix="&times;">10&times;</div><div class="l">Better on lower traffic</div></div>
+            <div class="tile"><div class="n" data-count="30" data-prefix="-" data-suffix="%">-30%</div><div class="l">Time to close</div></div>
+          </div>
+          <div class="grid">
+            <div class="chart" data-chart="beforeafter" data-color="green" data-improve="up"
+                 data-metric="Discussion-to-lead conversion" data-before="0.44" data-after="4.47" data-btxt="0.44%" data-atxt="4.47%" data-delta="+913%"></div>
+            <div class="copy">
+              <div class="h">Challenge</div>
+              <p class="ctx">The standard chat flow converted discussions to leads at 0.44%, with low-intent traffic.</p>
+              <div class="h">What I did</div>
+              <p>Tested an AI-first chatbot against the standard flow. Despite lower traffic it drove far more decisive, better-qualified conversations, which made the case to scale it across the site.</p>
+            </div>
+          </div>
+          <div class="figsrc"><b>SOURCE</b> &nbsp;A/B test results vs standard flow, December 2025.</div>
+          <div class="chips"><span>AI chatbot</span><span>CRO</span><span>Lead qualification</span><span>Experimentation</span></div>
+        </article>
+
+        <article class="case green reveal">
+          <div class="cno">Project 10 &middot; Lifecycle &middot; Meta, Google Display, Programmatic, email automation, CRM</div>
           <h3>Lifecycle remarketing drove a 15&times; long-term retention improvement</h3>
           <div class="period">Q2 – Q4 2024</div>
           <div class="grid">
@@ -539,7 +582,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         </article>
 
         <article class="case green reveal">
-          <div class="cno">Project 10 &middot; Organic &middot; Coding agents, programmatic generation, SEMrush, GSC</div>
+          <div class="cno">Project 11 &middot; Organic &middot; Coding agents, programmatic generation, SEMrush, GSC</div>
           <h3>Programmatic SEO grew US organic impressions 4,000% year on year</h3>
           <div class="period">2025 – 2026</div>
           <div class="scorecard stagger">
@@ -554,11 +597,11 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
               <div class="h">Challenge</div>
               <p class="ctx">The business needed cost-effective organic scale across competitive US markets.</p>
               <div class="h">What I built</div>
-              <p>A programmatic page architecture: a Career Hub build approved by the parent SEO team, scaling toward 8,800 pages, plus geo-optimised pages for 50+ cities and an AI tool ecosystem.</p>
+              <p>A programmatic Career Hub: 308+ static pages, 2,100+ city&times;role combinations, 51 state calculators and 19 interactive tools, migrated to Next.js at Lighthouse 98+/100/100. AEO-ready assets that AI Overviews can&rsquo;t replicate.</p>
             </div>
           </div>
-          <div class="figsrc"><b>SOURCE</b> &nbsp;Google Search Console, two months vs same period prior year.</div>
-          <div class="chips"><span>SEO</span><span>Programmatic</span><span>Organic</span><span>Coding agents</span><span>Scale</span></div>
+          <div class="figsrc"><b>SOURCE</b> &nbsp;Google Search Console, two months vs same period prior year; Career Hub review 2026.</div>
+          <div class="chips"><span>SEO</span><span>Programmatic</span><span>Organic</span><span>Coding agents</span><span>AEO</span><span>2,100+ pages</span></div>
         </article>
       </div>
     </section>
@@ -609,11 +652,29 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       </div>
     </section>
 
+    <!-- ============ SPOTLIGHT TEASER ============ -->
+    <section class="section" id="spotlight">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">07</span> Monthly spotlight</div>
+        <h2 class="sec-h reveal">The same work, told month by month</h2>
+        <p class="sec-sub reveal">The case studies above are the highlights. The monthly spotlight is the running record behind them: a Career Hub scaled past 2,100 pages, production AI agents benchmarked 3.6&times; better than the last build, the most efficient peak season the business has run.</p>
+        <a class="spotcard reveal" href="spotlight.html">
+          <div class="spotcard-grid">
+            <div class="s"><div class="n">8</div><div class="l">Months shipped</div></div>
+            <div class="s"><div class="n">2,100<span class="u">+</span></div><div class="l">Pages built</div></div>
+            <div class="s"><div class="n">3.6<span class="u">&times;</span></div><div class="l">Agent quality lift</div></div>
+            <div class="s"><div class="n">6.6<span class="u">&times;</span></div><div class="l">Remarketing lift</div></div>
+          </div>
+          <div class="spotcard-cta"><span>Open the monthly spotlight</span><span class="arr">&rarr;</span></div>
+        </a>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="section" id="contact">
       <div class="bound">
         <div class="contactcard reveal">
-          <div class="eyebrow"><span class="ix">07</span> Let&rsquo;s talk</div>
+          <div class="eyebrow"><span class="ix">08</span> Let&rsquo;s talk</div>
           <h2>Set the strategy. <span class="em">Ship the system.</span></h2>
           <p style="color:#bcc4d6;max-width:600px">Happy to walk through any of this in depth, including the live AI systems and how they got adopted.</p>
           <div class="grid">
@@ -622,7 +683,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <div><div class="k">Based</div><span>Guildford, UK — remote</span></div>
           </div>
         </div>
-        <footer>Adrien Enjalbert &middot; selected work, 2015–2026 &middot; figures reflect verified impact from platform, CRM and analytics data. <a href="cv.html">Read the CV &rarr;</a></footer>
+        <footer>Adrien Enjalbert &middot; selected work, 2015–2026 &middot; figures reflect verified impact from platform, CRM and analytics data. <a href="spotlight.html">Monthly spotlight</a> &middot; <a href="cv.html">Read the CV &rarr;</a></footer>
       </div>
     </section>
   </main>

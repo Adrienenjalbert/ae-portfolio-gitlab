@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Adrien Enjalbert — Monthly Spotlight. A month-by-month record of digital, MarTech and applied-AI work shipped, Nov 2025 to Jun 2026." />
+<meta property="og:title" content="Adrien Enjalbert — Monthly Spotlight" />
+<meta property="og:description" content="What I shipped, month by month: AI agents in production, the Career Hub at scale, peak-season performance." />
+<title>Adrien Enjalbert — Monthly Spotlight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
+  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
+  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--green-lt:#86c9a8;--gold:#b17a1b;
+  --nav-w:268px;--r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+.app{display:grid;grid-template-columns:var(--nav-w) 1fr;position:relative;z-index:1}
+
+/* left nav */
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:34px 26px 26px;
+  border-right:1px solid var(--line);background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
+.side .id .kick{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.side .id h1{font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
+.side .id .role{font-size:13px;color:var(--slate);line-height:1.4}
+.side .id .role b{color:var(--accent-dk)}
+.side .id .rule{height:1px;background:var(--line);margin:20px 0 18px;box-shadow:0 3px 0 -2px var(--line)}
+nav.menu{display:flex;flex-direction:column;gap:1px;flex:1;overflow-y:auto;scrollbar-width:none}
+nav.menu::-webkit-scrollbar{display:none}
+nav.menu a{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:var(--r);
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;color:var(--slate);position:relative;transition:color .25s,background .25s}
+nav.menu a .ix{font-size:10px;color:var(--mute);width:18px;flex:0 0 auto;transition:color .25s}
+nav.menu a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.05)}
+nav.menu a.active{color:var(--ink);background:rgba(30,73,230,.08)}
+nav.menu a.active .ix{color:var(--accent)}
+nav.menu a .bar{position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:62%;
+  background:var(--accent);border-radius:2px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
+.side .foot{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);line-height:1.9}
+.side .foot a{color:var(--slate)}
+.side .foot .cv{display:inline-block;margin-top:8px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 13px}
+
+.mobtop{display:none}
+main{min-width:0}
+.bound{max-width:920px;margin:0 auto;padding:0 48px}
+.section{padding:78px 0 56px;border-top:1px solid var(--line);position:relative}
+.section:first-child{border-top:0;padding-top:60px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
+.eyebrow.green{color:var(--green)}.eyebrow.green::before{background:var(--green)}
+.sec-h{font-size:clamp(28px,4.2vw,44px);line-height:1.04;color:var(--ink)}
+.sec-sub{margin-top:14px;color:var(--slate);max-width:640px;font-size:17px}
+
+/* intro hero */
+#intro{padding-top:60px}
+.hero-h{font-size:clamp(36px,5.4vw,64px);line-height:1.0;color:var(--ink);margin:6px 0 0}
+.hero-h .em{font-style:italic;font-weight:400}
+.hero-lede{margin-top:18px;max-width:660px;color:var(--slate);font-size:clamp(16px,1.9vw,19px)}
+.crumb{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:12px;
+  color:var(--slate);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px}
+
+/* headline metric band */
+.band{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;background:var(--card)}
+.band .c{padding:20px;border-right:1px solid var(--line)}
+.band .c:last-child{border-right:0}
+.band .c .n{font-family:"Fraunces",serif;font-size:clamp(24px,3.2vw,34px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.band .c .n .u{color:var(--accent)}
+.band .c .l{margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);line-height:1.4}
+@media(max-width:640px){.band{grid-template-columns:1fr 1fr}.band .c:nth-child(2n){border-right:0}}
+
+/* month timeline */
+.months{margin-top:10px;position:relative;border-left:2px solid var(--line);margin-left:6px}
+.month{position:relative;padding:26px 0 26px 34px}
+.month::before{content:"";position:absolute;left:-9px;top:30px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--accent)}
+.month.green::before{border-color:var(--green)}
+.month .mh{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.month .mo{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.month.green .mo{color:var(--green)}
+.month h3{font-family:"Fraunces",serif;font-size:clamp(20px,2.6vw,26px);color:var(--ink);line-height:1.12}
+.month .lede{margin-top:8px;color:var(--slate);font-size:15px;max-width:620px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-top:16px;padding:18px 20px}
+.mstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.mstats .s{border-left:2px solid var(--accent);padding:2px 0 2px 12px}
+.month.green .mstats .s{border-color:var(--green)}
+.mstats .s .n{font-family:"Fraunces",serif;font-size:clamp(18px,2.4vw,24px);color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.month.green .mstats .s .n{color:var(--green)}
+.mstats .s .l{margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);line-height:1.3}
+@media(max-width:640px){.mstats{grid-template-columns:1fr 1fr}}
+.bullets{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.bullets li{position:relative;padding-left:18px;font-size:14px;color:var(--ink);line-height:1.5}
+.bullets li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:1px;background:var(--accent);transform:rotate(45deg)}
+.month.green .bullets li::before{background:var(--green)}
+.bullets li b{font-weight:600}
+.figsrc{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--mute)}
+.figsrc b{color:var(--slate);letter-spacing:.1em}
+
+/* charts */
+.chart{width:100%}.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.hbar{fill:var(--accent)}.hbar.green{fill:var(--green)}.hbartrack{fill:var(--line)}
+.hbarlabel{font-family:"Space Grotesk",sans-serif;fill:var(--slate);font-size:13px}
+.hbarval{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink);font-size:15px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;margin-top:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr;gap:14px}}
+.grid2 .copy .h{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.grid2 .copy p{color:var(--ink);font-size:14.5px}
+
+/* table */
+.tablewrap{margin-top:18px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+table.t{width:100%;border-collapse:collapse;font-size:14px}
+table.t caption{caption-side:top;text-align:left;padding:14px 18px 0;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+table.t th,table.t td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line)}
+table.t thead th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
+table.t tbody td:first-child{font-weight:600;color:var(--ink)}
+table.t tbody td{color:var(--slate);font-variant-numeric:tabular-nums}
+table.t tbody tr:last-child td{border-bottom:0}
+table.t .best{color:var(--green);font-weight:600}
+.tnote{padding:10px 18px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--mute);letter-spacing:.03em;background:var(--paper-2)}
+
+/* contact */
+.contactcard{background:var(--ink-2);border-radius:var(--r);padding:42px 38px;color:#e9ecf3;position:relative;overflow:hidden;margin-top:6px}
+.contactcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.contactcard .eyebrow{color:var(--accent-lt)}.contactcard .eyebrow::before{background:var(--accent-lt)}
+.contactcard h2{color:#fbf9f3;font-size:clamp(24px,3.6vw,36px);line-height:1.04;margin:12px 0}
+.contactcard h2 .em{font-style:italic;font-weight:400}
+.contactcard .links{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:15px}
+.contactcard .links a{color:#e9ecf3}
+footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
+  .side.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(20,18,12,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .3s}
+  .scrim.show{opacity:1;visibility:visible}
+  .mobtop{display:flex;position:sticky;top:0;z-index:40;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(244,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .mobtop .brand b{color:var(--accent)}
+  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .bound{padding:0 24px}.section{padding:52px 0 36px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+@media print{.side,.mobtop,.scrim{display:none}.app{grid-template-columns:1fr}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.section,.mcard,.band,.tablewrap{break-inside:avoid}.contactcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<div class="mobtop">
+  <div class="brand"><b>AE</b> &nbsp;Monthly Spotlight</div>
+  <button class="burger" id="burger" aria-label="Open menu">Menu</button>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="id">
+      <div class="kick">Monthly Spotlight</div>
+      <h1>Adrien<br>Enjalbert</h1>
+      <div class="role"><b>Digital &amp; MarTech monthly update</b><br>What shipped, month by month.</div>
+      <div class="rule"></div>
+    </div>
+    <nav class="menu" id="menu">
+      <a href="#intro"><span class="bar"></span><span class="ix">00</span>Overview</a>
+      <a href="#jun"><span class="bar"></span><span class="ix">06</span>June 2026</a>
+      <a href="#may"><span class="bar"></span><span class="ix">05</span>May 2026</a>
+      <a href="#apr"><span class="bar"></span><span class="ix">04</span>April 2026</a>
+      <a href="#mar"><span class="bar"></span><span class="ix">03</span>March 2026</a>
+      <a href="#feb"><span class="bar"></span><span class="ix">02</span>February 2026</a>
+      <a href="#jan"><span class="bar"></span><span class="ix">01</span>January 2026</a>
+      <a href="#dec"><span class="bar"></span><span class="ix">12</span>December 2025</a>
+      <a href="#engine"><span class="bar"></span><span class="ix">&#9671;</span>Behind the numbers</a>
+      <a href="#contact"><span class="bar"></span><span class="ix">07</span>Contact</a>
+    </nav>
+    <div class="foot">
+      <a href="index.html">&larr; Back to portfolio</a><br>
+      <a class="cv" href="cv.html">Read the CV &rarr;</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- INTRO -->
+    <section class="section" id="intro">
+      <div class="bound">
+        <div class="eyebrow reveal">Monthly Spotlight &middot; Nov 2025 – Jun 2026</div>
+        <h1 class="hero-h reveal">The work, <span class="em">month by month.</span></h1>
+        <p class="hero-lede reveal">A running record of what my team and I shipped in digital, MarTech and applied AI: production agents that Sales adopted, a programmatic Career Hub scaled from a few hundred to thousands of pages, and the most efficient peak season the business has run. Figures are the ones presented in the monthly review; client and team names are kept private.</p>
+        <span class="crumb reveal">This complements the <a href="index.html">main portfolio</a> &mdash; the case studies there, told as a timeline here.</span>
+
+        <div class="band reveal">
+          <div class="c"><div class="n"><span class="u">+</span>4,000%</div><div class="l">US organic impressions YoY</div></div>
+          <div class="c"><div class="n">2,100<span class="u">+</span></div><div class="l">City &times; role pages built</div></div>
+          <div class="c"><div class="n">3.6<span class="u">&times;</span></div><div class="l">Agent quality vs prior build</div></div>
+          <div class="c"><div class="n">6.6<span class="u">&times;</span></div><div class="l">Remarketing conversion lift</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JUNE -->
+    <section class="section" id="jun">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">06</span> June 2026</div>
+        <h2 class="sec-h reveal">Career Hub compounds; agents in production</h2>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">SEO &amp; tools</span><h3>Career Hub SEO keeps compounding</h3></div>
+            <p class="lede">Interactive, AEO-ready tools that AI Overviews can&rsquo;t replicate, on page templates scoring Lighthouse 98+/100/100.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">+286%</div><div class="l">Organic clicks YoY</div></div>
+                <div class="s"><div class="n">+4,000%</div><div class="l">Organic impressions YoY</div></div>
+                <div class="s"><div class="n">+181%</div><div class="l">US app installs</div></div>
+                <div class="s"><div class="n">19</div><div class="l">Free tools live</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>Paycheck calculator live:</b> 0 &rarr; ~100 clicks and ~40K impressions a day within two weeks, average position ~8.</li>
+                <li><b>19 free tools</b> shipped with SoftwareApplication + FAQ schema &mdash; AEO-ready interactive assets.</li>
+                <li><b>Lighthouse 98+ / 100 / 100</b> (performance / accessibility / best practices) across every page template.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;Google Search Console &amp; AppsFlyer, June 2026 monthly review.</div>
+            </div>
+          </div>
+          <div class="month reveal">
+            <div class="mh"><span class="mo">AI enrichment</span><h3>Decision-makers agent shipped &mdash; 3.6&times; better than the last build</h3></div>
+            <p class="lede">A rebuilt enrichment agent benchmarked against the previous one across quality, speed and cost. Live, with strong week-one adoption.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">3.6&times;</div><div class="l">Quality improvement</div></div>
+                <div class="s"><div class="n">-44%</div><div class="l">Faster response (277s&rarr;154s)</div></div>
+                <div class="s"><div class="n">-57%</div><div class="l">Fewer credits / run</div></div>
+                <div class="s"><div class="n">-98.5%</div><div class="l">Cheaper enrichment</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>93.6 / 100</b> weighted benchmark vs 26.2 / 100 for the previous agent &mdash; 11 wins, 3 ties, zero losses across runs.</li>
+                <li><b>New enrichment source at a 9&times; lower unit cost</b> than the incumbent provider.</li>
+                <li><b>45 requests in five days at 93% accuracy</b> after release; a separate people-discovery agent draws ~250 internal requests a week.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;Internal agent benchmark &amp; adoption logs, June 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAY -->
+    <section class="section" id="may">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">05</span> May 2026</div>
+        <h2 class="sec-h reveal">AI enablement aligned across the business</h2>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">AI enablement</span><h3>Six initiatives scoped, five teams aligned</h3></div>
+            <p class="lede">Discovery sessions across Sales, RevOps, Product, Data and IT turned scattered AI requests into a prioritised, owned roadmap.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">6</div><div class="l">Discovery sessions</div></div>
+                <div class="s"><div class="n">5</div><div class="l">Teams aligned</div></div>
+                <div class="s"><div class="n">6</div><div class="l">Initiatives scoped</div></div>
+                <div class="s"><div class="n">~250</div><div class="l">Agent requests / week</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>Clear ownership and accountability mapped per initiative</b>, with a stakeholder-involvement framework and a roadmap to keep momentum.</li>
+                <li><b>Sales given direct access to the agent workspace;</b> Product green-lit the first project and expressed interest in owning the next five.</li>
+                <li><b>People-discovery agent at ~250 requests a week</b> &mdash; strong adoption while a CRM sync issue was being fixed.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;AI enablement stakeholder review, May 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APRIL -->
+    <section class="section" id="apr">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">04</span> April 2026</div>
+        <h2 class="sec-h reveal">The Career Hub, at a glance</h2>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Programmatic SEO</span><h3>A programmatic estate at real scale</h3></div>
+            <p class="lede">A Next.js programmatic site spanning static pages, city&times;role combinations, tools and editorial &mdash; with a quality-and-trust programme running alongside the scale.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">308+</div><div class="l">Static pages</div></div>
+                <div class="s"><div class="n">2,100+</div><div class="l">City &times; role pages</div></div>
+                <div class="s"><div class="n">51</div><div class="l">State paycheck calcs</div></div>
+                <div class="s"><div class="n">9</div><div class="l">Interactive tools</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>47 role profiles, 55 editorial articles, 102 city pages,</b> 51 unemployment guides, across 12 URL families and 14 schema types.</li>
+                <li><b>Migrated to Next.js</b> for performance and future localisation.</li>
+                <li><b>Quality programme underway:</b> a March baseline audit (43/80) established to drive editorial usefulness, AEO readiness and trust upward month on month.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;Career Hub review, April 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARCH -->
+    <section class="section" id="mar">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">03</span> March 2026</div>
+        <h2 class="sec-h reveal">A quality baseline, and a top-5 page</h2>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">CRO &amp; content</span><h3>CV builder lands as a top-5 US page</h3></div>
+            <p class="lede">The vibe-coded CV builder became one of the highest-traffic US pages within three months, while a structured audit set the quality bar for everything that followed.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">Top 5</div><div class="l">US page by traffic (3 mo)</div></div>
+                <div class="s"><div class="n">43/80</div><div class="l">Audit baseline (Mar)</div></div>
+                <div class="s"><div class="n">+8 / +3</div><div class="l">Authority score, US / UK</div></div>
+                <div class="s"><div class="n">14</div><div class="l">Schema types live</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>Structured March audit (43/80)</b> across technical SEO, schema, internal linking, pSEO quality, trust and AEO readiness &mdash; the baseline for the quality programme.</li>
+                <li><b>SEO content strategy aligned to outreach;</b> domain authority improved +8 in the US and +3 in the UK month on month.</li>
+                <li><b>ABM signals wired up</b> from job postings, LinkedIn campaigns and CRM behaviour.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;Career Hub audit &amp; analytics, March 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEBRUARY -->
+    <section class="section" id="feb">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">02</span> February 2026</div>
+        <h2 class="sec-h reveal">Resume builder, US launch</h2>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Product &amp; growth</span><h3>Ship fast, prove demand, then invest</h3></div>
+            <p class="lede">A vibe-coded MVP launched to capture high-intent jobseeker demand, validated by organic traffic before deeper product investment.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">800+</div><div class="l">Clicks in 3 months</div></div>
+                <div class="s"><div class="n">MVP</div><div class="l">Vibe-coded, shipped</div></div>
+                <div class="s"><div class="n">1 / wk</div><div class="l">Supporting article cadence</div></div>
+                <div class="s"><div class="n">AI</div><div class="l">Content bot, evolving</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>MVP first:</b> validate demand with organic traffic before committing product resource, then bring AI deeper into the experience.</li>
+                <li><b>Content as the growth engine:</b> a calendar built around resume-related keywords, written by the AI content bot and refined as models improved.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;Product launch review, February 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JANUARY -->
+    <section class="section" id="jan">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">01</span> January 2026</div>
+        <h2 class="sec-h reveal">Peak season: the most efficient yet</h2>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Performance</span><h3>Outstanding YoY growth at peak</h3></div>
+            <p class="lede">The 2025 peak delivered volume growth across the funnel with strong paid and organic gains in the US, at market-leading efficiency in the UK.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">700K+</div><div class="l">US daily impressions</div></div>
+                <div class="s"><div class="n">+183%</div><div class="l">Paid sessions YoY (1.5M)</div></div>
+                <div class="s"><div class="n">+567%</div><div class="l">Paid first opens YoY</div></div>
+                <div class="s"><div class="n">&pound;1.34</div><div class="l">Cost per applied job</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>US explosive growth:</b> sessions +77%, active users +94%, app first-opens +86% year on year.</li>
+                <li><b>UK efficiency leader:</b> Google paid delivered under &pound;0.25 per applied job, helped by remarketing.</li>
+                <li><b>December traffic peaked at 36K/day</b> (+234% YoY); 67K installs from paid at a low CPI.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;Peak 2025 review, January 2026. Revenue and client detail kept private.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DECEMBER -->
+    <section class="section" id="dec">
+      <div class="bound">
+        <div class="eyebrow green reveal"><span class="ix">12</span> December 2025</div>
+        <h2 class="sec-h reveal">AI chatbot wins; remarketing proves its worth</h2>
+        <div class="months">
+          <div class="month green reveal">
+            <div class="mh"><span class="mo">CRO &middot; AI</span><h3>AI-first chatbot: +913% discussion-to-lead</h3></div>
+            <p class="lede">An AI-first chatbot, tested against the standard flow, drove far higher-quality conversations and conversions &mdash; quality over volume.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">+913%</div><div class="l">Discussion &rarr; lead</div></div>
+                <div class="s"><div class="n">4.47%</div><div class="l">Conversion vs 0.44%</div></div>
+                <div class="s"><div class="n">16</div><div class="l">Chatbots live</div></div>
+                <div class="s"><div class="n">-30%</div><div class="l">Time to close</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>The AI-first chatbot converts 10&times; better</b> than the standard flow on lower traffic, with more decisive, better-qualified users.</li>
+                <li><b>Results supported scaling it</b> across the site, with new trigger and exit-intent tests queued.</li>
+              </ul>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;A/B test results, December 2025.</div>
+            </div>
+          </div>
+          <div class="month green reveal">
+            <div class="mh"><span class="mo">Lifecycle</span><h3>Remarketing unlocks the highest-value audience</h3></div>
+            <p class="lede">A clean read on why lifecycle remarketing matters: re-engaged users convert and stick far better than the rest of the base.</p>
+            <div class="grid2">
+              <div class="chart" data-chart="hbar" data-color="green" data-items='[["Applied-jobs conversion",100,"6.6&times;"],["Sessions per user",100,"6.8&times;"],["Engagement time",83,"5.5&times;"],["DAU/MAU stickiness",45,"3&times;"]]'></div>
+              <div class="copy">
+                <div class="h">The remarketing lift</div>
+                <p>Remarketed users convert <b>6.6&times;</b> better on applied jobs (16.4% vs 2.5%), run <b>6.8&times;</b> more sessions (30 vs 4.4), spend <b>5.5&times;</b> longer (1h06 vs 12 min), and are <b>3&times;</b> stickier on DAU/MAU. The empirical case behind the 15&times; long-term retention story.</p>
+              </div>
+            </div>
+            <div class="figsrc"><b>SOURCE</b> &nbsp;Google Analytics, RMK vs non-RMK cohort, December 2025.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEHIND THE NUMBERS -->
+    <section class="section" id="engine">
+      <div class="bound">
+        <div class="eyebrow reveal">&#9671;&nbsp; Behind the numbers</div>
+        <h2 class="sec-h reveal">How the channels actually compare</h2>
+        <p class="sec-sub reveal">One example of the analysis under the headlines: a like-for-like read on acquisition efficiency that reallocated budget toward the channels that work.</p>
+        <div class="tablewrap reveal">
+          <table class="t">
+            <caption>Cost per worked shift, by channel &amp; market</caption>
+            <thead><tr><th>Channel</th><th>UK</th><th>US</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td>Google</td><td class="best">$206</td><td class="best">$333</td><td>Best efficiency, strong volume</td></tr>
+              <tr><td>Indeed</td><td>$387</td><td>$1,174</td><td>Higher intent, premium cost</td></tr>
+              <tr><td>Meta</td><td>n/a</td><td>$3,382</td><td>Top-funnel branding</td></tr>
+            </tbody>
+          </table>
+          <div class="tnote">Google&rsquo;s cost per worked shift ran 47% lower than Indeed in the UK and 72% lower in the US &mdash; the read that moved budget toward Google and reframed Meta as branding.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="bound">
+        <div class="contactcard reveal">
+          <div class="eyebrow"><span class="ix">07</span> Let&rsquo;s talk</div>
+          <h2>The headlines are in the <span class="em">portfolio.</span> The receipts are here.</h2>
+          <p style="color:#bcc4d6;max-width:560px">Happy to walk through any month in depth, including the live systems and the analysis behind each call.</p>
+          <div class="links">
+            <a href="index.html">&larr; Portfolio</a>
+            <a href="cv.html">CV</a>
+            <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a>
+            <a href="https://linkedin.com/in/adrien-enjalbert">LinkedIn</a>
+          </div>
+        </div>
+        <footer>Adrien Enjalbert &middot; Digital &amp; MarTech monthly spotlight, Nov 2025 – Jun 2026 &middot; figures as presented in the monthly review; client, colleague and revenue detail kept private.</footer>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+(function(){
+  "use strict";
+  var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var NS="http://www.w3.org/2000/svg";
+  function el(n,a,p){var e=document.createElementNS(NS,n);if(a)for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function dec(s){var t=document.createElement("textarea");t.innerHTML=s;return t.value;}
+
+  function drawHBar(box){
+    var items=JSON.parse(box.getAttribute("data-items")),green=box.getAttribute("data-color")==="green";
+    var W=540,rowH=64,padT=14,barX=210,barMax=W-barX-92,H=padT*2+items.length*rowH;
+    var summary=items.map(function(it){return dec(it[0])+" "+dec(it[2]);}).join(", ");
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Lift vs baseline: "+summary},box);
+    var bars=[];
+    items.forEach(function(it,i){
+      var label=dec(it[0]),pct=it[1]/100,val=dec(it[2]),y=padT+i*rowH+rowH/2;
+      el("text",{x:barX-14,y:y+5,"text-anchor":"end",class:"hbarlabel"},svg).textContent=label;
+      el("rect",{x:barX,y:y-13,width:barMax,height:26,rx:4,class:"hbartrack",opacity:"0.5"},svg);
+      var bar=el("rect",{x:barX,y:y-13,width:0,height:26,rx:4,class:"hbar"+(green?" green":"")},svg);
+      var v=el("text",{x:barX+8,y:y+5,class:"hbarval",opacity:"0"},svg);v.textContent=val;
+      bars.push({bar:bar,target:barMax*pct,v:v});
+    });
+    box._animate=function(){
+      if(REDUCE){bars.forEach(function(b){b.bar.setAttribute("width",b.target);b.v.setAttribute("x",barX+b.target+10);b.v.setAttribute("opacity","1");});return;}
+      var dur=1050,t0=null;
+      function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+        bars.forEach(function(b){var w=b.target*e;b.bar.setAttribute("width",w);b.v.setAttribute("x",barX+w+10);b.v.setAttribute("opacity",String(Math.min(p*1.4,1)));});
+        if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
+    };
+  }
+  document.querySelectorAll(".chart").forEach(function(b){if(b.getAttribute("data-chart")==="hbar")drawHBar(b);});
+
+  function activate(t){if(t._a)return;t._a=true;t.classList.add("in");t.querySelectorAll(".chart").forEach(function(c){if(c._animate)c._animate();});}
+  var revs=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if("IntersectionObserver" in window && !REDUCE){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){io.unobserve(en.target);activate(en.target);}});},{threshold:0.14,rootMargin:"0px 0px -6% 0px"});
+    revs.forEach(function(n){io.observe(n);});
+    function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.92)activate(n);});}
+    window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
+    setTimeout(function(){revs.forEach(activate);},2600);
+  }else{revs.forEach(activate);}
+
+  var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
+  links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
+  var sections=Array.prototype.slice.call(document.querySelectorAll("main .section"));
+  function setActive(id){links.forEach(function(a){a.classList.toggle("active",a===map[id]);});}
+  if("IntersectionObserver" in window){
+    var vis={};
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(en){vis[en.target.id]=en.isIntersecting?en.intersectionRatio:0;});
+      var best=null,bestR=0;Object.keys(vis).forEach(function(id){if(vis[id]>bestR){bestR=vis[id];best=id;}});
+      if(best)setActive(best);
+    },{rootMargin:"-45% 0px -45% 0px",threshold:[0,0.25,0.5,0.75,1]});
+    sections.forEach(function(s){spy.observe(s);});
+  }
+  setActive("intro");
+
+  var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
+  function open(){side.classList.add("open");scrim.classList.add("show");}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");}
+  if(burger)burger.addEventListener("click",open);
+  if(scrim)scrim.addEventListener("click",close);
+  links.forEach(function(a){a.addEventListener("click",close);});
+})();
+</script>
+</body>
+</html>
