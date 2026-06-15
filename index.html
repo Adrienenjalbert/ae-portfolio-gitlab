@@ -65,7 +65,16 @@ main{min-width:0}
 #about{padding-top:60px}
 .hero-h{font-size:clamp(38px,5.6vw,68px);line-height:.99;color:var(--ink);margin:6px 0 0}
 .hero-h .em{font-style:italic;font-weight:400}
-.hero-lede{margin-top:20px;max-width:680px;color:var(--slate);font-size:clamp(17px,2vw,20px)}
+.hero-lede{margin-top:20px;max-width:700px;color:var(--slate);font-size:clamp(17px,2vw,20px)}
+.hero-h .em{color:var(--accent)}
+/* thesis strip — the differentiator, scannable in 3s */
+.thesis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.thesis .p{padding:20px;border-right:1px solid var(--line);display:flex;gap:13px;align-items:flex-start}
+.thesis .p:last-child{border-right:0}
+.thesis .p .ic{font-family:"Fraunces",serif;font-size:19px;color:var(--accent);line-height:1;flex:0 0 auto;margin-top:1px;width:20px;text-align:center}
+.thesis .p .tx b{display:block;font-weight:600;color:var(--ink);font-size:14.5px;margin-bottom:5px}
+.thesis .p .tx span{color:var(--slate);font-size:13px;line-height:1.5}
+@media(max-width:680px){.thesis{grid-template-columns:1fr}.thesis .p{border-right:0;border-bottom:1px solid var(--line)}.thesis .p:last-child{border-bottom:0}}
 
 /* role-lens switcher */
 .lens{margin-top:30px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden}
@@ -231,7 +240,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <div class="id">
       <div class="kick">Portfolio</div>
       <div class="brandname">Adrien<br>Enjalbert</div>
-      <div class="role"><b>AI-native digital &amp; growth leader</b><br>Sets the strategy, ships the system.</div>
+      <div class="role"><b>Applied-AI &amp; growth leader</b><br>MSc AI &amp; Data Science. Ships AI that pays back and gets adopted.</div>
       <div class="rule"></div>
     </div>
     <nav class="menu" id="menu" aria-label="Sections">
@@ -256,9 +265,15 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <!-- ABOUT + LENS -->
     <section class="section" id="about">
       <div class="bound">
-        <div class="eyebrow reveal">Adrien Enjalbert &middot; Digital, Growth &amp; Applied AI</div>
-        <h1 class="hero-h reveal">The strategist <span class="em">and</span> the builder.</h1>
-        <p class="hero-lede reveal">Ten years scaling B2B and B2C growth, three European Search Awards, and the last two years building production AI inside a revenue org. The rare pairing: I set the growth strategy and I ship the system that runs it. Below is the case, told as five things I can prove I do.</p>
+        <div class="eyebrow reveal">Adrien Enjalbert &middot; Applied AI, Growth &amp; Data Science</div>
+        <h1 class="hero-h reveal">I ship AI systems that <span class="em">pay back</span> and get used.</h1>
+        <p class="hero-lede reveal">An MSc in AI &amp; Data Science on top of ten years owning P&amp;L-level growth. I understand the models, so I build the right ones; I read the business, so I build the ones that earn their keep; and I treat adoption as the job, so the systems get used. The result is AI with a positive ROI and a queue of people asking for it, not a pilot that stalls.</p>
+
+        <div class="thesis reveal">
+          <div class="p"><div class="ic">&#9671;</div><div class="tx"><b>Grounded in the science</b><span>MSc Artificial Intelligence &amp; Data Science (L7) plus production systems &mdash; I understand the models, not just the prompts.</span></div></div>
+          <div class="p"><div class="ic">&#163;</div><div class="tx"><b>Built on business judgment</b><span>Ten years to a number across &pound;11M budgets &mdash; I aim AI at the work that moves revenue, cost or cycle time.</span></div></div>
+          <div class="p"><div class="ic">&#9650;</div><div class="tx"><b>Proven by adoption</b><span>+56% team adoption, 200+ requests in a week, work borrowed by HQ &mdash; the systems get used because they remove real work.</span></div></div>
+        </div>
 
         <div class="lens reveal" id="lens">
           <div class="lh"><span class="q">&#9671;</span> What are you hiring for? <span style="color:var(--mute)">Highlight the proof that matters to you.</span></div>
