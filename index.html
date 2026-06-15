@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Adrien Enjalbert — AI-native digital and growth leader. The rare person who sets the growth strategy and builds the system that runs it." />
+<meta name="description" content="Adrien Enjalbert — builds the AI that runs a marketing org and gets the org to use it. Production agents at the no-code layer, a decade of growth pedigree aiming them." />
 <meta property="og:title" content="Adrien Enjalbert — Selected Work" />
-<meta property="og:description" content="AI-native growth leader. Ten years of award-winning performance marketing, now paired with production AI that ships and gets adopted." />
+<meta property="og:description" content="I build production AI agents for a marketing org and drive the adoption. A decade of growth and performance is why they point at the work that moves a number." />
 <meta property="og:type" content="website" />
 <title>Adrien Enjalbert — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,6 +71,12 @@ main{min-width:0}
 .hero-h .em{font-style:italic;font-weight:400}
 .hero-lede{margin-top:20px;max-width:700px;color:var(--slate);font-size:clamp(17px,2vw,20px)}
 .hero-h .em{color:var(--accent)}
+/* 60-second version for this role — above the fold */
+.whyrole{margin-top:24px;padding:18px 20px;background:var(--ink-2);border-radius:var(--r);position:relative;overflow:hidden;max-width:760px}
+.whyrole::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.whyrole .k{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt)}
+.whyrole .v{margin-top:7px;color:#e9ecf3;font-size:14.5px;line-height:1.5}
+.whyrole .v b{color:#fff;font-weight:600}
 /* thesis strip — the differentiator, scannable in 3s */
 .thesis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
 .thesis .p{padding:20px;border-right:1px solid var(--line);display:flex;gap:13px;align-items:flex-start}
@@ -214,6 +220,12 @@ main{min-width:0}
 .contactcard .grid .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt)}
 .contactcard .grid a,.contactcard .grid span{display:block;margin-top:6px;color:#e9ecf3;font-size:15px}
 @media(max-width:600px){.contactcard .grid{grid-template-columns:1fr}}
+.contactcard .emailcta{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(16px,2vw,19px);color:#fff;background:var(--accent);border-radius:999px;padding:14px 26px}
+.contactcard .emailcta:hover{text-decoration:none;background:#1740c8}
+.contactcard .emailcta .ar{color:#fff}
+.contactcard .secondary{margin-top:20px;display:flex;gap:18px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.03em}
+.contactcard .secondary a{color:var(--accent-lt)}
+.contactcard .levelnote{margin-top:22px;padding-top:18px;border-top:1px solid rgba(143,176,255,.25);color:#bcc4d6;font-size:14px;line-height:1.55;max-width:620px}
 footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em}
 
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -254,7 +266,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <div class="id">
       <div class="kick">Portfolio</div>
       <div class="brandname">Adrien<br>Enjalbert</div>
-      <div class="role"><b>Growth &amp; performance marketer, now AI-native</b><br>A decade in marketing, recently building the AI systems underneath it.</div>
+      <div class="role"><b>Builds applied AI for a marketing org</b><br>Production agents at the no-code layer, a decade of growth aiming them.</div>
       <div class="rule"></div>
     </div>
     <nav class="menu" id="menu" aria-label="Sections">
@@ -268,11 +280,8 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="#spotlight"><span class="bar"></span><span class="ix">07</span>Monthly spotlight</a>
       <a href="builds.html"><span class="bar"></span><span class="ix">&#9671;</span>What I build &rarr;</a>
       <a href="#contact"><span class="bar"></span><span class="ix">08</span>Contact</a>
-      <div class="navgroup">Tailored one-pagers</div>
-      <a class="navsub" href="for-ai.html"><span class="ix">&rsaquo;</span>For AI / MarTech</a>
-      <a class="navsub" href="for-growth.html"><span class="ix">&rsaquo;</span>For Growth</a>
-      <a class="navsub" href="for-demandgen.html"><span class="ix">&rsaquo;</span>For Demand gen</a>
-      <a class="navsub" href="for-analytics.html"><span class="ix">&rsaquo;</span>For Analytics</a>
+      <div class="navgroup">Tailored for this role</div>
+      <a class="navsub" href="for-ai.html"><span class="ix">&rsaquo;</span>The AI / MarTech one-pager &rarr;</a>
     </nav>
     <div class="foot">
       <a href="https://linkedin.com/in/adrien-enjalbert">linkedin.com/in/adrien-enjalbert</a><br>
@@ -285,18 +294,20 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <!-- ABOUT + LENS -->
     <section class="section" id="about">
       <div class="bound">
-        <div class="eyebrow reveal">Adrien Enjalbert &middot; Growth, Performance &amp; Analytics &middot; now AI-native</div>
-        <h1 class="hero-h reveal">A growth marketer who learned to <span class="em">build the machine.</span></h1>
-        <p class="hero-lede reveal">Ten years and three European Search Awards in performance, growth and analytics marketing &mdash; &pound;11M budgets, 17&times; ROAS, conversion rebuilt +592%. That track record is the foundation. Recently I paired it with an MSc in AI &amp; Data Science and started building production AI systems for growth and internal efficiency, so I now do both: run the marketing and build the machine underneath it. A genuinely AI-native marketer, with the marketing proven first.</p>
+        <div class="eyebrow reveal">Adrien Enjalbert &middot; Applied AI for a marketing org &middot; tailored for this role</div>
+        <h1 class="hero-h reveal">I build the AI that runs a marketing org, and get the org to <span class="em">use it.</span></h1>
+        <p class="hero-lede reveal">A decade running growth and performance gave me the judgment for where to point AI: the workflows that move a number, not the demos. An MSc in AI &amp; Data Science and two years shipping production agents gave me the hands to build it. So I run the intake, prioritise against the metrics, ship at the no-code layer, and treat adoption as the deliverable. The sales agent I built made &pound;440K of pipeline in three months and got pulled in by Sales and RevOps.</p>
+
+        <div class="whyrole reveal"><div class="k">The 60-second version for this role</div><div class="v">This page is tailored for the AI Transformation Owner role. I already run the product-owner loop the JD describes, against an &pound;11M budget and without the title: take intake from across the function, prioritise against the metrics that matter, say <b>&ldquo;not yet&rdquo;</b> when an idea won&rsquo;t move a number, build at the no-code layer, drive adoption, then sunset and rebuild when a better approach appears. The AI work runs as a fleet of <b>16 agents</b> I own and evaluate; the headline is <b>&pound;440K of pipeline in three months</b> from one of them.</div></div>
 
         <div class="thesis reveal">
-          <div class="p"><div class="ic">&#163;</div><div class="tx"><b>The foundation: marketing that performs</b><span>A decade in growth, performance and analytics. 3&times; Search Awards, &pound;11M budgets, 17&times; ROAS, CPL -81%, conversion +592%. This is the deepest part of the track record.</span></div></div>
-          <div class="p"><div class="ic">&#9671;</div><div class="tx"><b>The recent edge: AI, built not bought</b><span>An MSc in AI &amp; Data Science and production systems shipped in the last two years &mdash; for growth and for internal efficiency. I understand the models, not just the prompts.</span></div></div>
-          <div class="p"><div class="ic">&#9650;</div><div class="tx"><b>The combination: an AI-native marketer</b><span>I aim the AI at the work that moves a number, and the systems get adopted &mdash; +56% team uptake, 200+ requests in a week, work borrowed by HQ. Marketer first, builder too.</span></div></div>
+          <div class="p"><div class="ic">&#9671;</div><div class="tx"><b>I build the agents myself</b><span>An MSc in AI &amp; Data Science and production systems shipped over two years: a &pound;440K sales agent, a 16-strong chatbot fleet, a content engine at &pound;1 an article. I understand the models underneath, not only the prompts on top.</span></div></div>
+          <div class="p"><div class="ic">&#163;</div><div class="tx"><b>A decade of growth aims the AI</b><span>3&times; Search Awards, &pound;11M budgets, 17&times; ROAS, CPL -81%, conversion +592%. That commercial judgment is why the AI points at the work that moves a number.</span></div></div>
+          <div class="p"><div class="ic">&#9650;</div><div class="tx"><b>The systems get adopted</b><span>+56% team uptake, 200+ requests in a week, a lead-magnet suite borrowed by HQ. Adoption is the metric I optimise, because the best system nobody uses is worth nothing.</span></div></div>
         </div>
 
         <div class="lens reveal" id="lens">
-          <div class="lh"><span class="q">&#9671;</span> What are you hiring for? <span style="color:var(--mute)">Highlight the proof here, or open a page tailored to the role.</span></div>
+          <div class="lh"><span class="q">&#9671;</span> What are you hiring for? <span style="color:var(--mute)">Pick one to jump to the matching proof, or open a tailored page below.</span></div>
           <div class="opts" role="group" aria-label="Highlight proof by role type">
             <button class="opt on" type="button" data-lens="all" aria-pressed="true"><div class="t">Show everything</div><div class="d">the full picture</div></button>
             <button class="opt" type="button" data-lens="ai" aria-pressed="false"><div class="t">Applied AI / MarTech</div><div class="d">agents, automation, adoption</div></button>
@@ -308,11 +319,11 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         </div>
 
         <div class="statwall reveal">
-          <div class="cell"><div class="num" data-count="17" data-suffix="&times;">17&times;</div><div class="lab">ROAS at peak</div></div>
           <div class="cell"><div class="num"><span class="u">&pound;</span>440K+</div><div class="lab">AI-sourced pipeline / 3 mo</div></div>
-          <div class="cell"><div class="num" data-count="592" data-prefix="+" data-suffix="%">+592%</div><div class="lab">B2C conversion, rebuilt</div></div>
+          <div class="cell"><div class="num" data-count="16">16</div><div class="lab">Production agents owned</div></div>
           <div class="cell"><div class="num"><span class="u">&pound;</span>600&rarr;<span class="u">&pound;</span>1</div><div class="lab">Cost per article (-99.8%)</div></div>
-          <div class="cell"><div class="num" data-count="4000" data-comma="1" data-prefix="+" data-suffix="%">+4,000%</div><div class="lab">US organic impressions</div></div>
+          <div class="cell"><div class="num" data-count="56" data-prefix="+" data-suffix="%">+56%</div><div class="lab">Team adoption in a week</div></div>
+          <div class="cell"><div class="num" data-count="17" data-suffix="&times;">17&times;</div><div class="lab">ROAS at peak</div></div>
           <div class="cell"><div class="num" data-count="3" data-suffix="&times;">3&times;</div><div class="lab">European Search Awards</div></div>
         </div>
       </div>
@@ -333,12 +344,12 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Enterprise pipeline (3 mo)",100,"&pound;440K+"],["Contacts generated",66,"14,500+"],["Team adoption",40,"+56%"],["SQL conversion",18,"+12%"]]'></div>
             <div class="copy">
               <p class="lead">Sales spent 60%+ of their time on manual research against 6&ndash;12 month cycles. I built an AI system that auto-qualifies accounts on 20+ signals, finds decision-makers at 80% phone-number accuracy, and writes back to CRM and Slack.</p>
-              <p>It drew 200+ internal requests in a week (1,000+ in the first month) and is featured live on customer calls. I owned the skills files, integrations, evaluations and the rebuilds.</p>
+              <p>It drew 200+ internal requests in a week and is featured live on customer calls. I owned the skills files, integrations, evaluations and the rebuilds.</p>
             </div>
           </div>
           <div class="voices">
+            <q>More meetings in 40 minutes than in a week.<span class="src">&mdash; Sarah P., Country Manager</span></q>
             <q>The Dude has been a game changer in our prospecting&hellip; an essential part of my daily outreach.<span class="src">&mdash; Sales rep</span></q>
-            <q>The highest success rate I&rsquo;ve seen with any of our internal systems.<span class="src">&mdash; Client Executive</span></q>
           </div>
           <div class="figsrc"><b>SOURCE</b> &nbsp;Internal CRM and adoption data &amp; team feedback, Oct&ndash;Dec 2025.</div>
           <div class="chips"><span>AI agents</span><span>Multi-agent</span><span>MCP / integrations</span><span>Evaluations</span><span>Adoption</span></div>
@@ -350,8 +361,8 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <section class="section" id="efficiency">
       <div class="bound">
         <div class="eyebrow reveal"><span class="ix">02</span> A repeated pattern</div>
-        <h2 class="sec-h reveal">Efficiency that compounds</h2>
-        <p class="sec-sub reveal">Order-of-magnitude cost reduction is not a one-off here, it is a habit, across paid, content and performance.</p>
+        <h2 class="sec-h reveal">Efficiency that compounds &mdash; the JD calls these 100x problems</h2>
+        <p class="sec-sub reveal">Order-of-magnitude cost reduction is not a one-off here, it is a habit across paid, content and performance. I look for the step where AI changes the order of magnitude, not the edges you can trim.</p>
 
         <article class="narr reveal" data-lens="dg ai an">
           <div class="nhead"><span class="ntag">Performance &middot; Paid, content &amp; demand gen</span>
@@ -403,23 +414,23 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="eyebrow reveal"><span class="ix">04</span> Adoption is the deliverable</div>
         <h2 class="sec-h reveal">Cross-functional gravity</h2>
-        <p class="sec-sub reveal">The work gets adopted by teams that do not report to me: Sales, RevOps, and parent-company HQ.</p>
+        <p class="sec-sub reveal">The work gets adopted by teams that do not report to me: Sales, RevOps, and parent-company HQ. That organic pull is exactly the adoption a champion network exists to manufacture &mdash; running it as a formal programme is the part I would build here.</p>
 
         <article class="narr green reveal" data-lens="ai growth">
           <div class="nhead"><span class="ntag">Applied AI &amp; CRO &middot; adoption &amp; experimentation</span>
             <div class="lensmarks"><span data-l="ai">AI</span><span data-l="growth">Growth</span></div></div>
-          <h3>An AI-first chatbot lifted discussion-to-lead 913% &mdash; and the org pulled it in</h3>
+          <h3>16 production chatbots convert at 4.7% against a 1.9% form baseline &mdash; and the org scaled them</h3>
           <div class="proves"><div class="k">What this proves</div><div class="v">I build things people choose to use. Adoption is the metric I optimise, because the best system nobody uses is worth nothing.</div></div>
           <div class="grid">
             <div class="chart" data-chart="beforeafter" data-color="green" data-improve="up"
-                 data-metric="Discussion-to-lead conversion" data-before="0.44" data-after="4.47" data-btxt="0.44%" data-atxt="4.47%" data-delta="+913%"></div>
+                 data-metric="Chatbot lead conversion vs form baseline" data-before="1.9" data-after="4.7" data-btxt="1.9%" data-atxt="4.7%" data-delta="+147%"></div>
             <div class="copy">
-              <p class="lead">An AI-first chatbot beat the standard flow 10&times; on conversion despite lower traffic, so the org scaled it. The sales agent drew +56% adoption and 200+ requests in a week. A lead-magnet suite I built was requested by parent-company HQ for its own campaigns.</p>
-              <p>None of those teams reported to me. They adopted the work because it removed real work.</p>
+              <p class="lead">A fleet of 16 chatbots converts visitors to leads at 4.7%, against 1.9% for the standard form, at 65% higher ICP fit and a 30% shorter sales cycle. The org scaled them because the read held. The sales agent drew +56% adoption and 200+ requests in a week. A lead-magnet suite I built was requested by parent-company HQ for its own campaigns.</p>
+              <p>None of those teams reported to me. They adopted the work because it removed real work. Recruiting champions across sub-teams and giving everyone a route to surface needs is how I would turn that pull into a standing programme.</p>
             </div>
           </div>
-          <div class="figsrc"><b>SOURCE</b> &nbsp;A/B test results &amp; internal adoption logs, 2025.</div>
-          <div class="chips"><span>Adoption</span><span>Change management</span><span>AI chatbot</span><span>CRO</span><span>Cross-functional</span></div>
+          <div class="figsrc"><b>SOURCE</b> &nbsp;Conversion vs form baseline &amp; internal adoption logs, 2025.</div>
+          <div class="chips"><span>Adoption</span><span>Champion network</span><span>AI chatbots</span><span>CRO</span><span>Cross-functional</span></div>
         </article>
       </div>
     </section>
@@ -434,12 +445,12 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         <article class="narr green reveal" data-lens="growth an">
           <div class="nhead"><span class="ntag">Growth &middot; CRO, lifecycle &amp; organic</span>
             <div class="lensmarks"><span data-l="growth">Growth</span><span data-l="an">Analytics</span></div></div>
-          <h3>Conversion rebuilt 6&times;, retention compounded 15&times;, organic scaled 4,000%</h3>
+          <h3>B2C conversion rebuilt +592%, with a 15&times; long-term retention lift behind it</h3>
           <div class="proves"><div class="k">What this proves</div><div class="v">I move the metric that matters on either side of the funnel: enterprise pipeline or consumer retention, B2B CPL or B2C cost per booked job.</div></div>
           <div class="grid">
             <div class="chart" data-chart="ring" data-big="15&times;" data-sub="long-term retention" data-pct="0.86"></div>
             <div class="copy">
-              <p class="lead">B2C: a website rebuild took conversion from 5.1% to 30.4% (+592%); lifecycle remarketing drove a 15&times; long-term retention lift and +45% LTV; and a programmatic Career Hub I built (Next.js SSG, 3,000+ pages, an AEO tool moat and a self-improving content loop) grew US organic impressions 4,000% at near-zero cost per click.</p>
+              <p class="lead">B2C: a website rebuild took conversion from 5.1% to 30.4% (+592%). Lifecycle remarketing drove a 15&times; long-term retention lift and +45% LTV. A programmatic Career Hub I built (Next.js SSG, 3,000+ pages, an AEO tool moat and a self-improving content loop) grew US organic impressions 4,000% at near-zero cost per click.</p>
               <p>B2B: &pound;11M demand engine, first ABM programme, 5,849 enterprise accounts engaged. Same person, both funnels.</p>
             </div>
           </div>
@@ -486,15 +497,15 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <!-- SPOTLIGHT TEASER -->
     <section class="section" id="spotlight">
       <div class="bound">
-        <div class="eyebrow reveal"><span class="ix">07</span> Monthly spotlight</div>
+        <div class="eyebrow reveal"><span class="ix">07</span> The month-by-month record</div>
         <h2 class="sec-h reveal">Want the receipts, month by month?</h2>
-        <p class="sec-sub reveal">The five stories above are the synthesis. The monthly spotlight is the running record behind them: the Career Hub scaled past 2,100 pages, AI agents benchmarked 3.6&times; better than the last build, the most efficient peak the business has run.</p>
+        <p class="sec-sub reveal">The five stories above are the synthesis. Behind them is a month-by-month record from Nov 2025 to Jun 2026: the Career Hub scaled past 2,100 pages, AI agents benchmarked 3.6&times; better than the last build, the most efficient peak the business has run.</p>
         <a class="spotcard reveal" href="spotlight.html">
           <div class="spotcard-grid">
             <div class="s"><div class="n">8</div><div class="l">Months shipped</div></div>
             <div class="s"><div class="n">2,100<span class="u">+</span></div><div class="l">Pages built</div></div>
             <div class="s"><div class="n">3.6<span class="u">&times;</span></div><div class="l">Agent quality lift</div></div>
-            <div class="s"><div class="n">6.6<span class="u">&times;</span></div><div class="l">Remarketing lift</div></div>
+            <div class="s"><div class="n">15<span class="u">&times;</span></div><div class="l">Long-term retention</div></div>
           </div>
           <div class="spotcard-cta"><span>Open the monthly spotlight</span><span class="arr">&rarr;</span></div>
         </a>
@@ -506,13 +517,17 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="contactcard reveal">
           <div class="eyebrow"><span class="ix">08</span> Let&rsquo;s talk</div>
-          <h2>Set the strategy. <span class="em">Ship the system.</span></h2>
+          <h2>Build the systems. <span class="em">Get the org to use them.</span></h2>
           <p style="color:#bcc4d6;max-width:600px">Happy to walk through any of these in depth, including the live AI systems and how they got adopted.</p>
-          <div class="grid">
-            <div><div class="k">Email</div><a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a></div>
-            <div><div class="k">LinkedIn</div><a href="https://linkedin.com/in/adrien-enjalbert">linkedin.com/in/adrien-enjalbert</a></div>
-            <div><div class="k">GitHub</div><a href="https://github.com/Adrienenjalbert">github.com/Adrienenjalbert</a></div>
+          <a class="emailcta" href="mailto:adrien.enjalbert34@gmail.com">Email me &mdash; adrien.enjalbert34@gmail.com <span class="ar">&rarr;</span></a>
+          <div class="secondary">
+            <a href="https://linkedin.com/in/adrien-enjalbert">LinkedIn</a>
+            <a href="https://github.com/Adrienenjalbert">GitHub</a>
+            <a href="cv.html">CV</a>
+            <a href="builds.html">What I build</a>
+            <a href="spotlight.html">Monthly spotlight</a>
           </div>
+          <p class="levelnote">One honest note on level: I run a Head-of function today, and this is a hands-on, mid-senior IC role. That is the point. I want to be the person building the systems and running the adoption loop, not managing the people who commission them.</p>
         </div>
         <footer>Adrien Enjalbert &middot; selected work, 2015–2026 &middot; figures reflect verified impact from platform, CRM and analytics data. <a href="builds.html">What I build</a> &middot; <a href="spotlight.html">Monthly spotlight</a> &middot; <a href="cv.html">Read the CV &rarr;</a></footer>
       </div>
@@ -595,17 +610,20 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   /* role-lens switcher */
   var lensBtns=Array.prototype.slice.call(document.querySelectorAll(".lens .opt"));
   var narrs=Array.prototype.slice.call(document.querySelectorAll(".narr"));
-  function applyLens(lens){
+  function applyLens(lens,scroll){
     lensBtns.forEach(function(b){var on=b.getAttribute("data-lens")===lens;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false");});
+    var firstHit=null;
     narrs.forEach(function(n){
       var serves=(n.getAttribute("data-lens")||"").split(/\s+/);
       var hit=lens==="all"||serves.indexOf(lens)>-1;
       n.classList.toggle("dim",!hit&&lens!=="all");
       n.classList.toggle("hot",hit&&lens!=="all");
       n.querySelectorAll(".lensmarks span").forEach(function(s){s.classList.toggle("hit",lens!=="all"&&s.getAttribute("data-l")===lens);});
+      if(hit&&lens!=="all"&&!firstHit)firstHit=n;
     });
+    if(scroll&&firstHit){var sec=firstHit.closest(".section")||firstHit;sec.scrollIntoView({behavior:REDUCE?"auto":"smooth",block:"start"});}
   }
-  lensBtns.forEach(function(b){b.addEventListener("click",function(){applyLens(b.getAttribute("data-lens"));});});
+  lensBtns.forEach(function(b){b.addEventListener("click",function(){applyLens(b.getAttribute("data-lens"),true);});});
 
   var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
   links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
