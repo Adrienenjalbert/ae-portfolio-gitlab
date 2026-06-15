@@ -100,8 +100,9 @@ header.hero{padding:62px 0 34px}
 .statwall .cell{padding:24px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .statwall .cell:nth-child(4n){border-right:0}
 .statwall .cell:nth-child(n+5){border-bottom:0}
-.statwall .num{font-family:"Fraunces",serif;font-size:clamp(30px,4.4vw,46px);line-height:1;
-  color:var(--ink);font-weight:500;letter-spacing:-.02em}
+  .statwall .num{font-family:"Fraunces",serif;font-size:clamp(30px,4.4vw,46px);line-height:1;
+    color:var(--ink);font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .scorecard .tile .n,.ring-big{font-variant-numeric:tabular-nums}
 .statwall .num .u{color:var(--accent)}
 .statwall .lab{margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;
   letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
@@ -661,7 +662,8 @@ footer{padding:40px 0 70px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     var W=540, rowH=64, padT=14, padL=4, labelW=0;
     var H=padT*2+items.length*rowH;
     var barX=200, barMax=W-barX-92;
-    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Impact metrics"},box);
+    var summary=items.map(function(it){return decodeHTML(it[0])+" "+decodeHTML(it[2]);}).join(", ");
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Impact metrics: "+summary},box);
     var bars=[];
     items.forEach(function(it,i){
       var label=decodeHTML(it[0]), pct=it[1]/100, val=decodeHTML(it[2]);
