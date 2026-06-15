@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="googlebot" content="noindex, nofollow" />
+<meta name="description" content="Selected work — a private portfolio prepared for GitLab." />
+<title>Adrien Enjalbert — Selected Work for GitLab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN SYSTEM — "Press" : retro-editorial, warm paper, ink
+   Fraunces (display serif) · Space Grotesk (sans) · IBM Plex Mono (captions)
+   ============================================================ */
+:root{
+  --paper:#f4f1e8;        /* warm newsprint */
+  --paper-2:#efeadd;      /* panel paper */
+  --card:#fbf9f3;         /* raised card */
+  --ink:#16140f;          /* near-black warm ink */
+  --ink-2:#1d2433;        /* dark feature panel (cool ink) */
+  --ink-3:#262d3d;
+  --slate:#5a5648;        /* secondary warm */
+  --mute:#8c8775;         /* tertiary warm */
+  --line:#d8d2c2;         /* warm hairline */
+  --line-2:#c7c0ad;
+  --accent:#1e49e6;       /* electric ink-blue */
+  --accent-dk:#0e2a6e;
+  --accent-lt:#8fb0ff;
+  --green:#0f7a4f;        /* positive metric */
+  --green-lt:#86c9a8;
+  --gold:#b17a1b;
+  --maxw:1080px;
+  --r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+/* paper grain — subtle, retro print feel */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* eyebrow: tracked small-caps + short rule */
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--accent);display:inline-block}
+.eyebrow.mut{color:var(--slate)}
+.eyebrow.mut::before{background:var(--line-2)}
+
+/* double hairline rule (retro press) */
+.rule2{border:0;height:0;border-top:1px solid var(--line);box-shadow:0 3px 0 -2px var(--line);margin:0}
+
+/* ---------------- top bar ---------------- */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(244,241,232,.86);
+  backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.topbar .row{max-width:var(--maxw);margin:0 auto;padding:13px 28px;display:flex;
+  align-items:center;justify-content:space-between;gap:18px}
+.brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink)}
+.brand b{color:var(--accent)}
+.navlinks{display:flex;gap:22px;font-size:13px;font-family:"IBM Plex Mono",monospace;
+  letter-spacing:.04em}
+.navlinks a{color:var(--slate)}
+.navlinks a:hover{color:var(--ink);text-decoration:none}
+.navlinks .cta{color:var(--accent)}
+@media(max-width:680px){.navlinks{display:none}}
+
+/* ---------------- hero ---------------- */
+header.hero{padding:62px 0 34px}
+.hero h1{font-size:clamp(40px,7.4vw,82px);line-height:.98;margin:18px 0 0;color:var(--ink)}
+.hero h1 .em{font-style:italic;font-weight:400}
+.role{margin-top:18px;font-size:clamp(17px,2.4vw,22px);color:var(--accent-dk);font-weight:600}
+.lede{margin-top:18px;max-width:720px;color:var(--slate);font-size:clamp(16px,1.9vw,19px)}
+.tailored{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:7px 14px 7px 12px;
+  border:1px solid var(--line-2);border-radius:999px;background:var(--card);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate)}
+.tailored b{color:var(--ink)}
+.tailored .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(15,122,79,.15)}
+
+/* ---------------- stat wall ---------------- */
+.statwall{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:46px;
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.statwall .cell{padding:24px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.statwall .cell:nth-child(4n){border-right:0}
+.statwall .cell:nth-child(n+5){border-bottom:0}
+.statwall .num{font-family:"Fraunces",serif;font-size:clamp(30px,4.4vw,46px);line-height:1;
+  color:var(--ink);font-weight:500;letter-spacing:-.02em}
+.statwall .num .u{color:var(--accent)}
+.statwall .lab{margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:760px){.statwall{grid-template-columns:repeat(2,1fr)}
+  .statwall .cell:nth-child(2n){border-right:0}
+  .statwall .cell:nth-child(n+5){border-bottom:1px solid var(--line)}
+  .statwall .cell:nth-last-child(-n+2){border-bottom:0}}
+
+/* ---------------- section frame ---------------- */
+section{padding:46px 0;position:relative}
+.sec-head{margin-bottom:30px}
+.sec-head h2{font-size:clamp(26px,4vw,40px);line-height:1.05;margin-top:14px;color:var(--ink)}
+.sec-head .sub{margin-top:12px;color:var(--slate);max-width:680px}
+
+/* ---------------- "why" panel (dark ink) ---------------- */
+.whypanel{background:var(--ink-2);color:#e9ecf3;border-radius:var(--r);padding:40px 38px;
+  position:relative;overflow:hidden}
+.whypanel::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.whypanel .eyebrow{color:var(--accent-lt)}
+.whypanel .eyebrow::before{background:var(--accent-lt)}
+.whypanel h2{color:#fbf9f3;font-size:clamp(24px,3.4vw,34px);margin:16px 0 16px;line-height:1.08}
+.whypanel p{color:#bcc4d6;max-width:760px}
+.whychips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.whychips span{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent-lt);
+  border:1px solid #33405c;border-radius:999px;padding:6px 13px;background:#202840}
+
+/* ---------------- act divider ---------------- */
+.act{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;
+  padding:34px 0 8px;border-top:1px solid var(--line);box-shadow:0 4px 0 -3px var(--line);margin-top:10px}
+.act .no{font-family:"Fraunces",serif;font-size:clamp(54px,9vw,92px);line-height:.8;
+  color:var(--line-2);font-weight:500}
+.act .meta .k{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent)}
+.act.green .meta .k{color:var(--green)}
+.act.dk .meta .k{color:var(--accent-dk)}
+.act .meta h3{font-size:clamp(24px,3.6vw,34px);margin:8px 0 0;color:var(--ink)}
+.act .meta .lead{margin-top:10px;color:var(--slate);max-width:620px}
+.act .meta .claim{margin-top:14px;font-family:"Fraunces",serif;font-style:italic;
+  font-size:clamp(16px,2vw,20px);color:var(--ink);border-left:3px solid var(--accent);padding-left:14px}
+.act.green .meta .claim{border-color:var(--green)}
+.act.dk .meta .claim{border-color:var(--accent-dk)}
+@media(max-width:620px){.act{grid-template-columns:1fr;gap:6px}.act .no{font-size:60px}}
+
+/* ---------------- case study card ---------------- */
+.case{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  margin-top:24px;overflow:hidden}
+.case .top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  padding:22px 26px 0}
+.case .cno{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mute)}
+.case h3{padding:6px 26px 0;font-size:clamp(20px,2.6vw,27px);line-height:1.12;color:var(--ink);max-width:760px}
+.case .period{padding:8px 26px 0;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate)}
+.case .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;padding:22px 26px 6px;align-items:center}
+@media(max-width:780px){.case .grid{grid-template-columns:1fr;gap:18px}}
+.case .copy .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-top:14px}
+.case .copy .h:first-child{margin-top:0}
+.case .copy p{margin-top:6px;color:var(--ink);font-size:15.5px}
+.case .copy p.ctx{color:var(--slate)}
+blockquote{margin-top:16px;padding:13px 16px;background:var(--paper-2);border-left:3px solid var(--accent);
+  border-radius:3px;font-family:"Fraunces",serif;font-style:italic;color:var(--ink);font-size:15px}
+blockquote cite{display:block;margin-top:6px;font-style:normal;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:6px 26px 22px}
+.chips span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);
+  border:1px solid var(--line-2);border-radius:3px;padding:4px 9px;background:var(--paper)}
+.figsrc{padding:0 0 0 0;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.04em;color:var(--mute)}
+.figsrc b{color:var(--slate);letter-spacing:.12em}
+
+/* so-what bar */
+.sowhat{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;
+  margin:0 26px 24px;padding:14px 18px;background:var(--ink-2);border-radius:var(--r);position:relative}
+.sowhat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.case.green .sowhat::before{background:var(--green)}
+.case.dk .sowhat::before{background:var(--accent-dk)}
+.sowhat .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent-lt);white-space:nowrap}
+.sowhat .v{font-family:"Fraunces",serif;font-style:italic;color:#f1efe8;font-size:15.5px;line-height:1.3}
+@media(max-width:560px){.sowhat{grid-template-columns:1fr;gap:6px}}
+
+/* mini scorecard tiles inside a case */
+.scorecard{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px 26px 4px}
+.scorecard .tile{border:1px solid var(--line);border-radius:var(--r);padding:13px 14px;background:var(--paper)}
+.scorecard .tile.hero{background:var(--ink-2);border-color:var(--ink-2)}
+.scorecard .tile .n{font-family:"Fraunces",serif;font-size:clamp(20px,3vw,28px);color:var(--ink);line-height:1}
+.scorecard .tile.hero .n{color:var(--accent-lt)}
+.case.green .scorecard .tile:not(.hero) .n{color:var(--green)}
+.scorecard .tile .l{margin-top:7px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--mute);line-height:1.3}
+.scorecard .tile.hero .l{color:var(--accent-lt)}
+@media(max-width:680px){.scorecard{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------------- chart container ---------------- */
+.chart{width:100%}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.c-axis{stroke:var(--line-2);stroke-width:1}
+.bar-before{fill:#c3bcab}
+.bar-after{fill:var(--accent)}
+.bar-after.green{fill:var(--green)}
+.delta-badge rect{fill:var(--accent)}
+.delta-badge.green rect{fill:var(--green)}
+.delta-badge text{fill:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700}
+.barlabel{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink)}
+.axislabel{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate)}
+.hbar{fill:var(--accent)}
+.hbar.green{fill:var(--green)}
+.hbartrack{fill:var(--line)}
+.hbarlabel{font-family:"Space Grotesk",sans-serif;fill:var(--slate);font-size:13px}
+.hbarval{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink);font-size:15px}
+.ring-track{fill:none;stroke:var(--line);stroke-width:13}
+.ring-arc{fill:none;stroke:var(--green);stroke-width:13;stroke-linecap:round}
+.ring-big{font-family:"Fraunces",serif;fill:var(--green);font-weight:600}
+.ring-sub{font-family:"IBM Plex Mono",monospace;fill:var(--slate);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------------- credentials ---------------- */
+.creds{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;background:var(--card)}
+.creds .c{padding:20px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:flex;gap:14px;align-items:flex-start}
+.creds .c:nth-child(2n){border-right:0}
+.creds .c:nth-last-child(-n+2){border-bottom:0}
+.creds .c .mk{font-family:"Fraunces",serif;font-size:20px;color:var(--accent);line-height:1;flex:0 0 auto;margin-top:2px}
+.creds .c .mk.gold{color:var(--gold)}
+.creds .c .t b{display:block;font-weight:600;color:var(--ink)}
+.creds .c .t span{color:var(--slate);font-size:14px}
+@media(max-width:640px){.creds{grid-template-columns:1fr}.creds .c{border-right:0}}
+
+/* ---------------- contact ---------------- */
+.contact{background:var(--ink-2);border-radius:var(--r);padding:46px 40px;color:#e9ecf3;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.contact .eyebrow{color:var(--accent-lt)}.contact .eyebrow::before{background:var(--accent-lt)}
+.contact h2{color:#fbf9f3;font-size:clamp(28px,5vw,46px);line-height:1.0;margin:16px 0}
+.contact h2 .em{font-style:italic;font-weight:400}
+.contact .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.contact .grid .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent-lt)}
+.contact .grid a,.contact .grid span{display:block;margin-top:6px;color:#e9ecf3;font-size:15px}
+@media(max-width:600px){.contact .grid{grid-template-columns:1fr}}
+
+footer{padding:40px 0 70px;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  letter-spacing:.03em;text-align:center}
+
+/* ---------------- animation primitives ---------------- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(print){
+  .topbar,.tailored,.navlinks{display:none}
+  body{background:#fff;font-size:11.5px}
+  body::before{display:none}
+  .wrap{max-width:100%;padding:0 8mm}
+  section{padding:14px 0;break-inside:avoid}
+  .case,.statwall,.creds,.whypanel,.contact,.act{break-inside:avoid}
+  .whypanel,.sowhat,.contact,.scorecard .tile.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .reveal{opacity:1!important;transform:none!important}
+  @page{margin:12mm}
+}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="row">
+    <div class="brand"><b>AE</b> &nbsp;/&nbsp; Selected Work</div>
+    <nav class="navlinks">
+      <a href="#why">Why GitLab</a>
+      <a href="#work">The work</a>
+      <a href="#proof">Proof</a>
+      <a href="cv.html" class="cta">CV &rarr;</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Portfolio &middot; Prepared for GitLab</div>
+    <h1>Adrien <span class="em">Enjalbert</span></h1>
+    <div class="role">AI Transformation Owner, Marketing — the case in numbers</div>
+    <p class="lede">I build production AI agents at the no-code layer and get the organisation to use them. Ten years of award-winning growth marketing, the last two spent standing up applied-AI capability from zero inside a revenue org.</p>
+    <span class="tailored"><span class="dot"></span>Curated for <b>GitLab</b> — the AI-build-and-adoption work, first.</span>
+
+    <div class="statwall reveal">
+      <div class="cell"><div class="num" data-count="440" data-prefix="&pound;" data-suffix="K+">&pound;440K+</div><div class="lab">AI-sourced pipeline / 3 mo</div></div>
+      <div class="cell"><div class="num" data-count="56" data-prefix="+" data-suffix="%">+56%</div><div class="lab">Team adoption in a week</div></div>
+      <div class="cell"><div class="num"><span class="u">&pound;</span>600&rarr;<span class="u">&pound;</span>1</div><div class="lab">Cost per article (-99.8%)</div></div>
+      <div class="cell"><div class="num" data-count="16">16</div><div class="lab">Production agents owned</div></div>
+      <div class="cell"><div class="num" data-count="4.7" data-suffix="%" data-dec="1">4.7%</div><div class="lab">Chatbot conversion vs 1.9%</div></div>
+      <div class="cell"><div class="num" data-count="14500" data-suffix="+" data-comma="1">14,500+</div><div class="lab">Contacts auto-enriched</div></div>
+      <div class="cell"><div class="num" data-count="4000" data-prefix="+" data-suffix="%" data-comma="1">+4,000%</div><div class="lab">US organic impressions</div></div>
+      <div class="cell"><div class="num" data-count="3" data-suffix="&times;">3&times;</div><div class="lab">European Search Awards</div></div>
+    </div>
+  </header>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="whypanel reveal">
+      <div class="eyebrow">The fit, in one read</div>
+      <h2>Your job description reads like my backlog.</h2>
+        <p>The role wants someone who can build AI agents on no-code platforms, author and iterate the skills files that define how they behave, wire them into business systems, own a fleet end-to-end, and drive adoption across a function. That last part is the hard one, and the part I treat as the job. I have done this work for two years inside a marketing org, without a central engineering team and without the title.</p>
+      <div class="whychips">
+        <span>No-code / low-code agents</span>
+        <span>Skills files &amp; prompt engineering</span>
+        <span>MCP &amp; tool integration</span>
+        <span>Agent fleet &amp; evaluations</span>
+        <span>Adoption &amp; change management</span>
+        <span>Workflow mapping &middot; 100x problems</span>
+      </div>
+    </div>
+  </section>
+  <!-- ============ ACT 01 — BUILD THE SYSTEM ============ -->
+  <section id="work">
+    <div class="act reveal">
+      <div class="no">01</div>
+      <div class="meta">
+        <div class="k">Build the system</div>
+        <h3>Production AI that ships and gets adopted</h3>
+        <p class="lead">Multi-agent systems on n8n and the Claude API, built at the no-code layer, used daily by Sales and RevOps, and borrowed by parent-company HQ.</p>
+        <p class="claim">Most marketers commission AI. I build it, and the business uses it.</p>
+      </div>
+    </div>
+
+    <!-- CASE P1 — sales intelligence -->
+    <article class="case reveal">
+      <div class="top"><span class="cno">Case 01 / 06 &middot; Applied AI</span></div>
+      <h3>A multi-agent sales intelligence system that built &pound;440K of pipeline in three months</h3>
+      <div class="period">Oct 2025 – present &middot; n8n, Claude API, Salesforce, Slack, Apollo, ZoomInfo</div>
+      <div class="scorecard">
+        <div class="tile hero"><div class="n">&pound;440K+</div><div class="l">Enterprise pipeline, 3 mo</div></div>
+        <div class="tile"><div class="n" data-count="56" data-prefix="+" data-suffix="%">+56%</div><div class="l">Team adoption</div></div>
+        <div class="tile"><div class="n" data-count="12" data-prefix="+" data-suffix="%">+12%</div><div class="l">SQL conversion</div></div>
+        <div class="tile"><div class="n" data-count="14500" data-comma="1" data-suffix="+">14,500+</div><div class="l">Contacts</div></div>
+      </div>
+      <div class="grid">
+        <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Enterprise pipeline (3 mo)",100,"&pound;440K+"],["Contacts generated",66,"14,500+"],["Team adoption",40,"+56%"],["SQL conversion",18,"+12%"]]'></div>
+        <div class="copy">
+          <div class="h">Context</div>
+          <p class="ctx">Sales spent 60%+ of their time on manual research, against 6–12 month enterprise cycles with under 5% close-won.</p>
+          <div class="h">What I built</div>
+          <p>An AI system that auto-qualifies accounts on 20+ signals, identifies decision-makers, generates tailored outreach, and writes back to CRM and Slack. I owned the skills files, integrations, evaluations, and the rebuilds.</p>
+          <blockquote>&ldquo;More meetings in 40 minutes than in a week.&rdquo;<cite>— Country Manager</cite></blockquote>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;Internal CRM and adoption data, Oct–Dec 2025.</div>
+      <div class="chips"><span>AI agents</span><span>Multi-agent</span><span>MCP / integrations</span><span>Evaluations</span><span>Adoption</span><span>RevOps</span></div>
+      <div class="sowhat"><div class="k">What this means for GitLab</div><div class="v">I can stand up an AI system a revenue function actually adopts, and turn it into outcomes inside a quarter.</div></div>
+    </article>
+
+    <!-- CASE P2 — content engine -->
+    <article class="case reveal">
+      <div class="top"><span class="cno">Case 02 / 06 &middot; Applied AI</span></div>
+      <h3>A 5-agent content engine cut article cost 99.8% and lifted output tenfold</h3>
+      <div class="period">Feb 2025 – present &middot; Multi-agent framework, Claude API, WordPress, SEMrush</div>
+      <div class="scorecard">
+        <div class="tile hero"><div class="n">&pound;600&rarr;&pound;1</div><div class="l">Cost per article (-99.8%)</div></div>
+        <div class="tile"><div class="n" data-count="50" data-suffix="+">50+</div><div class="l">Articles / month</div></div>
+        <div class="tile"><div class="n">2 hrs</div><div class="l">vs 5–7 days</div></div>
+        <div class="tile"><div class="n" data-count="90" data-suffix="%">90%</div><div class="l">of B2B traffic</div></div>
+      </div>
+      <div class="grid">
+        <div class="chart" data-chart="beforeafter" data-color="blue" data-improve="down"
+             data-metric="Cost per article" data-before="600" data-after="1"
+             data-btxt="&pound;600" data-atxt="&pound;1" data-delta="-99.8%"></div>
+        <div class="copy">
+          <div class="h">Context</div>
+          <p class="ctx">B2B content cost &pound;600 an article and took 5–7 days, capping output at 4–6 articles a month.</p>
+          <div class="h">What I built</div>
+          <p>Research, outline, writing, CMS and QA agents working as a pipeline, with brand voice and reusable skills embedded in the AI layer. A flagship lead magnet held #1 on Google for three months.</p>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;Internal production cost and CMS output logs, 2025.</div>
+      <div class="chips"><span>Skills files</span><span>Brand voice in the AI layer</span><span>SEO</span><span>Scale</span><span>Cost engineering</span></div>
+      <div class="sowhat"><div class="k">What this means for GitLab</div><div class="v">The reusable-skills practice your JD names, already running: author once, share across the function, rebuild when a better approach appears.</div></div>
+    </article>
+
+    <!-- CASE P3 — chatbots -->
+    <article class="case reveal">
+      <div class="top"><span class="cno">Case 03 / 06 &middot; Applied AI</span></div>
+      <h3>A fleet of 16 conversion agents, owned end-to-end with evaluations</h3>
+      <div class="period">Feb 2025 – present &middot; Custom AI chatbot framework, Claude API, dynamic content</div>
+      <div class="scorecard">
+        <div class="tile hero"><div class="n" data-count="4.7" data-dec="1" data-suffix="%">4.7%</div><div class="l">Conversion vs 1.9%</div></div>
+        <div class="tile"><div class="n" data-count="65" data-prefix="+" data-suffix="%">+65%</div><div class="l">ICP fit vs forms</div></div>
+        <div class="tile"><div class="n" data-count="30" data-prefix="-" data-suffix="%">-30%</div><div class="l">Sales cycle</div></div>
+        <div class="tile"><div class="n" data-count="40" data-suffix="%">40%</div><div class="l">Sales time saved</div></div>
+      </div>
+      <div class="grid">
+        <div class="chart" data-chart="beforeafter" data-color="blue" data-improve="up"
+             data-metric="Lead conversion rate" data-before="1.9" data-after="4.7"
+             data-btxt="1.9%" data-atxt="4.7%" data-delta="+147%"></div>
+        <div class="copy">
+          <div class="h">Context</div>
+          <p class="ctx">Standard forms converted at 1.9%, with a poor experience for complex B2B buyers.</p>
+          <div class="h">What I built</div>
+          <p>16 agents with intent-based flows, AI qualification and routing, and an A/B framework. I re-evaluate them when models or data change rather than letting them drift, and rebuild when the gap is structural.</p>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;A/B test results vs form baseline, 2025.</div>
+      <div class="chips"><span>Agent fleet</span><span>Evaluations</span><span>Human-in-the-loop</span><span>CRO</span><span>Experimentation</span></div>
+      <div class="sowhat"><div class="k">What this means for GitLab</div><div class="v">Owning a fleet&rsquo;s performance (KPIs, evals after model changes, iteration) is how I already work, not a new responsibility.</div></div>
+    </article>
+  </section>
+
+  <!-- ============ ACT 02 — RUN THE ENGINE ============ -->
+  <section>
+    <div class="act dk reveal">
+      <div class="no">02</div>
+      <div class="meta">
+        <div class="k">Run the engine</div>
+        <h3>Eight-figure demand generation, run to a number</h3>
+        <p class="lead">The commercial track record under the AI work: &pound;11M deployed, award-winning efficiency, attribution clear enough to defend every pound.</p>
+        <p class="claim">I know which metrics matter because I have been accountable for them.</p>
+      </div>
+    </div>
+
+    <!-- CASE P5 — demand gen -->
+    <article class="case dk reveal">
+      <div class="top"><span class="cno">Case 04 / 06 &middot; Performance &amp; demand gen</span></div>
+      <h3>Cut B2B cost per lead 81% and hit 17&times; ROAS on an &pound;11M budget</h3>
+      <div class="period">Full year 2024 &middot; Google, Microsoft, LinkedIn, Meta, Programmatic, Demandbase</div>
+      <div class="scorecard">
+        <div class="tile hero"><div class="n" data-count="17" data-suffix="&times;">17&times;</div><div class="l">ROAS in Q2 2024</div></div>
+        <div class="tile"><div class="n" data-count="81" data-prefix="-" data-suffix="%">-81%</div><div class="l">B2B cost per lead</div></div>
+        <div class="tile"><div class="n" data-count="170" data-prefix="+" data-suffix="%">+170%</div><div class="l">US MQLs / quarter</div></div>
+        <div class="tile"><div class="n">&pound;11M</div><div class="l">Budget managed</div></div>
+      </div>
+      <div class="grid">
+        <div class="chart" data-chart="beforeafter" data-color="blue" data-improve="down"
+             data-metric="B2B cost per lead" data-before="1072" data-after="207"
+             data-btxt="&pound;1,072" data-atxt="&pound;207" data-delta="-81%"></div>
+        <div class="copy">
+          <div class="h">Context</div>
+          <p class="ctx">A CPL of &pound;1,072 made B2B acquisition unsustainable, with no clear attribution.</p>
+          <div class="h">What I did</div>
+          <p>Multi-channel optimisation, intent-based bidding, attribution modelling, continuous creative testing, and per-channel landing pages across an &pound;11M budget.</p>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;Ad platforms and CRM attribution, FY2024.</div>
+      <div class="chips"><span>Demand gen</span><span>Paid</span><span>Attribution</span><span>Full-funnel</span><span>Budget ownership</span></div>
+      <div class="sowhat"><div class="k">What this means for GitLab</div><div class="v">When I prioritise an AI backlog against &ldquo;what moves the needle&rdquo;, it is grounded in having moved the needle on real budgets.</div></div>
+    </article>
+
+    <!-- CASE P10 — ABM -->
+    <article class="case dk reveal">
+      <div class="top"><span class="cno">Case 05 / 06 &middot; Performance &amp; demand gen</span></div>
+      <h3>Built the first ABM programme in the business and engaged 5,849 accounts</h3>
+      <div class="period">Full year 2024 &middot; Demandbase, LinkedIn ABM, Display</div>
+      <div class="scorecard">
+        <div class="tile hero"><div class="n" data-count="5849" data-comma="1">5,849</div><div class="l">High-value accounts engaged</div></div>
+        <div class="tile"><div class="n" data-count="30" data-prefix="+" data-suffix="%">+30%</div><div class="l">Engagement lift</div></div>
+        <div class="tile"><div class="n" data-count="936" data-comma="1">936</div><div class="l">New accounts on site</div></div>
+        <div class="tile"><div class="n">1st</div><div class="l">ABM in the business</div></div>
+      </div>
+      <div class="grid">
+        <div class="chart" data-chart="hbar" data-color="blue" data-items='[["High-value accounts engaged",100,"5,849"],["New accounts on site",42,"936"],["Engagement lift",22,"+30%"]]'></div>
+        <div class="copy">
+          <div class="h">Context</div>
+          <p class="ctx">Broad marketing was not reaching enterprise buying committees.</p>
+          <div class="h">What I did</div>
+          <p>The first ABM programme in the business: ICP account selection, multi-touch campaigns, account-level tracking, and sales-marketing alignment. It shaped the next year&rsquo;s enterprise strategy pillar.</p>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;Demandbase and account-level tracking, FY2024.</div>
+      <div class="chips"><span>ABM</span><span>Enterprise</span><span>Sales alignment</span><span>Build-from-zero</span></div>
+      <div class="sowhat"><div class="k">What this means for GitLab</div><div class="v">Standing up a new capability from nothing and aligning teams around it is the same muscle a Champion network needs.</div></div>
+    </article>
+  </section>
+
+  <!-- ============ ACT 03 — COMPOUND THE GROWTH ============ -->
+  <section>
+    <div class="act green reveal">
+      <div class="no">03</div>
+      <div class="meta">
+        <div class="k">Compound the growth</div>
+        <h3>Channels that keep paying after the spend stops</h3>
+        <p class="lead">Conversion, retention and organic systems built to compound. The long-horizon thinking behind &ldquo;100x problems&rdquo;.</p>
+        <p class="claim">More from the traffic and customers you already have.</p>
+      </div>
+    </div>
+
+    <!-- CASE P9 — programmatic SEO -->
+    <article class="case green reveal">
+      <div class="top"><span class="cno">Case 06 / 06 &middot; CRO, lifecycle &amp; organic</span></div>
+      <h3>Programmatic SEO grew US organic impressions 4,000% year on year</h3>
+      <div class="period">2025 – 2026 &middot; Coding agents, programmatic generation, SEMrush, GSC</div>
+      <div class="scorecard">
+        <div class="tile hero"><div class="n" data-count="4000" data-comma="1" data-prefix="+" data-suffix="%">+4,000%</div><div class="l">US organic impressions</div></div>
+        <div class="tile"><div class="n" data-count="286" data-prefix="+" data-suffix="%">+286%</div><div class="l">US organic clicks</div></div>
+        <div class="tile"><div class="n" data-count="181" data-prefix="+" data-suffix="%">+181%</div><div class="l">US app installs</div></div>
+        <div class="tile"><div class="n" data-count="3000" data-comma="1" data-suffix="+">3,000+</div><div class="l">Pages live (Jun 26)</div></div>
+      </div>
+      <div class="grid">
+        <div class="chart" data-chart="hbar" data-color="green" data-items='[["Organic impressions",100,"+4,000%"],["US organic clicks",36,"+286%"],["US app installs",26,"+181%"],["Pages live (Jun 26)",20,"3,000+"]]'></div>
+        <div class="copy">
+          <div class="h">Context</div>
+          <p class="ctx">The business needed cost-effective organic scale across competitive US markets.</p>
+          <div class="h">What I built</div>
+          <p>A programmatic page architecture: a Career Hub build approved by the parent SEO team, scaling toward 8,800 pages, plus geo-optimised pages for 50+ cities and an AI tool ecosystem.</p>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;Google Search Console, two months vs same period prior year.</div>
+      <div class="chips"><span>Programmatic SEO</span><span>Coding agents</span><span>Scale</span><span>Compounding</span></div>
+      <div class="sowhat"><div class="k">What this means for GitLab</div><div class="v">Building thousands of pages with agents instead of one at a time is the &ldquo;100x problem&rdquo; instinct your JD asks for.</div></div>
+    </article>
+
+    <!-- supplementary multiplier: retention ring + CRO -->
+    <article class="case green reveal">
+      <div class="top"><span class="cno">Also on the record &middot; CRO, lifecycle &amp; organic</span></div>
+      <h3>Conversion rebuilt, retention compounded</h3>
+      <div class="period">2024 &middot; CRO transformation &amp; lifecycle remarketing</div>
+      <div class="grid">
+        <div class="chart" data-chart="ring" data-big="15&times;" data-sub="long-term retention" data-pct="0.86"></div>
+        <div class="copy">
+          <div class="h">Website redesign &amp; CRO</div>
+          <p>A full rebuild took B2C conversion from 5.1% to 30.4% (+592%), cut page load 3.2s &rarr; 1.1s, and dropped Google Ads CPA from &pound;19 to &pound;3.</p>
+          <div class="h">Lifecycle remarketing</div>
+          <p>Churn-risk segmentation and lifecycle messaging drove a 15&times; long-term retention improvement, +45% LTV on remarketed users, and reactivated 28% of dormant users.</p>
+        </div>
+      </div>
+      <div class="figsrc" style="padding:0 26px"><b>SOURCE</b> &nbsp;A/B testing &amp; analytics, Q1 2024; cohort retention &amp; CRM data, Q2–Q4 2024.</div>
+      <div class="chips"><span>CRO +592%</span><span>Lifecycle</span><span>Retention 15&times;</span><span>LTV +45%</span></div>
+    </article>
+  </section>
+  <!-- PROOF -->
+  <section id="proof">
+    <div class="sec-head reveal">
+      <div class="eyebrow mut">Credentials</div>
+      <h2>Awards, education, the AI grounding</h2>
+      <p class="sub">The technical judgement behind the build is grounded in study and production work, and the commercial pedigree is on the record.</p>
+    </div>
+    <div class="creds reveal">
+      <div class="c"><span class="mk gold">&#9733;</span><span class="t"><b>3&times; Winner — Best Large PPC Agency</b><span>European Search Awards (2017, 2018, 2019)</span></span></div>
+      <div class="c"><span class="mk">&#9671;</span><span class="t"><b>MSc Artificial Intelligence &amp; Data Science</b><span>Level 7, in progress (2024–2026) — QA University</span></span></div>
+      <div class="c"><span class="mk">&#9671;</span><span class="t"><b>MSc Digital Business Strategy</b><span>Grenoble Business School &middot; BSc Business Management, Oxford Brookes</span></span></div>
+      <div class="c"><span class="mk">&#9671;</span><span class="t"><b>Applied certifications</b><span>Google AI-Powered Performance Ads &middot; Meta Blueprint &middot; IBM SQL for Data Science</span></span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="contact reveal">
+      <div class="eyebrow">Let&rsquo;s talk</div>
+      <h2>Own the strategy. <span class="em">Build the agents.</span></h2>
+      <p style="color:#bcc4d6;max-width:640px">Happy to walk through any of these in depth, including the live AI systems and how I drove their adoption.</p>
+      <div class="grid">
+        <div><div class="k">Email</div><a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a></div>
+        <div><div class="k">LinkedIn</div><a href="https://linkedin.com/in/adrien-enjalbert">linkedin.com/in/adrien-enjalbert</a></div>
+        <div><div class="k">Based</div><span>Guildford, UK — remote</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Private portfolio prepared for GitLab &middot; share-by-link &middot; noindex. Figures reflect verified impact from platform, CRM and analytics data; some internal detail is generalised for confidentiality.
+  </footer>
+</div>
+<script>
+(function(){
+  "use strict";
+  var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(name, attrs, parent){
+    var e = document.createElementNS(SVGNS, name);
+    if(attrs) for(var k in attrs) e.setAttribute(k, attrs[k]);
+    if(parent) parent.appendChild(e);
+    return e;
+  }
+  function decodeHTML(s){ var t=document.createElement("textarea"); t.innerHTML=s; return t.value; }
+
+  /* ---------- count-up ---------- */
+  function countUp(node){
+    var target = parseFloat(node.getAttribute("data-count"));
+    var dec = parseInt(node.getAttribute("data-dec")||"0",10);
+    var comma = node.getAttribute("data-comma")==="1";
+    var prefix = decodeHTML(node.getAttribute("data-prefix")||"");
+    var suffix = decodeHTML(node.getAttribute("data-suffix")||"");
+    function fmt(v){
+      var s = dec>0 ? v.toFixed(dec) : Math.round(v).toString();
+      if(comma) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return prefix + s + suffix;
+    }
+    if(REDUCE){ node.innerHTML = fmt(target); return; }
+    var dur = 1100, t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0)/dur, 1);
+      var e = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
+      node.innerHTML = fmt(target * e);
+      if(p < 1) requestAnimationFrame(step);
+      else node.innerHTML = fmt(target);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------- chart: before / after bars + delta badge ---------- */
+  function drawBeforeAfter(box){
+    var W=520,H=380, padB=58, padT=64, padX=70;
+    var before=parseFloat(box.getAttribute("data-before"));
+    var after=parseFloat(box.getAttribute("data-after"));
+    var btxt=decodeHTML(box.getAttribute("data-btxt"));
+    var atxt=decodeHTML(box.getAttribute("data-atxt"));
+    var delta=decodeHTML(box.getAttribute("data-delta"));
+    var metric=decodeHTML(box.getAttribute("data-metric"));
+    var green=box.getAttribute("data-color")==="green";
+    var maxv=Math.max(before,after);
+    var plotH=H-padB-padT;
+    var bw=96, gap=150;
+    var x1=padX+40, x2=x1+gap;
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":metric+": before "+btxt+", after "+atxt+", change "+delta},box);
+    /* baseline */
+    el("line",{x1:padX-10,y1:H-padB,x2:W-30,y2:H-padB,class:"c-axis"},svg);
+    el("text",{x:padX-10,y:padT-30,class:"axislabel"},svg).textContent=metric;
+
+    function bar(x,val,txt,isAfter){
+      var h=plotH*(val/maxv);
+      var y=H-padB-h;
+      var r=el("rect",{x:x,y:H-padB,width:bw,height:0,rx:3,class:"bar"+(isAfter?(" bar-after"+(green?" green":"")):" bar-before")},svg);
+      var lbl=el("text",{x:x+bw/2,y:y-12,"text-anchor":"middle",class:"barlabel","font-size":"21",opacity:"0"},svg);
+      lbl.textContent=txt;
+      if(isAfter) lbl.setAttribute("fill", green?"#0f7a4f":"#1e49e6");
+      var cap=el("text",{x:x+bw/2,y:H-padB+26,"text-anchor":"middle",class:"axislabel"},svg);
+      cap.textContent=isAfter?"After":"Before";
+      return {rect:r,y:y,h:h,lbl:lbl};
+    }
+    var b1=bar(x1,before,btxt,false);
+    var b2=bar(x2,after,atxt,true);
+    /* delta badge */
+    var bg=el("g",{class:"delta-badge"+(green?" green":""),opacity:"0"},svg);
+    var badgeText=el("text",{x:0,y:0,"text-anchor":"middle","font-size":"19","dominant-baseline":"middle"},null);
+    badgeText.textContent=delta;
+    var bx=(x1+x2)/2+bw/2, by=padT+6;
+    var rectW=delta.length*12+26;
+    el("rect",{x:bx-rectW/2,y:by-17,width:rectW,height:34,rx:17},bg);
+    badgeText.setAttribute("x",bx); badgeText.setAttribute("y",by);
+    bg.appendChild(badgeText); svg.appendChild(bg);
+
+    function animate(){
+      if(REDUCE){
+        [b1,b2].forEach(function(b){b.rect.setAttribute("y",b.y);b.rect.setAttribute("height",b.h);b.lbl.setAttribute("opacity","1");});
+        bg.setAttribute("opacity","1"); return;
+      }
+      var dur=1000,t0=null;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+        [b1,b2].forEach(function(b){ var hh=b.h*e; b.rect.setAttribute("height",hh); b.rect.setAttribute("y",H-padB-hh); });
+        if(p>0.55){ b1.lbl.setAttribute("opacity",String((p-0.55)/0.45)); b2.lbl.setAttribute("opacity",String((p-0.55)/0.45)); }
+        if(p>0.7) bg.setAttribute("opacity",String((p-0.7)/0.3));
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    box._animate=animate;
+  }
+
+  /* ---------- chart: horizontal delta bars ---------- */
+  function drawHBar(box){
+    var items=JSON.parse(box.getAttribute("data-items"));
+    var green=box.getAttribute("data-color")==="green";
+    var W=540, rowH=64, padT=14, padL=4, labelW=0;
+    var H=padT*2+items.length*rowH;
+    var barX=200, barMax=W-barX-92;
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Impact metrics"},box);
+    var bars=[];
+    items.forEach(function(it,i){
+      var label=decodeHTML(it[0]), pct=it[1]/100, val=decodeHTML(it[2]);
+      var y=padT+i*rowH+rowH/2;
+      el("text",{x:barX-14,y:y+5,"text-anchor":"end",class:"hbarlabel"},svg).textContent=label;
+      el("rect",{x:barX,y:y-13,width:barMax,height:26,rx:4,class:"hbartrack",opacity:"0.5"},svg);
+      var bar=el("rect",{x:barX,y:y-13,width:0,height:26,rx:4,class:"hbar"+(green?" green":"")},svg);
+      var v=el("text",{x:barX+8,y:y+5,class:"hbarval",opacity:"0"},svg); v.textContent=val;
+      bars.push({bar:bar,target:barMax*pct,v:v,vx:barX+barMax*pct+10,y:y+5});
+    });
+    function animate(){
+      if(REDUCE){ bars.forEach(function(b){b.bar.setAttribute("width",b.target);b.v.setAttribute("x",b.vx);b.v.setAttribute("opacity","1");}); return; }
+      var dur=1050,t0=null;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+        bars.forEach(function(b){ var w=b.target*e; b.bar.setAttribute("width",w); b.v.setAttribute("x",barX+w+10); b.v.setAttribute("opacity",String(Math.min(p*1.4,1))); });
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    box._animate=animate;
+  }
+
+  /* ---------- chart: ring multiplier ---------- */
+  function drawRing(box){
+    var big=decodeHTML(box.getAttribute("data-big"));
+    var sub=decodeHTML(box.getAttribute("data-sub"));
+    var pct=parseFloat(box.getAttribute("data-pct"));
+    var S=260, c=S/2, r=104, circ=2*Math.PI*r;
+    var svg=el("svg",{viewBox:"0 0 "+S+" "+S,role:"img","aria-label":big+" "+sub},box);
+    el("circle",{cx:c,cy:c,r:r,class:"ring-track"},svg);
+    var arc=el("circle",{cx:c,cy:c,r:r,class:"ring-arc",transform:"rotate(-90 "+c+" "+c+")",
+      "stroke-dasharray":circ,"stroke-dashoffset":circ},svg);
+    el("text",{x:c,y:c-2,"text-anchor":"middle","dominant-baseline":"middle",class:"ring-big","font-size":"58"},svg).textContent=big;
+    el("text",{x:c,y:c+30,"text-anchor":"middle",class:"ring-sub"},svg).textContent=sub;
+    function animate(){
+      var off=circ*(1-pct);
+      if(REDUCE){ arc.setAttribute("stroke-dashoffset",off); return; }
+      var dur=1200,t0=null;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+        arc.setAttribute("stroke-dashoffset", circ - (circ-off)*e);
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    box._animate=animate;
+  }
+
+  /* ---------- build all charts ---------- */
+  document.querySelectorAll(".chart").forEach(function(box){
+    var t=box.getAttribute("data-chart");
+    if(t==="beforeafter") drawBeforeAfter(box);
+    else if(t==="hbar") drawHBar(box);
+    else if(t==="ring") drawRing(box);
+  });
+
+  /* ---------- reveal + animate (idempotent) ---------- */
+  function activate(t){
+    if(t._activated) return;
+    t._activated=true;
+    t.classList.add("in");
+    t.querySelectorAll("[data-count]").forEach(countUp);
+    t.querySelectorAll(".chart").forEach(function(ch){ if(ch._animate) ch._animate(); });
+  }
+
+  var nodes=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+
+  if("IntersectionObserver" in window && !REDUCE){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        io.unobserve(en.target);
+        activate(en.target);
+      });
+    },{threshold:0.15, rootMargin:"0px 0px -6% 0px"});
+    nodes.forEach(function(n){ io.observe(n); });
+    /* Safety net: anything already in view (or that never trips the observer in
+       headless capture / odd layouts) gets activated shortly after load so the
+       page is never left with hidden content or unfilled charts. */
+    function sweep(){
+      var vh=window.innerHeight||800;
+      nodes.forEach(function(n){
+        if(n._activated) return;
+        var r=n.getBoundingClientRect();
+        if(r.top < vh*0.92) activate(n);
+      });
+    }
+    window.addEventListener("load",function(){ setTimeout(sweep,120); setTimeout(sweep,600); });
+    window.addEventListener("scroll",function(){ /* IO handles it; sweep is a backstop */ },{passive:true});
+    /* final guarantee: reveal everything after 2.5s no matter what */
+    setTimeout(function(){ nodes.forEach(activate); },2500);
+  } else {
+    /* reduced motion or no IO: show final state immediately */
+    nodes.forEach(activate);
+  }
+})();
+</script>
+</body>
+</html>
