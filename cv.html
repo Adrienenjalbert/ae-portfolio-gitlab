@@ -41,7 +41,7 @@ h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spac
 /* header */
 .cvhead{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;
   padding-bottom:20px;border-bottom:2px solid var(--ink)}
-.cvhead .name{font-size:clamp(34px,6vw,52px);line-height:.96;color:var(--ink)}
+.cvhead .name{font-size:clamp(34px,6vw,52px);line-height:.96;color:var(--ink);margin:0;font-weight:500}
 .cvhead .title{margin-top:8px;font-size:clamp(14px,2vw,17px);color:var(--accent-dk);font-weight:600}
 .cvhead .contact{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate);line-height:1.9}
 .cvhead .contact a{color:var(--slate)}
@@ -123,14 +123,14 @@ h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spac
 <body>
 <div class="util">
   <a class="back" href="index.html">&larr; Portfolio</a>
-  <button class="print" id="printbtn">Print / Save PDF</button>
+  <button class="print" id="printbtn" type="button">Print / Save PDF</button>
 </div>
 
 <div class="page">
  <div class="pad">
   <header class="cvhead">
     <div>
-      <div class="name">Adrien Enjalbert</div>
+      <h1 class="name">Adrien Enjalbert</h1>
       <div class="title">AI-native Digital &amp; Growth Leader &middot; Production AI for Revenue Teams</div>
     </div>
     <div class="contact">

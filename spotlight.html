@@ -35,7 +35,7 @@ h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spac
 .side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:34px 26px 26px;
   border-right:1px solid var(--line);background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
 .side .id .kick{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
-.side .id h1{font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
+.side .id .brandname{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
 .side .id .role{font-size:13px;color:var(--slate);line-height:1.4}
 .side .id .role b{color:var(--accent-dk)}
 .side .id .rule{height:1px;background:var(--line);margin:20px 0 18px;box-shadow:0 3px 0 -2px var(--line)}
@@ -57,7 +57,7 @@ nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
 .mobtop{display:none}
 main{min-width:0}
 .bound{max-width:920px;margin:0 auto;padding:0 48px}
-.section{padding:78px 0 56px;border-top:1px solid var(--line);position:relative}
+.section{padding:78px 0 56px;border-top:1px solid var(--line);position:relative;scroll-margin-top:24px}
 .section:first-child{border-top:0;padding-top:60px}
 .eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
   letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
@@ -156,7 +156,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   .mobtop .brand b{color:var(--accent)}
   .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
-  .bound{padding:0 24px}.section{padding:52px 0 36px}
+  .bound{padding:0 24px}.section{padding:52px 0 36px;scroll-margin-top:64px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
 @media print{.side,.mobtop,.scrim{display:none}.app{grid-template-columns:1fr}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.section,.mcard,.band,.tablewrap{break-inside:avoid}.contactcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
@@ -165,7 +165,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 <body>
 <div class="mobtop">
   <div class="brand"><b>AE</b> &nbsp;Monthly Spotlight</div>
-  <button class="burger" id="burger" aria-label="Open menu">Menu</button>
+  <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menu">Menu</button>
 </div>
 <div class="scrim" id="scrim"></div>
 
@@ -173,11 +173,11 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   <aside class="side" id="side">
     <div class="id">
       <div class="kick">Monthly Spotlight</div>
-      <h1>Adrien<br>Enjalbert</h1>
+      <div class="brandname">Adrien<br>Enjalbert</div>
       <div class="role"><b>Digital &amp; MarTech monthly update</b><br>What shipped, month by month.</div>
       <div class="rule"></div>
     </div>
-    <nav class="menu" id="menu">
+    <nav class="menu" id="menu" aria-label="Months">
       <a href="#intro"><span class="bar"></span><span class="ix">00</span>Overview</a>
       <a href="#jun"><span class="bar"></span><span class="ix">06</span>June 2026</a>
       <a href="#may"><span class="bar"></span><span class="ix">05</span>May 2026</a>
@@ -541,7 +541,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
   links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
   var sections=Array.prototype.slice.call(document.querySelectorAll("main .section"));
-  function setActive(id){links.forEach(function(a){a.classList.toggle("active",a===map[id]);});}
+  function setActive(id){links.forEach(function(a){var on=a===map[id];a.classList.toggle("active",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});}
   if("IntersectionObserver" in window){
     var vis={};
     var spy=new IntersectionObserver(function(es){
@@ -554,11 +554,12 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   setActive("intro");
 
   var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
-  function open(){side.classList.add("open");scrim.classList.add("show");}
-  function close(){side.classList.remove("open");scrim.classList.remove("show");}
+  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
   if(burger)burger.addEventListener("click",open);
   if(scrim)scrim.addEventListener("click",close);
   links.forEach(function(a){a.addEventListener("click",close);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
 })();
 </script>
 </body>

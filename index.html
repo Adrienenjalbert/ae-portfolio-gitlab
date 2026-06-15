@@ -34,7 +34,7 @@ h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spac
 /* left nav */
 .side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:34px 26px 26px;border-right:1px solid var(--line);background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
 .side .id .kick{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
-.side .id h1{font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
+.side .id .brandname{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
 .side .id .role{font-size:13px;color:var(--slate);line-height:1.4}
 .side .id .role b{color:var(--accent-dk)}
 .side .id .rule{height:1px;background:var(--line);margin:20px 0 18px;box-shadow:0 3px 0 -2px var(--line)}
@@ -54,7 +54,7 @@ nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
 .mobtop{display:none}
 main{min-width:0}
 .bound{max-width:920px;margin:0 auto;padding:0 48px}
-.section{padding:64px 0 52px;border-top:1px solid var(--line);position:relative}
+.section{padding:64px 0 52px;border-top:1px solid var(--line);position:relative;scroll-margin-top:24px}
 .section:first-child{border-top:0}
 .eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 .eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
@@ -206,7 +206,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   .mobtop .brand b{color:var(--accent)}
   .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
-  .bound{padding:0 24px}.section{padding:48px 0 36px}
+  .bound{padding:0 24px}.section{padding:48px 0 36px;scroll-margin-top:64px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}.narr{transition:none}}
 @media print{
@@ -222,7 +222,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 <body>
 <div class="mobtop">
   <div class="brand"><b>AE</b> &nbsp;Adrien Enjalbert</div>
-  <button class="burger" id="burger" aria-label="Open menu">Menu</button>
+  <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menu">Menu</button>
 </div>
 <div class="scrim" id="scrim"></div>
 
@@ -230,11 +230,11 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   <aside class="side" id="side">
     <div class="id">
       <div class="kick">Portfolio</div>
-      <h1>Adrien<br>Enjalbert</h1>
+      <div class="brandname">Adrien<br>Enjalbert</div>
       <div class="role"><b>AI-native digital &amp; growth leader</b><br>Sets the strategy, ships the system.</div>
       <div class="rule"></div>
     </div>
-    <nav class="menu" id="menu">
+    <nav class="menu" id="menu" aria-label="Sections">
       <a href="#about"><span class="bar"></span><span class="ix">00</span>About &amp; lens</a>
       <a href="#ship"><span class="bar"></span><span class="ix">01</span>I ship the system</a>
       <a href="#efficiency"><span class="bar"></span><span class="ix">02</span>Efficiency compounds</a>
@@ -262,12 +262,12 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 
         <div class="lens reveal" id="lens">
           <div class="lh"><span class="q">&#9671;</span> What are you hiring for? <span style="color:var(--mute)">Highlight the proof that matters to you.</span></div>
-          <div class="opts">
-            <button class="opt on" data-lens="all"><div class="t">Show everything</div><div class="d">the full picture</div></button>
-            <button class="opt" data-lens="ai"><div class="t">Applied AI / MarTech</div><div class="d">agents, automation, adoption</div></button>
-            <button class="opt" data-lens="growth"><div class="t">Growth / Digital lead</div><div class="d">full-funnel, build-from-zero</div></button>
-            <button class="opt" data-lens="dg"><div class="t">Demand gen / Performance</div><div class="d">CPL, ROAS, ABM, pipeline</div></button>
-            <button class="opt" data-lens="an"><div class="t">Analytics / Ops</div><div class="d">data, attribution, lifecycle</div></button>
+          <div class="opts" role="group" aria-label="Highlight proof by role type">
+            <button class="opt on" type="button" data-lens="all" aria-pressed="true"><div class="t">Show everything</div><div class="d">the full picture</div></button>
+            <button class="opt" type="button" data-lens="ai" aria-pressed="false"><div class="t">Applied AI / MarTech</div><div class="d">agents, automation, adoption</div></button>
+            <button class="opt" type="button" data-lens="growth" aria-pressed="false"><div class="t">Growth / Digital lead</div><div class="d">full-funnel, build-from-zero</div></button>
+            <button class="opt" type="button" data-lens="dg" aria-pressed="false"><div class="t">Demand gen / Performance</div><div class="d">CPL, ROAS, ABM, pipeline</div></button>
+            <button class="opt" type="button" data-lens="an" aria-pressed="false"><div class="t">Analytics / Ops</div><div class="d">data, attribution, lifecycle</div></button>
           </div>
         </div>
 
@@ -556,7 +556,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   var lensBtns=Array.prototype.slice.call(document.querySelectorAll(".lens .opt"));
   var narrs=Array.prototype.slice.call(document.querySelectorAll(".narr"));
   function applyLens(lens){
-    lensBtns.forEach(function(b){b.classList.toggle("on",b.getAttribute("data-lens")===lens);});
+    lensBtns.forEach(function(b){var on=b.getAttribute("data-lens")===lens;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false");});
     narrs.forEach(function(n){
       var serves=(n.getAttribute("data-lens")||"").split(/\s+/);
       var hit=lens==="all"||serves.indexOf(lens)>-1;
@@ -570,7 +570,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
   links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
   var sections=Array.prototype.slice.call(document.querySelectorAll("main .section"));
-  function setActive(id){links.forEach(function(a){a.classList.toggle("active",a===map[id]);});}
+  function setActive(id){links.forEach(function(a){var on=a===map[id];a.classList.toggle("active",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});}
   if("IntersectionObserver" in window){
     var vis={};var spy=new IntersectionObserver(function(es){es.forEach(function(en){vis[en.target.id]=en.isIntersecting?en.intersectionRatio:0;});
       var best=null,bestR=0;Object.keys(vis).forEach(function(id){if(vis[id]>bestR){bestR=vis[id];best=id;}});if(best)setActive(best);},
@@ -580,9 +580,11 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   setActive("about");
 
   var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
-  function open(){side.classList.add("open");scrim.classList.add("show");}function close(){side.classList.remove("open");scrim.classList.remove("show");}
+  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
   if(burger)burger.addEventListener("click",open);if(scrim)scrim.addEventListener("click",close);
   links.forEach(function(a){a.addEventListener("click",close);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
 })();
 </script>
 </body>
