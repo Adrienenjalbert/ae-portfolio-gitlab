@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Adrien Enjalbert — what I build. Open-source and R&D systems: a Sales AI OS, a multi-tenant SEO content engine, a production Career Hub, and a local-intent monetisation engine." />
+<meta property="og:title" content="Adrien Enjalbert — What I build" />
+<meta property="og:description" content="The systems behind the case studies: a Sales AI OS, an SEO content engine, a production Career Hub, and more." />
+<title>Adrien Enjalbert — What I build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
+  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
+  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--gold:#b17a1b;
+  --nav-w:268px;--r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+.app{display:grid;grid-template-columns:var(--nav-w) 1fr;position:relative;z-index:1}
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:34px 26px 26px;border-right:1px solid var(--line);background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
+.side .id .kick{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.side .id .brandname{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
+.side .id .role{font-size:13px;color:var(--slate);line-height:1.4}
+.side .id .role b{color:var(--accent-dk)}
+.side .id .rule{height:1px;background:var(--line);margin:20px 0 18px;box-shadow:0 3px 0 -2px var(--line)}
+nav.menu{display:flex;flex-direction:column;gap:1px;flex:1;overflow-y:auto;scrollbar-width:none}
+nav.menu::-webkit-scrollbar{display:none}
+nav.menu a{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:var(--r);font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;color:var(--slate);position:relative;transition:color .25s,background .25s}
+nav.menu a .ix{font-size:10px;color:var(--mute);width:18px;flex:0 0 auto;transition:color .25s}
+nav.menu a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.05)}
+nav.menu a.active{color:var(--ink);background:rgba(30,73,230,.08)}
+nav.menu a.active .ix{color:var(--accent)}
+nav.menu a .bar{position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:62%;background:var(--accent);border-radius:2px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
+.side .foot{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);line-height:1.9}
+.side .foot a{color:var(--slate)}
+.side .foot .cv{display:inline-block;margin-top:8px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 13px}
+
+.mobtop{display:none}
+main{min-width:0}
+.bound{max-width:920px;margin:0 auto;padding:0 48px}
+.section{padding:64px 0 52px;border-top:1px solid var(--line);position:relative;scroll-margin-top:24px}
+.section:first-child{border-top:0;padding-top:60px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
+.sec-h{font-size:clamp(26px,4vw,40px);line-height:1.05;color:var(--ink)}
+.sec-sub{margin-top:12px;color:var(--slate);max-width:660px;font-size:16.5px}
+
+#intro{padding-top:60px}
+.hero-h{font-size:clamp(38px,5.6vw,64px);line-height:1.0;color:var(--ink);margin:6px 0 0}
+.hero-h .em{font-style:italic;font-weight:400;color:var(--accent)}
+.hero-lede{margin-top:18px;max-width:680px;color:var(--slate);font-size:clamp(16px,1.9vw,19px)}
+.crumb{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px}
+
+/* philosophy strip */
+.philo{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.philo .p{padding:20px;border-right:1px solid var(--line)}
+.philo .p:last-child{border-right:0}
+.philo .p .n{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.philo .p b{display:block;margin-top:7px;font-family:"Fraunces",serif;font-size:17px;color:var(--ink);font-weight:500}
+.philo .p span{display:block;margin-top:6px;color:var(--slate);font-size:13px;line-height:1.5}
+@media(max-width:680px){.philo{grid-template-columns:1fr}.philo .p{border-right:0;border-bottom:1px solid var(--line)}.philo .p:last-child{border-bottom:0}}
+
+/* build card */
+.build{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden}
+.build .bhead{padding:22px 26px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.build .meta .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.build .meta h3{font-size:clamp(20px,2.7vw,26px);line-height:1.12;color:var(--ink);margin-top:7px}
+.build .status{display:flex;gap:6px;flex-wrap:wrap;flex:0 0 auto}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;padding:4px 8px;border:1px solid var(--line-2);color:var(--slate);background:var(--paper);white-space:nowrap}
+.badge.live{color:#fff;background:var(--green);border-color:var(--green)}
+.badge.prod{color:#fff;background:var(--accent);border-color:var(--accent)}
+.badge.rnd{color:var(--accent-dk)}
+.build .body{padding:14px 26px 0;color:var(--ink);font-size:15px}
+.build .body .lead{color:var(--slate)}
+.build .body .h{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-top:14px;margin-bottom:5px}
+.build .stack{display:flex;flex-wrap:wrap;gap:7px;padding:14px 26px 0}
+.build .stack span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:4px 9px;background:var(--paper)}
+.build .links{display:flex;gap:10px;flex-wrap:wrap;padding:16px 26px 22px}
+.build .links a{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;color:var(--accent);background:var(--paper);transition:border-color .2s,background .2s}
+.build .links a:hover{text-decoration:none;border-color:var(--accent);background:var(--card)}
+.build .links a.primary{color:#fff;background:var(--ink-2);border-color:var(--ink-2)}
+.build .links a.primary:hover{background:#11151f}
+.build .links a .ar{color:var(--accent-lt)}
+
+.note{margin-top:26px;padding:16px 18px;border:1px dashed var(--line-2);border-radius:var(--r);background:var(--paper-2);color:var(--slate);font-size:14px;line-height:1.55}
+.note b{color:var(--ink)}
+
+.contactcard{background:var(--ink-2);border-radius:var(--r);padding:44px 40px;color:#e9ecf3;position:relative;overflow:hidden;margin-top:6px}
+.contactcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.contactcard .eyebrow{color:var(--accent-lt)}.contactcard .eyebrow::before{background:var(--accent-lt)}
+.contactcard h2{color:#fbf9f3;font-size:clamp(24px,3.8vw,38px);line-height:1.04;margin:13px 0}
+.contactcard h2 .em{font-style:italic;font-weight:400}
+.contactcard .links{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:15px}
+.contactcard .links a{color:#e9ecf3}
+footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
+  .side.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(20,18,12,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .3s}
+  .scrim.show{opacity:1;visibility:visible}
+  .mobtop{display:flex;position:sticky;top:0;z-index:40;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(244,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .mobtop .brand b{color:var(--accent)}
+  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .bound{padding:0 24px}.section{padding:48px 0 36px;scroll-margin-top:64px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+@media print{.side,.mobtop,.scrim{display:none}.app{grid-template-columns:1fr}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.section,.build,.philo{break-inside:avoid}.contactcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<div class="mobtop">
+  <div class="brand"><b>AE</b> &nbsp;What I build</div>
+  <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menu">Menu</button>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="id">
+      <div class="kick">What I build</div>
+      <div class="brandname">Adrien<br>Enjalbert</div>
+      <div class="role"><b>The systems, in code</b><br>How I build, and why these exist.</div>
+      <div class="rule"></div>
+    </div>
+    <nav class="menu" id="menu" aria-label="Builds">
+      <a href="#intro"><span class="bar"></span><span class="ix">00</span>How I build</a>
+      <a href="#revos"><span class="bar"></span><span class="ix">01</span>Revenue AI OS</a>
+      <a href="#contentos"><span class="bar"></span><span class="ix">02</span>Content OS</a>
+      <a href="#careerhub"><span class="bar"></span><span class="ix">03</span>Career Hub</a>
+      <a href="#locallens"><span class="bar"></span><span class="ix">04</span>LocalLens</a>
+      <a href="#marketplace"><span class="bar"></span><span class="ix">05</span>AI agent marketplace</a>
+      <a href="#contact"><span class="bar"></span><span class="ix">06</span>Contact</a>
+    </nav>
+    <div class="foot">
+      <a href="https://github.com/Adrienenjalbert">github.com/Adrienenjalbert</a><br>
+      <a href="index.html">&larr; Back to portfolio</a><br>
+      <a class="cv" href="cv.html">Read the CV &rarr;</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- INTRO -->
+    <section class="section" id="intro">
+      <div class="bound">
+        <div class="eyebrow reveal">What I build &middot; open-source &amp; R&amp;D</div>
+        <h1 class="hero-h reveal">The systems, <span class="em">in code.</span></h1>
+        <p class="hero-lede reveal">The case studies show the impact. This page shows the build. A selection of the systems and architecture work behind the marketing &mdash; some shipped to production inside a revenue org, some built as R&amp;D to pressure-test an idea. Same approach throughout: understand the model, aim it at a real business job, and design for adoption.</p>
+        <span class="crumb reveal">Code &amp; docs on <a href="https://github.com/Adrienenjalbert">GitHub</a>. The headline impact lives in the <a href="index.html">portfolio</a>.</span>
+
+        <div class="philo reveal">
+          <div class="p"><div class="n">01 &middot; Architecture</div><b>Multi-tenant, not one-off</b><span>I build engines, not scripts: config-driven, schema-pinned systems that serve many use-cases from one codebase.</span></div>
+          <div class="p"><div class="n">02 &middot; Quality</div><b>Evals &amp; humans in the loop</b><span>Brand voice and reusable skills in the AI layer, gates between stages, and tests that ship with the build &mdash; not vibes.</span></div>
+          <div class="p"><div class="n">03 &middot; Outcome</div><b>Tied to a number</b><span>Every build maps to a business job: pipeline, organic reach, cost or revenue. ROI is the spec, not an afterthought.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVENUE AI OS -->
+    <section class="section" id="revos">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">01</span> Sales &amp; revenue AI</div>
+        <article class="build reveal">
+          <div class="bhead">
+            <div class="meta"><div class="tag">Revenue AI OS</div><h3>A multi-tenant Sales Operating System for B2B revenue teams</h3></div>
+            <div class="status"><span class="badge rnd">R&amp;D / productised</span></div>
+          </div>
+          <div class="body">
+            <p class="lead">The productised version of the sales-intelligence system that generated &pound;440K of pipeline in production. Turns a CRM, calls and context into one self-improving research engine, so reps sell instead of search.</p>
+            <div class="h">Why it exists</div>
+            <p>To prove the internal win generalises: a layered architecture (three product loops, a three-tier harness, a sales-knowledge layer) with ROI promises written into the spec and a documented process for adding tools, connectors and evals per tenant.</p>
+          </div>
+          <div class="stack"><span>Next.js</span><span>Supabase</span><span>Claude API</span><span>Multi-tenant</span><span>Agent harness</span><span>Evals</span></div>
+          <div class="links">
+            <a class="primary" href="https://github.com/Adrienenjalbert/prospector-os" target="_blank" rel="noopener noreferrer">View on GitHub <span class="ar">&rarr;</span></a>
+            <a href="index.html#ship">See the production result &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTENT OS -->
+    <section class="section" id="contentos">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">02</span> Content &amp; SEO at scale</div>
+        <article class="build reveal">
+          <div class="bhead">
+            <div class="meta"><div class="tag">Content OS &middot; your-os</div><h3>A multi-tenant SEO content engine &mdash; one engine, many tenants</h3></div>
+            <div class="status"><span class="badge rnd">R&amp;D / engine</span></div>
+          </div>
+          <div class="body">
+            <p class="lead">The engine pattern behind the Career Hub: a closed content loop (discovery &rarr; strategy &rarr; brief &rarr; creation &rarr; approval) with two human-in-the-loop gates, pick-a-storage-mode per content type, and a pinned schema.</p>
+            <div class="h">Why it exists</div>
+            <p>Built for a Growth/Performance lead who owns organic ROI: ship an SEO-driven content site without CMS lock-in, with quality gates that keep AI output on-brand. Ships with a 93/93 task suite and a documented audience and trust model.</p>
+          </div>
+          <div class="stack"><span>TypeScript</span><span>Multi-tenant</span><span>HITL gates</span><span>Schema-pinned</span><span>Programmatic SEO</span></div>
+          <div class="links">
+            <a class="primary" href="https://github.com/Adrienenjalbert/your-os" target="_blank" rel="noopener noreferrer">View on GitHub <span class="ar">&rarr;</span></a>
+            <a href="index.html#twosided">See the organic result &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CAREER HUB -->
+    <section class="section" id="careerhub">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">03</span> Production programmatic SEO</div>
+        <article class="build reveal">
+          <div class="bhead">
+            <div class="meta"><div class="tag">Career Hub</div><h3>The production Career Hub codebase</h3></div>
+            <div class="status"><span class="badge prod">Production work</span></div>
+          </div>
+          <div class="body">
+            <p class="lead">The statically-generated Next.js site behind the +286% organic clicks and +4,000% impressions: thousands of city&times;role pages, state calculators and interactive tools, built to AEO and Core-Web-Vitals standards.</p>
+            <div class="h">How it is built</div>
+            <p>Feature-owned architecture, Biome + Vitest, and a Playwright-based smoke / Lighthouse / axe / visual-audit harness so quality is enforced, not hoped for. This is the engineering under the organic-growth case study.</p>
+          </div>
+          <div class="stack"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind</span><span>Playwright</span><span>Lighthouse / axe</span></div>
+          <div class="links">
+            <a class="primary" href="https://github.com/Adrienenjalbert/flex-carrer-hub" target="_blank" rel="noopener noreferrer">View on GitHub <span class="ar">&rarr;</span></a>
+            <a href="spotlight.html#apr">See it scale, month by month &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LOCALLENS -->
+    <section class="section" id="locallens">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">04</span> Monetisation &amp; data</div>
+        <article class="build reveal">
+          <div class="bhead">
+            <div class="meta"><div class="tag">LocalLens</div><h3>A local-intent engine that monetises one data asset three ways</h3></div>
+            <div class="status"><span class="badge live">Live demo</span><span class="badge rnd">R&amp;D</span></div>
+          </div>
+          <div class="body">
+            <p class="lead">A config-driven local-SEO engine where a RevenueRouter decides &mdash; live, per request &mdash; whether a page earns through affiliate, CRM subscription or lead-gen, all inside a hard, code-enforced trust floor.</p>
+            <div class="h">Why it exists</div>
+            <p>To model a CRISP-DM optimisation loop that activates at volume: one data asset, three revenue paths, a single router choosing the best. Static Next.js export plus Supabase Edge Functions, with CI/CD and a Vitest suite.</p>
+          </div>
+          <div class="stack"><span>Next.js</span><span>Supabase Edge</span><span>TypeScript</span><span>CRISP-DM loop</span><span>Static export</span><span>Vitest</span></div>
+          <div class="links">
+            <a class="primary" href="https://adrienenjalbert.github.io/locallens/" target="_blank" rel="noopener noreferrer">Open live demo <span class="ar">&rarr;</span></a>
+            <a href="https://github.com/Adrienenjalbert/locallens" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MARKETPLACE -->
+    <section class="section" id="marketplace">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">05</span> Product &amp; business strategy</div>
+        <article class="build reveal">
+          <div class="bhead">
+            <div class="meta"><div class="tag">AI agent marketplace</div><h3>An AI-agent marketplace, planned end to end</h3></div>
+            <div class="status"><span class="badge rnd">Strategy &amp; product</span></div>
+          </div>
+          <div class="body">
+            <p class="lead">A full product and business plan for a marketplace where anyone can publish an AI agent and get paid each time it is rented or run &mdash; the &ldquo;app store for AI agents&rdquo;.</p>
+            <div class="h">What it shows</div>
+            <p>Not code &mdash; the thinking. Market and competitor research, a PRD and feature specs, a business and financial model, pricing, a technical architecture, and a go-to-market and trust-and-safety plan. The commercial-judgment muscle, on a greenfield problem.</p>
+          </div>
+          <div class="stack"><span>Market research</span><span>PRD</span><span>Business model</span><span>Financial model</span><span>GTM</span><span>Architecture</span></div>
+          <div class="links">
+            <a class="primary" href="https://github.com/Adrienenjalbert/the-dude-agent-directory" target="_blank" rel="noopener noreferrer">View the plan <span class="ar">&rarr;</span></a>
+          </div>
+        </article>
+
+        <div class="note reveal"><b>An honest note.</b> These are a curated set. The production work sits inside a revenue org and is shown anonymised in the <a href="index.html">portfolio</a>; the open repos here are the systems and R&amp;D I can share publicly. Some are live, some are engines or plans built to test an idea &mdash; each is labelled for what it is.</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="bound">
+        <div class="contactcard reveal">
+          <div class="eyebrow"><span class="ix">06</span> Let&rsquo;s talk</div>
+          <h2>Happy to walk the <span class="em">code</span> and the calls behind it.</h2>
+          <p style="color:#bcc4d6;max-width:560px">From architecture decisions to the evals and adoption tactics &mdash; including the live systems.</p>
+          <div class="links">
+            <a href="index.html">&larr; Portfolio</a>
+            <a href="cv.html">CV</a>
+            <a href="https://github.com/Adrienenjalbert">GitHub</a>
+            <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a>
+          </div>
+        </div>
+        <footer>Adrien Enjalbert &middot; selected builds &middot; production work shown anonymised; public repos are shareable systems &amp; R&amp;D. <a href="index.html">Portfolio</a> &middot; <a href="cv.html">CV</a></footer>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+(function(){
+  "use strict";
+  var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function activate(t){if(t._a)return;t._a=true;t.classList.add("in");}
+  var revs=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if("IntersectionObserver" in window && !REDUCE){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){io.unobserve(en.target);activate(en.target);}});},{threshold:0.14,rootMargin:"0px 0px -6% 0px"});
+    revs.forEach(function(n){io.observe(n);});
+    function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.92)activate(n);});}
+    window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
+    setTimeout(function(){revs.forEach(activate);},2600);
+  }else{revs.forEach(activate);}
+
+  var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
+  links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
+  var sections=Array.prototype.slice.call(document.querySelectorAll("main .section"));
+  function setActive(id){links.forEach(function(a){var on=a===map[id];a.classList.toggle("active",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});}
+  if("IntersectionObserver" in window){
+    var vis={};var spy=new IntersectionObserver(function(es){es.forEach(function(en){vis[en.target.id]=en.isIntersecting?en.intersectionRatio:0;});
+      var best=null,bestR=0;Object.keys(vis).forEach(function(id){if(vis[id]>bestR){bestR=vis[id];best=id;}});if(best)setActive(best);},
+      {rootMargin:"-45% 0px -45% 0px",threshold:[0,0.25,0.5,0.75,1]});
+    sections.forEach(function(s){spy.observe(s);});
+  }
+  setActive("intro");
+
+  var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
+  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
+  if(burger)burger.addEventListener("click",open);
+  if(scrim)scrim.addEventListener("click",close);
+  links.forEach(function(a){a.addEventListener("click",close);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+})();
+</script>
+</body>
+</body>
+</html>
