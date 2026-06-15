@@ -47,6 +47,10 @@ nav.menu a.active{color:var(--ink);background:rgba(30,73,230,.08)}
 nav.menu a.active .ix{color:var(--accent)}
 nav.menu a .bar{position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:62%;background:var(--accent);border-radius:2px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
+nav.menu .navgroup{margin:14px 10px 4px;padding-top:12px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+nav.menu a.navsub{font-size:12px;color:var(--accent-dk);padding:7px 10px}
+nav.menu a.navsub .ix{color:var(--accent)}
+nav.menu a.navsub:hover{color:var(--accent);background:rgba(30,73,230,.05)}
 .side .foot{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);line-height:1.9}
 .side .foot a{color:var(--slate)}
 .side .foot .cv{display:inline-block;margin-top:8px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 13px}
@@ -90,6 +94,9 @@ main{min-width:0}
 .lens .opt .d{margin-top:3px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--mute)}
 .lens .opt.on .d{color:var(--accent-lt)}
 @media(max-width:640px){.lens .opts{flex-direction:column}.lens .opt{border-right:0;border-bottom:1px solid var(--line)}.lens .opt:last-child{border-bottom:0}}
+.lens .lensgo{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line);background:var(--paper-2);font-family:"IBM Plex Mono",monospace;font-size:11.5px}
+.lens .lensgo span{color:var(--slate);letter-spacing:.04em}
+.lens .lensgo a{color:var(--accent)}
 
 /* stat band */
 .statwall{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
@@ -254,6 +261,11 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="#spotlight"><span class="bar"></span><span class="ix">07</span>Monthly spotlight</a>
       <a href="builds.html"><span class="bar"></span><span class="ix">&#9671;</span>What I build &rarr;</a>
       <a href="#contact"><span class="bar"></span><span class="ix">08</span>Contact</a>
+      <div class="navgroup">Tailored one-pagers</div>
+      <a class="navsub" href="for-ai.html"><span class="ix">&rsaquo;</span>For AI / MarTech</a>
+      <a class="navsub" href="for-growth.html"><span class="ix">&rsaquo;</span>For Growth</a>
+      <a class="navsub" href="for-demandgen.html"><span class="ix">&rsaquo;</span>For Demand gen</a>
+      <a class="navsub" href="for-analytics.html"><span class="ix">&rsaquo;</span>For Analytics</a>
     </nav>
     <div class="foot">
       <a href="https://linkedin.com/in/adrien-enjalbert">linkedin.com/in/adrien-enjalbert</a><br>
@@ -277,7 +289,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         </div>
 
         <div class="lens reveal" id="lens">
-          <div class="lh"><span class="q">&#9671;</span> What are you hiring for? <span style="color:var(--mute)">Highlight the proof that matters to you.</span></div>
+          <div class="lh"><span class="q">&#9671;</span> What are you hiring for? <span style="color:var(--mute)">Highlight the proof here, or open a page tailored to the role.</span></div>
           <div class="opts" role="group" aria-label="Highlight proof by role type">
             <button class="opt on" type="button" data-lens="all" aria-pressed="true"><div class="t">Show everything</div><div class="d">the full picture</div></button>
             <button class="opt" type="button" data-lens="ai" aria-pressed="false"><div class="t">Applied AI / MarTech</div><div class="d">agents, automation, adoption</div></button>
@@ -285,6 +297,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <button class="opt" type="button" data-lens="dg" aria-pressed="false"><div class="t">Demand gen / Performance</div><div class="d">CPL, ROAS, ABM, pipeline</div></button>
             <button class="opt" type="button" data-lens="an" aria-pressed="false"><div class="t">Analytics / Ops</div><div class="d">data, attribution, lifecycle</div></button>
           </div>
+          <div class="lensgo"><span>Open a tailored one-pager &rarr;</span><a href="for-ai.html">AI / MarTech</a><a href="for-growth.html">Growth</a><a href="for-demandgen.html">Demand gen</a><a href="for-analytics.html">Analytics</a></div>
         </div>
 
         <div class="statwall reveal">

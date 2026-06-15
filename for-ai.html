@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Adrien Enjalbert for AI / MarTech roles — production AI agents built at the no-code layer, adopted by Sales and RevOps, by a marketer with a decade of growth pedigree." />
+<meta property="og:title" content="Adrien Enjalbert — for AI / MarTech roles" />
+<title>Adrien Enjalbert — for AI / MarTech roles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
+  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
+  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--gold:#b17a1b;
+  --maxw:980px;--r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* ===== shared slim top menu ===== */
+.topnav{position:sticky;top:0;z-index:50;background:rgba(244,241,232,.9);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.topnav .row{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px}
+.topnav .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.topnav .brand b{color:var(--accent)}
+.topnav .tabs{display:flex;align-items:center;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+.topnav .tabs a{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;color:var(--slate);padding:7px 11px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.topnav .tabs a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.06)}
+.topnav .tabs a.on{color:#fff;background:var(--ink-2)}
+.topnav .tabs a.cv{color:var(--accent);border:1px solid var(--line-2)}
+.topnav .tabs .sep{width:1px;height:18px;background:var(--line);margin:0 4px}
+@media(max-width:760px){
+  .topnav .row{flex-direction:column;align-items:stretch;gap:0;padding:0}
+  .topnav .brand{padding:10px 18px 0;text-align:left}
+  .topnav .tabs{padding:8px 12px 10px;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-ms-overflow-style:none;scrollbar-width:none}
+  .topnav .tabs::-webkit-scrollbar{display:none}
+  .topnav .tabs .sep{display:none}
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+/* hero */
+header.rh{padding:56px 0 30px}
+.k011{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.k011::before{content:"";width:30px;height:2px;background:var(--accent)}
+.rh h1{font-size:clamp(34px,5.4vw,60px);line-height:1.0;color:var(--ink);margin:16px 0 0}
+.rh h1 .em{font-style:italic;font-weight:400;color:var(--accent)}
+.rh .lede{margin-top:18px;max-width:680px;color:var(--slate);font-size:clamp(16px,1.9vw,19px)}
+.whyme{margin-top:22px;padding:16px 18px;background:var(--ink-2);border-radius:var(--r);position:relative;overflow:hidden;max-width:760px}
+.whyme::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.whyme .k{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt)}
+.whyme .v{margin-top:6px;font-family:"Fraunces",serif;font-style:italic;color:#f1efe8;font-size:clamp(15px,1.9vw,18px);line-height:1.35}
+
+/* stat row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.stats .c{padding:18px 18px;border-right:1px solid var(--line)}
+.stats .c:last-child{border-right:0}
+.stats .c .n{font-family:"Fraunces",serif;font-size:clamp(22px,3vw,32px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats .c .n .u{color:var(--accent)}
+.stats .c .l{margin-top:7px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);line-height:1.4}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.stats .c:nth-child(2n){border-right:0}.stats .c:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* proof sections */
+.proofs{padding:36px 0 10px}
+.proofs .ph{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);margin-bottom:6px}
+.proof{margin-top:18px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden}
+.proof .pno{padding:20px 26px 0;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.proof h3{padding:7px 26px 0;font-size:clamp(19px,2.5vw,25px);line-height:1.14;color:var(--ink);max-width:740px}
+.proof .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;padding:18px 26px;align-items:center}
+@media(max-width:780px){.proof .grid{grid-template-columns:1fr;gap:14px}}
+.proof .copy p{color:var(--ink);font-size:15px}
+.proof .copy p.ctx{color:var(--slate)}
+.proof .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:2px}
+.proof .mini .t{border:1px solid var(--line);border-radius:var(--r);padding:12px 13px;background:var(--paper)}
+.proof .mini .t.hero{background:var(--ink-2);border-color:var(--ink-2)}
+.proof .mini .t .n{font-family:"Fraunces",serif;font-size:clamp(17px,2.3vw,23px);color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.proof .mini .t.hero .n{color:var(--accent-lt)}
+.proof.green .mini .t:not(.hero) .n{color:var(--green)}
+.proof .mini .t .l{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);line-height:1.3}
+.proof .mini .t.hero .l{color:var(--accent-lt)}
+.proof .src{padding:0 26px 20px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--mute)}
+.proof .src b{color:var(--slate);letter-spacing:.1em}
+
+/* charts */
+.chart{width:100%}.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.c-axis{stroke:var(--line-2);stroke-width:1}
+.bar-before{fill:#c3bcab}.bar-after{fill:var(--accent)}.bar-after.green{fill:var(--green)}
+.delta-badge rect{fill:var(--accent)}.delta-badge.green rect{fill:var(--green)}
+.delta-badge text{fill:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700}
+.barlabel{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink)}
+.axislabel{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate)}
+.hbar{fill:var(--accent)}.hbar.green{fill:var(--green)}.hbartrack{fill:var(--line)}
+.hbarlabel{font-family:"Space Grotesk",sans-serif;fill:var(--slate);font-size:13px}
+.hbarval{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink);font-size:15px}
+
+/* full-portfolio CTA + footer */
+.more{margin:30px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:20px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+.more .t{font-family:"Fraunces",serif;font-size:clamp(17px,2.2vw,22px);color:var(--ink)}
+.more .t span{color:var(--slate);font-size:14px;font-family:"Space Grotesk",sans-serif;display:block;margin-top:4px}
+.more a.btn{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#fff;background:var(--ink-2);border-radius:999px;padding:10px 18px;white-space:nowrap}
+.more a.btn:hover{text-decoration:none;background:#11151f}
+.otherroles{margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate)}
+.otherroles a{color:var(--accent)}
+footer{padding:34px 0 64px;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+@media print{.topnav{display:none}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.proof,.stats,.whyme{break-inside:avoid}.whyme,.proof .mini .t.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<nav class="topnav" aria-label="Primary">
+  <div class="row">
+    <a class="brand" href="index.html"><b>AE</b>&nbsp;&nbsp;Adrien Enjalbert</a>
+    <div class="tabs">
+      <a href="index.html">Portfolio</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="for-ai.html" class="on" aria-current="page">AI / MarTech</a>
+      <a href="for-growth.html">Growth</a>
+      <a href="for-demandgen.html">Demand gen</a>
+      <a href="for-analytics.html">Analytics</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="cv.html" class="cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="rh">
+    <div class="k011 reveal">For AI &amp; MarTech roles</div>
+    <h1 class="reveal">A marketer who <span class="em">builds</span> the AI, and gets it adopted.</h1>
+    <p class="lede reveal">Most marketers commission AI. I build it at the no-code layer, run it as a fleet, and treat adoption as the job &mdash; on top of a decade of growth and performance marketing, so the systems point at outcomes that matter. Finishing an MSc in AI &amp; Data Science: I understand the models, not just the prompts.</p>
+    <div class="whyme reveal"><div class="k">Why me for this</div><div class="v">You get a builder who ships production agents and a marketer who knows which problems are worth solving &mdash; so the AI earns its keep and the team actually uses it.</div></div>
+
+    <div class="stats reveal">
+      <div class="c"><div class="n"><span class="u">&pound;</span>440K+</div><div class="l">AI-sourced pipeline / 3 mo</div></div>
+      <div class="c"><div class="n">16</div><div class="l">Production agents owned</div></div>
+      <div class="c"><div class="n"><span class="u">+</span>56%</div><div class="l">Team adoption in a week</div></div>
+      <div class="c"><div class="n"><span class="u">&pound;</span>600&rarr;<span class="u">&pound;</span>1</div><div class="l">Cost per article (-99.8%)</div></div>
+    </div>
+  </header>
+
+  <section class="proofs">
+    <div class="ph reveal">The three proofs that matter here</div>
+
+    <!-- proof 1: sales agent -->
+    <article class="proof reveal">
+      <div class="pno">01 &middot; Build &amp; adoption &middot; n8n, Claude API, Salesforce, Slack</div>
+      <h3>A multi-agent sales intelligence system that built &pound;440K of pipeline in three months</h3>
+      <div class="grid">
+        <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Enterprise pipeline (3 mo)",100,"&pound;440K+"],["Contacts generated",66,"14,500+"],["Team adoption",40,"+56%"],["SQL conversion",18,"+12%"]]'></div>
+        <div class="copy">
+          <p class="ctx">Reps spent 60%+ of their time on manual research. I built an AI system that qualifies accounts on 20+ signals, finds decision-makers at 80% phone accuracy, and writes back to CRM and Slack.</p>
+          <p>It drew 200+ internal requests in a week and is featured live on customer calls. I owned the skills files, integrations, evaluations and rebuilds.</p>
+        </div>
+      </div>
+      <div class="src"><b>SOURCE</b> &nbsp;Internal CRM and adoption data, Oct&ndash;Dec 2025.</div>
+    </article>
+
+    <!-- proof 2: content engine -->
+    <article class="proof reveal">
+      <div class="pno">02 &middot; Agent fleet &amp; cost &middot; Multi-agent framework, Claude API</div>
+      <h3>A 5-agent content engine cut article cost 99.8% with brand voice intact</h3>
+      <div class="grid">
+        <div class="chart" data-chart="beforeafter" data-color="blue" data-improve="down"
+             data-metric="Cost per article" data-before="600" data-after="1" data-btxt="&pound;600" data-atxt="&pound;1" data-delta="-99.8%"></div>
+        <div class="copy">
+          <p class="ctx">Content cost &pound;600 an article and took 5&ndash;7 days, capping output at 4&ndash;6 a month.</p>
+          <p>Research, outline, writing, CMS and QA agents as a pipeline, with brand voice and reusable skills in the AI layer. Output rose to 50+/month; 90% of B2B traffic came from it.</p>
+          <div class="mini">
+            <div class="t hero"><div class="n">50+</div><div class="l">Articles / month</div></div>
+            <div class="t"><div class="n">2 hrs</div><div class="l">vs 5&ndash;7 days</div></div>
+            <div class="t"><div class="n">90%</div><div class="l">of B2B traffic</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="src"><b>SOURCE</b> &nbsp;Internal production cost and CMS output logs, 2025.</div>
+    </article>
+
+    <!-- proof 3: chatbot adoption -->
+    <article class="proof green reveal">
+      <div class="pno">03 &middot; Evals &amp; adoption &middot; AI-first chatbot, A/B framework</div>
+      <h3>An AI-first chatbot lifted discussion-to-lead 913%, and the org pulled it in</h3>
+      <div class="grid">
+        <div class="chart" data-chart="beforeafter" data-color="green" data-improve="up"
+             data-metric="Discussion-to-lead conversion" data-before="0.44" data-after="4.47" data-btxt="0.44%" data-atxt="4.47%" data-delta="+913%"></div>
+        <div class="copy">
+          <p class="ctx">The standard flow converted discussions to leads at 0.44%.</p>
+          <p>An AI-first chatbot beat it 10&times; on lower traffic, so the org scaled it. I re-evaluate agents when models or data change rather than letting them drift, and rebuild when the gap is structural.</p>
+        </div>
+      </div>
+      <div class="src"><b>SOURCE</b> &nbsp;A/B test results vs standard flow, 2025.</div>
+    </article>
+  </section>
+
+  <div class="more reveal">
+    <div class="t">There&rsquo;s more than three.<span>The full case &mdash; five proven narratives, the career timeline, the systems in code.</span></div>
+    <a class="btn" href="index.html">Open the full portfolio &rarr;</a>
+  </div>
+  <p class="otherroles reveal">Hiring for something else? &nbsp;<a href="for-growth.html">Growth</a> &middot; <a href="for-demandgen.html">Demand gen</a> &middot; <a href="for-analytics.html">Analytics</a> &middot; <a href="builds.html">What I build</a></p>
+
+  <footer>Adrien Enjalbert &middot; tailored for AI / MarTech roles &middot; figures reflect verified impact; production work shown anonymised.</footer>
+</div>
+<script>
+(function(){
+  "use strict";
+  var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var NS="http://www.w3.org/2000/svg";
+  function el(n,a,p){var e=document.createElementNS(NS,n);if(a)for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function dec(s){var t=document.createElement("textarea");t.innerHTML=s;return t.value;}
+  function drawBeforeAfter(box){
+    var W=520,H=380,padB=58,padT=64,padX=70;
+    var before=parseFloat(box.getAttribute("data-before")),after=parseFloat(box.getAttribute("data-after"));
+    var btxt=dec(box.getAttribute("data-btxt")),atxt=dec(box.getAttribute("data-atxt")),delta=dec(box.getAttribute("data-delta")),metric=dec(box.getAttribute("data-metric"));
+    var green=box.getAttribute("data-color")==="green",maxv=Math.max(before,after),plotH=H-padB-padT,bw=96,gap=150,x1=padX+40,x2=x1+gap;
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":metric+": before "+btxt+", after "+atxt+", change "+delta},box);
+    el("line",{x1:padX-10,y1:H-padB,x2:W-30,y2:H-padB,class:"c-axis"},svg);
+    el("text",{x:padX-10,y:padT-30,class:"axislabel"},svg).textContent=metric;
+    function bar(x,val,txt,isAfter){var h=plotH*(val/maxv),y=H-padB-h;
+      var r=el("rect",{x:x,y:H-padB,width:bw,height:0,rx:3,class:"bar"+(isAfter?(" bar-after"+(green?" green":"")):" bar-before")},svg);
+      var lbl=el("text",{x:x+bw/2,y:y-12,"text-anchor":"middle",class:"barlabel","font-size":"21",opacity:"0"},svg);lbl.textContent=txt;if(isAfter)lbl.setAttribute("fill",green?"#0f7a4f":"#1e49e6");
+      var cap=el("text",{x:x+bw/2,y:H-padB+26,"text-anchor":"middle",class:"axislabel"},svg);cap.textContent=isAfter?"After":"Before";return{rect:r,y:y,h:h,lbl:lbl};}
+    var b1=bar(x1,before,btxt,false),b2=bar(x2,after,atxt,true);
+    var bg=el("g",{class:"delta-badge"+(green?" green":""),opacity:"0"},svg);
+    var t=el("text",{"text-anchor":"middle","font-size":"19","dominant-baseline":"middle"},null);t.textContent=delta;
+    var bx=(x1+x2)/2+bw/2,by=padT+6,rw=delta.length*12+26;el("rect",{x:bx-rw/2,y:by-17,width:rw,height:34,rx:17},bg);t.setAttribute("x",bx);t.setAttribute("y",by);bg.appendChild(t);svg.appendChild(bg);
+    box._animate=function(){if(REDUCE){[b1,b2].forEach(function(b){b.rect.setAttribute("y",b.y);b.rect.setAttribute("height",b.h);b.lbl.setAttribute("opacity","1");});bg.setAttribute("opacity","1");return;}
+      var dur=1000,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);
+        [b1,b2].forEach(function(b){var hh=b.h*e;b.rect.setAttribute("height",hh);b.rect.setAttribute("y",H-padB-hh);});
+        if(p>0.55){b1.lbl.setAttribute("opacity",String((p-0.55)/0.45));b2.lbl.setAttribute("opacity",String((p-0.55)/0.45));}
+        if(p>0.7)bg.setAttribute("opacity",String((p-0.7)/0.3));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);};
+  }
+  function drawHBar(box){
+    var items=JSON.parse(box.getAttribute("data-items")),green=box.getAttribute("data-color")==="green";
+    var W=540,rowH=64,padT=14,barX=210,barMax=W-barX-92,H=padT*2+items.length*rowH;
+    var summary=items.map(function(it){return dec(it[0])+" "+dec(it[2]);}).join(", ");
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Impact: "+summary},box);
+    var bars=[];items.forEach(function(it,i){var label=dec(it[0]),pct=it[1]/100,val=dec(it[2]),y=padT+i*rowH+rowH/2;
+      el("text",{x:barX-14,y:y+5,"text-anchor":"end",class:"hbarlabel"},svg).textContent=label;
+      el("rect",{x:barX,y:y-13,width:barMax,height:26,rx:4,class:"hbartrack",opacity:"0.5"},svg);
+      var bar=el("rect",{x:barX,y:y-13,width:0,height:26,rx:4,class:"hbar"+(green?" green":"")},svg);
+      var v=el("text",{x:barX+8,y:y+5,class:"hbarval",opacity:"0"},svg);v.textContent=val;bars.push({bar:bar,target:barMax*pct,v:v});});
+    box._animate=function(){if(REDUCE){bars.forEach(function(b){b.bar.setAttribute("width",b.target);b.v.setAttribute("x",barX+b.target+10);b.v.setAttribute("opacity","1");});return;}
+      var dur=1050,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);
+        bars.forEach(function(b){var w=b.target*e;b.bar.setAttribute("width",w);b.v.setAttribute("x",barX+w+10);b.v.setAttribute("opacity",String(Math.min(p*1.4,1)));});if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);};
+  }
+  document.querySelectorAll(".chart").forEach(function(box){var t=box.getAttribute("data-chart");if(t==="beforeafter")drawBeforeAfter(box);else if(t==="hbar")drawHBar(box);});
+  function activate(t){if(t._a)return;t._a=true;t.classList.add("in");t.querySelectorAll(".chart").forEach(function(c){if(c._animate)c._animate();});}
+  var revs=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if("IntersectionObserver" in window && !REDUCE){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){io.unobserve(en.target);activate(en.target);}});},{threshold:0.14,rootMargin:"0px 0px -6% 0px"});
+    revs.forEach(function(n){io.observe(n);});
+    function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.95)activate(n);});}
+    window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
+    setTimeout(function(){revs.forEach(activate);},2600);
+  }else{revs.forEach(activate);}
+})();
+</script>
+</body>
+</html>
