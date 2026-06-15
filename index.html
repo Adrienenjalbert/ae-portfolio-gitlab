@@ -133,6 +133,13 @@ main{min-width:0}
 .scorecard .tile .n{font-family:"Fraunces",serif;font-size:clamp(18px,2.4vw,24px);color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
 .narr.green .scorecard .tile .n{color:var(--green)}
 .scorecard .tile .l{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);line-height:1.3}
+/* voices — anonymised testimonials, lean two-up */
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 26px 4px}
+.voices q{display:block;font-family:"Fraunces",serif;font-style:italic;color:var(--ink);font-size:14.5px;line-height:1.4;
+  padding:13px 15px;background:var(--paper-2);border-left:3px solid var(--accent);border-radius:3px;quotes:"\201C""\201D"}
+.voices .src{display:block;margin-top:8px;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:640px){.voices{grid-template-columns:1fr}}
 .chips{display:flex;flex-wrap:wrap;gap:7px;padding:8px 26px 22px}
 .chips span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);border:1px solid var(--line-2);border-radius:3px;padding:4px 9px;background:var(--paper)}
 .figsrc{padding:0 26px;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--mute)}
@@ -326,10 +333,14 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Enterprise pipeline (3 mo)",100,"&pound;440K+"],["Contacts generated",66,"14,500+"],["Team adoption",40,"+56%"],["SQL conversion",18,"+12%"]]'></div>
             <div class="copy">
               <p class="lead">Sales spent 60%+ of their time on manual research against 6&ndash;12 month cycles. I built an AI system that auto-qualifies accounts on 20+ signals, finds decision-makers at 80% phone-number accuracy, and writes back to CRM and Slack.</p>
-              <p>It drew 200+ internal requests in a week and is featured live on customer calls. I owned the skills files, integrations, evaluations and the rebuilds.</p>
+              <p>It drew 200+ internal requests in a week (1,000+ in the first month) and is featured live on customer calls. I owned the skills files, integrations, evaluations and the rebuilds.</p>
             </div>
           </div>
-          <div class="figsrc"><b>SOURCE</b> &nbsp;Internal CRM and adoption data, Oct&ndash;Dec 2025.</div>
+          <div class="voices">
+            <q>The Dude has been a game changer in our prospecting&hellip; an essential part of my daily outreach.<span class="src">&mdash; Sales rep</span></q>
+            <q>The highest success rate I&rsquo;ve seen with any of our internal systems.<span class="src">&mdash; Client Executive</span></q>
+          </div>
+          <div class="figsrc"><b>SOURCE</b> &nbsp;Internal CRM and adoption data &amp; team feedback, Oct&ndash;Dec 2025.</div>
           <div class="chips"><span>AI agents</span><span>Multi-agent</span><span>MCP / integrations</span><span>Evaluations</span><span>Adoption</span></div>
         </article>
       </div>
