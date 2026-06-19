@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Adrien Enjalbert — MSc Artificial Intelligence & Data Science (Level 7). Five graded modules and a production capstone, mapped to the BCS AI Data Specialist standard." />
+<meta property="og:title" content="Adrien Enjalbert — MSc in AI & Data Science" />
+<meta property="og:description" content="The Master's in full: data science principles, machine learning on the cloud, programming for AI, multi-agent innovation, and a work-based capstone that shipped to production." />
+<title>Adrien Enjalbert — MSc in AI &amp; Data Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
+  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
+  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--green-lt:#86c9a8;--gold:#b17a1b;
+  --nav-w:268px;--r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* ===== shared cross-page top menu ===== */
+.xnav{position:sticky;top:0;z-index:50;background:rgba(244,241,232,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.xnav .row{max-width:1320px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px}
+.xnav .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.xnav .brand b{color:var(--accent)}
+.xnav .tabs{display:flex;align-items:center;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+.xnav .tabs a{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;color:var(--slate);padding:6px 11px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.xnav .tabs a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.06)}
+.xnav .tabs a.on{color:#fff;background:var(--ink-2)}
+.xnav .tabs a.cv{color:var(--accent);border:1px solid var(--line-2)}
+.xnav .tabs .sep{width:1px;height:18px;background:var(--line);margin:0 4px}
+
+.app{display:grid;grid-template-columns:var(--nav-w) 1fr;position:relative;z-index:1}
+
+/* left nav */
+.side{position:sticky;top:48px;height:calc(100vh - 48px);display:flex;flex-direction:column;padding:34px 26px 26px;
+  border-right:1px solid var(--line);background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
+.side .id .kick{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.side .id .brandname{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
+.side .id .role{font-size:13px;color:var(--slate);line-height:1.4}
+.side .id .role b{color:var(--accent-dk)}
+.side .id .rule{height:1px;background:var(--line);margin:20px 0 18px;box-shadow:0 3px 0 -2px var(--line)}
+nav.menu{display:flex;flex-direction:column;gap:1px;flex:1;overflow-y:auto;scrollbar-width:none}
+nav.menu::-webkit-scrollbar{display:none}
+nav.menu a{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:var(--r);
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;color:var(--slate);position:relative;transition:color .25s,background .25s}
+nav.menu a .ix{font-size:10px;color:var(--mute);width:18px;flex:0 0 auto;transition:color .25s}
+nav.menu a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.05)}
+nav.menu a.active{color:var(--ink);background:rgba(30,73,230,.08)}
+nav.menu a.active .ix{color:var(--accent)}
+nav.menu a .bar{position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:62%;
+  background:var(--accent);border-radius:2px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
+.side .foot{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);line-height:1.9}
+.side .foot a{color:var(--slate)}
+.side .foot .cv{display:inline-block;margin-top:8px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 13px}
+
+.mobtop{display:none}
+main{min-width:0}
+.bound{max-width:920px;margin:0 auto;padding:0 48px}
+.section{padding:78px 0 56px;border-top:1px solid var(--line);position:relative;scroll-margin-top:64px}
+.section:first-child{border-top:0;padding-top:60px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
+.eyebrow.green{color:var(--green)}.eyebrow.green::before{background:var(--green)}
+.sec-h{font-size:clamp(28px,4.2vw,44px);line-height:1.04;color:var(--ink)}
+.sec-sub{margin-top:14px;color:var(--slate);max-width:640px;font-size:17px}
+
+/* intro hero */
+#intro{padding-top:60px}
+.hero-h{font-size:clamp(36px,5.4vw,64px);line-height:1.0;color:var(--ink);margin:6px 0 0}
+.hero-h .em{font-style:italic;font-weight:400}
+.hero-lede{margin-top:18px;max-width:660px;color:var(--slate);font-size:clamp(16px,1.9vw,19px)}
+.crumb{display:block;max-width:660px;margin-top:22px;font-size:14px;line-height:1.5;
+  color:var(--slate);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r);padding:12px 16px}
+.crumb a{font-weight:500}
+
+/* headline metric band */
+.band{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;background:var(--card)}
+.band .c{padding:20px;border-right:1px solid var(--line)}
+.band .c:last-child{border-right:0}
+.band .c .n{font-family:"Fraunces",serif;font-size:clamp(24px,3.2vw,34px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.band .c .n .u{color:var(--accent)}
+.band .c .l{margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);line-height:1.4}
+@media(max-width:640px){.band{grid-template-columns:1fr 1fr}.band .c:nth-child(2n){border-right:0}}
+
+/* module timeline */
+.months{margin-top:10px;position:relative;border-left:2px solid var(--line);margin-left:6px}
+.month{position:relative;padding:26px 0 26px 34px}
+.month::before{content:"";position:absolute;left:-9px;top:30px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--accent)}
+.month.green::before{border-color:var(--green)}
+.month .mh{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.month .mo{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.month.green .mo{color:var(--green)}
+.month h3{font-family:"Fraunces",serif;font-size:clamp(20px,2.6vw,26px);color:var(--ink);line-height:1.12}
+.month .lede{margin-top:8px;color:var(--slate);font-size:15px;max-width:620px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-top:16px;padding:18px 20px}
+.mstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.mstats .s{border-left:2px solid var(--accent);padding:2px 0 2px 12px}
+.month.green .mstats .s{border-color:var(--green)}
+.mstats .s .n{font-family:"Fraunces",serif;font-size:clamp(18px,2.4vw,24px);color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.month.green .mstats .s .n{color:var(--green)}
+.mstats .s .l{margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);line-height:1.3}
+@media(max-width:640px){.mstats{grid-template-columns:1fr 1fr}}
+.bullets{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.bullets li{position:relative;padding-left:18px;font-size:14px;color:var(--ink);line-height:1.5}
+.bullets li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:1px;background:var(--accent);transform:rotate(45deg)}
+.month.green .bullets li::before{background:var(--green)}
+.bullets li b{font-weight:600}
+.figsrc{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--mute)}
+.figsrc b{color:var(--slate);letter-spacing:.1em}
+
+/* methods + KSB chips */
+.meta{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.meta .ln{display:flex;gap:10px;align-items:baseline;font-size:13px;line-height:1.5}
+.meta .ln .k{flex:0 0 86px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-top:2px}
+.meta .ln .v{color:var(--slate)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chips span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--slate);
+  background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:4px 9px}
+.chips.ksb span{color:var(--accent-dk);background:rgba(30,73,230,.06);border-color:var(--accent-lt)}
+
+/* charts */
+.chart{width:100%}.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.c-axis{stroke:var(--line-2);stroke-width:1}
+.bar-before{fill:#c3bcab}.bar-after{fill:var(--accent)}.bar-after.green{fill:var(--green)}
+.delta-badge rect{fill:var(--accent)}.delta-badge.green rect{fill:var(--green)}
+.delta-badge text{fill:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700}
+.barlabel{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink)}
+.axislabel{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate)}
+.hbar{fill:var(--accent)}.hbar.green{fill:var(--green)}.hbartrack{fill:var(--line)}
+.hbarlabel{font-family:"Space Grotesk",sans-serif;fill:var(--slate);font-size:13px}
+.hbarval{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink);font-size:15px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;margin-top:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr;gap:14px}}
+.grid2 .copy .h{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.grid2 .copy p{color:var(--ink);font-size:14.5px}
+
+/* standard table */
+.tablewrap{margin-top:18px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+table.t{width:100%;border-collapse:collapse;font-size:14px}
+table.t caption{caption-side:top;text-align:left;padding:14px 18px 0;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+table.t th,table.t td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line)}
+table.t thead th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
+table.t tbody td:first-child{font-weight:600;color:var(--ink)}
+table.t tbody td{color:var(--slate)}
+table.t tbody tr:last-child td{border-bottom:0}
+.tnote{padding:10px 18px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--mute);letter-spacing:.03em;background:var(--paper-2)}
+
+/* contact */
+.contactcard{background:var(--ink-2);border-radius:var(--r);padding:42px 38px;color:#e9ecf3;position:relative;overflow:hidden;margin-top:6px}
+.contactcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.contactcard .eyebrow{color:var(--accent-lt)}.contactcard .eyebrow::before{background:var(--accent-lt)}
+.contactcard h2{color:#fbf9f3;font-size:clamp(24px,3.6vw,36px);line-height:1.04;margin:12px 0}
+.contactcard h2 .em{font-style:italic;font-weight:400}
+.contactcard .links{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:15px}
+.contactcard .links a{color:#e9ecf3}
+footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  .xnav{display:none}
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
+  .side.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(20,18,12,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .3s}
+  .scrim.show{opacity:1;visibility:visible}
+  .mobtop{display:flex;position:sticky;top:0;z-index:40;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(244,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  .mobtop .brand b{color:var(--accent)}
+  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .bound{padding:0 24px}.section{padding:52px 0 36px;scroll-margin-top:64px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+@media print{.xnav,.side,.mobtop,.scrim{display:none}.app{grid-template-columns:1fr}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.section,.mcard,.band,.tablewrap{break-inside:avoid}.contactcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<nav class="xnav" aria-label="Site">
+  <div class="row">
+    <a class="brand" href="index.html"><b>AE</b>&nbsp;&nbsp;Adrien Enjalbert</a>
+    <div class="tabs">
+      <a href="index.html">Portfolio</a>
+      <a href="for-ai.html">AI / MarTech</a>
+      <a href="for-growth.html">Growth</a>
+      <a href="for-demandgen.html">Demand gen</a>
+      <a href="for-analytics.html">Analytics</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="msc-ai.html" class="on" aria-current="page">MSc</a>
+      <a href="builds.html">Builds</a>
+      <a href="spotlight.html">Spotlight</a>
+      <a href="cv-ai.html" class="cv">CV</a>
+    </div>
+  </div>
+</nav>
+<div class="mobtop">
+  <div class="brand"><b>AE</b> &nbsp;MSc in AI</div>
+  <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menu">Menu</button>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="id">
+      <div class="kick">MSc in AI &amp; Data Science</div>
+      <div class="brandname">Adrien<br>Enjalbert</div>
+      <div class="role"><b>Level 7 &middot; 2024&ndash;2026</b><br>The Master's in full: five graded modules and a production capstone.</div>
+      <div class="rule"></div>
+    </div>
+    <nav class="menu" id="menu" aria-label="Sections">
+      <a href="#intro"><span class="bar"></span><span class="ix">00</span>Overview</a>
+      <a href="#throughline"><span class="bar"></span><span class="ix">&#9671;</span>The throughline</a>
+      <a href="#dsp"><span class="bar"></span><span class="ix">01</span>Data Science Principles</a>
+      <a href="#mlcc"><span class="bar"></span><span class="ix">02</span>ML on the Cloud</a>
+      <a href="#pfai"><span class="bar"></span><span class="ix">03</span>Programming for AI</a>
+      <a href="#innov"><span class="bar"></span><span class="ix">04</span>AI &amp; Digital Innovation</a>
+      <a href="#epa"><span class="bar"></span><span class="ix">05</span>Work-Based Capstone</a>
+      <a href="#standard"><span class="bar"></span><span class="ix">&#9633;</span>The standard, mapped</a>
+      <a href="#contact"><span class="bar"></span><span class="ix">06</span>Contact</a>
+    </nav>
+    <div class="foot">
+      <a href="index.html">&larr; Back to portfolio</a><br>
+      Tailored: <a href="for-ai.html">AI</a> &middot; <a href="for-growth.html">Growth</a> &middot; <a href="for-demandgen.html">Dem-gen</a> &middot; <a href="for-analytics.html">Analytics</a><br>
+      <a class="cv" href="cv-ai.html">Read the CV &rarr;</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- INTRO -->
+    <section class="section" id="intro">
+      <div class="bound">
+        <div class="eyebrow reveal">MSc Artificial Intelligence &amp; Data Science &middot; Level 7</div>
+        <h1 class="hero-h reveal">The Master's, <span class="em">in full.</span></h1>
+        <p class="hero-lede reveal">A Level 7 MSc in AI &amp; Data Science (QA University, 2024&ndash;2026), built against the BCS Artificial Intelligence (AI) Data Specialist standard (ST0763). Five graded modules and a work-based capstone &mdash; not theory for its own sake, but methods I took straight into production. The capstone is the same sales-intelligence system featured in the portfolio. Here is each piece, what it asked, and what it proved.</p>
+        <span class="crumb reveal">This is the academic companion to the <a href="index.html">main portfolio</a> &mdash; the systems are shown there; the rigour underneath them is here.</span>
+
+        <div class="band reveal">
+          <div class="c"><div class="n">Level 7</div><div class="l">MSc, AI &amp; Data Science</div></div>
+          <div class="c"><div class="n">5<span class="u">+1</span></div><div class="l">Modules + capstone</div></div>
+          <div class="c"><div class="n">3</div><div class="l">EPA assessment methods</div></div>
+          <div class="c"><div class="n">29<span class="u">/</span>28<span class="u">/</span>8</div><div class="l">Knowledge / skills / behaviours</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THROUGHLINE -->
+    <section class="section" id="throughline">
+      <div class="bound">
+        <div class="eyebrow reveal">&#9671;&nbsp; The throughline</div>
+        <h2 class="sec-h reveal">Coursework and shipped systems are the same body of work</h2>
+        <p class="sec-sub reveal">What makes this MSc unusual is that it was studied while running a digital function, so every module pointed at a real business problem and several became live, adopted systems.</p>
+        <div class="months reveal" style="margin-top:18px">
+          <div class="month" style="padding-top:6px">
+            <div class="mh"><span class="mo">Thread 1</span><h3>Foundations under the build</h3></div>
+            <p class="lede">Data infrastructure, statistical testing, cloud machine learning and the maths behind the models &mdash; the rigour that lets me reason about why an approach works, not just that it does.</p>
+          </div>
+          <div class="month" style="padding-top:6px">
+            <div class="mh"><span class="mo">Thread 2</span><h3>Architecture chosen, then earned</h3></div>
+            <p class="lede">The innovation module argued for a decentralised, CRM-as-memory multi-agent design over the hierarchical default; the capstone then shipped it and the team adopted it.</p>
+          </div>
+          <div class="month" style="padding-top:6px">
+            <div class="mh"><span class="mo">Thread 3</span><h3>Judged against an occupational standard</h3></div>
+            <p class="lede">The qualification maps to the BCS AI Data Specialist standard &mdash; assessed by project report, professional discussion and a technical test against 65 knowledge, skills and behaviour criteria.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 DATA SCIENCE PRINCIPLES -->
+    <section class="section" id="dsp">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">01</span> Module</div>
+        <h2 class="sec-h reveal">Data Science Principles</h2>
+        <p class="sec-sub reveal">Designing a data infrastructure, building a demonstrable artefact, and testing a hypothesis with statistical rigour.</p>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Infra &middot; ETL &middot; statistics</span><h3>Can front-end analytics stand in for back-end truth?</h3></div>
+            <p class="lede">The brief: design a scalable, GDPR-compliant data infrastructure, then build and evaluate an artefact on real data. I compared milestone events between a web-analytics source (GA4) and the transactional data warehouse to test whether one could proxy the other.</p>
+            <div class="mcard">
+              <div class="grid2">
+                <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Shifts vs clock-out events",100,"r = 0.95"],["Bookings vs booked-job events",96,"r = 0.91"],["Sign-ups vs total users",69,"r = 0.65"]]'></div>
+                <div class="copy">
+                  <div class="h">Pearson correlation</div>
+                  <p>An ETL pipeline aligned and anonymised the two sources, then Pearson&rsquo;s coefficient in Python (SciPy) tested correlation. Revenue-critical events correlated very strongly (r = 0.95, p &lt; 0.001); sign-ups only moderately (r = 0.65) &mdash; so GA4 is a reliable proxy for some metrics but not all.</p>
+                </div>
+              </div>
+              <div class="meta">
+                <div class="ln"><span class="k">Methods</span><span class="v">CRISP-DM framing, ETL (extract/transform/load), temporal aggregation for privacy, hypothesis testing (H&#8320;/H&#8321;), scatter + trendline visualisation.</span></div>
+                <div class="ln"><span class="k">Tools</span><span class="v">Cloud data warehouse, DBT, SQL, Python (SciPy), Looker Studio, GA4.</span></div>
+              </div>
+              <div class="chips">
+                <span>Data infrastructure</span><span>ETL</span><span>GDPR by design</span><span>Hypothesis testing</span><span>Data visualisation</span>
+              </div>
+              <div class="chips ksb">
+                <span>K20 collect/store/analyse</span><span>S9 manipulate datasets</span><span>S21 quantify uncertainty</span><span>S22 scientific method</span><span>K26 experiment design</span>
+              </div>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;MSc module assignment, Data Science Principles. Internal system names generalised.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 ML ON THE CLOUD -->
+    <section class="section" id="mlcc">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">02</span> Module</div>
+        <h2 class="sec-h reveal">Machine Learning using Cloud Computing</h2>
+        <p class="sec-sub reveal">A deep-learning lead-scoring model, benchmarked against classical methods, with cloud deployment and infrastructure evaluation.</p>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Deep learning &middot; cloud &middot; MLOps</span><h3>Predicting lead conversion with a neural network</h3></div>
+            <p class="lede">The brief: evaluate cloud ML, then build a deep-learning artefact. I trained an artificial neural network (TensorFlow/Keras) to predict lead-conversion probability on a public dataset (chosen over internal data for GDPR/PII reasons), benchmarked it against classical models, and evaluated AWS SageMaker for deployment.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">96.6%</div><div class="l">AUC, Logistic Regression</div></div>
+                <div class="s"><div class="n">92.2%</div><div class="l">Accuracy, Random Forest</div></div>
+                <div class="s"><div class="n">9,240</div><div class="l">Records / 37 features</div></div>
+                <div class="s"><div class="n">15&ndash;26%</div><div class="l">GPU speed-up (MNIST)</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>Full ML pipeline:</b> cleaning, context-aware imputation, one-hot encoding, scaling, an 80/20 temporal split, dropout + early stopping to control overfitting, and hyperparameter tuning.</li>
+                <li><b>Benchmarked four models</b> (Logistic Regression, Random Forest, SVM, KNN) against the neural net &mdash; simpler architectures generalised better on limited data.</li>
+                <li><b>Infrastructure experiment:</b> GPU only outpaced CPU on larger workloads (15&ndash;26% on MNIST), confirming the overhead trade-off on small datasets.</li>
+              </ul>
+              <div class="meta">
+                <div class="ln"><span class="k">Tools</span><span class="v">Python, TensorFlow/Keras, scikit-learn, Pandas/NumPy, Google Colab; AWS SageMaker / S3 / API Gateway (deployment design).</span></div>
+              </div>
+              <div class="chips">
+                <span>Neural networks</span><span>Model benchmarking</span><span>Hyperparameter tuning</span><span>MLOps</span><span>Cloud deployment</span><span>GPU vs CPU</span>
+              </div>
+              <div class="chips ksb">
+                <span>K2 storage/ML methods</span><span>K16 HPC architectures</span><span>K19 ML principles</span><span>S15 build/maintain platforms</span><span>S19 scalable infrastructure</span>
+              </div>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;MSc module assignment, Machine Learning using Cloud Computing. Model trained on a public (Kaggle) dataset.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 PROGRAMMING FOR AI -->
+    <section class="section" id="pfai">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">03</span> Module</div>
+        <h2 class="sec-h reveal">Programming for AI</h2>
+        <p class="sec-sub reveal">Four learning paradigms mapped to real B2B problems, implemented in Python, with the mathematical foundations and software-engineering principles behind them.</p>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Algorithms &middot; maths &middot; architecture</span><h3>The right algorithm for each commercial problem</h3></div>
+            <p class="lede">The brief: evaluate and implement machine-learning algorithms across supervised and unsupervised learning, then situate them in a deployable architecture. I matched four algorithms to concrete demand-generation use-cases and derived the maths behind each.</p>
+            <div class="mcard">
+              <div class="mstats">
+                <div class="s"><div class="n">Random&nbsp;Forest</div><div class="l">Lead scoring (classification)</div></div>
+                <div class="s"><div class="n">Neural&nbsp;Net</div><div class="l">Churn prediction</div></div>
+                <div class="s"><div class="n">SVM</div><div class="l">ICP matching</div></div>
+                <div class="s"><div class="n">K-means</div><div class="l">Client segmentation</div></div>
+              </div>
+              <ul class="bullets">
+                <li><b>Implemented in Python</b> with a strict ML pipeline; chose K via the elbow method and silhouette analysis, and read feature importance for sales prioritisation.</li>
+                <li><b>Mathematical foundations</b> set out for each &mdash; bagging and Gini impurity for Random Forest, centroid assignment and within-cluster sum of squares for K-means.</li>
+                <li><b>Software-engineering layer:</b> a four-layer architecture (data, integration, intelligence, application) on an Agile-DevOps + MLOps methodology, with legal, social and ethical considerations for the regulated recruitment context.</li>
+              </ul>
+              <div class="meta">
+                <div class="ln"><span class="k">Tools</span><span class="v">Python, scikit-learn, Pandas, Matplotlib; CRISP-DM, CI/CD + MLOps.</span></div>
+              </div>
+              <div class="chips">
+                <span>Supervised &amp; unsupervised</span><span>Ensemble methods</span><span>Clustering</span><span>Explainable AI</span><span>Bias &amp; fairness</span><span>System architecture</span>
+              </div>
+              <div class="chips ksb">
+                <span>K1 ML methodologies</span><span>K3 statistical methods</span><span>K22 maths &harr; technique</span><span>S26 select techniques</span><span>K15 engineering principles</span>
+              </div>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;MSc module assignment, Programming for AI. Public datasets used for implementation; PII excluded.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 AI & DIGITAL INNOVATION -->
+    <section class="section" id="innov">
+      <div class="bound">
+        <div class="eyebrow green reveal"><span class="ix">04</span> Module</div>
+        <h2 class="sec-h reveal">AI &amp; Digital Innovation</h2>
+        <p class="sec-sub reveal">An argued recommendation for a multi-agent architecture &mdash; and the three production agents that proved it.</p>
+        <div class="months">
+          <div class="month green reveal">
+            <div class="mh"><span class="mo">Multi-agent &middot; context engineering</span><h3>Why hierarchical agents fail, and what to build instead</h3></div>
+            <p class="lede">The brief: critically evaluate an emerging AI innovation and recommend one for the business. I argued that hierarchical &ldquo;orchestrator-worker&rdquo; multi-agent systems fail through context degradation, and recommended a decentralised, circular design using the CRM as shared memory &mdash; then evidenced it with three deployed agents.</p>
+            <div class="mcard">
+              <div class="grid2">
+                <div class="chart" data-chart="beforeafter" data-color="green" data-improve="up"
+                     data-metric="Rebuilt enrichment agent vs prior build (weighted benchmark)" data-before="26.2" data-after="93.6" data-btxt="26.2" data-atxt="93.6" data-delta="3.6&times;"></div>
+                <div class="copy">
+                  <div class="h">Architecture, earned</div>
+                  <p>The single-agent-with-tools approach drove adoption where hierarchical orchestration had stalled. A later rebuilt enrichment agent scored 93.6/100 against 26.2 for the previous build &mdash; the decentralised thesis, validated in production.</p>
+                </div>
+              </div>
+              <ul class="bullets">
+                <li><b>Enablement over automation:</b> a deliberate framing &mdash; AI to amplify the team, not replace it &mdash; informed by the costs of like-for-like automation.</li>
+                <li><b>Context engineering</b> over prompt engineering: managing what information reaches which agent, when, with the CRM as the persistent state layer.</li>
+                <li><b>Three agents shipped</b> into Slack and the CRM &mdash; a lead finder/scorer, a signal-report agent and a job-market insights agent.</li>
+              </ul>
+              <div class="meta">
+                <div class="ln"><span class="k">Tools</span><span class="v">Relevance AI, n8n / Make.com, Apollo, Slack, CRM (HubSpot/Salesforce) as MCP memory.</span></div>
+              </div>
+              <div class="chips">
+                <span>Multi-agent systems</span><span>Context engineering</span><span>MCP / shared memory</span><span>RLHF (future)</span><span>LLM-as-judge</span><span>Adoption</span>
+              </div>
+              <div class="chips ksb">
+                <span>K11 roles/impact of AI</span><span>K17 industry trends</span><span>S6 technical direction</span><span>K13 theory&rarr;practice</span><span>B7 share best practice</span>
+              </div>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;MSc module assignment, AI &amp; Digital Innovation; benchmark figures consistent with the portfolio&rsquo;s monthly review.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 EPA CAPSTONE -->
+    <section class="section" id="epa">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">05</span> Work-Based Project &middot; Capstone</div>
+        <h2 class="sec-h reveal">Multi-agent AI for account-based sales enablement</h2>
+        <p class="sec-sub reveal">The end-point-assessment capstone: a real, pre-gateway work-based project, written up as a 5,000-word report with a presentation and technical questioning &mdash; and the same system featured across the portfolio.</p>
+        <div class="months">
+          <div class="month reveal">
+            <div class="mh"><span class="mo">Capstone &middot; n8n, Claude API, Salesforce, Slack</span><h3>From marketing intelligence to adopted sales enablement</h3></div>
+            <p class="lede">Reps spent the majority of their time on manual research against long enterprise cycles. The system qualifies accounts on 20+ signals, finds decision-makers, scores them with an interpretable rubric, and writes back to CRM and Slack &mdash; with human approval gates for attribution and GDPR compliance.</p>
+            <div class="mcard">
+              <div class="grid2">
+                <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Enterprise pipeline (3 mo)",100,"&pound;440K+"],["Contacts generated",66,"14,500+"],["Team adoption",40,"+56%"],["SQL conversion",18,"+12%"]]'></div>
+                <div class="copy">
+                  <div class="h">What it proved</div>
+                  <p>A &ldquo;score-then-enrich&rdquo; waterfall cut enrichment cost ~7&times;; a CRM-as-memory architecture avoided context degradation; and moving the interface into Slack drove a step-change in adoption. The most valuable system is the one people actually use.</p>
+                </div>
+              </div>
+              <ul class="bullets">
+                <li><b>CRISP-DM</b> with an added UX validation loop; explicit trade-off analysis on data access, cost-vs-coverage, automation-vs-control and enablement-vs-replacement.</li>
+                <li><b>Build-vs-buy and centralised-vs-decentralised</b> evaluated against the specific commercial context, with risks and alternatives surveyed.</li>
+                <li><b>Ethics and governance</b> first-class: data minimisation, bias audits on scoring, interpretable explanations, and a move from web-scraping to structured-API provenance.</li>
+              </ul>
+              <div class="meta">
+                <div class="ln"><span class="k">Assessed by</span><span class="v">Project report (5,000 words) + presentation with supplementary questioning, professional discussion, and a technical test.</span></div>
+              </div>
+              <div class="chips">
+                <span>Multi-agent</span><span>MCP / integrations</span><span>Waterfall enrichment</span><span>Evaluations</span><span>Trade-off analysis</span><span>Governance</span>
+              </div>
+              <div class="chips ksb">
+                <span>K14 business value</span><span>K23 model validation</span><span>S3 critical evaluation</span><span>S24 project management</span><span>S27 scope requirements</span><span>B6 communicate to all</span>
+              </div>
+              <div class="figsrc"><b>SOURCE</b> &nbsp;EPA work-based project report. Figures kept consistent with the portfolio; colleague names and internal identifiers removed. See the system in the <a href="for-ai.html">AI / MarTech one-pager</a>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE STANDARD, MAPPED -->
+    <section class="section" id="standard">
+      <div class="bound">
+        <div class="eyebrow reveal">&#9633;&nbsp; The standard, mapped</div>
+        <h2 class="sec-h reveal">Assessed against an occupational standard, not just a syllabus</h2>
+        <p class="sec-sub reveal">The qualification follows the BCS Artificial Intelligence (AI) Data Specialist standard (ST0763) &mdash; a Level 7 occupational standard with three independent assessment methods spanning 65 knowledge, skills and behaviour criteria.</p>
+        <div class="tablewrap reveal">
+          <table class="t">
+            <caption>End-point assessment &middot; three equally weighted methods</caption>
+            <thead><tr><th>Method</th><th>Format</th><th>What it evidences</th></tr></thead>
+            <tbody>
+              <tr><td>Project report + presentation</td><td>5,000-word report, 30-min presentation, 45-min questioning</td><td>Applied AI on a real business problem, end to end</td></tr>
+              <tr><td>Professional discussion</td><td>60-minute structured discussion</td><td>Computing/statistical foundations, professional practice, ethics</td></tr>
+              <tr><td>Technical test</td><td>Four scenario-based long-response questions</td><td>Delivery, methodologies, architectures, uncertainty &amp; bias</td></tr>
+            </tbody>
+          </table>
+          <div class="tnote">Overall grade combines all three; a pass requires every method to pass. Mapped across 29 knowledge, 28 skill and 8 behaviour criteria.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="bound">
+        <div class="contactcard reveal">
+          <div class="eyebrow"><span class="ix">06</span> Let&rsquo;s talk</div>
+          <h2>The models, <span class="em">not only the prompts.</span></h2>
+          <p style="color:#bcc4d6;max-width:560px">Happy to go deeper on any module or the capstone &mdash; the methods, the trade-offs, and how each one made it into production.</p>
+          <div class="links">
+            <a href="index.html">&larr; Portfolio</a>
+            <a href="for-ai.html">AI / MarTech</a>
+            <a href="cv-ai.html">CV</a>
+            <a href="https://github.com/Adrienenjalbert">GitHub</a>
+            <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a>
+          </div>
+        </div>
+        <footer>Adrien Enjalbert &middot; MSc Artificial Intelligence &amp; Data Science (Level 7), 2024&ndash;2026 &middot; module highlights distilled from graded submissions; figures kept consistent with the portfolio, colleague and internal detail kept private.</footer>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+(function(){
+  "use strict";
+  var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var NS="http://www.w3.org/2000/svg";
+  function el(n,a,p){var e=document.createElementNS(NS,n);if(a)for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function dec(s){var t=document.createElement("textarea");t.innerHTML=s;return t.value;}
+
+  function drawHBar(box){
+    var items=JSON.parse(box.getAttribute("data-items")),green=box.getAttribute("data-color")==="green";
+    var W=540,rowH=64,padT=14,barX=210,barMax=W-barX-92,H=padT*2+items.length*rowH;
+    var summary=items.map(function(it){return dec(it[0])+" "+dec(it[2]);}).join(", ");
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Results: "+summary},box);
+    var bars=[];
+    items.forEach(function(it,i){
+      var label=dec(it[0]),pct=it[1]/100,val=dec(it[2]),y=padT+i*rowH+rowH/2;
+      el("text",{x:barX-14,y:y+5,"text-anchor":"end",class:"hbarlabel"},svg).textContent=label;
+      el("rect",{x:barX,y:y-13,width:barMax,height:26,rx:4,class:"hbartrack",opacity:"0.5"},svg);
+      var bar=el("rect",{x:barX,y:y-13,width:0,height:26,rx:4,class:"hbar"+(green?" green":"")},svg);
+      var v=el("text",{x:barX+8,y:y+5,class:"hbarval",opacity:"0"},svg);v.textContent=val;
+      bars.push({bar:bar,target:barMax*pct,v:v});
+    });
+    box._animate=function(){
+      if(REDUCE){bars.forEach(function(b){b.bar.setAttribute("width",b.target);b.v.setAttribute("x",barX+b.target+10);b.v.setAttribute("opacity","1");});return;}
+      var dur=1050,t0=null;
+      function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+        bars.forEach(function(b){var w=b.target*e;b.bar.setAttribute("width",w);b.v.setAttribute("x",barX+w+10);b.v.setAttribute("opacity",String(Math.min(p*1.4,1)));});
+        if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
+    };
+  }
+
+  function drawBeforeAfter(box){
+    var W=520,H=380,padB=58,padT=64,padX=70;
+    var before=parseFloat(box.getAttribute("data-before")),after=parseFloat(box.getAttribute("data-after"));
+    var btxt=dec(box.getAttribute("data-btxt")),atxt=dec(box.getAttribute("data-atxt")),delta=dec(box.getAttribute("data-delta")),metric=dec(box.getAttribute("data-metric"));
+    var green=box.getAttribute("data-color")==="green",maxv=Math.max(before,after),plotH=H-padB-padT,bw=96,gap=150,x1=padX+40,x2=x1+gap;
+    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":metric+": before "+btxt+", after "+atxt+", change "+delta},box);
+    el("line",{x1:padX-10,y1:H-padB,x2:W-30,y2:H-padB,class:"c-axis"},svg);
+    el("text",{x:padX-10,y:padT-30,class:"axislabel"},svg).textContent=metric;
+    function bar(x,val,txt,isAfter){var h=plotH*(val/maxv),y=H-padB-h;
+      var r=el("rect",{x:x,y:H-padB,width:bw,height:0,rx:3,class:"bar"+(isAfter?(" bar-after"+(green?" green":"")):" bar-before")},svg);
+      var lbl=el("text",{x:x+bw/2,y:y-12,"text-anchor":"middle",class:"barlabel","font-size":"21",opacity:"0"},svg);lbl.textContent=txt;if(isAfter)lbl.setAttribute("fill",green?"#0f7a4f":"#1e49e6");
+      var cap=el("text",{x:x+bw/2,y:H-padB+26,"text-anchor":"middle",class:"axislabel"},svg);cap.textContent=isAfter?"After":"Before";return{rect:r,y:y,h:h,lbl:lbl};}
+    var b1=bar(x1,before,btxt,false),b2=bar(x2,after,atxt,true);
+    var bg=el("g",{class:"delta-badge"+(green?" green":""),opacity:"0"},svg);
+    var t=el("text",{"text-anchor":"middle","font-size":"19","dominant-baseline":"middle"},null);t.textContent=delta;
+    var bx=(x1+x2)/2+bw/2,by=padT+6,rw=delta.length*12+26;el("rect",{x:bx-rw/2,y:by-17,width:rw,height:34,rx:17},bg);t.setAttribute("x",bx);t.setAttribute("y",by);bg.appendChild(t);svg.appendChild(bg);
+    box._animate=function(){if(REDUCE){[b1,b2].forEach(function(b){b.rect.setAttribute("y",b.y);b.rect.setAttribute("height",b.h);b.lbl.setAttribute("opacity","1");});bg.setAttribute("opacity","1");return;}
+      var dur=1000,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);
+        [b1,b2].forEach(function(b){var hh=b.h*e;b.rect.setAttribute("height",hh);b.rect.setAttribute("y",H-padB-hh);});
+        if(p>0.55){b1.lbl.setAttribute("opacity",String((p-0.55)/0.45));b2.lbl.setAttribute("opacity",String((p-0.55)/0.45));}
+        if(p>0.7)bg.setAttribute("opacity",String((p-0.7)/0.3));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);};
+  }
+
+  document.querySelectorAll(".chart").forEach(function(box){var t=box.getAttribute("data-chart");if(t==="hbar")drawHBar(box);else if(t==="beforeafter")drawBeforeAfter(box);});
+
+  function activate(t){if(t._a)return;t._a=true;t.classList.add("in");t.querySelectorAll(".chart").forEach(function(c){if(c._animate)c._animate();});}
+  var revs=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if("IntersectionObserver" in window && !REDUCE){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){io.unobserve(en.target);activate(en.target);}});},{threshold:0.14,rootMargin:"0px 0px -6% 0px"});
+    revs.forEach(function(n){io.observe(n);});
+    function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.92)activate(n);});}
+    window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
+    setTimeout(function(){revs.forEach(activate);},2600);
+  }else{revs.forEach(activate);}
+
+  var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
+  links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
+  var sections=Array.prototype.slice.call(document.querySelectorAll("main .section"));
+  function setActive(id){links.forEach(function(a){var on=a===map[id];a.classList.toggle("active",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});}
+  if("IntersectionObserver" in window){
+    var vis={};
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(en){vis[en.target.id]=en.isIntersecting?en.intersectionRatio:0;});
+      var best=null,bestR=0;Object.keys(vis).forEach(function(id){if(vis[id]>bestR){bestR=vis[id];best=id;}});
+      if(best)setActive(best);
+    },{rootMargin:"-45% 0px -45% 0px",threshold:[0,0.25,0.5,0.75,1]});
+    sections.forEach(function(s){spy.observe(s);});
+  }
+  setActive("intro");
+
+  var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
+  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
+  if(burger)burger.addEventListener("click",open);
+  if(scrim)scrim.addEventListener("click",close);
+  links.forEach(function(a){a.addEventListener("click",close);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+})();
+</script>
+</body>
+</html>

@@ -29,10 +29,22 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
 
+/* ===== shared cross-page top menu ===== */
+.xnav{position:sticky;top:0;z-index:50;background:rgba(244,241,232,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.xnav .row{max-width:1320px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px}
+.xnav .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.xnav .brand b{color:var(--accent)}
+.xnav .tabs{display:flex;align-items:center;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+.xnav .tabs a{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;color:var(--slate);padding:6px 11px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.xnav .tabs a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.06)}
+.xnav .tabs a.on{color:#fff;background:var(--ink-2)}
+.xnav .tabs a.cv{color:var(--accent);border:1px solid var(--line-2)}
+.xnav .tabs .sep{width:1px;height:18px;background:var(--line);margin:0 4px}
+
 .app{display:grid;grid-template-columns:var(--nav-w) 1fr;position:relative;z-index:1}
 
 /* left nav */
-.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:34px 26px 26px;
+.side{position:sticky;top:48px;height:calc(100vh - 48px);display:flex;flex-direction:column;padding:34px 26px 26px;
   border-right:1px solid var(--line);background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
 .side .id .kick{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
 .side .id .brandname{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;font-size:30px;line-height:1.02;margin:10px 0 6px;color:var(--ink)}
@@ -57,7 +69,7 @@ nav.menu a.active .bar{transform:translateY(-50%) scaleY(1)}
 .mobtop{display:none}
 main{min-width:0}
 .bound{max-width:920px;margin:0 auto;padding:0 48px}
-.section{padding:78px 0 56px;border-top:1px solid var(--line);position:relative;scroll-margin-top:24px}
+.section{padding:78px 0 56px;border-top:1px solid var(--line);position:relative;scroll-margin-top:64px}
 .section:first-child{border-top:0;padding-top:60px}
 .eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
   letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
@@ -71,8 +83,9 @@ main{min-width:0}
 .hero-h{font-size:clamp(36px,5.4vw,64px);line-height:1.0;color:var(--ink);margin:6px 0 0}
 .hero-h .em{font-style:italic;font-weight:400}
 .hero-lede{margin-top:18px;max-width:660px;color:var(--slate);font-size:clamp(16px,1.9vw,19px)}
-.crumb{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:12px;
-  color:var(--slate);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px}
+.crumb{display:block;max-width:660px;margin-top:22px;font-size:14px;line-height:1.5;
+  color:var(--slate);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r);padding:12px 16px}
+.crumb a{font-weight:500}
 
 /* headline metric band */
 .band{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border:1px solid var(--line);
@@ -147,6 +160,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 .reveal.in{opacity:1;transform:none}
 
 @media(max-width:880px){
+  .xnav{display:none}
   .app{grid-template-columns:1fr}
   .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
   .side.open{transform:none}
@@ -159,10 +173,27 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   .bound{padding:0 24px}.section{padding:52px 0 36px;scroll-margin-top:64px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
-@media print{.side,.mobtop,.scrim{display:none}.app{grid-template-columns:1fr}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.section,.mcard,.band,.tablewrap{break-inside:avoid}.contactcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
+@media print{.xnav,.side,.mobtop,.scrim{display:none}.app{grid-template-columns:1fr}body{background:#fff}body::before{display:none}.reveal{opacity:1!important;transform:none!important}.section,.mcard,.band,.tablewrap{break-inside:avoid}.contactcard{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:12mm}}
 </style>
 </head>
 <body>
+<nav class="xnav" aria-label="Site">
+  <div class="row">
+    <a class="brand" href="index.html"><b>AE</b>&nbsp;&nbsp;Adrien Enjalbert</a>
+    <div class="tabs">
+      <a href="index.html">Portfolio</a>
+      <a href="for-ai.html">AI / MarTech</a>
+      <a href="for-growth.html">Growth</a>
+      <a href="for-demandgen.html">Demand gen</a>
+      <a href="for-analytics.html">Analytics</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="msc-ai.html">MSc</a>
+      <a href="builds.html">Builds</a>
+      <a href="spotlight.html" class="on" aria-current="page">Spotlight</a>
+      <a href="cv.html" class="cv">CV</a>
+    </div>
+  </div>
+</nav>
 <div class="mobtop">
   <div class="brand"><b>AE</b> &nbsp;Monthly Spotlight</div>
   <button class="burger" id="burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -192,6 +223,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <div class="foot">
       <a href="index.html">&larr; Back to portfolio</a><br>
       Tailored: <a href="for-ai.html">AI</a> &middot; <a href="for-growth.html">Growth</a> &middot; <a href="for-demandgen.html">Dem-gen</a> &middot; <a href="for-analytics.html">Analytics</a><br>
+      <a href="msc-ai.html">The MSc in AI &rarr;</a><br>
       <a class="cv" href="cv.html">Read the CV &rarr;</a>
     </div>
   </aside>
@@ -487,6 +519,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
           <div class="links">
             <a href="index.html">&larr; Portfolio</a>
             <a href="builds.html">What I build</a>
+            <a href="msc-ai.html">MSc in AI</a>
             <a href="cv.html">CV</a>
             <a href="https://github.com/Adrienenjalbert">GitHub</a>
             <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a>
