@@ -305,7 +305,8 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="#spotlight"><span class="bar"></span><span class="ix">07</span>Monthly spotlight</a>
       <a href="builds.html"><span class="bar"></span><span class="ix">&#9671;</span>What I build &rarr;</a>
       <a href="msc-ai.html"><span class="bar"></span><span class="ix">&#9633;</span>The MSc in AI &rarr;</a>
-      <a href="#contact"><span class="bar"></span><span class="ix">08</span>Contact</a>
+      <a href="#faq"><span class="bar"></span><span class="ix">08</span>For hiring managers</a>
+      <a href="#contact"><span class="bar"></span><span class="ix">09</span>Contact</a>
       <div class="navgroup">Tailored for this role</div>
       <a class="navsub" href="for-ai.html"><span class="ix">&rsaquo;</span>The AI / MarTech one-pager &rarr;</a>
     </nav>
@@ -540,10 +541,54 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     </section>
 
     <!-- CONTACT -->
+    <style>
+    /* For-hiring-managers FAQ */
+    .faq{margin-top:18px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+    .faq details{border-top:1px solid var(--line)}
+    .faq details:first-child{border-top:0}
+    .faq summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:flex-start;gap:13px;font-family:"Fraunces",Georgia,serif;font-size:16.5px;color:var(--ink);line-height:1.32}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary .qx{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);margin-top:4px;flex:0 0 auto}
+    .faq summary .mk{margin-left:auto;color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:15px;line-height:1;transition:transform .2s}
+    .faq details[open] summary .mk{transform:rotate(45deg)}
+    .faq summary:hover{background:var(--paper-2)}
+    .faq .a{padding:0 20px 18px 48px;color:var(--slate);font-size:14.5px;line-height:1.62}
+    .faq .a b{color:var(--ink);font-weight:600}
+    @media(max-width:560px){.faq .a{padding-left:20px}}
+    </style>
+    <section class="section" id="faq">
+      <div class="bound">
+        <div class="eyebrow reveal"><span class="ix">08</span> Before we talk</div>
+        <h2 class="sec-h reveal">The questions you're probably weighing</h2>
+        <p class="sec-sub reveal">The recurring screen, answered up front. Every figure here is real and traceable to the work.</p>
+        <div class="faq reveal">
+          <details>
+            <summary><span class="qx">Q1</span><span>What do you want next, and why move now?</span><span class="mk">+</span></summary>
+            <div class="a">A role where building production AI for growth <b>is</b> the job, not a side project. My filter is remote-first, a real product people depend on, and a remit accountable for pipeline rather than brand activity. A decade in performance taught me where revenue actually moves; the last two years taught me to build the systems that move it. I want to do both in one seat.</div>
+          </details>
+          <details>
+            <summary><span class="qx">Q2</span><span>Walk me through an AI system you shipped to production.</span><span class="mk">+</span></summary>
+            <div class="a">A multi-agent sales-intelligence system on n8n and the Claude API. Reps were losing 60%+ of their time to manual research, so it qualifies accounts on 20+ signals, finds decision-makers at 80% phone-number accuracy, drafts outreach, and writes back to Salesforce and Slack. <b>£440K+ pipeline in three months, 14,500+ contacts, +12% SQL conversion.</b> Model-agnostic and human-in-the-loop, adopted by Sales and RevOps.</div>
+          </details>
+          <details>
+            <summary><span class="qx">Q3</span><span>What would your first 90 days look like?</span><span class="mk">+</span></summary>
+            <div class="a">Start where the revenue is. Week one, agree the pipeline number with commercial leadership and map it to the programmes each segment needs. Then stand up the measurement spine first &mdash; lead scoring, attribution, ROI reporting &mdash; so the numbers are trustworthy, and pick two or three plays that move pipeline fastest. <b>I'd rather ship something good this week than perfect next month.</b></div>
+          </details>
+          <details>
+            <summary><span class="qx">Q4</span><span>How do you get the organisation to actually use what you build?</span><span class="mk">+</span></summary>
+            <div class="a">Adoption is the job, not a phase after it. I ship into the tools people already use and let internal demand pull the work. <b>The sales agent drew 200+ internal requests in a week (+56% adoption);</b> a lead-magnet suite I built was good enough that parent-company HQ asked to use it for its own campaigns. I keep a short feedback loop and re-evaluate agents as models change, so they keep earning their place.</div>
+          </details>
+          <details>
+            <summary><span class="qx">Q5</span><span>Where are you deep, and where are you still ramping?</span><span class="mk">+</span></summary>
+            <div class="a">Deep: full-funnel growth, paid at scale, MarTech architecture, and production AI on Claude and n8n &mdash; now backed by a completed MSc in AI &amp; Data Science and <b>Chartered IT Professional (CITP)</b> status with BCS. Ramping: a new vertical's domain language, which I pick up fast by shadowing Sales and reading won and lost deals. I'll tell you where I'm deep and where I'm ramping rather than dress a gap up.</div>
+          </details>
+        </div>
+      </div>
+    </section>
     <section class="section" id="contact">
       <div class="bound">
         <div class="contactcard reveal">
-          <div class="eyebrow"><span class="ix">08</span> Let&rsquo;s talk</div>
+          <div class="eyebrow"><span class="ix">09</span> Let&rsquo;s talk</div>
           <h2>Build the systems. <span class="em">Get the org to use them.</span></h2>
           <p style="color:#bcc4d6;max-width:600px">Happy to walk through any of these in depth, including the live AI systems and how they got adopted.</p>
           <a class="emailcta" href="mailto:adrien.enjalbert34@gmail.com">Email me &mdash; adrien.enjalbert34@gmail.com <span class="ar">&rarr;</span></a>
