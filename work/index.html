@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Ten revenue-engine and applied-AI initiatives, each built end-to-end, from a £440K multi-agent sales system to an £11M demand engine and a programmatic SEO Career Hub. Filter by lens." />
+<meta property="og:title" content="Work · Adrien Enjalbert" />
+<meta property="og:description" content="Ten initiatives, each with a deep-dive: problem, build, architecture, chart and proof. Filter by AI, Growth, Demand gen or Analytics." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://adrienenjalbert.github.io/ae-portfolio-gitlab/work/index.html" />
+<meta property="og:site_name" content="Adrien Enjalbert" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="author" content="Adrien Enjalbert" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="canonical" href="https://adrienenjalbert.github.io/ae-portfolio-gitlab/work/index.html" />
+<title>Work · Adrien Enjalbert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/work.css">
+<style>
+/* work index: hero + lens filter + card grid (page-specific) */
+.whead .sub{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+
+.lensbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:26px 0 6px}
+.lensbar .lh{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-right:6px}
+.lensbar button{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;color:var(--slate);background:var(--card);border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+.lensbar button:hover{color:var(--ink);border-color:var(--accent)}
+.lensbar button.on{color:#fff;background:var(--ink-2);border-color:var(--ink-2)}
+.lenscount{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);letter-spacing:.04em}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0 40px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.wk{display:flex;flex-direction:column;gap:8px;padding:20px 22px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);position:relative;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+.wk::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .25s}
+.wk:hover{text-decoration:none;border-color:var(--accent);transform:translateY(-3px);box-shadow:0 20px 44px -32px rgba(30,73,230,.5)}
+.wk:hover::before{transform:scaleY(1)}
+.wk.hide{display:none}
+.wk-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.wk-n{font-family:"Fraunces",serif;font-size:22px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.wk-tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-align:right}
+.wk h3{font-size:20px;line-height:1.12;color:var(--ink)}
+.wk p{color:var(--slate);font-size:14px;line-height:1.5}
+.wk-metric{margin-top:auto;padding-top:8px;font-size:13.5px;color:var(--slate)}
+.wk-metric b{font-family:"Fraunces",serif;font-weight:600;font-size:17px;color:var(--ink)}
+.wk-go{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.wk:hover .wk-go{text-decoration:underline}
+</style>
+</head>
+<body>
+<nav class="xnav" aria-label="Site">
+  <div class="row">
+    <a class="brand" href="../index.html"><b>AE</b>&nbsp;&nbsp;Adrien Enjalbert</a>
+    <div class="tabs">
+      <a href="../index.html">Portfolio</a>
+      <a href="../for-ai.html">AI / MarTech</a>
+      <a href="../for-growth.html">Growth</a>
+      <a href="../for-demandgen.html">Demand gen</a>
+      <a href="../for-analytics.html">Analytics</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="index.html" class="on" aria-current="page">Work</a>
+      <a href="../msc-ai.html">MSc</a>
+      <a href="../builds.html">Builds</a>
+      <a href="../spotlight.html">Spotlight</a>
+      <a href="../cv.html" class="cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="whead reveal">
+    <div class="eyebrow">Work <span class="dim">&middot; Ten initiatives, built end-to-end</span></div>
+    <h1>Each of these I <span class="em">shipped</span>: problem, build, proof.</h1>
+    <p class="lede">Ten years of revenue engineering and two of production AI, one deep-dive per initiative. Every figure is real and recreated; the employer is kept anonymous. Filter by the lens that matches your role.</p>
+  </header>
+
+  <div class="lensbar reveal" role="group" aria-label="Filter initiatives by lens">
+    <span class="lh">View by lens</span>
+    <button type="button" data-lens="all" class="on" aria-pressed="true">All 10</button>
+    <button type="button" data-lens="ai" aria-pressed="false">AI / MarTech</button>
+    <button type="button" data-lens="growth" aria-pressed="false">Growth</button>
+    <button type="button" data-lens="dg" aria-pressed="false">Demand gen</button>
+    <button type="button" data-lens="an" aria-pressed="false">Analytics</button>
+    <span class="lenscount" aria-live="polite">Showing all 10</span>
+  </div>
+
+  <div class="grid" id="grid">
+    <a class="wk reveal" href="sales-intelligence.html" data-lens="ai growth">
+      <div class="wk-top"><span class="wk-n">01</span><span class="wk-tag">AI &middot; Automation &middot; RevOps</span></div>
+      <h3>Multi-agent sales intelligence</h3>
+      <p>An AI system that qualifies accounts, finds decision-makers and drafts outreach into CRM and Slack.</p>
+      <div class="wk-metric"><b>£440K+</b> pipeline in 3 months</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="content-engine.html" data-lens="ai growth">
+      <div class="wk-top"><span class="wk-n">02</span><span class="wk-tag">AI &middot; SEO &middot; Content</span></div>
+      <h3>5-agent SEO content engine</h3>
+      <p>A research-to-QA agent pipeline producing brand-consistent content at scale.</p>
+      <div class="wk-metric"><b>£600 &rarr; £1</b> per article (-99.8%)</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="chatbots.html" data-lens="ai growth">
+      <div class="wk-top"><span class="wk-n">03</span><span class="wk-tag">AI &middot; CRO &middot; Qualification</span></div>
+      <h3>16 AI conversion chatbots</h3>
+      <p>Intent-based conversational flows with AI qualification, routing and A/B testing.</p>
+      <div class="wk-metric"><b>4.7% vs 1.9%</b> lead conversion</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="lead-magnets.html" data-lens="ai dg growth">
+      <div class="wk-top"><span class="wk-n">04</span><span class="wk-tag">AI &middot; ABM &middot; Demand gen</span></div>
+      <h3>AI lead magnets for ABM</h3>
+      <p>Firmographic-driven calculators, ROI tools and benchmark reports, generated on the fly.</p>
+      <div class="wk-metric"><b>+457%</b> organic traffic</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="demand-engine.html" data-lens="dg an growth">
+      <div class="wk-top"><span class="wk-n">05</span><span class="wk-tag">Demand gen &middot; Paid &middot; Full-funnel</span></div>
+      <h3>£11M B2B demand engine</h3>
+      <p>Multi-channel optimisation, intent-based bidding and attribution across an £11M budget.</p>
+      <div class="wk-metric"><b>£1,072 &rarr; £207</b> CPL &middot; 17x ROAS</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="peak-season.html" data-lens="dg growth">
+      <div class="wk-top"><span class="wk-n">06</span><span class="wk-tag">Performance &middot; Paid &middot; Lifecycle</span></div>
+      <h3>Peak Season performance</h3>
+      <p>Remarketing-first, lifecycle-led acquisition with tight channel governance.</p>
+      <div class="wk-metric"><b>&minus;79%</b> cost per booked job</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="cro.html" data-lens="growth an">
+      <div class="wk-top"><span class="wk-n">07</span><span class="wk-tag">CRO &middot; UX &middot; Experimentation</span></div>
+      <h3>Website redesign &amp; CRO</h3>
+      <p>Simplified journeys, progressive forms, A/B-tested CTAs and speed work.</p>
+      <div class="wk-metric"><b>5.1% &rarr; 30.4%</b> B2C conversion</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="lifecycle.html" data-lens="growth an">
+      <div class="wk-top"><span class="wk-n">08</span><span class="wk-tag">Lifecycle &middot; Retention &middot; CRM</span></div>
+      <h3>Lifecycle remarketing</h3>
+      <p>Churn-risk segmentation and lifecycle-stage messaging across paid and email.</p>
+      <div class="wk-metric"><b>15x</b> long-term retention</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="career-hub-organic.html" data-lens="growth ai">
+      <div class="wk-top"><span class="wk-n">09</span><span class="wk-tag">SEO &middot; Organic &middot; Programmatic</span></div>
+      <h3>Programmatic SEO &amp; organic</h3>
+      <p>A Career Hub built with coding agents, scaling toward 8,800 pages across 50+ US cities.</p>
+      <div class="wk-metric"><b>+4,000%</b> organic impressions</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+    <a class="wk reveal" href="first-abm.html" data-lens="dg an">
+      <div class="wk-top"><span class="wk-n">10</span><span class="wk-tag">ABM &middot; B2B &middot; Enterprise</span></div>
+      <h3>First ABM programme</h3>
+      <p>The company's first account-based motion: ICP selection, multi-touch and sales alignment.</p>
+      <div class="wk-metric"><b>5,849</b> accounts engaged</div>
+      <span class="wk-go">View initiative &rarr;</span>
+    </a>
+  </div>
+</main>
+
+<script src="../assets/work.js"></script>
+<script>
+(function(){
+  var bar = document.querySelector(".lensbar");
+  if(!bar) return;
+  var buttons = bar.querySelectorAll("button[data-lens]");
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#grid .wk"));
+  var count = bar.querySelector(".lenscount");
+  var labels = {all:"all 10", ai:"AI / MarTech", growth:"Growth", dg:"Demand gen", an:"Analytics"};
+  function apply(lens){
+    var shown = 0;
+    cards.forEach(function(c){
+      var match = lens === "all" || (" " + c.getAttribute("data-lens") + " ").indexOf(" " + lens + " ") !== -1;
+      c.classList.toggle("hide", !match);
+      if(match) shown++;
+    });
+    buttons.forEach(function(b){
+      var on = b.getAttribute("data-lens") === lens;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    if(count) count.textContent = lens === "all" ? "Showing all 10" : "Showing " + shown + " · " + labels[lens];
+  }
+  buttons.forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.getAttribute("data-lens")); });
+  });
+})();
+</script>
+</body>
+</html>

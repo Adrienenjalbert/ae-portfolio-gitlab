@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A multi-agent AI sales intelligence system that generated £440K+ enterprise pipeline in three months by auto-qualifying accounts on 20+ signals, finding decision-makers, and drafting outreach into CRM and Slack." />
+<meta property="og:title" content="Multi-agent AI sales intelligence: £440K pipeline in 3 months" />
+<meta property="og:description" content="How I built a production AI system that qualifies accounts, finds decision-makers, and drafts outreach, adopted by RevOps and Sales." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://adrienenjalbert.github.io/ae-portfolio-gitlab/work/sales-intelligence.html" />
+<meta property="og:site_name" content="Adrien Enjalbert" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="author" content="Adrien Enjalbert" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="canonical" href="https://adrienenjalbert.github.io/ae-portfolio-gitlab/work/sales-intelligence.html" />
+<title>Multi-agent AI sales intelligence · Adrien Enjalbert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/portfolio-charts.css">
+<link rel="stylesheet" href="../assets/work.css">
+</head>
+<body>
+<nav class="xnav" aria-label="Site">
+  <div class="row">
+    <a class="brand" href="../index.html"><b>AE</b>&nbsp;&nbsp;Adrien Enjalbert</a>
+    <div class="tabs">
+      <a href="../index.html">Portfolio</a>
+      <a href="../for-ai.html">AI / MarTech</a>
+      <a href="../for-growth.html">Growth</a>
+      <a href="../for-demandgen.html">Demand gen</a>
+      <a href="../for-analytics.html">Analytics</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="index.html" class="on" aria-current="page">Work</a>
+      <a href="../msc-ai.html">MSc</a>
+      <a href="../builds.html">Builds</a>
+      <a href="../spotlight.html">Spotlight</a>
+      <a href="../cv.html" class="cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <a class="backlink" href="index.html">&larr; All work</a>
+
+  <header class="whead reveal">
+    <div class="eyebrow">Initiative 01 / 10 <span class="dim">&middot; AI &middot; Automation &middot; RevOps</span></div>
+    <h1>A multi-agent sales intelligence system that built <span class="em">£440K pipeline</span> in three months</h1>
+    <p class="lede">A production AI system that auto-qualifies enterprise accounts on 20+ signals, identifies decision-makers, drafts tailored outreach, and syncs to CRM and Slack. Built for Indeed Flex and adopted across RevOps and Sales.</p>
+    <div class="metae">
+      <span class="period">Oct 2025 to present</span>
+      <div class="chips">
+        <span>n8n</span><span>Claude API</span><span>Salesforce</span><span>Slack API</span><span>Apollo</span><span>ZoomInfo</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="section reveal">
+    <div class="kick">The problem</div>
+    <h2>Sales lived in manual research, not selling</h2>
+    <p class="lead">Closing small clients was easy but not economically valuable. The large enterprise accounts that were worth winning ran 6 to 12 month cycles and closed under 5% won. Reps spent 60%+ of their time on manual research and contact discovery rather than selling, so the qualification work never scaled with the pipeline.</p>
+  </section>
+
+  <section class="section reveal">
+    <div class="kick">What I built</div>
+    <h2>An agent pipeline that qualifies and prepares every account</h2>
+    <p>I built a multi-agent system (known internally as "The Dude") that scores accounts against 20+ intent and firmographic signals, finds the real decision-makers with verified contact detail, and generates tailored, human-ready outreach. It writes back to Salesforce and notifies owners in Slack, so the output lands where the team already works.</p>
+    <p>It was designed around three ideas: <b>precision targeting</b> (surface the decision-makers most likely to convert and filter the noise), <b>actionable company signals</b> (real-time firmographic and behavioural data that shapes each message), and <b>native tool integration</b> (it lives inside the CRM and Slack, not a separate app). Strong enough adoption that it became part of the £45K Q1 2026 AI investment case.</p>
+  </section>
+
+  <section class="section reveal">
+    <div class="kick">Architecture</div>
+    <h2>How it runs</h2>
+    <div class="flow">
+      <div class="node"><div class="s">01 · Ingest</div><div class="t">Signal capture</div><div class="d">20+ intent &amp; firmographic signals pulled from Apollo, ZoomInfo and CRM activity.</div></div>
+      <div class="node"><div class="s">02 · Score</div><div class="t">Account qualification</div><div class="d">Claude-driven scoring ranks fit and timing, filtering to accounts worth a rep's time.</div></div>
+      <div class="node"><div class="s">03 · Enrich</div><div class="t">Decision-maker ID</div><div class="d">Committee mapping with 80% phone-number accuracy on named decision-makers.</div></div>
+      <div class="node"><div class="s">04 · Draft</div><div class="t">Tailored outreach</div><div class="d">Context-aware messaging generated per account, ready for a human to send.</div></div>
+      <div class="node"><div class="s">05 · Sync</div><div class="t">CRM + Slack</div><div class="d">Writes to Salesforce and pings the owner in Slack, so output lands where the team works.</div></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="kick">Results</div>
+    <h2>What it produced</h2>
+    <div class="panel" data-platform="salesforce">
+      <div class="panel-head">
+        <span class="panel-plat">Salesforce &middot; CRM</span>
+        <span class="panel-meta"><span class="panel-metric">Pipeline &amp; adoption</span><br><span class="panel-range">First 3 months</span></span>
+      </div>
+      <div class="panel-body">
+        <div class="chart" data-chart="scorecard" aria-label="£440K+ enterprise pipeline, 14,500+ contacts generated, +56% team adoption, 80% phone-number accuracy, +12% SQL conversion"
+          data-tiles='[["Enterprise pipeline","£440K+"],["Contacts generated","14,500+"],["Team adoption","+56%"],["Phone accuracy","80%"],["SQL conversion","+12%"]]'></div>
+      </div>
+      <div class="panel-note">Recreated &middot; figures anonymised</div>
+    </div>
+    <p class="figsrc"><b>Adoption:</b> 200+ internal requests in the first week; picked up by RevOps and Sales as a standard workflow.</p>
+  </section>
+
+  <section class="section reveal">
+    <div class="kick">In their words</div>
+    <h2>How the team reacted</h2>
+    <div class="voices">
+      <q>More meetings in 40 minutes than in a week.<span class="src">Country Manager</span></q>
+      <q>A game changer in our prospecting efforts, the highest success rate I've seen with our internal systems.<span class="src">Client Executive</span></q>
+      <q>The feedback from my team on the AI SDR piece has been strong, literally saved days of work.<span class="src">Sales lead</span></q>
+      <q>The Dude has been a game changer in our prospecting, an essential part of my daily outreach.<span class="src">Sales rep</span></q>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="proves">
+      <div class="k">What it proves</div>
+      <div class="v">I don't commission AI. I ship it. This is a production system that moved a revenue number and got adopted, because it was built by someone who understands both the sales motion and the engineering.</div>
+    </div>
+  </section>
+
+  <nav class="prevnext" aria-label="More work">
+    <a class="prev empty" href="index.html" aria-hidden="true" tabindex="-1"><span class="dir">&larr; Previous</span><span class="ttl">&nbsp;</span></a>
+    <a class="allwork" href="index.html">All work</a>
+    <a class="next" href="content-engine.html"><span class="dir">Next &rarr;</span><span class="ttl">5-agent SEO content engine</span></a>
+  </nav>
+</main>
+
+<script src="../assets/portfolio-charts.js"></script>
+<script src="../assets/work.js"></script>
+</body>
+</html>

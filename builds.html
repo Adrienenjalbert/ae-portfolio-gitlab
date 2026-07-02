@@ -3,19 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Adrien Enjalbert — what I build. Open-source and R&D systems: a Sales AI OS, a multi-tenant SEO content engine, a production Career Hub, and a local-intent monetisation engine." />
-<meta property="og:title" content="Adrien Enjalbert — What I build" />
+<meta name="description" content="Adrien Enjalbert: what I build. Open-source and R&D systems: a Sales AI OS, a multi-tenant SEO content engine, a production Career Hub, and a local-intent monetisation engine." />
+<meta property="og:title" content="Adrien Enjalbert · What I build" />
 <meta property="og:description" content="The systems behind the case studies: a Sales AI OS, an SEO content engine, a production Career Hub, and more." />
-<title>Adrien Enjalbert — What I build</title>
+<title>Adrien Enjalbert · What I build</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
 <style>
 :root{
-  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
-  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
-  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--gold:#b17a1b;
-  --nav-w:268px;--r:4px;
+  /* palette + --r come from assets/theme.css; only page-specific layout vars here */
+  --nav-w:268px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -125,15 +124,16 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 
 @media(max-width:880px){
   .xnav{display:none}
-  .app{grid-template-columns:1fr}
-  .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
+  .app{grid-template-columns:1fr;z-index:auto}
+  body.nav-open{overflow:hidden}
+  .side{position:fixed;top:0;left:0;width:min(86vw,300px);height:100vh;height:100dvh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
   .side.open{transform:none}
   .scrim{position:fixed;inset:0;background:rgba(20,18,12,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .3s}
   .scrim.show{opacity:1;visibility:visible}
   .mobtop{display:flex;position:sticky;top:0;z-index:40;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(244,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   .mobtop .brand b{color:var(--accent)}
-  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:9px 16px;min-width:64px;text-align:center;cursor:pointer}
   .bound{padding:0 24px}.section{padding:48px 0 36px;scroll-margin-top:64px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
@@ -151,6 +151,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="for-demandgen.html">Demand gen</a>
       <a href="for-analytics.html">Analytics</a>
       <span class="sep" aria-hidden="true"></span>
+      <a href="work/index.html">Work</a>
       <a href="msc-ai.html">MSc</a>
       <a href="builds.html" class="on" aria-current="page">Builds</a>
       <a href="spotlight.html">Spotlight</a>
@@ -196,12 +197,12 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="eyebrow reveal">What I build &middot; open-source &amp; R&amp;D</div>
         <h1 class="hero-h reveal">The systems, <span class="em">in code.</span></h1>
-        <p class="hero-lede reveal">The case studies show the impact. This page shows the build. A selection of the systems and architecture work behind the marketing &mdash; some shipped to production inside a revenue org, some built as R&amp;D to pressure-test an idea. Same approach throughout: understand the model, aim it at a real business job, and design for adoption.</p>
+        <p class="hero-lede reveal">The case studies show the impact. This page shows the build. A selection of the systems and architecture work behind the revenue engine: some shipped to production inside a revenue org, some built as R&amp;D to pressure-test an idea. Same approach throughout: understand the model, aim it at a real business job, and design for adoption.</p>
         <span class="crumb reveal">Code &amp; docs on <a href="https://github.com/Adrienenjalbert">GitHub</a>. The headline impact lives in the <a href="index.html">portfolio</a>.</span>
 
         <div class="philo reveal">
           <div class="p"><div class="n">01 &middot; Architecture</div><b>Multi-tenant, not one-off</b><span>I build engines, not scripts: config-driven, schema-pinned systems that serve many use-cases from one codebase.</span></div>
-          <div class="p"><div class="n">02 &middot; Quality</div><b>Evals &amp; humans in the loop</b><span>Brand voice and reusable skills in the AI layer, gates between stages, and tests that ship with the build &mdash; not vibes.</span></div>
+          <div class="p"><div class="n">02 &middot; Quality</div><b>Evals &amp; humans in the loop</b><span>Brand voice and reusable skills in the AI layer, gates between stages, and tests that ship with the build, not vibes.</span></div>
           <div class="p"><div class="n">03 &middot; Outcome</div><b>Tied to a number</b><span>Every build maps to a business job: pipeline, organic reach, cost or revenue. ROI is the spec, not an afterthought.</span></div>
         </div>
       </div>
@@ -236,7 +237,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         <div class="eyebrow reveal"><span class="ix">02</span> Content &amp; SEO at scale</div>
         <article class="build reveal">
           <div class="bhead">
-            <div class="meta"><div class="tag">Content OS &middot; your-os</div><h3>A multi-tenant SEO content engine &mdash; one engine, many tenants</h3></div>
+            <div class="meta"><div class="tag">Content OS &middot; your-os</div><h3>A multi-tenant SEO content engine: one engine, many tenants</h3></div>
             <div class="status"><span class="badge rnd">R&amp;D / engine</span></div>
           </div>
           <div class="body">
@@ -309,9 +310,9 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <div class="status"><span class="badge rnd">Strategy &amp; product</span></div>
           </div>
           <div class="body">
-            <p class="lead">A full product and business plan for a marketplace where anyone can publish an AI agent and get paid each time it is rented or run &mdash; the &ldquo;app store for AI agents&rdquo;.</p>
+            <p class="lead">A full product and business plan for a marketplace where anyone can publish an AI agent and get paid each time it is rented or run, the &ldquo;app store for AI agents&rdquo;.</p>
             <div class="h">What it shows</div>
-            <p>Not code &mdash; the thinking. Market and competitor research, a PRD and feature specs, a business and financial model, pricing, a technical architecture, and a go-to-market and trust-and-safety plan. The commercial-judgment muscle, on a greenfield problem.</p>
+            <p>The thinking, not the code: market and competitor research, a PRD and feature specs, a business and financial model, pricing, a technical architecture, and a go-to-market and trust-and-safety plan. The commercial-judgment muscle, on a greenfield problem.</p>
           </div>
           <div class="stack"><span>Market research</span><span>PRD</span><span>Business model</span><span>Financial model</span><span>GTM</span><span>Architecture</span></div>
           <div class="links">
@@ -319,7 +320,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
           </div>
         </article>
 
-        <div class="note reveal"><b>An honest note.</b> These are a curated set. The production work sits inside a revenue org and is shown anonymised in the <a href="index.html">portfolio</a>; the open repos here are the systems and R&amp;D I can share publicly. Some are live, some are engines or plans built to test an idea &mdash; each is labelled for what it is.</div>
+        <div class="note reveal"><b>An honest note.</b> These are a curated set. The production work sits inside a revenue org and is shown anonymised in the <a href="index.html">portfolio</a>; the open repos here are the systems and R&amp;D I can share publicly. Some are live, some are engines or plans built to test an idea, each labelled for what it is.</div>
       </div>
     </section>
 
@@ -353,7 +354,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     revs.forEach(function(n){io.observe(n);});
     function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.92)activate(n);});}
     window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
-    setTimeout(function(){revs.forEach(activate);},2600);
+    window.addEventListener("scroll",sweep,{passive:true});window.addEventListener("resize",sweep,{passive:true});
   }else{revs.forEach(activate);}
 
   var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
@@ -369,9 +370,9 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   setActive("intro");
 
   var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
-  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
-  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
-  if(burger)burger.addEventListener("click",open);
+  function open(){side.classList.add("open");scrim.classList.add("show");document.body.classList.add("nav-open");if(burger){burger.setAttribute("aria-expanded","true");burger.textContent="Close";}}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");document.body.classList.remove("nav-open");if(burger){burger.setAttribute("aria-expanded","false");burger.textContent="Menu";}}
+  if(burger)burger.addEventListener("click",function(){side.classList.contains("open")?close():open();});
   if(scrim)scrim.addEventListener("click",close);
   links.forEach(function(a){a.addEventListener("click",close);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});

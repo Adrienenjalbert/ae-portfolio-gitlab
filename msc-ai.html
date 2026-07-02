@@ -4,19 +4,19 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<meta name="description" content="Adrien Enjalbert — MSc Artificial Intelligence & Data Science (Level 7). Five graded modules and a production capstone, mapped to the BCS AI Data Specialist standard." />
-<meta property="og:title" content="Adrien Enjalbert — MSc in AI & Data Science" />
+<meta name="description" content="Adrien Enjalbert: MSc Artificial Intelligence & Data Science (Level 7). Five graded modules and a production capstone, mapped to the BCS AI Data Specialist standard, the quantitative edge behind an AI-native growth & revenue leader." />
+<meta property="og:title" content="Adrien Enjalbert · MSc in AI & Data Science" />
 <meta property="og:description" content="The Master's in full: data science principles, machine learning on the cloud, programming for AI, multi-agent innovation, and a work-based capstone that shipped to production." />
-<title>Adrien Enjalbert — MSc in AI &amp; Data Science</title>
+<title>Adrien Enjalbert · MSc in AI &amp; Data Science</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/portfolio-charts.css">
 <style>
 :root{
-  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
-  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
-  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--green-lt:#86c9a8;--gold:#b17a1b;
-  --nav-w:268px;--r:4px;
+  /* palette + --r come from assets/theme.css; only page-specific layout vars here */
+  --nav-w:268px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -177,15 +177,16 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 
 @media(max-width:880px){
   .xnav{display:none}
-  .app{grid-template-columns:1fr}
-  .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
+  .app{grid-template-columns:1fr;z-index:auto}
+  body.nav-open{overflow:hidden}
+  .side{position:fixed;top:0;left:0;width:min(86vw,300px);height:100vh;height:100dvh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
   .side.open{transform:none}
   .scrim{position:fixed;inset:0;background:rgba(20,18,12,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .3s}
   .scrim.show{opacity:1;visibility:visible}
   .mobtop{display:flex;position:sticky;top:0;z-index:40;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(244,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   .mobtop .brand b{color:var(--accent)}
-  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:9px 16px;min-width:64px;text-align:center;cursor:pointer}
   .bound{padding:0 24px}.section{padding:52px 0 36px;scroll-margin-top:64px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
@@ -203,6 +204,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="for-demandgen.html">Demand gen</a>
       <a href="for-analytics.html">Analytics</a>
       <span class="sep" aria-hidden="true"></span>
+      <a href="work/index.html">Work</a>
       <a href="msc-ai.html" class="on" aria-current="page">MSc</a>
       <a href="builds.html">Builds</a>
       <a href="spotlight.html">Spotlight</a>
@@ -221,7 +223,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <div class="id">
       <div class="kick">MSc in AI &amp; Data Science</div>
       <div class="brandname">Adrien<br>Enjalbert</div>
-      <div class="role"><b>Level 7 &middot; 2024&ndash;2026</b><br>The Master's in full: five graded modules and a production capstone.</div>
+      <div class="role"><b>Level 7 &middot; 2024 to 2026</b><br>The Master's in full: five graded modules and a production capstone.</div>
       <div class="rule"></div>
     </div>
     <nav class="menu" id="menu" aria-label="Sections">
@@ -248,8 +250,8 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="eyebrow reveal">MSc Artificial Intelligence &amp; Data Science &middot; Level 7</div>
         <h1 class="hero-h reveal">The Master's, <span class="em">in full.</span></h1>
-        <p class="hero-lede reveal">A Level 7 MSc in AI &amp; Data Science (QA University, 2024&ndash;2026), built against the BCS Artificial Intelligence (AI) Data Specialist standard (ST0763). Five graded modules and a work-based capstone &mdash; not theory for its own sake, but methods I took straight into production. The capstone is the same sales-intelligence system featured in the portfolio. Here is each piece, what it asked, and what it proved.</p>
-        <span class="crumb reveal">This is the academic companion to the <a href="index.html">main portfolio</a> &mdash; the systems are shown there; the rigour underneath them is here.</span>
+        <p class="hero-lede reveal">A Level 7 MSc in AI &amp; Data Science (QA University, 2024 to 2026), built against the BCS Artificial Intelligence (AI) Data Specialist standard (ST0763). Five graded modules and a work-based capstone: methods I took straight into production, not theory for its own sake. The capstone is the same sales-intelligence system featured in the portfolio: the applied AI edge on 10+ years of building the revenue engine. Here is each piece, what it asked, and what it proved.</p>
+        <span class="crumb reveal">This is the academic companion to the <a href="index.html">main portfolio</a>: the systems are shown there; the rigour underneath them is here.</span>
 
         <div class="band reveal">
           <div class="c"><div class="n">Level 7</div><div class="l">MSc, AI &amp; Data Science</div></div>
@@ -269,7 +271,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         <div class="months reveal" style="margin-top:18px">
           <div class="month" style="padding-top:6px">
             <div class="mh"><span class="mo">Thread 1</span><h3>Foundations under the build</h3></div>
-            <p class="lede">Data infrastructure, statistical testing, cloud machine learning and the maths behind the models &mdash; the rigour that lets me reason about why an approach works, not just that it does.</p>
+            <p class="lede">Data infrastructure, statistical testing, cloud machine learning and the maths behind the models: the rigour to understand why an approach works.</p>
           </div>
           <div class="month" style="padding-top:6px">
             <div class="mh"><span class="mo">Thread 2</span><h3>Architecture chosen, then earned</h3></div>
@@ -277,7 +279,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
           </div>
           <div class="month" style="padding-top:6px">
             <div class="mh"><span class="mo">Thread 3</span><h3>Judged against an occupational standard</h3></div>
-            <p class="lede">The qualification maps to the BCS AI Data Specialist standard &mdash; assessed by project report, professional discussion and a technical test against 65 knowledge, skills and behaviour criteria.</p>
+            <p class="lede">The qualification maps to the BCS AI Data Specialist standard, assessed by project report, professional discussion and a technical test against 65 knowledge, skills and behaviour criteria.</p>
           </div>
         </div>
       </div>
@@ -298,7 +300,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
                 <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Shifts vs clock-out events",100,"r = 0.95"],["Bookings vs booked-job events",96,"r = 0.91"],["Sign-ups vs total users",69,"r = 0.65"]]'></div>
                 <div class="copy">
                   <div class="h">Pearson correlation</div>
-                  <p>An ETL pipeline aligned and anonymised the two sources, then Pearson&rsquo;s coefficient in Python (SciPy) tested correlation. Revenue-critical events correlated very strongly (r = 0.95, p &lt; 0.001); sign-ups only moderately (r = 0.65) &mdash; so GA4 is a reliable proxy for some metrics but not all.</p>
+                  <p>An ETL pipeline aligned and anonymised the two sources, then Pearson&rsquo;s coefficient in Python (SciPy) tested correlation. Revenue-critical events correlated very strongly (r = 0.95, p &lt; 0.001); sign-ups only moderately (r = 0.65), so GA4 is a reliable proxy for some metrics but not all.</p>
                 </div>
               </div>
               <div class="meta">
@@ -333,12 +335,12 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
                 <div class="s"><div class="n">96.6%</div><div class="l">AUC, Logistic Regression</div></div>
                 <div class="s"><div class="n">92.2%</div><div class="l">Accuracy, Random Forest</div></div>
                 <div class="s"><div class="n">9,240</div><div class="l">Records / 37 features</div></div>
-                <div class="s"><div class="n">15&ndash;26%</div><div class="l">GPU speed-up (MNIST)</div></div>
+                <div class="s"><div class="n">15 to 26%</div><div class="l">GPU speed-up (MNIST)</div></div>
               </div>
               <ul class="bullets">
                 <li><b>Full ML pipeline:</b> cleaning, context-aware imputation, one-hot encoding, scaling, an 80/20 temporal split, dropout + early stopping to control overfitting, and hyperparameter tuning.</li>
-                <li><b>Benchmarked four models</b> (Logistic Regression, Random Forest, SVM, KNN) against the neural net &mdash; simpler architectures generalised better on limited data.</li>
-                <li><b>Infrastructure experiment:</b> GPU only outpaced CPU on larger workloads (15&ndash;26% on MNIST), confirming the overhead trade-off on small datasets.</li>
+                <li><b>Benchmarked four models</b> (Logistic Regression, Random Forest, SVM, KNN) against the neural net: simpler architectures generalised better on limited data.</li>
+                <li><b>Infrastructure experiment:</b> GPU only outpaced CPU on larger workloads (15 to 26% on MNIST), confirming the overhead trade-off on small datasets.</li>
               </ul>
               <div class="meta">
                 <div class="ln"><span class="k">Tools</span><span class="v">Python, TensorFlow/Keras, scikit-learn, Pandas/NumPy, Google Colab; AWS SageMaker / S3 / API Gateway (deployment design).</span></div>
@@ -375,7 +377,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
               </div>
               <ul class="bullets">
                 <li><b>Implemented in Python</b> with a strict ML pipeline; chose K via the elbow method and silhouette analysis, and read feature importance for sales prioritisation.</li>
-                <li><b>Mathematical foundations</b> set out for each &mdash; bagging and Gini impurity for Random Forest, centroid assignment and within-cluster sum of squares for K-means.</li>
+                <li><b>Mathematical foundations</b> set out for each: bagging and Gini impurity for Random Forest, centroid assignment and within-cluster sum of squares for K-means.</li>
                 <li><b>Software-engineering layer:</b> a four-layer architecture (data, integration, intelligence, application) on an Agile-DevOps + MLOps methodology, with legal, social and ethical considerations for the regulated recruitment context.</li>
               </ul>
               <div class="meta">
@@ -399,24 +401,24 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="eyebrow green reveal"><span class="ix">04</span> Module</div>
         <h2 class="sec-h reveal">AI &amp; Digital Innovation</h2>
-        <p class="sec-sub reveal">An argued recommendation for a multi-agent architecture &mdash; and the three production agents that proved it.</p>
+        <p class="sec-sub reveal">An argued recommendation for a multi-agent architecture, and the three production agents that proved it.</p>
         <div class="months">
           <div class="month green reveal">
             <div class="mh"><span class="mo">Multi-agent &middot; context engineering</span><h3>Why hierarchical agents fail, and what to build instead</h3></div>
-            <p class="lede">The brief: critically evaluate an emerging AI innovation and recommend one for the business. I argued that hierarchical &ldquo;orchestrator-worker&rdquo; multi-agent systems fail through context degradation, and recommended a decentralised, circular design using the CRM as shared memory &mdash; then evidenced it with three deployed agents.</p>
+            <p class="lede">The brief: critically evaluate an emerging AI innovation and recommend one for the business. I argued that hierarchical &ldquo;orchestrator-worker&rdquo; multi-agent systems fail through context degradation, and recommended a decentralised, circular design using the CRM as shared memory, then evidenced it with three deployed agents.</p>
             <div class="mcard">
               <div class="grid2">
                 <div class="chart" data-chart="beforeafter" data-color="green" data-improve="up"
                      data-metric="Rebuilt enrichment agent vs prior build (weighted benchmark)" data-before="26.2" data-after="93.6" data-btxt="26.2" data-atxt="93.6" data-delta="3.6&times;"></div>
                 <div class="copy">
                   <div class="h">Architecture, earned</div>
-                  <p>The single-agent-with-tools approach drove adoption where hierarchical orchestration had stalled. A later rebuilt enrichment agent scored 93.6/100 against 26.2 for the previous build &mdash; the decentralised thesis, validated in production.</p>
+                  <p>The single-agent-with-tools approach drove adoption where hierarchical orchestration had stalled. A later rebuilt enrichment agent scored 93.6/100 against 26.2 for the previous build, the decentralised thesis validated in production.</p>
                 </div>
               </div>
               <ul class="bullets">
-                <li><b>Enablement over automation:</b> a deliberate framing &mdash; AI to amplify the team, not replace it &mdash; informed by the costs of like-for-like automation.</li>
+                <li><b>Enablement over automation:</b> a deliberate framing (AI to amplify the team, not replace it) informed by the costs of like-for-like automation.</li>
                 <li><b>Context engineering</b> over prompt engineering: managing what information reaches which agent, when, with the CRM as the persistent state layer.</li>
-                <li><b>Three agents shipped</b> into Slack and the CRM &mdash; a lead finder/scorer, a signal-report agent and a job-market insights agent.</li>
+                <li><b>Three agents shipped</b> into Slack and the CRM: a lead finder/scorer, a signal-report agent and a job-market insights agent.</li>
               </ul>
               <div class="meta">
                 <div class="ln"><span class="k">Tools</span><span class="v">Relevance AI, n8n / Make.com, Apollo, Slack, CRM (HubSpot/Salesforce) as MCP memory.</span></div>
@@ -439,14 +441,14 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="eyebrow reveal"><span class="ix">05</span> Work-Based Project &middot; Capstone</div>
         <h2 class="sec-h reveal">Multi-agent AI for account-based sales enablement</h2>
-        <p class="sec-sub reveal">The end-point-assessment capstone: a real, pre-gateway work-based project, written up as a 5,000-word report with a presentation and technical questioning &mdash; and the same system featured across the portfolio.</p>
+        <p class="sec-sub reveal">The end-point-assessment capstone: a real, pre-gateway work-based project, written up as a 5,000-word report with a presentation and technical questioning, and the same system featured across the portfolio.</p>
         <div class="months">
           <div class="month reveal">
             <div class="mh"><span class="mo">Capstone &middot; n8n, Claude API, Salesforce, Slack</span><h3>From marketing intelligence to adopted sales enablement</h3></div>
-            <p class="lede">Reps spent the majority of their time on manual research against long enterprise cycles. The system qualifies accounts on 20+ signals, finds decision-makers, scores them with an interpretable rubric, and writes back to CRM and Slack &mdash; with human approval gates for attribution and GDPR compliance.</p>
+            <p class="lede">Reps spent the majority of their time on manual research against long enterprise cycles. The system qualifies accounts on 20+ signals, finds decision-makers, scores them with an interpretable rubric, and writes back to CRM and Slack, with human approval gates for attribution and GDPR compliance.</p>
             <div class="mcard">
               <div class="grid2">
-                <div class="chart" data-chart="hbar" data-color="blue" data-items='[["Enterprise pipeline (3 mo)",100,"&pound;440K+"],["Contacts generated",66,"14,500+"],["Team adoption",40,"+56%"],["SQL conversion",18,"+12%"]]'></div>
+                <div class="chart" data-chart="scorecard" data-color="blue" aria-label="£440K+ enterprise pipeline in three months, 14,500+ contacts generated, +56% team adoption, +12% SQL conversion" data-tiles='[["Enterprise pipeline (3 mo)","&pound;440K+"],["Contacts generated","14,500+"],["Team adoption","+56%"],["SQL conversion","+12%"]]'></div>
                 <div class="copy">
                   <div class="h">What it proved</div>
                   <p>A &ldquo;score-then-enrich&rdquo; waterfall cut enrichment cost ~7&times;; a CRM-as-memory architecture avoided context degradation; and moving the interface into Slack drove a step-change in adoption. The most valuable system is the one people actually use.</p>
@@ -477,8 +479,8 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <section class="section" id="standard">
       <div class="bound">
         <div class="eyebrow reveal">&#9633;&nbsp; The standard, mapped</div>
-        <h2 class="sec-h reveal">Assessed against an occupational standard, not just a syllabus</h2>
-        <p class="sec-sub reveal">The qualification follows the BCS Artificial Intelligence (AI) Data Specialist standard (ST0763) &mdash; a Level 7 occupational standard with three independent assessment methods spanning 65 knowledge, skills and behaviour criteria.</p>
+        <h2 class="sec-h reveal">Assessed against an occupational standard, not a syllabus</h2>
+        <p class="sec-sub reveal">The qualification follows the BCS Artificial Intelligence (AI) Data Specialist standard (ST0763), a Level 7 occupational standard with three independent assessment methods spanning 65 knowledge, skills and behaviour criteria.</p>
         <div class="tablewrap reveal">
           <table class="t">
             <caption>End-point assessment &middot; three equally weighted methods</caption>
@@ -499,8 +501,8 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <div class="bound">
         <div class="contactcard reveal">
           <div class="eyebrow"><span class="ix">06</span> Let&rsquo;s talk</div>
-          <h2>The models, <span class="em">not only the prompts.</span></h2>
-          <p style="color:#bcc4d6;max-width:560px">Happy to go deeper on any module or the capstone &mdash; the methods, the trade-offs, and how each one made it into production.</p>
+          <h2>The models, <span class="em">down to the maths.</span></h2>
+          <p style="color:#bcc4d6;max-width:560px">Happy to go deeper on any module or the capstone: the methods, the trade-offs, and how each one made it into production.</p>
           <div class="links">
             <a href="index.html">&larr; Portfolio</a>
             <a href="for-ai.html">AI / MarTech</a>
@@ -509,67 +511,20 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a>
           </div>
         </div>
-        <footer>Adrien Enjalbert &middot; MSc Artificial Intelligence &amp; Data Science (Level 7), 2024&ndash;2026 &middot; module highlights distilled from graded submissions; figures kept consistent with the portfolio, colleague and internal detail kept private.</footer>
+        <footer>Adrien Enjalbert &middot; MSc Artificial Intelligence &amp; Data Science (Level 7), 2024 to 2026 &middot; module highlights distilled from graded submissions; figures kept consistent with the portfolio; colleague and internal detail kept private.</footer>
       </div>
     </section>
   </main>
 </div>
+<script src="assets/portfolio-charts.js"></script>
 <script>
 (function(){
   "use strict";
   var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var NS="http://www.w3.org/2000/svg";
-  function el(n,a,p){var e=document.createElementNS(NS,n);if(a)for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
-  function dec(s){var t=document.createElement("textarea");t.innerHTML=s;return t.value;}
+  /* chart drawing is handled by assets/portfolio-charts.js */
 
-  function drawHBar(box){
-    var items=JSON.parse(box.getAttribute("data-items")),green=box.getAttribute("data-color")==="green";
-    var W=540,rowH=64,padT=14,barX=210,barMax=W-barX-92,H=padT*2+items.length*rowH;
-    var summary=items.map(function(it){return dec(it[0])+" "+dec(it[2]);}).join(", ");
-    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Results: "+summary},box);
-    var bars=[];
-    items.forEach(function(it,i){
-      var label=dec(it[0]),pct=it[1]/100,val=dec(it[2]),y=padT+i*rowH+rowH/2;
-      el("text",{x:barX-14,y:y+5,"text-anchor":"end",class:"hbarlabel"},svg).textContent=label;
-      el("rect",{x:barX,y:y-13,width:barMax,height:26,rx:4,class:"hbartrack",opacity:"0.5"},svg);
-      var bar=el("rect",{x:barX,y:y-13,width:0,height:26,rx:4,class:"hbar"+(green?" green":"")},svg);
-      var v=el("text",{x:barX+8,y:y+5,class:"hbarval",opacity:"0"},svg);v.textContent=val;
-      bars.push({bar:bar,target:barMax*pct,v:v});
-    });
-    box._animate=function(){
-      if(REDUCE){bars.forEach(function(b){b.bar.setAttribute("width",b.target);b.v.setAttribute("x",barX+b.target+10);b.v.setAttribute("opacity","1");});return;}
-      var dur=1050,t0=null;
-      function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
-        bars.forEach(function(b){var w=b.target*e;b.bar.setAttribute("width",w);b.v.setAttribute("x",barX+w+10);b.v.setAttribute("opacity",String(Math.min(p*1.4,1)));});
-        if(p<1)requestAnimationFrame(step);}
-      requestAnimationFrame(step);
-    };
-  }
-
-  function drawBeforeAfter(box){
-    var W=520,H=380,padB=58,padT=64,padX=70;
-    var before=parseFloat(box.getAttribute("data-before")),after=parseFloat(box.getAttribute("data-after"));
-    var btxt=dec(box.getAttribute("data-btxt")),atxt=dec(box.getAttribute("data-atxt")),delta=dec(box.getAttribute("data-delta")),metric=dec(box.getAttribute("data-metric"));
-    var green=box.getAttribute("data-color")==="green",maxv=Math.max(before,after),plotH=H-padB-padT,bw=96,gap=150,x1=padX+40,x2=x1+gap;
-    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":metric+": before "+btxt+", after "+atxt+", change "+delta},box);
-    el("line",{x1:padX-10,y1:H-padB,x2:W-30,y2:H-padB,class:"c-axis"},svg);
-    el("text",{x:padX-10,y:padT-30,class:"axislabel"},svg).textContent=metric;
-    function bar(x,val,txt,isAfter){var h=plotH*(val/maxv),y=H-padB-h;
-      var r=el("rect",{x:x,y:H-padB,width:bw,height:0,rx:3,class:"bar"+(isAfter?(" bar-after"+(green?" green":"")):" bar-before")},svg);
-      var lbl=el("text",{x:x+bw/2,y:y-12,"text-anchor":"middle",class:"barlabel","font-size":"21",opacity:"0"},svg);lbl.textContent=txt;if(isAfter)lbl.setAttribute("fill",green?"#0f7a4f":"#1e49e6");
-      var cap=el("text",{x:x+bw/2,y:H-padB+26,"text-anchor":"middle",class:"axislabel"},svg);cap.textContent=isAfter?"After":"Before";return{rect:r,y:y,h:h,lbl:lbl};}
-    var b1=bar(x1,before,btxt,false),b2=bar(x2,after,atxt,true);
-    var bg=el("g",{class:"delta-badge"+(green?" green":""),opacity:"0"},svg);
-    var t=el("text",{"text-anchor":"middle","font-size":"19","dominant-baseline":"middle"},null);t.textContent=delta;
-    var bx=(x1+x2)/2+bw/2,by=padT+6,rw=delta.length*12+26;el("rect",{x:bx-rw/2,y:by-17,width:rw,height:34,rx:17},bg);t.setAttribute("x",bx);t.setAttribute("y",by);bg.appendChild(t);svg.appendChild(bg);
-    box._animate=function(){if(REDUCE){[b1,b2].forEach(function(b){b.rect.setAttribute("y",b.y);b.rect.setAttribute("height",b.h);b.lbl.setAttribute("opacity","1");});bg.setAttribute("opacity","1");return;}
-      var dur=1000,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);
-        [b1,b2].forEach(function(b){var hh=b.h*e;b.rect.setAttribute("height",hh);b.rect.setAttribute("y",H-padB-hh);});
-        if(p>0.55){b1.lbl.setAttribute("opacity",String((p-0.55)/0.45));b2.lbl.setAttribute("opacity",String((p-0.55)/0.45));}
-        if(p>0.7)bg.setAttribute("opacity",String((p-0.7)/0.3));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);};
-  }
-
-  document.querySelectorAll(".chart").forEach(function(box){var t=box.getAttribute("data-chart");if(t==="hbar")drawHBar(box);else if(t==="beforeafter")drawBeforeAfter(box);});
+  /* Charts rendered by the shared engine in assets/portfolio-charts.js.
+     activate() below only triggers the reveal animation (idempotent _animate). */
 
   function activate(t){if(t._a)return;t._a=true;t.classList.add("in");t.querySelectorAll(".chart").forEach(function(c){if(c._animate)c._animate();});}
   var revs=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
@@ -578,7 +533,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     revs.forEach(function(n){io.observe(n);});
     function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.92)activate(n);});}
     window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
-    setTimeout(function(){revs.forEach(activate);},2600);
+    window.addEventListener("scroll",sweep,{passive:true});window.addEventListener("resize",sweep,{passive:true});
   }else{revs.forEach(activate);}
 
   var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
@@ -597,9 +552,9 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   setActive("intro");
 
   var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
-  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
-  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
-  if(burger)burger.addEventListener("click",open);
+  function open(){side.classList.add("open");scrim.classList.add("show");document.body.classList.add("nav-open");if(burger){burger.setAttribute("aria-expanded","true");burger.textContent="Close";}}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");document.body.classList.remove("nav-open");if(burger){burger.setAttribute("aria-expanded","false");burger.textContent="Menu";}}
+  if(burger)burger.addEventListener("click",function(){side.classList.contains("open")?close():open();});
   if(scrim)scrim.addEventListener("click",close);
   links.forEach(function(a){a.addEventListener("click",close);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});

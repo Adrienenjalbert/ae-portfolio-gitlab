@@ -1,0 +1,22 @@
+# robots.txt — Adrien Enjalbert portfolio
+# Note: on a GitHub *project* page this file is served under the project path and
+# is not authoritative for crawlers (they read the domain-root robots.txt). Per-page
+# <meta name="robots"> tags are the real control. Kept here for a future custom domain.
+
+User-agent: *
+Allow: /
+
+# Private CV variants — kept out of search (they name the employer)
+Disallow: /cv.html
+Disallow: /cv-ai.html
+Disallow: /cv-growth.html
+Disallow: /cv-demandgen.html
+Disallow: /cv-analytics.html
+Disallow: /cv-ats.html
+Disallow: /cv-ai-ats.html
+Disallow: /cv-growth-ats.html
+Disallow: /cv-demandgen-ats.html
+Disallow: /cv-analytics-ats.html
+Disallow: /previews/
+
+Sitemap: https://adrienenjalbert.github.io/ae-portfolio-gitlab/sitemap.xml

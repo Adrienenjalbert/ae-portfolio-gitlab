@@ -1,0 +1,35 @@
+/* Portfolio theme — single source of truth for design tokens.
+   Palette + shared scalars live here so a change lands once across every page.
+   Page-specific layout vars (--nav-w, --maxw) stay in each page's own :root,
+   which cascades after this file. Base/structural styles remain per-page for now
+   (they are page-tuned and about to be revisited during the identity exploration). */
+:root{
+  /* surfaces */
+  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;
+  /* ink */
+  --ink:#16140f;--ink-2:#1d2433;--slate:#5a5648;--mute:#8c8775;
+  /* lines */
+  --line:#d8d2c2;--line-2:#c7c0ad;
+  /* accents */
+  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;
+  --green:#0f7a4f;--green-lt:#86c9a8;--gold:#b17a1b;
+  /* radius */
+  --r:4px;
+  /* type roles — pages override these to reskin (defaults = "Press" editorial) */
+  --font-display:"Fraunces",Georgia,serif;
+  --font-body:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+
+/* Visible keyboard focus — accessibility quality floor.
+   Mouse clicks stay clean (:focus-visible only), keyboard users get a clear ring. */
+:where(a,button,[role="button"],input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+  border-radius:2px;
+}
+@media (prefers-reduced-motion: no-preference){
+  :where(a,button,[role="button"],[tabindex]):focus-visible{
+    transition:outline-offset .12s ease;
+  }
+}

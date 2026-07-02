@@ -3,19 +3,39 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Adrien Enjalbert — Monthly Spotlight. A month-by-month record of digital, MarTech and applied-AI work shipped, Nov 2025 to Jun 2026." />
-<meta property="og:title" content="Adrien Enjalbert — Monthly Spotlight" />
+<meta name="description" content="Adrien Enjalbert · Monthly Spotlight. A month-by-month record of revenue-engine, MarTech and applied-AI work shipped, Nov 2025 to Jun 2026." />
+<meta property="og:title" content="Adrien Enjalbert · Monthly Spotlight" />
 <meta property="og:description" content="What I shipped, month by month: AI agents in production, the Career Hub at scale, peak-season performance." />
-<title>Adrien Enjalbert — Monthly Spotlight</title>
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html" />
+<meta property="og:site_name" content="Adrien Enjalbert" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Adrien Enjalbert · Monthly Spotlight" />
+<meta name="twitter:description" content="What I shipped, month by month: AI agents in production, the Career Hub at scale, peak-season performance." />
+<meta name="author" content="Adrien Enjalbert" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="canonical" href="https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html" />
+<title>Adrien Enjalbert · Monthly Spotlight</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Person", "@id": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/#person", "name": "Adrien Enjalbert", "url": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/", "jobTitle": "Head of Digital & MarTech", "sameAs": ["https://linkedin.com/in/adrien-enjalbert", "https://github.com/Adrienenjalbert"] },
+    { "@type": "WebPage", "@id": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html#webpage", "url": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html", "name": "Adrien Enjalbert · Monthly Spotlight", "description": "A month-by-month record of digital, MarTech and applied-AI work shipped, Nov 2025 to Jun 2026.", "isPartOf": { "@id": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/#website" }, "about": { "@id": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/#person" }, "inLanguage": "en-GB", "breadcrumb": { "@id": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html#breadcrumb" } },
+    { "@type": "BreadcrumbList", "@id": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html#breadcrumb", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/" }, { "@type": "ListItem", "position": 2, "name": "Monthly Spotlight", "item": "https://adrienenjalbert.github.io/ae-portfolio-gitlab/spotlight.html" } ] }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/portfolio-charts.css">
 <style>
 :root{
-  --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;--ink:#16140f;--ink-2:#1d2433;
-  --slate:#5a5648;--mute:#8c8775;--line:#d8d2c2;--line-2:#c7c0ad;
-  --accent:#1e49e6;--accent-dk:#0e2a6e;--accent-lt:#8fb0ff;--green:#0f7a4f;--green-lt:#86c9a8;--gold:#b17a1b;
-  --nav-w:268px;--r:4px;
+  /* palette + --r come from assets/theme.css; only page-specific layout vars here */
+  --nav-w:268px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -161,15 +181,16 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 
 @media(max-width:880px){
   .xnav{display:none}
-  .app{grid-template-columns:1fr}
-  .side{position:fixed;top:0;left:0;width:280px;height:100vh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
+  .app{grid-template-columns:1fr;z-index:auto}
+  body.nav-open{overflow:hidden}
+  .side{position:fixed;top:0;left:0;width:min(86vw,300px);height:100vh;height:100dvh;z-index:60;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 60px rgba(20,18,12,.25)}
   .side.open{transform:none}
   .scrim{position:fixed;inset:0;background:rgba(20,18,12,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .3s}
   .scrim.show{opacity:1;visibility:visible}
   .mobtop{display:flex;position:sticky;top:0;z-index:40;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(244,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .mobtop .brand{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   .mobtop .brand b{color:var(--accent)}
-  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .mobtop .burger{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:9px 16px;min-width:64px;text-align:center;cursor:pointer}
   .bound{padding:0 24px}.section{padding:52px 0 36px;scroll-margin-top:64px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
@@ -187,6 +208,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="for-demandgen.html">Demand gen</a>
       <a href="for-analytics.html">Analytics</a>
       <span class="sep" aria-hidden="true"></span>
+      <a href="work/index.html">Work</a>
       <a href="msc-ai.html">MSc</a>
       <a href="builds.html">Builds</a>
       <a href="spotlight.html" class="on" aria-current="page">Spotlight</a>
@@ -205,7 +227,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <div class="id">
       <div class="kick">Monthly Spotlight</div>
       <div class="brandname">Adrien<br>Enjalbert</div>
-      <div class="role"><b>Digital &amp; MarTech, Nov 2025 – Jun 2026</b><br>A record of what shipped, month by month.</div>
+      <div class="role"><b>Digital &amp; MarTech, Nov 2025 to Jun 2026</b><br>A record of what shipped, month by month.</div>
       <div class="rule"></div>
     </div>
     <nav class="menu" id="menu" aria-label="Months">
@@ -232,10 +254,10 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     <!-- INTRO -->
     <section class="section" id="intro">
       <div class="bound">
-        <div class="eyebrow reveal">Monthly Spotlight &middot; Nov 2025 – Jun 2026</div>
+        <div class="eyebrow reveal">Monthly Spotlight &middot; Nov 2025 to Jun 2026</div>
         <h1 class="hero-h reveal">The work, <span class="em">month by month.</span></h1>
         <p class="hero-lede reveal">A record of eight months of digital, MarTech and applied-AI work, Nov 2025 to Jun 2026, read two ways. First, what it adds up to. Then, month by month, the receipts. Figures are the ones presented in the internal monthly review; client and team names are kept private.</p>
-        <span class="crumb reveal">This complements the <a href="index.html">main portfolio</a> &mdash; the five proven narratives there, evidenced month by month here.</span>
+        <span class="crumb reveal">This complements the <a href="index.html">main portfolio</a>: the five proven narratives there, evidenced month by month here.</span>
 
         <div class="band reveal">
           <div class="c"><div class="n"><span class="u">+</span>4,000%</div><div class="l">US organic impressions YoY</div></div>
@@ -249,18 +271,18 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         <div class="months reveal" style="margin-top:18px">
           <div class="month" style="padding-top:6px">
             <div class="mh"><span class="mo">Thread 1</span><h3>AI became standing infrastructure</h3></div>
-            <p class="lede">Chatbots and content engines became a benchmarked, adopted fleet: 16 production chatbots converting at 4.7% against a 1.9% form baseline, then a rebuilt enrichment agent scored 3.6&times; better than the previous one (93.6 vs 26.2) at a 9&times; lower unit cost, with stakeholder alignment across five teams.</p>
+            <p class="lede">Chatbots and content engines became a benchmarked, adopted fleet: 16 chatbots shipped, with an AI-first flow converting at 4.7% against a 1.9% form baseline, then a rebuilt enrichment agent scored 3.6&times; better than the previous one (93.6 vs 26.2) at a 9&times; lower unit cost, with stakeholder alignment across five teams.</p>
           </div>
           <div class="month green" style="padding-top:6px">
             <div class="mh"><span class="mo">Thread 2</span><h3>Organic was rebuilt into a compounding asset</h3></div>
-            <p class="lede">A programmatic Career Hub went from a few hundred pages to 2,100+ city&times;role pages, 51 calculators and 19 tools, all AEO-ready at Lighthouse 98+/100/100 &mdash; driving +286% clicks and +4,000% impressions year on year while a quality programme raised the bar each month.</p>
+            <p class="lede">A programmatic Career Hub went from a few hundred pages to 2,100+ city&times;role pages, 51 calculators and 19 tools, all AEO-ready at Lighthouse 98+/100/100, driving +286% clicks and +4,000% impressions year on year while a quality programme raised the bar each month.</p>
           </div>
           <div class="month" style="padding-top:6px">
             <div class="mh"><span class="mo">Thread 3</span><h3>Paid scaled at peak without losing efficiency</h3></div>
             <p class="lede">The 2025 peak grew paid sessions +183% and US active users +94% while UK cost per applied job stayed under &pound;0.25, underpinned by a remarketing read on re-engaged users that became the case for the lifecycle strategy and its 15&times; long-term retention lift.</p>
           </div>
         </div>
-        <p class="sec-sub reveal" style="margin-top:20px;font-style:italic;font-family:'Fraunces',serif;color:var(--ink)">The month-by-month record is below &mdash; the same work, with dates and sources.</p>
+        <p class="sec-sub reveal" style="margin-top:20px;font-style:italic;font-family:'Fraunces',serif;color:var(--ink)">The month-by-month record is below: the same work, with dates and sources.</p>
       </div>
     </section>
 
@@ -282,14 +304,14 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
               </div>
               <ul class="bullets">
                 <li><b>Paycheck calculator live:</b> 0 &rarr; ~100 clicks and ~40K impressions a day within two weeks, average position ~8.</li>
-                <li><b>19 free tools</b> shipped with SoftwareApplication + FAQ schema &mdash; AEO-ready interactive assets.</li>
+                <li><b>19 free tools</b> shipped with SoftwareApplication + FAQ schema, AEO-ready interactive assets.</li>
                 <li><b>Lighthouse 98+ / 100 / 100</b> (performance / accessibility / best practices) across every page template.</li>
               </ul>
               <div class="figsrc"><b>SOURCE</b> &nbsp;Google Search Console &amp; AppsFlyer, June 2026 monthly review.</div>
             </div>
           </div>
           <div class="month reveal">
-            <div class="mh"><span class="mo">AI enrichment</span><h3>Decision-makers agent shipped &mdash; 3.6&times; better than the last build</h3></div>
+            <div class="mh"><span class="mo">AI enrichment</span><h3>Decision-makers agent shipped, 3.6&times; better than the last build</h3></div>
             <p class="lede">A rebuilt enrichment agent benchmarked against the previous one across quality, speed and cost. Live, with strong week-one adoption.</p>
             <div class="mcard">
               <div class="mstats">
@@ -299,7 +321,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
                 <div class="s"><div class="n">-98.5%</div><div class="l">Cheaper enrichment</div></div>
               </div>
               <ul class="bullets">
-                <li><b>93.6 / 100</b> weighted benchmark vs 26.2 / 100 for the previous agent &mdash; 11 wins, 3 ties, zero losses across runs.</li>
+                <li><b>93.6 / 100</b> weighted benchmark vs 26.2 / 100 for the previous agent: 11 wins, 3 ties, zero losses across runs.</li>
                 <li><b>New enrichment source at a 9&times; lower unit cost</b> than the incumbent provider.</li>
                 <li><b>45 requests in five days at 93% accuracy</b> after release; a separate people-discovery agent draws ~250 internal requests a week.</li>
               </ul>
@@ -329,7 +351,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
               <ul class="bullets">
                 <li><b>Clear ownership and accountability mapped per initiative</b>, with a stakeholder-involvement framework and a roadmap to keep momentum.</li>
                 <li><b>Sales given direct access to the agent workspace;</b> Product green-lit the first project and expressed interest in owning the next five.</li>
-                <li><b>People-discovery agent at ~250 requests a week</b> &mdash; strong adoption while a CRM sync issue was being fixed.</li>
+                <li><b>People-discovery agent at ~250 requests a week</b>, strong adoption while a CRM sync issue was being fixed.</li>
               </ul>
               <div class="figsrc"><b>SOURCE</b> &nbsp;AI enablement stakeholder review, May 2026.</div>
             </div>
@@ -346,7 +368,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
         <div class="months">
           <div class="month reveal">
             <div class="mh"><span class="mo">Programmatic SEO</span><h3>A programmatic estate at real scale</h3></div>
-            <p class="lede">A Next.js programmatic site spanning static pages, city&times;role combinations, tools and editorial &mdash; with a quality-and-trust programme running alongside the scale.</p>
+            <p class="lede">A Next.js programmatic site spanning static pages, city&times;role combinations, tools and editorial, with a quality-and-trust programme running alongside the scale.</p>
             <div class="mcard">
               <div class="mstats">
                 <div class="s"><div class="n">308+</div><div class="l">Static pages</div></div>
@@ -383,7 +405,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
                 <div class="s"><div class="n">14</div><div class="l">Schema types live</div></div>
               </div>
               <ul class="bullets">
-                <li><b>Structured March audit (43/80)</b> across technical SEO, schema, internal linking, pSEO quality, trust and AEO readiness &mdash; the baseline for the quality programme.</li>
+                <li><b>Structured March audit (43/80)</b> across technical SEO, schema, internal linking, pSEO quality, trust and AEO readiness: the baseline for the quality programme.</li>
                 <li><b>SEO content strategy aligned to outreach;</b> domain authority improved +8 in the US and +3 in the UK month on month.</li>
                 <li><b>ABM signals wired up</b> from job postings, LinkedIn campaigns and CRM behaviour.</li>
               </ul>
@@ -466,7 +488,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
                 <div class="s"><div class="n">-30%</div><div class="l">Time to close</div></div>
               </div>
               <ul class="bullets">
-                <li><b>Chatbots convert at 4.7%</b> against a 1.9% form baseline, with more decisive, better-qualified users at 65% higher ICP fit.</li>
+                <li><b>An AI-first chatbot converts at 4.7%</b> against a 1.9% form baseline, with more decisive, better-qualified users at 65% higher ICP fit.</li>
                 <li><b>Results supported scaling them</b> across the site, with new trigger and exit-intent tests queued.</li>
               </ul>
               <div class="figsrc"><b>SOURCE</b> &nbsp;Conversion vs form baseline, December 2025.</div>
@@ -500,11 +522,11 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <thead><tr><th>Channel</th><th>UK</th><th>US</th><th>Note</th></tr></thead>
             <tbody>
               <tr><td>Google</td><td class="best">$206</td><td class="best">$333</td><td>Best efficiency, strong volume</td></tr>
-              <tr><td>Indeed</td><td>$387</td><td>$1,174</td><td>Higher intent, premium cost</td></tr>
+              <tr><td>Job board</td><td>$387</td><td>$1,174</td><td>Higher intent, premium cost</td></tr>
               <tr><td>Meta</td><td>n/a</td><td>$3,382</td><td>Top-funnel branding</td></tr>
             </tbody>
           </table>
-          <div class="tnote">Google&rsquo;s cost per worked shift ran 47% lower than Indeed in the UK and 72% lower in the US &mdash; the read that moved budget toward Google and reframed Meta as branding.</div>
+          <div class="tnote">Google&rsquo;s cost per worked shift ran 47% lower than the job board in the UK and 72% lower in the US, the read that moved budget toward Google and reframed Meta as branding.</div>
         </div>
       </div>
     </section>
@@ -525,43 +547,20 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
             <a href="mailto:adrien.enjalbert34@gmail.com">adrien.enjalbert34@gmail.com</a>
           </div>
         </div>
-        <footer>Adrien Enjalbert &middot; Digital &amp; MarTech monthly spotlight, Nov 2025 – Jun 2026 &middot; figures as presented in the monthly review; client, colleague and revenue detail kept private.</footer>
+        <footer>Adrien Enjalbert &middot; Digital &amp; MarTech monthly spotlight, Nov 2025 to Jun 2026 &middot; figures as presented in the monthly review; client, colleague and revenue detail kept private.</footer>
       </div>
     </section>
   </main>
 </div>
+<script src="assets/portfolio-charts.js"></script>
 <script>
 (function(){
   "use strict";
   var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var NS="http://www.w3.org/2000/svg";
-  function el(n,a,p){var e=document.createElementNS(NS,n);if(a)for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
-  function dec(s){var t=document.createElement("textarea");t.innerHTML=s;return t.value;}
+  /* chart drawing is handled by assets/portfolio-charts.js */
 
-  function drawHBar(box){
-    var items=JSON.parse(box.getAttribute("data-items")),green=box.getAttribute("data-color")==="green";
-    var W=540,rowH=64,padT=14,barX=210,barMax=W-barX-92,H=padT*2+items.length*rowH;
-    var summary=items.map(function(it){return dec(it[0])+" "+dec(it[2]);}).join(", ");
-    var svg=el("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Lift vs baseline: "+summary},box);
-    var bars=[];
-    items.forEach(function(it,i){
-      var label=dec(it[0]),pct=it[1]/100,val=dec(it[2]),y=padT+i*rowH+rowH/2;
-      el("text",{x:barX-14,y:y+5,"text-anchor":"end",class:"hbarlabel"},svg).textContent=label;
-      el("rect",{x:barX,y:y-13,width:barMax,height:26,rx:4,class:"hbartrack",opacity:"0.5"},svg);
-      var bar=el("rect",{x:barX,y:y-13,width:0,height:26,rx:4,class:"hbar"+(green?" green":"")},svg);
-      var v=el("text",{x:barX+8,y:y+5,class:"hbarval",opacity:"0"},svg);v.textContent=val;
-      bars.push({bar:bar,target:barMax*pct,v:v});
-    });
-    box._animate=function(){
-      if(REDUCE){bars.forEach(function(b){b.bar.setAttribute("width",b.target);b.v.setAttribute("x",barX+b.target+10);b.v.setAttribute("opacity","1");});return;}
-      var dur=1050,t0=null;
-      function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
-        bars.forEach(function(b){var w=b.target*e;b.bar.setAttribute("width",w);b.v.setAttribute("x",barX+w+10);b.v.setAttribute("opacity",String(Math.min(p*1.4,1)));});
-        if(p<1)requestAnimationFrame(step);}
-      requestAnimationFrame(step);
-    };
-  }
-  document.querySelectorAll(".chart").forEach(function(b){if(b.getAttribute("data-chart")==="hbar")drawHBar(b);});
+  /* Charts rendered by the shared engine in assets/portfolio-charts.js.
+     activate() below only triggers the reveal animation (idempotent _animate). */
 
   function activate(t){if(t._a)return;t._a=true;t.classList.add("in");t.querySelectorAll(".chart").forEach(function(c){if(c._animate)c._animate();});}
   var revs=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
@@ -570,7 +569,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     revs.forEach(function(n){io.observe(n);});
     function sweep(){var vh=window.innerHeight||800;revs.forEach(function(n){if(!n._a&&n.getBoundingClientRect().top<vh*0.92)activate(n);});}
     window.addEventListener("load",function(){setTimeout(sweep,120);setTimeout(sweep,600);});
-    setTimeout(function(){revs.forEach(activate);},2600);
+    window.addEventListener("scroll",sweep,{passive:true});window.addEventListener("resize",sweep,{passive:true});
   }else{revs.forEach(activate);}
 
   var links=Array.prototype.slice.call(document.querySelectorAll("nav.menu a")),map={};
@@ -589,9 +588,9 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
   setActive("intro");
 
   var side=document.getElementById("side"),scrim=document.getElementById("scrim"),burger=document.getElementById("burger");
-  function open(){side.classList.add("open");scrim.classList.add("show");if(burger)burger.setAttribute("aria-expanded","true");}
-  function close(){side.classList.remove("open");scrim.classList.remove("show");if(burger)burger.setAttribute("aria-expanded","false");}
-  if(burger)burger.addEventListener("click",open);
+  function open(){side.classList.add("open");scrim.classList.add("show");document.body.classList.add("nav-open");if(burger){burger.setAttribute("aria-expanded","true");burger.textContent="Close";}}
+  function close(){side.classList.remove("open");scrim.classList.remove("show");document.body.classList.remove("nav-open");if(burger){burger.setAttribute("aria-expanded","false");burger.textContent="Menu";}}
+  if(burger)burger.addEventListener("click",function(){side.classList.contains("open")?close():open();});
   if(scrim)scrim.addEventListener("click",close);
   links.forEach(function(a){a.addEventListener("click",close);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});

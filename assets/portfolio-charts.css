@@ -1,0 +1,118 @@
+/* Portfolio charts — shared styles for platform-authentic panels and the
+   trend / grouped / scorecard renderers. Relies on CSS variables defined in
+   each page's :root (--accent, --accent-dk, --green, --ink, --slate, --mute,
+   --line, --line-2, --card, --paper, --r). Brand chrome only frames the data;
+   chart marks stay on the site palette. Figures are recreated and anonymised. */
+
+/* ---- platform panel chrome ---- */
+.panel{
+  border:1px solid var(--line);
+  border-radius:var(--r,10px);
+  background:var(--card);
+  overflow:hidden;
+  margin:0;
+}
+.panel + .panel{margin-top:14px}
+.panel-head{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:11px 16px;border-bottom:1px solid var(--line);
+  background:var(--paper);
+}
+.panel-plat{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--slate);
+}
+.panel-plat::before{
+  content:"";width:9px;height:9px;border-radius:2px;
+  background:var(--plat,#1a73e8);flex:0 0 auto;
+}
+.panel-meta{margin-left:auto;text-align:right;line-height:1.25}
+.panel-metric{font-family:var(--font-display,"Fraunces",serif);font-size:14px;color:var(--ink)}
+.panel-range{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:10px;color:var(--mute);letter-spacing:.03em}
+.panel-body{padding:18px 16px 6px}
+.panel-note{
+  padding:2px 16px 12px;
+  font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:10px;letter-spacing:.03em;
+  color:var(--mute);display:flex;align-items:center;gap:7px;
+}
+.panel-note::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--plat,#1a73e8);flex:0 0 auto}
+@media(max-width:640px){.panel-meta{margin-left:0;text-align:left;width:100%}}
+
+/* platform accents (used only for the panel dot + caption marker) */
+.panel[data-platform="ga4"]{--plat:#e8710a}
+.panel[data-platform="google-ads"]{--plat:#1a73e8}
+.panel[data-platform="search-console"]{--plat:#1e8e3e}
+.panel[data-platform="looker"]{--plat:#34a853}
+.panel[data-platform="semrush"]{--plat:#ff642d}
+.panel[data-platform="salesforce"]{--plat:#00a1e0}
+.panel[data-platform="demandbase"]{--plat:#6c5ce7}
+.panel[data-platform="hubspot"]{--plat:#ff7a59}
+
+/* ---- trend (line + area) ---- */
+.c-grid{stroke:var(--line-2);stroke-width:1;stroke-dasharray:2 5;transition:opacity .4s ease}
+.c-trend-area{opacity:.09}
+.c-trend-area.accent{fill:var(--accent)}.c-trend-area.green{fill:var(--green)}
+.c-trend-line{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.c-trend-line.green{stroke:var(--green)}
+.c-trend-dot{fill:var(--accent);pointer-events:none;transition:r .18s cubic-bezier(.2,.7,.2,1)}
+.c-trend-dot.green{fill:var(--green)}
+.c-trend-hit{fill:transparent;cursor:pointer;outline:none}
+.c-trend-hit:hover + .c-trend-dot,.c-trend-hit:focus-visible + .c-trend-dot{r:8}
+.c-trend-hit:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.c-trend-pt{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--ink);font-size:14px}
+@keyframes c-pulse{0%{r:6}45%{r:9}100%{r:6}}
+.c-trend-dot.pulse{animation:c-pulse 1.3s cubic-bezier(.2,.7,.2,1) 2}
+
+/* ---- multiline (two-series comparison, e.g. cohort retention) ---- */
+.c-ml-a{fill:none;stroke:var(--green);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.c-ml-b{fill:none;stroke:var(--mute);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.c-ml-area-a{fill:var(--green);opacity:.08}
+.c-ml-dot-a{fill:var(--green);pointer-events:none}
+.c-ml-dot-b{fill:var(--mute);pointer-events:none}
+.c-ml-val-a{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--green);font-size:12.5px}
+.c-ml-val-b{font-family:"Space Grotesk",sans-serif;font-weight:700;fill:var(--slate);font-size:12.5px}
+.c-ml-legend{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate)}
+.c-ml-sw-a{fill:var(--green)}
+.c-ml-sw-b{fill:var(--mute)}
+
+/* ---- shared bar interactivity (hover/focus feedback on data marks) ---- */
+.hbar,.bar,.c-grp-a,.c-grp-b{transition:filter .2s ease}
+.hbar:hover,.bar:hover,.c-grp-a:hover,.c-grp-b:hover{filter:brightness(1.07) saturate(1.05)}
+[data-tip]{cursor:pointer;outline:none}
+[data-tip]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---- interactive tooltip card (hover + keyboard focus) ---- */
+.chart-tip{
+  position:fixed;left:0;top:0;z-index:2000;pointer-events:none;max-width:280px;white-space:nowrap;
+  background:var(--ink,#0a0a0a);color:#fff;
+  font-family:var(--font-mono,"IBM Plex Mono","Inter",monospace);font-size:12px;line-height:1.35;letter-spacing:.01em;
+  padding:6px 10px;border-radius:6px;box-shadow:0 12px 32px -12px rgba(0,0,0,.5);
+  opacity:0;transition:opacity .12s ease;will-change:transform}
+.chart-tip.show{opacity:1}
+
+/* ---- grouped bars (e.g. US vs UK) ---- */
+.c-grp-a{fill:var(--accent)}
+.c-grp-b{fill:#c3bcab}
+.c-grp-val{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:12px;fill:var(--ink)}
+.c-grp-cat{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate)}
+.c-legend-t{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate)}
+
+/* ---- scorecard (KPI tiles) ---- */
+.scorecard{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:10px}
+.scorecard .sc{
+  border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:var(--paper);
+  opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease;
+}
+.scorecard.in .sc{opacity:1;transform:none}
+.scorecard .sc:nth-child(2){transition-delay:.08s}
+.scorecard .sc:nth-child(3){transition-delay:.16s}
+.scorecard .sc:nth-child(4){transition-delay:.24s}
+.scorecard .sc .n{font-family:"Fraunces",serif;font-size:25px;color:var(--accent-dk);font-variant-numeric:tabular-nums;line-height:1}
+.scorecard .sc.green .n{color:var(--green)}
+.scorecard .sc .l{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);margin-top:6px}
+@media(prefers-reduced-motion:reduce){
+  .scorecard .sc{opacity:1;transform:none;transition:none}
+  .c-trend-dot.pulse{animation:none}
+  .c-grid,.c-trend-dot,.hbar,.bar,.c-grp-a,.c-grp-b,.chart-tip{transition:none}
+}
