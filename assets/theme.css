@@ -7,7 +7,7 @@
   /* surfaces */
   --paper:#f4f1e8;--paper-2:#efeadd;--card:#fbf9f3;
   /* ink */
-  --ink:#16140f;--ink-2:#1d2433;--slate:#5a5648;--mute:#8c8775;
+  --ink:#16140f;--ink-2:#1d2433;--slate:#5a5648;--mute:#6a6456;
   /* lines */
   --line:#d8d2c2;--line-2:#c7c0ad;
   /* accents */
@@ -20,6 +20,26 @@
   --font-body:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,monospace;
 }
+
+/* Skip-to-content link (WCAG 2.4.1 Bypass Blocks).
+   Sits off-screen until it receives keyboard focus, then slides into view. */
+.skip-link{
+  position:fixed;
+  left:12px;
+  top:-56px;
+  z-index:200;
+  background:var(--accent);
+  color:#fff;
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:.02em;
+  padding:10px 16px;
+  border-radius:var(--r);
+  box-shadow:0 6px 20px -8px rgba(20,18,12,.5);
+  transition:top .16s ease;
+}
+.skip-link:focus{top:12px;outline:2px solid #fff;outline-offset:2px;text-decoration:none;}
+:where(#main-content,main,[role="main"]):focus{outline:none;}
 
 /* Visible keyboard focus — accessibility quality floor.
    Mouse clicks stay clean (:focus-visible only), keyboard users get a clear ring. */

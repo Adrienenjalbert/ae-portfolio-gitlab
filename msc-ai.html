@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="canonical" href="https://adrienenjalbert.github.io/ae-portfolio-gitlab/msc-ai.html">
 <meta name="description" content="Adrien Enjalbert: MSc Artificial Intelligence & Data Science (Level 7). Five graded modules and a production capstone, mapped to the BCS AI Data Specialist standard, the quantitative edge behind an AI-native growth & revenue leader." />
 <meta property="og:title" content="Adrien Enjalbert · MSc in AI & Data Science" />
 <meta property="og:description" content="The Master's in full: data science principles, machine learning on the cloud, programming for AI, multi-agent innovation, and a work-based capstone that shipped to production." />
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://adrienenjalbert.github.io/ae-portfolio-gitlab/msc-ai.html">
+<meta property="og:site_name" content="Adrien Enjalbert">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://adrienenjalbert.github.io/ae-portfolio-gitlab/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Adrien Enjalbert: I build revenue engines, and the AI that makes them compound.">
+<meta name="twitter:image" content="https://adrienenjalbert.github.io/ae-portfolio-gitlab/assets/og-image.png">
 <title>Adrien Enjalbert · MSc in AI &amp; Data Science</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -152,7 +164,7 @@ main{min-width:0}
 .grid2 .copy p{color:var(--ink);font-size:14.5px}
 
 /* standard table */
-.tablewrap{margin-top:18px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.tablewrap{margin-top:18px;border:1px solid var(--line);border-radius:var(--r);overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--card)}
 table.t{width:100%;border-collapse:collapse;font-size:14px}
 table.t caption{caption-side:top;text-align:left;padding:14px 18px 0;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 table.t th,table.t td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line)}
@@ -161,6 +173,12 @@ table.t tbody td:first-child{font-weight:600;color:var(--ink)}
 table.t tbody td{color:var(--slate)}
 table.t tbody tr:last-child td{border-bottom:0}
 .tnote{padding:10px 18px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--mute);letter-spacing:.03em;background:var(--paper-2)}
+@media(max-width:640px){
+  table.t{table-layout:fixed;font-size:12.5px}
+  table.t th,table.t td{padding:9px 8px;vertical-align:top;overflow-wrap:break-word}
+  table.t caption{padding:12px 12px 0}
+  .tnote{padding:9px 12px}
+}
 
 /* contact */
 .contactcard{background:var(--ink-2);border-radius:var(--r);padding:42px 38px;color:#e9ecf3;position:relative;overflow:hidden;margin-top:6px}
@@ -194,6 +212,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <nav class="xnav" aria-label="Site">
   <div class="row">
     <a class="brand" href="index.html"><b>AE</b>&nbsp;&nbsp;Adrien Enjalbert</a>
@@ -244,7 +263,7 @@ footer{padding:28px 0 56px;color:var(--mute);font-family:"IBM Plex Mono",monospa
     </div>
   </aside>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- INTRO -->
     <section class="section" id="intro">
       <div class="bound">
