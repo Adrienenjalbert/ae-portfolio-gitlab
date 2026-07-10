@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Identity directions (cobalt kept) — exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e9e9ec;color:#111;font-family:"Inter",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:40px 24px 80px}
+.page-head .kick{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6a6a72}
+.page-head h1{font-weight:700;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;margin:8px 0 6px}
+.page-head p{color:#4a4a52;max-width:820px;font-size:15px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 30px;font-size:12.5px;color:#4a4a52}
+.legend b{color:#111}
+
+.dir{border-radius:14px;overflow:hidden;margin-bottom:34px;box-shadow:0 24px 60px -40px rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.08)}
+.dir-meta{background:#fff;padding:18px 22px;border-bottom:1px solid #ececf0;display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
+.dir-meta .no{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;color:#9a9aa2}
+.dir-meta .nm{font-weight:700;font-size:18px;letter-spacing:-.01em}
+.dir-meta .tag{font-size:12.5px;color:#6a6a72}
+.dir-meta .risk{margin-left:auto;font-size:11.5px;font-family:"IBM Plex Mono",monospace;color:#1e49e6;background:#eaf0ff;border:1px solid #cdd9ff;border-radius:999px;padding:4px 11px}
+.swrow{background:#fff;padding:6px 22px 26px}
+.swatches{display:flex;gap:0;padding-top:12px}
+.swatches .sw{flex:0 0 auto;width:54px;height:32px;border-radius:6px;margin-right:8px;border:1px solid rgba(0,0,0,.1);position:relative}
+.swatches .sw span{position:absolute;bottom:-16px;left:0;font-family:"IBM Plex Mono",monospace;font-size:8.5px;color:#8a8a92}
+
+.tile .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 26px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.tile .hero{padding:34px 26px 30px}
+.tile .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.tile .eyebrow::before{content:"";width:26px;height:2px;background:var(--sig);display:inline-block}
+.tile h2{font-family:var(--display);margin:16px 0 0;line-height:1.02;max-width:820px}
+.tile .lede{margin-top:16px;max-width:640px;font-size:16px}
+.tile .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.tile .kpi{padding:14px 15px}
+.tile .kpi .n{font-family:var(--num);font-variant-numeric:tabular-nums;line-height:1}
+.tile .kpi .l{margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
+.tile .row{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;padding:6px 26px 34px;align-items:center}
+.tile .chart{padding:16px 16px 10px;border-radius:10px}
+.tile .chart .ct{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.tile .hb{display:flex;align-items:center;gap:12px;margin:9px 0}
+.tile .hb .k{font-size:12px;width:130px;flex:0 0 auto;text-align:right;opacity:.8}
+.tile .hb .track{display:block;flex:1;height:20px;border-radius:4px;background:var(--track);overflow:hidden}
+.tile .hb .fill{display:block;height:100%;background:var(--sig);border-radius:4px}
+.tile .hb .v{font-family:var(--num);font-size:13px;font-variant-numeric:tabular-nums;width:64px;flex:0 0 auto}
+.tile .say p{font-size:14.5px}
+.tile .say p+p{margin-top:10px}
+.tile .btn{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:var(--mono);font-size:13px;padding:12px 20px;border-radius:999px;font-weight:600}
+@media(max-width:760px){.tile .row{grid-template-columns:1fr}.tile .kpis{grid-template-columns:1fr 1fr}}
+
+/* ---------- A · Cool Paper (safe refinement: keep the editorial soul, drop the warm-cream + grain) ---------- */
+.d-cool{
+  --bg:#eef1f6;--panel:#ffffff;--text:#14171f;--mute:#5c6472;
+  --line:#d7dde8;--sig:#1e49e6;--track:#dde3ee;
+  --display:"Fraunces",Georgia,serif;--num:"Fraunces",Georgia,serif;--mono:"IBM Plex Mono",monospace;
+  background:var(--bg);color:var(--text);
+}
+.d-cool .bar{color:var(--mute);border-bottom:1px solid var(--line)}
+.d-cool .bar .dot{color:var(--sig)}
+.d-cool .eyebrow{color:var(--sig)}
+.d-cool h2{font-size:clamp(32px,5vw,58px);font-weight:500;letter-spacing:-.01em}
+.d-cool h2 em{font-style:italic;font-weight:400;color:var(--sig)}
+.d-cool .lede{color:var(--mute);font-family:"Space Grotesk",sans-serif;font-size:16px}
+.d-cool .kpi{background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.d-cool .kpi .n{font-size:30px;color:var(--text);font-weight:500}
+.d-cool .kpi .n u{color:var(--sig);text-decoration:none}
+.d-cool .kpi .l{color:var(--mute)}
+.d-cool .chart{background:var(--panel);border:1px solid var(--line)}
+.d-cool .chart .ct{color:var(--mute)}
+.d-cool .hb .v{color:var(--text)}
+.d-cool .say{color:var(--text);font-family:"Space Grotesk",sans-serif}
+.d-cool .btn{background:var(--sig);color:#fff}
+
+/* ---------- B · Ink Terminal (bold: engineering-forward, cobalt on deep navy-black) ---------- */
+.d-ink{
+  --bg:#0d1220;--panel:#141b2e;--text:#e7ecf5;--mute:#8791a8;
+  --line:#232c44;--sig:#5d84ff;--track:#1a2338;
+  --display:"Space Grotesk",sans-serif;--num:"Space Grotesk",sans-serif;--mono:"IBM Plex Mono",monospace;
+  background:var(--bg);color:var(--text);
+}
+.d-ink .bar{color:var(--mute);border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101728,transparent)}
+.d-ink .bar .dot{color:var(--sig)}
+.d-ink .eyebrow{color:var(--sig)}
+.d-ink h2{font-size:clamp(30px,4.6vw,54px);font-weight:700;letter-spacing:-.02em;color:var(--text)}
+.d-ink h2 em{font-style:normal;color:var(--sig)}
+.d-ink .lede{color:var(--mute);font-family:"Inter";line-height:1.6}
+.d-ink .kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.d-ink .kpi .n{font-size:28px;color:var(--text);font-weight:600}
+.d-ink .kpi .n u{color:var(--sig);text-decoration:none}
+.d-ink .kpi .l{color:var(--mute)}
+.d-ink .chart{background:var(--panel);border:1px solid var(--line)}
+.d-ink .chart .ct{color:var(--mute)}
+.d-ink .hb .v{color:var(--text)}
+.d-ink .say{color:var(--mute);font-family:"Inter"}
+.d-ink .btn{background:var(--sig);color:#0d1220;font-weight:700}
+
+/* ---------- C · Swiss Cobalt (modernist: high-clarity operator, structural rules) ---------- */
+.d-swisscobalt{
+  --bg:#ffffff;--panel:#f6f8fc;--text:#0a0c12;--mute:#5a616e;
+  --line:#e3e7ef;--sig:#1e49e6;--track:#e7ebf3;
+  --display:"Archivo",sans-serif;--num:"Archivo",sans-serif;--mono:"IBM Plex Mono",monospace;
+  background:var(--bg);color:var(--text);
+}
+.d-swisscobalt .bar{color:var(--mute);border-bottom:1px solid var(--line)}
+.d-swisscobalt .bar .dot{color:var(--sig)}
+.d-swisscobalt .eyebrow{color:var(--sig)}
+.d-swisscobalt h2{font-size:clamp(34px,5.4vw,62px);font-weight:800;letter-spacing:-.035em;color:var(--text)}
+.d-swisscobalt h2 em{font-style:normal;color:var(--sig)}
+.d-swisscobalt .lede{color:#333;font-family:"Inter"}
+.d-swisscobalt .kpis{border-top:2px solid var(--text);border-bottom:2px solid var(--text)}
+.d-swisscobalt .kpi{border-right:1px solid var(--line)}
+.d-swisscobalt .kpi:last-child{border-right:0}
+.d-swisscobalt .kpi .n{font-size:33px;font-weight:800;color:var(--text)}
+.d-swisscobalt .kpi .n u{color:var(--sig);text-decoration:none}
+.d-swisscobalt .kpi .l{color:var(--mute)}
+.d-swisscobalt .chart{background:var(--panel);border:1px solid var(--line)}
+.d-swisscobalt .chart .ct{color:var(--mute)}
+.d-swisscobalt .hb .v{color:var(--text);font-weight:700}
+.d-swisscobalt .say{color:#333;font-family:"Inter"}
+.d-swisscobalt .btn{background:var(--sig);color:#fff}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-head">
+    <div class="kick">Identity directions · cobalt kept · exploration only</div>
+    <h1>Three ways off the AI-default look, without losing the blue</h1>
+    <p>The current identity (warm cream #f4f1e8 + Fraunces serif + film grain) is close to the exact cluster AI portfolios default to; the cobalt accent is what rescues it. Each block below keeps cobalt as the signature and renders your real hero copy, KPI wall, a sample chart and quote, but moves the paper and/or the type off the default. Nothing here is wired to the live site. This complements <a href="directions.html">directions.html</a> (which explored dropping blue entirely).</p>
+  </div>
+  <div class="legend">
+    <span><b>A · Cool Paper</b> — keep the editorial soul, drop warm cream + grain (safe)</span>
+    <span><b>B · Ink Terminal</b> — engineering-forward, cobalt on deep navy (bold)</span>
+    <span><b>C · Swiss Cobalt</b> — modernist clarity, structural rules (bold, clean)</span>
+  </div>
+
+  <!-- A -->
+  <section class="dir">
+    <div class="dir-meta">
+      <span class="no">A</span><span class="nm">Cool Paper</span>
+      <span class="tag">Fraunces · Space Grotesk · IBM Plex Mono · cobalt on cool paper</span>
+      <span class="risk">Safe refinement</span>
+    </div>
+    <div class="swrow"><div class="swatches">
+      <div class="sw" style="background:#eef1f6"><span>#eef1f6</span></div>
+      <div class="sw" style="background:#14171f"><span>#14171f</span></div>
+      <div class="sw" style="background:#1e49e6"><span>#1e49e6</span></div>
+      <div class="sw" style="background:#5c6472"><span>#5c6472</span></div>
+      <div class="sw" style="background:#d7dde8"><span>#d7dde8</span></div>
+    </div></div>
+    <div class="tile d-cool">
+      <div class="bar"><span><span class="dot">&#9670;</span>&nbsp; Adrien Enjalbert</span><span>Portfolio &middot; selected work</span></div>
+      <div class="hero">
+        <span class="eyebrow">Growth &middot; performance &middot; now AI-native</span>
+        <h2>I build revenue engines, and the <em>AI that makes them compound.</em></h2>
+        <p class="lede">A decade building revenue engines across B2B and B2C. Now I build the AI that makes the engine compound: production systems, at the no-code layer, adopted by the teams that use them.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">17<u>&times;</u></div><div class="l">ROAS at peak</div></div>
+          <div class="kpi"><div class="n"><u>+</u>592%</div><div class="l">B2C conversion</div></div>
+          <div class="kpi"><div class="n"><u>&pound;</u>440K</div><div class="l">AI pipeline / 3mo</div></div>
+          <div class="kpi"><div class="n"><u>+</u>4,000%</div><div class="l">US organic</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chart">
+          <div class="ct">Cost lines, collapsed</div>
+          <div class="hb"><span class="k">Cost per article</span><span class="track"><span class="fill" style="width:99%"></span></span><span class="v">-99.8%</span></div>
+          <div class="hb"><span class="k">B2B cost per lead</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="v">-81%</span></div>
+          <div class="hb"><span class="k">Cost per booked job</span><span class="track"><span class="fill" style="width:79%"></span></span><span class="v">-79%</span></div>
+        </div>
+        <div class="say">
+          <p>Give me a cost line that looks fixed and I&rsquo;ll find the lever that halves it, then halves it again.</p>
+          <p>Same pattern each time: map the workflow, find the order-of-magnitude step, aim the tooling there.</p>
+          <a class="btn" href="#">Open the systems &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="dir">
+    <div class="dir-meta">
+      <span class="no">B</span><span class="nm">Ink Terminal</span>
+      <span class="tag">Space Grotesk · Inter · IBM Plex Mono · cobalt on deep navy</span>
+      <span class="risk">Boldest departure</span>
+    </div>
+    <div class="swrow"><div class="swatches">
+      <div class="sw" style="background:#0d1220"><span>#0d1220</span></div>
+      <div class="sw" style="background:#141b2e"><span>#141b2e</span></div>
+      <div class="sw" style="background:#5d84ff"><span>#5d84ff</span></div>
+      <div class="sw" style="background:#e7ecf5"><span>#e7ecf5</span></div>
+      <div class="sw" style="background:#8791a8"><span>#8791a8</span></div>
+    </div></div>
+    <div class="tile d-ink">
+      <div class="bar"><span><span class="dot">&#9679;</span>&nbsp; AE &mdash; SELECTED WORK</span><span>STATUS: SHIPPING</span></div>
+      <div class="hero">
+        <span class="eyebrow">Growth &middot; performance &middot; now AI-native</span>
+        <h2>I build revenue engines, and the <em>AI that makes them compound.</em></h2>
+        <p class="lede">A decade building revenue engines across B2B and B2C. Now I build the AI that makes the engine compound: production systems, at the no-code layer, adopted by the teams that use them.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">17<u>&times;</u></div><div class="l">ROAS at peak</div></div>
+          <div class="kpi"><div class="n"><u>+</u>592%</div><div class="l">B2C conversion</div></div>
+          <div class="kpi"><div class="n"><u>&pound;</u>440K</div><div class="l">AI pipeline / 3mo</div></div>
+          <div class="kpi"><div class="n"><u>+</u>4,000%</div><div class="l">US organic</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chart">
+          <div class="ct">// cost lines, collapsed</div>
+          <div class="hb"><span class="k">Cost per article</span><span class="track"><span class="fill" style="width:99%"></span></span><span class="v">-99.8%</span></div>
+          <div class="hb"><span class="k">B2B cost per lead</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="v">-81%</span></div>
+          <div class="hb"><span class="k">Cost per booked job</span><span class="track"><span class="fill" style="width:79%"></span></span><span class="v">-79%</span></div>
+        </div>
+        <div class="say">
+          <p>Give me a cost line that looks fixed and I&rsquo;ll find the lever that halves it, then halves it again.</p>
+          <p>Same pattern each time: map the workflow, find the order-of-magnitude step, aim the tooling there.</p>
+          <a class="btn" href="#">Open the systems &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir">
+    <div class="dir-meta">
+      <span class="no">C</span><span class="nm">Swiss Cobalt</span>
+      <span class="tag">Archivo · Inter · IBM Plex Mono · cobalt on white, structural rules</span>
+      <span class="risk">Bold, high-clarity</span>
+    </div>
+    <div class="swrow"><div class="swatches">
+      <div class="sw" style="background:#ffffff"><span>#ffffff</span></div>
+      <div class="sw" style="background:#0a0c12"><span>#0a0c12</span></div>
+      <div class="sw" style="background:#1e49e6"><span>#1e49e6</span></div>
+      <div class="sw" style="background:#5a616e"><span>#5a616e</span></div>
+      <div class="sw" style="background:#e3e7ef"><span>#e3e7ef</span></div>
+    </div></div>
+    <div class="tile d-swisscobalt">
+      <div class="bar"><span><span class="dot">&#9670;</span>&nbsp; Adrien Enjalbert</span><span>Selected work &middot; 2015&ndash;2026</span></div>
+      <div class="hero">
+        <span class="eyebrow">Growth &middot; performance &middot; now AI-native</span>
+        <h2>I build revenue engines, and the <em>AI that makes them compound.</em></h2>
+        <p class="lede">A decade building revenue engines across B2B and B2C. Now I build the AI that makes the engine compound: production systems, at the no-code layer, adopted by the teams that use them.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">17<u>&times;</u></div><div class="l">ROAS at peak</div></div>
+          <div class="kpi"><div class="n"><u>+</u>592%</div><div class="l">B2C conversion</div></div>
+          <div class="kpi"><div class="n"><u>&pound;</u>440K</div><div class="l">AI pipeline / 3mo</div></div>
+          <div class="kpi"><div class="n"><u>+</u>4,000%</div><div class="l">US organic</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chart">
+          <div class="ct">Cost lines, collapsed</div>
+          <div class="hb"><span class="k">Cost per article</span><span class="track"><span class="fill" style="width:99%"></span></span><span class="v">-99.8%</span></div>
+          <div class="hb"><span class="k">B2B cost per lead</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="v">-81%</span></div>
+          <div class="hb"><span class="k">Cost per booked job</span><span class="track"><span class="fill" style="width:79%"></span></span><span class="v">-79%</span></div>
+        </div>
+        <div class="say">
+          <p>Give me a cost line that looks fixed and I&rsquo;ll find the lever that halves it, then halves it again.</p>
+          <p>Same pattern each time: map the workflow, find the order-of-magnitude step, aim the tooling there.</p>
+          <a class="btn" href="#">Open the systems &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

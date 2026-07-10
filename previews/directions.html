@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Design directions — exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* ===== page shell (neutral, gets out of the way) ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e9e9ec;color:#111;font-family:"Inter",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:40px 24px 80px}
+.page-head{margin-bottom:8px}
+.page-head .kick{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6a6a72}
+.page-head h1{font-family:"Inter";font-weight:700;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;margin:8px 0 6px}
+.page-head p{color:#4a4a52;max-width:760px;font-size:15px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 30px;font-size:12.5px;color:#4a4a52}
+.legend b{color:#111}
+
+/* ===== direction card frame ===== */
+.dir{border-radius:14px;overflow:hidden;margin-bottom:34px;box-shadow:0 24px 60px -40px rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.08)}
+.dir-meta{background:#fff;padding:18px 22px;border-bottom:1px solid #ececf0;display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
+.dir-meta .no{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:13px;color:#9a9aa2}
+.dir-meta .nm{font-family:"Inter";font-weight:700;font-size:18px;letter-spacing:-.01em}
+.dir-meta .tag{font-size:12.5px;color:#6a6a72}
+.dir-meta .risk{margin-left:auto;font-size:11.5px;font-family:"IBM Plex Mono",monospace;color:#8a5a00;background:#fff4dd;border:1px solid #f0dfae;border-radius:999px;padding:4px 11px;letter-spacing:.02em}
+
+/* swatches */
+.swatches{display:flex;gap:0;background:#fff;padding:0 22px 16px}
+.swatches .sw{flex:0 0 auto;width:54px;height:32px;border-radius:6px;margin-right:8px;border:1px solid rgba(0,0,0,.1);position:relative}
+.swatches .sw span{position:absolute;bottom:-16px;left:0;font-family:"IBM Plex Mono",monospace;font-size:8.5px;color:#8a8a92;letter-spacing:.02em}
+.swrow{background:#fff;padding:6px 22px 26px}
+
+/* the live tile — each direction themes itself with scoped custom props */
+.tile{padding:0}
+.tile .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 26px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.tile .hero{padding:34px 26px 30px}
+.tile .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.tile .eyebrow::before{content:"";width:26px;height:2px;background:var(--sig);display:inline-block}
+.tile h2{font-family:var(--display);margin:16px 0 0;line-height:1.02}
+.tile .lede{margin-top:16px;max-width:620px;font-size:16px}
+.tile .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.tile .kpi{padding:14px 15px}
+.tile .kpi .n{font-family:var(--num);font-variant-numeric:tabular-nums;line-height:1}
+.tile .kpi .l{margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
+.tile .row{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;padding:6px 26px 34px;align-items:center}
+.tile .chart{padding:16px 16px 10px;border-radius:10px}
+.tile .chart .ct{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.tile .hb{display:flex;align-items:center;gap:12px;margin:9px 0}
+.tile .hb .k{font-size:12px;width:120px;flex:0 0 auto;text-align:right;opacity:.8}
+.tile .hb .track{display:block;flex:1;height:20px;border-radius:4px;background:var(--track);overflow:hidden}
+.tile .hb .fill{display:block;height:100%;background:var(--sig);border-radius:4px}
+.tile .hb .v{font-family:var(--num);font-size:13px;font-variant-numeric:tabular-nums;width:64px;flex:0 0 auto}
+.tile .say p{font-size:14.5px}
+.tile .say p+p{margin-top:10px}
+.tile .btn{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:var(--mono);font-size:13px;padding:12px 20px;border-radius:999px;font-weight:600}
+@media(max-width:760px){.tile .row{grid-template-columns:1fr}.tile .kpis{grid-template-columns:1fr 1fr}}
+
+/* ---------- Direction A · Systems / Terminal (dark, technical) ---------- */
+.d-terminal{
+  --bg:#0b0d11;--panel:#12151c;--panel-2:#171b23;--text:#e7ebf2;--mute:#828b9c;
+  --line:#232a36;--sig:#b6ff36;--sig-ink:#0b0d11;--track:#1c212b;
+  --display:"JetBrains Mono",monospace;--num:"JetBrains Mono",monospace;--mono:"JetBrains Mono",monospace;
+  background:var(--bg);color:var(--text);
+}
+.d-terminal .bar{color:var(--mute);border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0e1116,transparent)}
+.d-terminal .bar .dot{color:var(--sig)}
+.d-terminal .eyebrow{color:var(--sig)}
+.d-terminal h2{font-size:clamp(30px,4.4vw,50px);font-weight:800;letter-spacing:-.02em;color:var(--text)}
+.d-terminal h2 em{font-style:normal;color:var(--sig)}
+.d-terminal .lede{color:var(--mute);font-family:"Inter";line-height:1.6}
+.d-terminal .kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.d-terminal .kpi .n{font-size:26px;color:var(--text);font-weight:700}
+.d-terminal .kpi .n u{color:var(--sig);text-decoration:none}
+.d-terminal .kpi .l{color:var(--mute)}
+.d-terminal .chart{background:var(--panel);border:1px solid var(--line)}
+.d-terminal .chart .ct{color:var(--mute)}
+.d-terminal .hb .v{color:var(--text)}
+.d-terminal .say{color:var(--mute);font-family:"Inter"}
+.d-terminal .btn{background:var(--sig);color:var(--sig-ink);font-weight:700}
+
+/* ---------- Direction B · Swiss Signal (light, modernist) ---------- */
+.d-swiss{
+  --bg:#f7f7f4;--panel:#ffffff;--text:#0a0a0a;--mute:#6b6b6b;
+  --line:#e2e2dc;--sig:#ff4a1c;--track:#ececE6;
+  --display:"Archivo",sans-serif;--num:"Archivo",sans-serif;--mono:"Inter",sans-serif;
+  background:var(--bg);color:var(--text);
+}
+.d-swiss .bar{color:var(--mute);border-bottom:1px solid var(--line);text-transform:none;letter-spacing:.01em;font-weight:600}
+.d-swiss .bar .dot{color:var(--sig)}
+.d-swiss .eyebrow{color:var(--sig);font-weight:600}
+.d-swiss h2{font-size:clamp(34px,5.4vw,62px);font-weight:900;letter-spacing:-.035em;color:var(--text);text-transform:none}
+.d-swiss h2 em{font-style:normal;color:var(--sig)}
+.d-swiss .lede{color:#333;font-family:"Inter"}
+.d-swiss .kpis{border-top:2px solid var(--text);border-bottom:2px solid var(--text)}
+.d-swiss .kpi{border-right:1px solid var(--line)}
+.d-swiss .kpi:last-child{border-right:0}
+.d-swiss .kpi .n{font-size:34px;font-weight:800;color:var(--text)}
+.d-swiss .kpi .n u{color:var(--sig);text-decoration:none}
+.d-swiss .kpi .l{color:var(--mute)}
+.d-swiss .chart{background:var(--panel);border:1px solid var(--line)}
+.d-swiss .chart .ct{color:var(--mute)}
+.d-swiss .hb .v{color:var(--text);font-weight:700}
+.d-swiss .say{color:#333;font-family:"Inter"}
+.d-swiss .btn{background:var(--text);color:#fff}
+
+/* ---------- Direction C · Editorial, recut (keep the soul, drop the AI-cream) ---------- */
+.d-editorial{
+  --bg:#f0efe9;--panel:#faf9f4;--text:#181713;--mute:#6f6a5e;
+  --line:#d9d4c6;--sig:#9c2b2b;--track:#e6e1d3;
+  --display:"Newsreader",Georgia,serif;--num:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",monospace;
+  background:var(--bg);color:var(--text);
+}
+.d-editorial .bar{color:var(--mute);border-bottom:1px solid var(--line)}
+.d-editorial .bar .dot{color:var(--sig)}
+.d-editorial .eyebrow{color:var(--sig)}
+.d-editorial h2{font-size:clamp(32px,5vw,56px);font-weight:500;letter-spacing:-.01em;color:var(--text)}
+.d-editorial h2 em{font-style:italic;font-weight:400;color:var(--sig)}
+.d-editorial .lede{color:var(--mute);font-family:"Newsreader",Georgia,serif;font-size:18px}
+.d-editorial .kpi{background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.d-editorial .kpi .n{font-size:30px;color:var(--text);font-weight:500}
+.d-editorial .kpi .n u{color:var(--sig);text-decoration:none}
+.d-editorial .kpi .l{color:var(--mute)}
+.d-editorial .chart{background:var(--panel);border:1px solid var(--line)}
+.d-editorial .chart .ct{color:var(--mute)}
+.d-editorial .hb .v{color:var(--text)}
+.d-editorial .say{color:var(--text);font-family:"Newsreader",Georgia,serif;font-size:15.5px}
+.d-editorial .btn{background:var(--text);color:var(--panel)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-head">
+    <div class="kick">Design directions · exploration only</div>
+    <h1>Three identities for the same portfolio</h1>
+    <p>Each block below renders your real hero copy, KPI wall, a sample chart, quote and CTA in a distinct, intentional design language. None of them use the current cream + serif + terracotta cluster that AI portfolios default to. Nothing here is wired into the live site — it's a side-by-side to pick a direction (or a hybrid) before we build.</p>
+  </div>
+  <div class="legend">
+    <span><b>A · Systems / Terminal</b> — engineering-forward, the builder</span>
+    <span><b>B · Swiss Signal</b> — modernist clarity, the operator</span>
+    <span><b>C · Editorial, recut</b> — keep the current soul, off the AI-default</span>
+  </div>
+
+  <!-- ============ A · TERMINAL ============ -->
+  <section class="dir">
+    <div class="dir-meta">
+      <span class="no">A</span>
+      <span class="nm">Systems / Terminal</span>
+      <span class="tag">JetBrains Mono · Inter · signal lime on near-black</span>
+      <span class="risk">Boldest departure</span>
+    </div>
+    <div class="swrow">
+      <div class="swatches">
+        <div class="sw" style="background:#0b0d11"><span>#0b0d11</span></div>
+        <div class="sw" style="background:#12151c"><span>#12151c</span></div>
+        <div class="sw" style="background:#b6ff36"><span>#b6ff36</span></div>
+        <div class="sw" style="background:#e7ebf2"><span>#e7ebf2</span></div>
+        <div class="sw" style="background:#828b9c"><span>#828b9c</span></div>
+      </div>
+    </div>
+    <div class="tile d-terminal">
+      <div class="bar"><span><span class="dot">●</span>&nbsp; AE — SELECTED WORK</span><span>STATUS: SHIPPING</span></div>
+      <div class="hero">
+        <span class="eyebrow">Growth · performance · now AI-native</span>
+        <h2>A growth marketer who learned to <em>build the machine.</em></h2>
+        <p class="lede">A decade in growth and performance is the foundation. Now I build the production AI systems that move the number — at the no-code layer, adopted by the teams that use them.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">17<u>×</u></div><div class="l">ROAS at peak</div></div>
+          <div class="kpi"><div class="n"><u>+</u>592%</div><div class="l">B2C conversion</div></div>
+          <div class="kpi"><div class="n"><u>£</u>440K</div><div class="l">AI pipeline / 3mo</div></div>
+          <div class="kpi"><div class="n"><u>#</u>1</div><div class="l">Cursor, company-wide</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chart">
+          <div class="ct">// cost per lead — collapsed</div>
+          <div class="hb"><span class="k">Cost per article</span><span class="track"><span class="fill" style="width:99%"></span></span><span class="v">-99.8%</span></div>
+          <div class="hb"><span class="k">B2B cost per lead</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="v">-81%</span></div>
+          <div class="hb"><span class="k">Cost per booked job</span><span class="track"><span class="fill" style="width:79%"></span></span><span class="v">-79%</span></div>
+        </div>
+        <div class="say">
+          <p>Give me a cost line that looks fixed and I'll find the lever that halves it, then halves it again.</p>
+          <p>Same pattern each time: map the workflow, find the order-of-magnitude step, aim the tooling there.</p>
+          <a class="btn" href="#">Open the systems →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B · SWISS ============ -->
+  <section class="dir">
+    <div class="dir-meta">
+      <span class="no">B</span>
+      <span class="nm">Swiss Signal</span>
+      <span class="tag">Archivo · Inter · signal orange on off-white</span>
+      <span class="risk">Bold, high-clarity</span>
+    </div>
+    <div class="swrow">
+      <div class="swatches">
+        <div class="sw" style="background:#f7f7f4"><span>#f7f7f4</span></div>
+        <div class="sw" style="background:#0a0a0a"><span>#0a0a0a</span></div>
+        <div class="sw" style="background:#ff4a1c"><span>#ff4a1c</span></div>
+        <div class="sw" style="background:#6b6b6b"><span>#6b6b6b</span></div>
+        <div class="sw" style="background:#e2e2dc"><span>#e2e2dc</span></div>
+      </div>
+    </div>
+    <div class="tile d-swiss">
+      <div class="bar"><span><span class="dot">◆</span>&nbsp; Adrien Enjalbert</span><span>Selected work — 2015–2026</span></div>
+      <div class="hero">
+        <span class="eyebrow">Growth · performance · now AI-native</span>
+        <h2>A growth marketer who learned to <em>build the machine.</em></h2>
+        <p class="lede">A decade in growth and performance is the foundation. Now I build the production AI systems that move the number — at the no-code layer, adopted by the teams that use them.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">17<u>×</u></div><div class="l">ROAS at peak</div></div>
+          <div class="kpi"><div class="n"><u>+</u>592%</div><div class="l">B2C conversion</div></div>
+          <div class="kpi"><div class="n"><u>£</u>440K</div><div class="l">AI pipeline / 3mo</div></div>
+          <div class="kpi"><div class="n"><u>#</u>1</div><div class="l">Cursor, company-wide</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chart">
+          <div class="ct">Cost per lead — collapsed</div>
+          <div class="hb"><span class="k">Cost per article</span><span class="track"><span class="fill" style="width:99%"></span></span><span class="v">-99.8%</span></div>
+          <div class="hb"><span class="k">B2B cost per lead</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="v">-81%</span></div>
+          <div class="hb"><span class="k">Cost per booked job</span><span class="track"><span class="fill" style="width:79%"></span></span><span class="v">-79%</span></div>
+        </div>
+        <div class="say">
+          <p>Give me a cost line that looks fixed and I'll find the lever that halves it, then halves it again.</p>
+          <p>Same pattern each time: map the workflow, find the order-of-magnitude step, aim the tooling there.</p>
+          <a class="btn" href="#">Open the systems →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C · EDITORIAL RECUT ============ -->
+  <section class="dir">
+    <div class="dir-meta">
+      <span class="no">C</span>
+      <span class="nm">Editorial, recut</span>
+      <span class="tag">Newsreader · IBM Plex Mono · oxblood on cool paper</span>
+      <span class="risk">Safe refinement</span>
+    </div>
+    <div class="swrow">
+      <div class="swatches">
+        <div class="sw" style="background:#f0efe9"><span>#f0efe9</span></div>
+        <div class="sw" style="background:#181713"><span>#181713</span></div>
+        <div class="sw" style="background:#9c2b2b"><span>#9c2b2b</span></div>
+        <div class="sw" style="background:#6f6a5e"><span>#6f6a5e</span></div>
+        <div class="sw" style="background:#d9d4c6"><span>#d9d4c6</span></div>
+      </div>
+    </div>
+    <div class="tile d-editorial">
+      <div class="bar"><span><span class="dot">§</span>&nbsp; Adrien Enjalbert</span><span>Portfolio — selected work</span></div>
+      <div class="hero">
+        <span class="eyebrow">Growth · performance · now AI-native</span>
+        <h2>A growth marketer who learned to <em>build the machine.</em></h2>
+        <p class="lede">A decade in growth and performance is the foundation. Now I build the production AI systems that move the number — at the no-code layer, adopted by the teams that use them.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">17<u>×</u></div><div class="l">ROAS at peak</div></div>
+          <div class="kpi"><div class="n"><u>+</u>592%</div><div class="l">B2C conversion</div></div>
+          <div class="kpi"><div class="n"><u>£</u>440K</div><div class="l">AI pipeline / 3mo</div></div>
+          <div class="kpi"><div class="n"><u>#</u>1</div><div class="l">Cursor, company-wide</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="chart">
+          <div class="ct">Cost per lead — collapsed</div>
+          <div class="hb"><span class="k">Cost per article</span><span class="track"><span class="fill" style="width:99%"></span></span><span class="v">-99.8%</span></div>
+          <div class="hb"><span class="k">B2B cost per lead</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="v">-81%</span></div>
+          <div class="hb"><span class="k">Cost per booked job</span><span class="track"><span class="fill" style="width:79%"></span></span><span class="v">-79%</span></div>
+        </div>
+        <div class="say">
+          <p>Give me a cost line that looks fixed and I'll find the lever that halves it, then halves it again.</p>
+          <p>Same pattern each time: map the workflow, find the order-of-magnitude step, aim the tooling there.</p>
+          <a class="btn" href="#">Open the systems →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
