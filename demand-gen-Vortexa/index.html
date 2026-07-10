@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reading the Room · Pipeline &amp; ABM Exercise · Adrien Enjalbert × Vortexa</title>
+<meta name="description" content="My read on the second-stage pre-read: an honest diagnostic of the pipeline data, week-one priorities, how I'd measure the ABM pilot, the process I'd AI-augment first, and what I'd have live in two weeks. Built for Vortexa by Adrien Enjalbert." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/vortexa.css?v=2" />
+</head>
+<body>
+<a class="skip" href="#read">Skip to content</a>
+
+<div class="progress" id="progress"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Adrien Enjalbert portfolio home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 8 L20 32 L34 8" stroke="url(#navg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="20" cy="10" r="3.4" fill="#19bcd8"/>
+        <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7B44E3"/><stop offset="1" stop-color="#0090B9"/></linearGradient></defs>
+      </svg>
+      <span>Adrien Enjalbert<small>Reading the Room · for Vortexa</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#read">The Read</a>
+      <a href="#trust">Trust</a>
+      <a href="#week">Week One</a>
+      <a href="#abm">ABM</a>
+      <a href="#build">The Build</a>
+      <a href="#sprint">Two Weeks</a>
+      <a href="#calls">The Calls</a>
+      <a class="nav-cta" href="#close">How I Think</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="dots-nav" id="dotsNav" aria-label="Section navigation"></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="hero-kicker"><span class="pulse"></span> Second-Stage Pre-Read · <b>Head of Demand Generation</b></span>
+      <h1>Reading<br/>the <span class="grad">room.</span></h1>
+      <p class="hero-sub">You didn't ask for a plan or a deck. You asked how I reason with an incomplete, fast-moving picture, and how fast I can move. So here's my honest read on the data, what I don't trust, what I'd do in week one, how I'd measure the ABM pilot, the process I'd AI-augment first, and what I'd have <b>live</b> in two weeks.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#read">Start with my read <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#sprint">Jump to the 2-week plan</a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric reveal"><div class="num up"><span data-count="38" data-prefix="+" data-suffix="%">0%</span></div><div class="lbl">Demo form fills, Q1 vs Q4</div><span class="cap">Source 1 · volume up</span></div>
+      <div class="hero-metric reveal d1"><div class="num up"><span data-count="16" data-prefix="+" data-suffix="%">0%</span></div><div class="lbl">Marketing-captured leads</div><span class="cap">Source 1 · but slower</span></div>
+      <div class="hero-metric reveal d2"><div class="num down"><span data-count="18" data-prefix="−" data-suffix="%">0%</span></div><div class="lbl">Sales-accepted opportunities</div><span class="cap">Source 1 · the tell</span></div>
+      <div class="hero-metric reveal d3"><div class="num warn"><span data-count="61" data-suffix="%">0%</span></div><div class="lbl">Pipeline as Direct / Unknown</div><span class="cap">Source 1 · can't trust it yet</span></div>
+      <div class="hero-note reveal d3"><span aria-hidden="true">⚠</span><span>More volume, fewer accepted opportunities, and most of it unattributed. That gap is the whole exercise.</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="dot"></span></div>
+</header>
+
+<!-- ============ EXECUTIVE READ SUMMARY ============ -->
+<section class="summary" id="summary" data-dot="TL;DR" style="padding:0">
+  <div class="wrap">
+    <div class="summary-grid">
+      <div class="summary-item reveal"><span class="k"><b>1</b> The read</span><h4>Growth that isn't converting</h4><p>Volume is up, every conversion step is down, and 61% is unattributed. It's a quality and measurement problem, not a volume win.</p></div>
+      <div class="summary-item reveal d1"><span class="k"><b>2</b> Trust</span><h4>Half of it I'd verify</h4><p>The SAO drop is partly a stage-definition change (Source 3), not real decline. I'd separate the artifact from the signal first.</p></div>
+      <div class="summary-item reveal d2"><span class="k"><b>3</b> Week one</span><h4>Fix the lens, re-align sales</h4><p>Stabilise attribution, rebuild the ICP and qualification bar with sales, and protect the ABM pilot before it's judged wrong.</p></div>
+      <div class="summary-item reveal d3"><span class="k"><b>4</b> The build</span><h4>An ABM research + scoring agent</h4><p>Automate account research and lead scoring. It fixes the quality gap and powers ABM, with a human on every named account.</p></div>
+      <div class="summary-item reveal d4"><span class="k"><b>5</b> Two weeks</span><h4>Coverage, live not planned</h4><p>Reactivate the base, turn on capture, ride a live market moment. Accept imperfect attribution to get pipeline moving.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART ONE ============ -->
+<!-- THE READ -->
+<section id="read" data-dot="The Read">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">1</span> Part One · What's actually going on</span>
+      <h2>The numbers are up. The engine is slowing.</h2>
+      <p>Sources 1–3 look like three unrelated notes. Read together they tell one story: the top of the funnel is working harder while the bottom converts worse. Here's each signal, what it says, and how I read it.</p>
+    </div>
+
+    <div class="decoder">
+      <div class="signal reveal">
+        <div class="sig-src">
+          <span class="tagn">Source 1 · Reporting</span>
+          <h4>Volume up, opportunities down</h4>
+          <p>Demo fills +38%, MCLs +16%, SAOs −18% (Q1 vs Q4).</p>
+        </div>
+        <div class="sig-cell says">
+          <span class="lab"><i></i> What it says</span>
+          <p>The funnel got busier at the top and thinner at the bottom. Marketing looks like it's winning on the metrics it owns.</p>
+        </div>
+        <div class="sig-cell read">
+          <span class="lab"><i></i> How I read it</span>
+          <p>Every conversion rate fell. Demo→SAO dropped from <b>12.8%</b> to <b>7.5%</b>, roughly <b>−41%</b>. We're buying more of something that converts less. That's a <b>quality</b> problem hiding inside a volume story.</p>
+        </div>
+      </div>
+
+      <div class="signal reveal d1">
+        <div class="sig-src">
+          <span class="tagn">Source 2 · Sales Slack</span>
+          <h4>"A lot of these aren't it"</h4>
+          <p>Students, a consultant doing research. Sales wants it tightened.</p>
+        </div>
+        <div class="sig-cell says">
+          <span class="lab"><i></i> What it says</span>
+          <p>Two true things at once: sales sees bad-fit leads, and the BDR is right that volume is up on an unchanged process.</p>
+        </div>
+        <div class="sig-cell read">
+          <span class="lab"><i></i> How I read it</span>
+          <p>Both are correct, which means the <b>bar</b> is the problem, not the people. The process didn't change, but the mix did. This is the qualitative version of the Source 1 conversion drop, and a relationship I need to repair, not win.</p>
+        </div>
+      </div>
+
+      <div class="signal reveal d2">
+        <div class="sig-src">
+          <span class="tagn">Source 3 · RevOps</span>
+          <h4>Stage definitions moved</h4>
+          <p>Mid-Q2 cleanup. Some "Validate" deals now sit a stage earlier, not restated.</p>
+        </div>
+        <div class="sig-cell says">
+          <span class="lab"><i></i> What it says</span>
+          <p>The pipeline model changed underneath the numbers, and the history wasn't rebased to match.</p>
+        </div>
+        <div class="sig-cell read">
+          <span class="lab"><i></i> How I read it</span>
+          <p>This is the load-bearing caveat. Part of the −18% in SAOs is <b>definitional</b>, not a real decline, deals shifted category, not disappeared. I wouldn't let anyone act on that number until it's rebased. The quality signal is real; the size of it isn't yet known.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- the two-chart story -->
+    <div class="grid-2" style="margin-top:34px">
+      <div class="chart-card reveal">
+        <h3>Volume rose across the board</h3>
+        <p class="csub">Demo fills, MCLs and SAOs, Q4 (prior) vs Q1</p>
+        <div class="chart-legend"><span><i style="background:#ABBBCE"></i>Q4 (prior)</span><span><i style="background:#0090B9"></i>Q1</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartVolume" preserveAspectRatio="xMidYMid meet" aria-label="Volume by stage, Q4 vs Q1"></svg>
+      </div>
+      <div class="chart-card reveal d1">
+        <h3>Every conversion step fell</h3>
+        <p class="csub">Stage-to-stage conversion rate, Q4 vs Q1 (the actual story)</p>
+        <div class="chart-legend"><span><i style="background:#ABBBCE"></i>Q4 (prior)</span><span><i style="background:#7B44E3"></i>Q1</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartConv" preserveAspectRatio="xMidYMid meet" aria-label="Conversion rate by step, Q4 vs Q1"></svg>
+      </div>
+    </div>
+
+    <div class="statl-row reveal" style="margin-top:22px">
+      <div class="statl"><div class="num"><span data-count="45.0" data-decimals="1" data-suffix="%">0</span> → <span data-count="37.9" data-decimals="1" data-suffix="%">0</span></div><div class="lbl">Demo → MCL conversion</div></div>
+      <div class="statl"><div class="num"><span data-count="28.4" data-decimals="1" data-suffix="%">0</span> → <span data-count="19.9" data-decimals="1" data-suffix="%">0</span></div><div class="lbl">MCL → SAO conversion</div></div>
+      <div class="statl"><div class="num"><span data-count="12.8" data-decimals="1" data-suffix="%">0</span> → <span data-count="7.5" data-decimals="1" data-suffix="%">0</span></div><div class="lbl">Demo → SAO (end to end)</div></div>
+      <div class="statl"><div class="num"><span data-count="41" data-prefix="−" data-suffix="%">0</span></div><div class="lbl">Fall in end-to-end conversion</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST / UNCERTAINTY ============ -->
+<section id="trust" class="on-dark" data-dot="What I Don't Trust">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The honest part</span>
+      <h2>What I don't fully trust, and why.</h2>
+      <p>You asked where I'm uncertain. Good, because acting on this data as-is would be a mistake. Three things I'd verify before I let anyone, including a board, draw conclusions from it.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="ic">🧮</div>
+        <h3>The −18% in SAOs</h3>
+        <p>Confounded by the mid-Q2 stage change (Source 3). Before I treat it as a decline, I'd <b>rebase Q4 and Q1 to the same stage model</b>. My hypothesis: the real drop is smaller than −18%, but conversion still fell. Verify, don't assume.</p>
+        <div style="margin-top:14px"><span class="tag">Rebase history</span><span class="tag">Like-for-like</span></div>
+      </div>
+      <div class="card reveal d1">
+        <div class="ic">🧭</div>
+        <h3>61% Direct / Unknown</h3>
+        <p>With most pipeline unattributed, I can't credit a channel, cut spend, or prove the ABM pilot. Any channel-level conclusion right now is <b>a guess wearing a number</b>. First job: get unknown down fast enough to steer.</p>
+        <div style="margin-top:14px"><span class="tag">Self-reported attribution</span><span class="tag">UTM hygiene</span></div>
+      </div>
+      <div class="card reveal d2">
+        <div class="ic">🔍</div>
+        <h3>"Bad leads" as anecdote</h3>
+        <p>Source 2 is real but qualitative, a couple of examples aren't a rate. I'd quantify it: what share of Q1 demo fills fail ICP? Is it concentrated in one campaign or channel? <b>Turn the complaint into a number</b> before I redesign anything.</p>
+        <div style="margin-top:14px"><span class="tag">ICP fail-rate</span><span class="tag">By source</span></div>
+      </div>
+    </div>
+
+    <p class="reveal d2" style="font-size:13px;color:var(--muted-on-dark);margin-top:24px;max-width:760px">The through-line: I'm confident there's a quality problem, the conversion trend and the sales feedback agree. I'm not yet confident in its <em>size</em>, because the measurement is moving. So I'd stabilise the lens in parallel with acting, not before.</p>
+  </div>
+</section>
+
+<!-- ============ WEEK ONE ============ -->
+<section id="week" data-dot="Week One">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">1</span> Part One · What I'd prioritise in week one</span>
+      <h2>Four moves, in this order.</h2>
+      <p>Not a strategy, four concrete things I'd actually do in the first five days, sequenced so each one de-risks the next. The theme is simple: fix the lens and rebuild trust while keeping pipeline moving.</p>
+    </div>
+
+    <div class="board">
+      <div class="wcard reveal">
+        <span class="prio">Do first</span>
+        <div class="wn">01</div>
+        <h4>Rebase the funnel with RevOps</h4>
+        <p>Sit with RevOps, restate Q4 and Q1 on the new stage model, and separate the real conversion drop from the definitional one.</p>
+        <div class="why">Why first: every other decision depends on numbers we can trust.</div>
+      </div>
+      <div class="wcard reveal d1">
+        <span class="prio">Days 1–3</span>
+        <div class="wn">02</div>
+        <h4>Redefine "qualified" with sales</h4>
+        <p>Agree a written ICP and a scoring bar with the AMER lead, a Vortexa buyer is a trader or market analyst at a trading house or major, not a student or a consultant. Turn it into form and routing rules.</p>
+        <div class="why">Why: Source 2 is a trust problem. Fix it <em>with</em> sales, not at them.</div>
+      </div>
+      <div class="wcard reveal d2">
+        <span class="prio">Days 2–4</span>
+        <div class="wn">03</div>
+        <h4>Get attribution steerable</h4>
+        <p>Add self-reported "how did you hear about us", tighten UTMs, wire offline conversions. Target: unknown from 61% to something I can steer by, not perfection.</p>
+        <div class="why">Why: I can't reallocate budget or prove ABM while blind.</div>
+      </div>
+      <div class="wcard reveal d3">
+        <span class="prio">Day 5</span>
+        <div class="wn">04</div>
+        <h4>Ring-fence &amp; instrument ABM</h4>
+        <p>Tag the 10–15 named accounts, set up account-level tracking, and agree the measures <em>before</em> the board asks, so the pilot is judged on the right thing.</p>
+        <div class="why">Why: Source 4 says the CRO wants pipeline impact next update.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABM MEASUREMENT ============ -->
+<section id="abm" class="on-dark" data-dot="ABM Measurement">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">1</span> Part One · Measuring the ABM pilot (Source 4)</span>
+      <h2>Stop counting leads. Measure the account.</h2>
+      <p>The CMO is right: MCLs and SALs mean little across 10–15 named accounts you already know. With a list that small you don't measure volume, you measure <em>movement</em> per account, like a portfolio of named bets.</p>
+    </div>
+
+    <div class="abm-note">
+      <div class="abm-flip reveal">
+        <h3>The reframe</h3>
+        <p>A traditional funnel asks "how many leads?" ABM into named accounts asks "are the accounts we chose getting warmer, wider, and closer to a deal?" The unit of measurement changes from the lead to the account and its buying committee.</p>
+        <div class="abm-vs">
+          <div class="stop">
+            <div class="h">Stop reporting</div>
+            <ul><li>MCL / SAL volume</li><li>Cost per lead</li><li>Form fills in aggregate</li></ul>
+          </div>
+          <div class="go">
+            <div class="h">Start reporting</div>
+            <ul><li>Account engagement &amp; committee coverage</li><li>Target-account pipeline created / influenced</li><li>Stage progression &amp; velocity vs non-ABM</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="abm-flip reveal d1" style="background:var(--grad-ink);color:#fff;border-color:transparent">
+        <h3 style="color:#fff">Being honest about it</h3>
+        <p style="color:var(--muted-on-dark)">You said it's fine if this isn't fully resolved, so here's the real constraint: <b style="color:#fff">10–15 accounts will never be statistically significant.</b> I wouldn't pretend otherwise with a chart.</p>
+        <p style="color:var(--muted-on-dark);margin-top:12px">Instead I'd run it as a scorecard, a clear <b style="color:#fff">before/after per account</b> on engagement, committee reach and stage, plus leading indicators the board can see next month while pipeline is still maturing. Judgment, evidenced, not false precision.</p>
+      </div>
+    </div>
+
+    <!-- account scorecard -->
+    <div class="scorecard reveal">
+      <div class="sc-head">
+        <span>Named account</span><span>Committee reach</span><span>Engagement</span><span>Stage</span><span>30-day trend</span>
+      </div>
+      <div class="sc-row">
+        <div class="sc-acct"><span class="dot" style="background:#7B44E3"></span><span>Tier 1 · Global trading house<br/><span class="sc-tier">Illustrative</span></span></div>
+        <div>4 / 6 personas</div>
+        <div><span class="heat"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <div><span class="stagepill market">In-market</span></div>
+        <div class="trend up">▲ warming</div>
+      </div>
+      <div class="sc-row">
+        <div class="sc-acct"><span class="dot" style="background:#0090B9"></span><span>Tier 1 · Integrated major<br/><span class="sc-tier">Illustrative</span></span></div>
+        <div>5 / 6 personas</div>
+        <div><span class="heat"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div><span class="stagepill opp">Opportunity</span></div>
+        <div class="trend up">▲ progressing</div>
+      </div>
+      <div class="sc-row">
+        <div class="sc-acct"><span class="dot" style="background:#19bcd8"></span><span>Tier 2 · Independent trader<br/><span class="sc-tier">Illustrative</span></span></div>
+        <div>2 / 5 personas</div>
+        <div><span class="heat"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+        <div><span class="stagepill engaged">Engaged</span></div>
+        <div class="trend flat">▬ needs a play</div>
+      </div>
+      <div class="sc-row">
+        <div class="sc-acct"><span class="dot" style="background:#ABBBCE"></span><span>Tier 2 · Bank / trading desk<br/><span class="sc-tier">Illustrative</span></span></div>
+        <div>1 / 4 personas</div>
+        <div><span class="heat"><i class="on"></i><i></i><i></i><i></i><i></i></span></div>
+        <div><span class="stagepill aware">Aware</span></div>
+        <div class="trend flat">▬ cold</div>
+      </div>
+      <div class="sc-foot">Illustrative structure, not real accounts. The point is the <b>shape</b> of the report: every named account, its buying-committee coverage, engagement depth, stage and direction of travel, one glance for the CRO.</div>
+    </div>
+
+    <!-- leading vs lagging -->
+    <div class="metric-tiers">
+      <div class="mtier reveal">
+        <span class="when">Leading · weeks</span>
+        <h4>Is it working yet?</h4>
+        <ul><li>Committee members engaged per account</li><li>Meetings booked with target personas</li><li>Account-level web &amp; content engagement lift</li><li>New personas reached inside the account</li></ul>
+      </div>
+      <div class="mtier reveal d1">
+        <span class="when">Mid · a quarter</span>
+        <h4>Is it progressing?</h4>
+        <ul><li>Target accounts entering / advancing stages</li><li>Qualified opportunities in the named list</li><li>Velocity vs a non-ABM control group</li><li>Committee coverage trend per account</li></ul>
+      </div>
+      <div class="mtier reveal d2">
+        <span class="when">Lagging · the CRO's question</span>
+        <h4>Did it pay?</h4>
+        <ul><li>Pipeline created &amp; influenced in target accounts</li><li>Win rate &amp; deal size vs non-ABM</li><li>Revenue from the named list</li><li>Cost per opportunity, not per lead</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART TWO: THE BUILD ============ -->
+<section id="build" class="on-dark" data-dot="The Build">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">2</span> Part Two · The process I'd AI-augment first</span>
+      <h2>An ABM research &amp; lead-scoring agent.</h2>
+      <p>You have four candidates: lead qualification, the BDR handoff, ABM account research, reporting. I'd automate <b>account research and scoring</b> first, because it's the one process that sits on top of both problems at once, and it's the model that fits "AI-powered workflows, not added headcount".</p>
+    </div>
+
+    <div class="pick-grid reveal">
+      <div class="pick chosen">
+        <span class="badge">My pick</span>
+        <span class="pn">Option A</span>
+        <h4>ABM research + scoring</h4>
+        <p>Enrich accounts, find the committee, score fit &amp; intent. Fixes quality and powers ABM.</p>
+      </div>
+      <div class="pick">
+        <span class="pn">Option B</span>
+        <h4>Lead qualification</h4>
+        <p>Solved as a by-product of scoring, not a separate build.</p>
+      </div>
+      <div class="pick">
+        <span class="pn">Option C</span>
+        <h4>BDR handoff</h4>
+        <p>Improves once the leads and briefs it receives are better.</p>
+      </div>
+      <div class="pick">
+        <span class="pn">Option D</span>
+        <h4>Reporting</h4>
+        <p>Real, but week-one plumbing, not the highest-leverage agent.</p>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin:8px 0 26px">
+      <span class="eyebrow">The workflow</span>
+      <h2 style="font-size:clamp(22px,3vw,34px)">How it actually works</h2>
+      <p>Not a vision statement. The steps, the data each one needs, and where a human stays in the loop. I've built the equivalent before, a prospecting agent that enriches accounts, finds decision-makers and personalises outreach at scale.</p>
+    </div>
+
+    <div class="agent-flow reveal">
+      <div class="agent-node"><div class="n">1</div><h5>Ingest</h5><p>Named list + inbound demo fills from CRM (HubSpot / SFDC).</p></div>
+      <div class="agent-node"><div class="n">2</div><h5>Enrich</h5><p>Firmographics &amp; signals via an enrichment API (Cognism / Clearbit).</p></div>
+      <div class="agent-node"><div class="n">3</div><h5>Score fit</h5><p>Is this our ICP? Filter out students &amp; consultants against the written bar.</p></div>
+      <div class="agent-node"><div class="n">4</div><h5>Map committee</h5><p>Find trader, analyst, head of desk, risk, procurement per account.</p></div>
+      <div class="agent-node human"><div class="n">✓</div><h5>Human check</h5><p>Sales reviews fit-score &amp; brief on named accounts before any outreach.</p></div>
+      <div class="agent-node"><div class="n">5</div><h5>Brief &amp; sync</h5><p>Push a research brief + priority into the CRM &amp; sequence.</p></div>
+    </div>
+
+    <div class="hl-grid">
+      <div class="hl human reveal">
+        <h4>Where a human stays in the loop</h4>
+        <ul>
+          <li><b>The ICP definition</b> is owned by a human, marketing + sales, not the model. The agent applies the bar; it doesn't set it.</li>
+          <li><b>Named accounts get eyes.</b> With only 10–15, a BDR reviews every fit-score and brief before outreach goes out.</li>
+          <li><b>Low-confidence scores</b> route to a human, not to auto-reject. An odd job title shouldn't drop a real buyer.</li>
+          <li><b>Weekly drift audit</b> on a sample, does the score still match reality as the market moves.</li>
+        </ul>
+      </div>
+      <div class="hl risk reveal d1">
+        <h4>What breaks if I get it wrong</h4>
+        <ul>
+          <li><b>False negatives:</b> the agent filters out a genuine trader with a non-standard title. Mitigation: human review of rejects, confidence thresholds.</li>
+          <li><b>False positives at scale:</b> auto-outreach to bad-fit contacts in a small, tight-knit market damages the brand fast. Mitigation: assisted, not autonomous, at launch.</li>
+          <li><b>Enrichment garbage-in:</b> stale data scores wrong. Mitigation: freshness checks, source-of-truth in CRM.</li>
+          <li><b>Sales stops trusting it</b> if early briefs are weak, exactly the relationship I'm trying to fix. Mitigation: start narrow, prove it, then widen.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin:52px 0 24px">
+      <span class="eyebrow">Build vs buy</span>
+      <h2 style="font-size:clamp(22px,3vw,34px)">What I'd build myself, and what I'd need</h2>
+    </div>
+    <div class="bvb">
+      <div class="bvb-col me reveal">
+        <div class="h">I'd build / configure</div>
+        <ul>
+          <li>The scoring logic &amp; ICP rules</li>
+          <li>The agent orchestration &amp; prompts</li>
+          <li>CRM workflows, routing &amp; the brief template</li>
+          <li>The account scorecard &amp; reporting view</li>
+        </ul>
+      </div>
+      <div class="bvb-col ops reveal d1">
+        <div class="h">I'd need from Marketing Ops</div>
+        <ul>
+          <li>Clean CRM schema &amp; stage hygiene</li>
+          <li>Data governance &amp; field ownership</li>
+          <li>Routing rules wired into the CRM</li>
+          <li>Consent / compliance sign-off</li>
+        </ul>
+      </div>
+      <div class="bvb-col ext reveal d2">
+        <div class="h">Specialist / vendor</div>
+        <ul>
+          <li>Enrichment &amp; signal data contract</li>
+          <li>Security review of the data pipeline</li>
+          <li>No agency needed, this stays in-house</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART THREE: TWO WEEKS ============ -->
+<section id="sprint" data-dot="Two Weeks">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">3</span> Part Three · Live within two weeks</span>
+      <h2>Coverage is the fire. Here's what I light.</h2>
+      <p>The problem isn't a forecasting gap, it's H2 coverage, and the board asks next month. So this is about demand <em>capture</em> and reactivation I can stand up fast, not a demand-creation programme that pays off in Q4. Live, not planned.</p>
+    </div>
+
+    <div class="sprint-legend reveal">
+      <span><i style="background:var(--grad-brand)"></i>Ships and is live within the fortnight</span>
+      <span><i style="background:#ABBBCE"></i>Deliberately imperfect (see below)</span>
+    </div>
+
+    <div class="tl">
+      <div class="tl-week reveal">
+        <span class="wk">Week 1</span>
+        <h3>Mine what we already paid for</h3>
+        <div class="tl-item"><div class="tl-dot">♻️</div><div><h5>Reactivate the base</h5><p>412 demo fills + MCLs, many never worked properly. Re-qualify against the new bar and re-engage the good ones. Fastest pipeline is the pipeline you already own.</p><span class="live">Live day 3–4</span></div></div>
+        <div class="tl-item"><div class="tl-dot">🎯</div><div><h5>Turn on always-on capture</h5><p>High-intent branded &amp; competitor search + retargeting to engaged visitors, straight to "book a demo". Catch the demand that already exists.</p><span class="live">Live day 4–5</span></div></div>
+        <div class="tl-item"><div class="tl-dot">📊</div><div><h5>Stand up a coverage dashboard</h5><p>A rough pipeline + attribution view so movement is visible to the board. Directional, not perfect.</p><span class="live">Live day 5</span></div></div>
+      </div>
+      <div class="tl-week reveal d1">
+        <span class="wk">Week 2</span>
+        <h3>Aim it at the accounts that matter</h3>
+        <div class="tl-item"><div class="tl-dot">🤝</div><div><h5>Launch ABM plays on the named list</h5><p>1:few personalised outreach to the 10–15 accounts, powered by the research agent v1 (assisted, human-checked). Warm the committee, book meetings.</p><span class="live">Live day 8–9</span></div></div>
+        <div class="tl-item"><div class="tl-dot">📈</div><div><h5>Ride a live market moment</h5><p>Vortexa already publishes sharp analysis on live events (Hormuz, oversupply). Package one as a fast "situation briefing" webinar / gated note, real demand magnet for real traders.</p><span class="live">Live day 10–12</span></div></div>
+        <div class="tl-item"><div class="tl-dot">🔁</div><div><h5>Tighten the sales handoff</h5><p>&lt;24-hour follow-up SLA on new demos + a weekly quality sync. Protect conversion while volume comes back.</p><span class="live">Live day 8</span></div></div>
+      </div>
+    </div>
+
+    <div class="tradeoff reveal">
+      <div>
+        <h4 class="keep-h">What I protect</h4>
+        <ul>
+          <li><b>Speed to pipeline.</b> Reactivation + capture over a polished new campaign.</li>
+          <li><b>The named accounts.</b> Human-checked, never auto-blasted.</li>
+          <li><b>The sales relationship.</b> Better bar, faster follow-up, from day one.</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="skip-h">What I do imperfectly, on purpose</h4>
+        <ul>
+          <li><b>Attribution:</b> self-reported + directional for now. Precise later.</li>
+          <li><b>Automation:</b> the agent runs assisted / manual first, automated once trusted.</li>
+          <li><b>Creative:</b> repurpose existing analyst content, ship rough, don't produce net-new.</li>
+          <li><b>Demand creation at scale:</b> that's the quarter's job. In two weeks I buy coverage, not brand.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal d2" style="font-size:13px;color:var(--muted);margin-top:22px;max-width:760px">The trade-off is deliberate: in a coverage emergency, a fast, imperfect, measurable motion beats a slow, elegant one. I'd rather show the board real movement in three weeks and refine the measurement behind it than present a perfect plan that hasn't shipped.</p>
+  </div>
+</section>
+
+<!-- ============ THE CALLS ============ -->
+<section id="calls" data-dot="The Calls">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The defensible part</span>
+      <h2>The calls I'd make, and what would change my mind.</h2>
+      <p>Every judgment here has a credible alternative. Here's what I'd choose, what I'd reject, and the evidence that would make me change course, because being decisive and being open aren't opposites.</p>
+    </div>
+    <div class="trade">
+      <div class="trade-card reveal">
+        <span class="q">Fix data or move first?</span>
+        <div class="choice">Instrument enough, then move.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Pausing action for a full attribution &amp; data rebuild before doing anything.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>Coverage is on fire. I stabilise the lens <em>in parallel</em> with getting pipeline live, not before it.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>The data were so broken that acting on it would actively mislead spend.</p></div>
+      </div>
+      <div class="trade-card reveal d1">
+        <span class="q">Reactivate or acquire?</span>
+        <div class="choice">Work the base before buying more.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Pouring the two-week budget straight into new top-of-funnel acquisition.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>We already have 400+ fills we half-ignored. That's the cheapest, fastest pipeline available right now.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>The existing base was genuinely exhausted or almost entirely bad-fit.</p></div>
+      </div>
+      <div class="trade-card reveal d2">
+        <span class="q">Autonomous or assisted AI?</span>
+        <div class="choice">Assisted first, in a small market.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Fully autonomous outreach to named accounts from day one to save headcount.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>In a tight-knit trading market, one wrong automated touch to a Tier-1 account costs more than the time it saves.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>Assisted runs proved accuracy high enough to safely widen autonomy.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section id="close" aria-label="Core insight" style="padding-bottom:0">
+  <div class="wrap pullquote reveal">
+    <p>This isn't a lead problem or a data problem. It's a <span class="grad">coverage problem wearing a measurement disguise</span>, and I'd get pipeline moving in two weeks while I fix the lens behind it.</p>
+    <div class="attrib">The one idea behind the whole read</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;color:var(--blue-2)">Thank you</span>
+    <h2>Ready to talk it through, and to move fast in the room.</h2>
+    <p>Everything here is a starting point, not a finished answer, exactly as you asked. Push on any part, the read, the ABM measures, the agent, the two-week calls, and I'll show you the reasoning and where I'd change my mind.</p>
+    <a class="btn btn-primary" href="#top">Back to the top <span aria-hidden="true">↑</span></a>
+    <div class="fmeta">
+      <span>Adrien Enjalbert · Head of Demand Generation candidate</span>
+      <span>Second-stage pre-read for Harriet Durnford-Smith (CMO) &amp; Jake Cushnie (VP RevOps)</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vortexa.js?v=2"></script>
+</body>
+</html>
