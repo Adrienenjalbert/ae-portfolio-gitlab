@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>From 3 Channels to a Full-Funnel Engine · Demand Gen Deep Dive · Adrien Enjalbert × Stravito</title>
+<meta name="description" content="An interactive walkthrough of a B2B full-funnel demand generation campaign: strategy, paid execution, results and retrospective. Built for Stravito by Adrien Enjalbert." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/stravito.css" />
+</head>
+<body>
+<a class="skip" href="#brief">Skip to content</a>
+
+<div class="progress" id="progress"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="12.9" y="2.5" width="18" height="18" rx="4" transform="rotate(45 21.9 11.5)" fill="#780080"/>
+        <rect x="9" y="14.5" width="20" height="20" rx="4.5" transform="rotate(45 19 24.5)" fill="url(#navg)"/>
+        <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#de2864"/><stop offset="1" stop-color="#f04682"/></linearGradient></defs>
+      </svg>
+      <span>Adrien Enjalbert<small>Demand Generation · for Stravito</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#brief">Brief</a>
+      <a href="#shift">Shift</a>
+      <a href="#evolution">Evolution</a>
+      <a href="#funnel">Funnel</a>
+      <a href="#execution">Execution</a>
+      <a href="#results">Results</a>
+      <a href="#xfun">Teams</a>
+      <a href="#decisions">Decisions</a>
+      <a href="#process">Process</a>
+      <a class="nav-cta" href="#retro">Retrospective</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- section dots -->
+<nav class="dots-nav" id="dotsNav" aria-label="Section navigation"></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="diamonds">
+    <div class="diamond d1"></div><div class="diamond d2"></div>
+    <div class="diamond d3"></div><div class="diamond d4"></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <span class="hero-kicker">Demand Gen Take-Home · <b>Indeed Flex</b> B2B campaign</span>
+      <h1>From <span class="grad">3 channels</span><br/>to a full-funnel<br/>growth engine.</h1>
+      <p class="hero-sub">How I rebuilt a narrow, intent-only paid model into an integrated demand engine spanning awareness, authority, interest and conversion, and drove a step-change in reach, efficiency and pipeline in a single quarter.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#shift">Walk the story <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#results">Jump to results</a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric reveal"><div class="num"><span class="grad" data-count="12" data-suffix="x">0x</span></div><div class="lbl">Reach growth in a quarter</div></div>
+      <div class="hero-metric reveal d1"><div class="num"><span class="grad" data-count="82" data-prefix="−" data-suffix="%">0%</span></div><div class="lbl">Cost per impression</div></div>
+      <div class="hero-metric reveal d2"><div class="num"><span class="grad" data-count="77" data-prefix="−" data-suffix="%">0%</span></div><div class="lbl">Cost per contact</div></div>
+      <div class="hero-metric reveal d3"><div class="num"><span class="grad" data-count="17" data-suffix="x">0x</span></div><div class="lbl">Blended ROAS for the quarter</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="dot"></span></div>
+</header>
+
+<!-- ============ STAR EXECUTIVE SUMMARY ============ -->
+<section class="summary" id="summary" data-dot="Summary" style="padding:0">
+  <div class="wrap">
+    <div class="summary-grid">
+      <div class="summary-item reveal"><span class="k"><b>S</b> Situation</span><h4>Growth had stalled</h4><p>Three intent-only channels captured existing demand but created none. Sales got contacts, not qualified buyers.</p></div>
+      <div class="summary-item reveal d1"><span class="k"><b>T</b> Task</span><h4>Own the whole journey</h4><p>Prove that a demand engine, not more keywords, would grow qualified pipeline efficiently.</p></div>
+      <div class="summary-item reveal d2"><span class="k"><b>A</b> Action</span><h4>Rebuilt the funnel</h4><p>Awareness to decision, budget run as a weekly testing engine, tied to sales with a sub-3-hour SLA.</p></div>
+      <div class="summary-item reveal d3"><span class="k"><b>R</b> Result</span><h4>A step-change</h4><p>12× reach, cost per contact down 77%, and roughly 17× blended ROAS in a single quarter.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRIEF ============ -->
+<section id="brief" data-dot="Brief">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 · Strategy &amp; Planning</span>
+      <h2>The audience, the journey, the big idea.</h2>
+      <p>Indeed Flex is a staffing marketplace selling into HR, operations and finance leaders. The old model only spoke to people already searching. The opportunity was to own the whole buyer's journey, not just the last click.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="ic">👥</div>
+        <h3>Who we targeted</h3>
+        <p>B2B decision-makers in staffing-heavy sectors like hospitality, logistics, retail and events. Segmented by <b>seniority × job function × industry × location</b> so each funnel stage could widen or tighten the audience.</p>
+        <div style="margin-top:16px">
+          <span class="tag">HR &amp; TA leaders</span><span class="tag">Ops directors</span><span class="tag">Finance / cost owners</span><span class="tag">UK &amp; US</span>
+        </div>
+      </div>
+      <div class="card reveal d1">
+        <div class="ic">🧭</div>
+        <h3>The buyer's journey</h3>
+        <p>A considered, multi-stakeholder purchase. Buyers move from <b>unaware of a better model</b> → recognising the cost of the status quo → trusting us → requesting a demo. The funnel had to nurture that shift, not skip it.</p>
+        <div style="margin-top:16px">
+          <span class="tag">Awareness</span><span class="tag">Authority</span><span class="tag">Interest</span><span class="tag">Decision</span>
+        </div>
+      </div>
+      <div class="card reveal d2">
+        <div class="ic">💡</div>
+        <h3>The core message</h3>
+        <p>Reframe temporary staffing from a grudge purchase into a strategic advantage: <b>the pain we solve, the service we offer, the result of working with us.</b> Educational at the top, proof-led in the middle, direct at the bottom.</p>
+        <div style="margin-top:16px">
+          <span class="tag">100% educational TOFU</span><span class="tag">Proof-led MOFU</span><span class="tag">Direct BOFU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE SHIFT (before vs after) ============ -->
+<section id="shift" class="on-dark" data-dot="The Shift">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why change</span>
+      <h2>The old model did one job well, and everything else not at all.</h2>
+      <p>The previous B2B strategy leaned on three intent-only channels. It captured demand but never created it, and the hand-off to sales leaked. Here's the before and after, side by side.</p>
+    </div>
+
+    <div class="ba-toggle reveal" role="tablist">
+      <button class="active" data-ba="before" role="tab">Before · 3 channels</button>
+      <button data-ba="after" role="tab">After · full funnel</button>
+    </div>
+
+    <!-- BEFORE -->
+    <div class="ba-panel active" id="ba-before">
+      <div class="ba-compare">
+        <div class="ba-col before">
+          <span class="lead">The model</span>
+          <h3>Intent capture only</h3>
+          <div class="chanrow">
+            <span class="chanchip"><span class="chandot" style="background:#4285F4"></span> PPC search</span>
+            <span class="chanchip"><span class="chandot" style="background:#0A66C2"></span> Conversation ads</span>
+            <span class="chanchip"><span class="chandot" style="background:#780080"></span> Ebook + email/call</span>
+          </div>
+          <p style="margin-top:18px;color:var(--muted);font-size:14.5px">Three channels, all aimed at people already searching for staffing keywords. A single demo journey with no nurture in between.</p>
+        </div>
+        <div class="ba-col after">
+          <span class="lead">Where it leaked</span>
+          <h3>Six structural weaknesses</h3>
+          <ul class="ba-list">
+            <li><span class="ico">⚠️</span><span><b>Weak channel mix at TOFU.</b> No demand creation, only capture.</span></li>
+            <li><span class="ico">⚠️</span><span><b>Limited to intent users.</b> Invisible to the 95% not yet searching.</span></li>
+            <li><span class="ico">⚠️</span><span><b>Weak retargeting and authority.</b> No trust-building sequence.</span></li>
+            <li><span class="ico">⚠️</span><span><b>Weak CRM and RMK journey.</b> Leads went cold between touch points.</span></li>
+            <li><span class="ico">⚠️</span><span><b>Weak sales alignment.</b> Slow, inconsistent lead follow-up.</span></li>
+            <li><span class="ico">⚠️</span><span><b>Low lead-to-opportunity rate.</b> Volume without qualification.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTER -->
+    <div class="ba-panel" id="ba-after">
+      <div class="ba-compare">
+        <div class="ba-col after">
+          <span class="lead">The model</span>
+          <h3>Integrated full funnel</h3>
+          <div class="chanrow">
+            <span class="chanchip"><span class="chandot" style="background:#f04682"></span> Display &amp; video</span>
+            <span class="chanchip"><span class="chandot" style="background:#0A66C2"></span> Paid social</span>
+            <span class="chanchip"><span class="chandot" style="background:#4285F4"></span> PPC + competitor</span>
+            <span class="chanchip"><span class="chandot" style="background:#de2864"></span> Retargeting</span>
+            <span class="chanchip"><span class="chandot" style="background:#780080"></span> CRM &amp; email</span>
+            <span class="chanchip"><span class="chandot" style="background:#7CE0B4"></span> Lead magnets</span>
+          </div>
+          <p style="margin-top:18px;color:var(--muted-on-dark);font-size:14.5px">A connected system: demand creation at the top, trust and proof in the middle, frictionless conversion at the bottom, with each stage feeding the next.</p>
+        </div>
+        <div class="ba-col before" style="background:var(--paper)">
+          <span class="lead" style="color:var(--purple)">What it fixed</span>
+          <h3>From leaks to a loop</h3>
+          <ul class="ba-list">
+            <li><span class="ico">✅</span><span><b>Full TOFU channel mix</b> creating demand, not just harvesting it.</span></li>
+            <li><span class="ico">✅</span><span><b>Broad and intent audiences.</b> Reach the unaware, then re-engage.</span></li>
+            <li><span class="ico">✅</span><span><b>Authority retargeting.</b> Case studies, testimonials, G2 and awards.</span></li>
+            <li><span class="ico">✅</span><span><b>CRM nurture.</b> Drip sequences, newsletters, lead enrichment.</span></li>
+            <li><span class="ico">✅</span><span><b>Tight sales alignment.</b> Reply to leads within hours.</span></li>
+            <li><span class="ico">✅</span><span><b>Qualified pipeline.</b> CPL down, SQL quality up.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVOLUTION: before vs after ============ -->
+<section id="evolution" data-dot="Evolution">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The evolution</span>
+      <h2>From 3 isolated channels to one engine.</h2>
+      <p>The old set-up only spoke to buyers at the moment of decision, through three channels that never worked together. The rebuild turned that stub into a connected journey that creates demand, earns trust, and converts.</p>
+    </div>
+
+    <div class="evo-grid">
+      <!-- BEFORE -->
+      <div class="evo-panel before reveal">
+        <div class="evo-phead">
+          <span class="evo-badge">Before</span>
+          <div class="evo-title">3 isolated channels</div>
+          <div class="evo-stat">1 of 3 journey stages covered · nothing connected</div>
+        </div>
+        <div class="evo-funnel">
+          <div class="evo-band empty"><span class="eb-stage">Awareness</span><span class="eb-x">Not addressed</span></div>
+          <div class="evo-band empty w2"><span class="eb-stage">Consideration</span><span class="eb-x">Not addressed</span></div>
+          <div class="evo-band fill w3">
+            <div class="eb-top"><span class="eb-stage">Decision</span><span class="eb-mind">Capture only</span></div>
+            <div class="eb-chips"><span>PPC Search</span><span>Conversation Ads</span><span>Ebook + email/call</span></div>
+          </div>
+        </div>
+        <div class="evo-foot">Intent capture only. Gaps at the top, no nurture, and a leaky sales hand-off.</div>
+      </div>
+
+      <!-- ARROW -->
+      <div class="evo-arrow reveal d1" aria-hidden="true">
+        <span class="lbl">evolved into</span>
+        <span class="circle">→</span>
+      </div>
+
+      <!-- AFTER -->
+      <div class="evo-panel after reveal d2">
+        <div class="evo-phead">
+          <span class="evo-badge">After</span>
+          <div class="evo-title">One full-funnel engine</div>
+          <div class="evo-stat">3 of 3 stages · 10+ channels working as one journey</div>
+        </div>
+        <div class="evo-funnel">
+          <div class="evo-band a1">
+            <div class="eb-top"><span class="eb-stage">Awareness</span><span class="eb-mind">Pain / problem aware</span></div>
+            <div class="eb-logos">
+              <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+              <span><img class="tall" src="assets/img/logos/youtube.png" alt="YouTube"/></span>
+              <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+              <span><img src="assets/img/logos/reddit.png" alt="Reddit"/></span>
+              <span><img src="assets/img/logos/microsoft-ads.png" alt="Microsoft Ads"/></span>
+            </div>
+            <div class="eb-foot"><span class="eb-msg">Raise the problem, introduce the solution</span><span class="eb-lp">Informative pages</span></div>
+          </div>
+          <div class="eb-conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="evo-band a2 w2">
+            <div class="eb-top"><span class="eb-stage">Consideration</span><span class="eb-mind">Solution aware</span></div>
+            <div class="eb-logos">
+              <span class="txt">SEO</span>
+              <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+              <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+              <span><img src="assets/img/logos/meta.png" alt="Meta"/></span>
+              <span><img src="assets/img/logos/g2.png" alt="G2"/></span>
+            </div>
+            <div class="eb-foot"><span class="eb-msg">Testimonials, Flexer stories, USP vs agencies</span><span class="eb-lp">Gated content</span></div>
+          </div>
+          <div class="eb-conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="evo-band a3 w3">
+            <div class="eb-top"><span class="eb-stage">Decision</span><span class="eb-mind">Provider aware</span></div>
+            <div class="eb-logos">
+              <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+              <span><img src="assets/img/logos/meta.png" alt="Meta"/></span>
+              <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+              <span><img class="tall" src="assets/img/logos/hubspot.png" alt="HubSpot email"/></span>
+            </div>
+            <div class="eb-foot"><span class="eb-msg">Easy start: book a demo, free trial</span><span class="eb-lp">Book a demo</span></div>
+          </div>
+        </div>
+        <div class="evo-foot">Create demand, build trust, convert. Each stage feeds and retargets the next.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL FUNNEL BLUEPRINT ============ -->
+<section id="funnel" data-dot="Full Funnel">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The blueprint</span>
+      <h2>One funnel, four jobs. Every stage, end to end.</h2>
+      <p>Each stage has its own goal, objective and tracked KPIs, its own audience and message. Every retargeting stage re-engages the people who leaned in one step earlier. Here is the whole engine on a single page.</p>
+    </div>
+    <div class="bp-legend reveal">
+      <span><i style="background:linear-gradient(90deg,#780080,#9a2a9e)"></i>Awareness</span>
+      <span><i style="background:linear-gradient(90deg,#8a1470,#b52d78)"></i>Authority</span>
+      <span><i style="background:linear-gradient(90deg,#c02460,#de2864)"></i>Interest</span>
+      <span><i style="background:linear-gradient(90deg,#de2864,#f04682)"></i>Decision</span>
+      <span style="color:var(--muted)">Bars narrow as the audience qualifies →</span>
+    </div>
+
+    <div class="blueprint">
+      <!-- Stage 1 -->
+      <div class="bp-lane s1 reveal">
+        <div class="bp-rail">
+          <div><span class="rn">01</span><div class="rstage">TOFU · Awareness</div><div class="rname">Create<br/>demand</div></div>
+          <div class="rkpi"><b>204k</b><span>impressions / month</span></div>
+          <div class="rfun"><div class="rlab">Audience</div><div class="rbar"><i style="width:100%"></i></div></div>
+        </div>
+        <div class="bp-body">
+          <div class="bp-head">
+            <span class="bp-obj"><span class="oi">📣</span><span><span class="gl">Goal</span><span class="gt">Create demand &amp; reach cold, in-market buyers</span></span></span>
+            <span class="bp-objective"><b>Objective</b> Impressions &amp; video views</span>
+          </div>
+          <div class="bp-okr">
+            <div class="okr-group"><span class="lab">KPIs tracked</span><div class="kpis"><span>Impressions</span><span>Video views</span><span>CTR</span><span>Reach</span></div></div>
+            <div class="okr-group"><span class="lab">Ad format</span><div class="kpis fmt"><span>Image</span><span>Animation</span><span>Carousel</span><span>Video</span></div></div>
+          </div>
+          <div class="bp-cols">
+            <div class="bp-col">
+              <h6>Audience &amp; targeting</h6>
+              <div class="bp-target"><span class="bp-token">Seniority</span><span class="x">×</span><span class="bp-token">Function</span><span class="x">×</span><span class="bp-token">Industry</span><span class="x">×</span><span class="bp-token">Location</span></div>
+              <p class="bp-aud">Broad, cold audience discovering the category for the first time.</p>
+            </div>
+            <div class="bp-col">
+              <h6>Channels &amp; platforms</h6>
+              <div class="bp-logos">
+                <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+                <span><img src="assets/img/logos/microsoft-ads.png" alt="Microsoft Ads"/></span>
+                <span><img class="tall" src="assets/img/logos/youtube.png" alt="YouTube"/></span>
+                <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+                <span><img src="assets/img/logos/reddit.png" alt="Reddit"/></span>
+                <span class="txt">SEO</span>
+              </div>
+            </div>
+            <div class="bp-col">
+              <h6>Content type</h6>
+              <div class="bp-content"><span>Industry trend report</span><span>Ungated ebook</span><span>Infographic</span><span>Video / animation</span><span>Blog post</span><span>Service LP</span></div>
+            </div>
+            <div class="bp-col">
+              <h6>Core message</h6>
+              <p class="bp-msg">100% educational, no lead-gen. Lead with <b>the pain we solve</b>, <b>the service we offer</b>, and <b>the result of working with us</b>.</p>
+            </div>
+          </div>
+          <div class="bp-strip">
+            <div class="bp-ex"><span class="exl">Examples</span><span class="exi">2025 UK Labour Market Report</span><span class="exi">The Future of Talent Acquisition</span><span class="exi">Employee Cost Calculator</span><span class="exi">AI lead magnet</span><span class="exi">Non-brand FAQ videos</span></div>
+            <div class="bp-lp"><span class="lpl">Landing page</span><span class="lpc">Free lead magnet</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bp-flow" aria-hidden="true">
+        <span class="bp-rmk"><span class="tag">RMK</span> Remarket everyone who engaged with Awareness <span class="arw"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="bp-lane s2 reveal">
+        <div class="bp-rail">
+          <div><span class="rn">02</span><div class="rstage">RMK · Authority</div><div class="rname">Build<br/>trust</div></div>
+          <div class="rkpi"><b>3×</b><span>engaged sessions</span></div>
+          <div class="rfun"><div class="rlab">Audience</div><div class="rbar"><i style="width:72%"></i></div></div>
+        </div>
+        <div class="bp-body">
+          <div class="bp-head">
+            <span class="bp-obj"><span class="oi">🛡️</span><span><span class="gl">Goal</span><span class="gt">Build trust with everyone who engaged at awareness</span></span></span>
+            <span class="bp-objective"><b>Objective</b> Website visits &amp; video-view completion</span>
+          </div>
+          <div class="bp-okr">
+            <div class="okr-group"><span class="lab">KPIs tracked</span><div class="kpis"><span>Website visits</span><span>Video completion rate</span><span>Return visits</span><span>Engaged sessions</span></div></div>
+            <div class="okr-group"><span class="lab">Ad format</span><div class="kpis fmt"><span>Image</span><span>Animation</span><span>Carousel</span><span>Video</span></div></div>
+          </div>
+          <div class="bp-cols">
+            <div class="bp-col">
+              <h6>Audience &amp; targeting</h6>
+              <div class="bp-target"><span class="bp-token">30-day RMK</span><span class="bp-token">Video engagers</span><span class="bp-token">Site visitors</span></div>
+              <p class="bp-aud">Warm audience that already knows us and is weighing options.</p>
+            </div>
+            <div class="bp-col">
+              <h6>Channels &amp; platforms</h6>
+              <div class="bp-logos">
+                <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+                <span><img src="assets/img/logos/meta.png" alt="Meta"/></span>
+                <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+                <span><img src="assets/img/logos/microsoft-ads.png" alt="Microsoft Ads"/></span>
+                <span><img src="assets/img/logos/g2.png" alt="G2"/></span>
+                <span><img src="assets/img/logos/capterra.png" alt="Capterra"/></span>
+              </div>
+            </div>
+            <div class="bp-col">
+              <h6>Content type</h6>
+              <div class="bp-content"><span>Case study</span><span>Testimonials</span><span>Expert advice</span><span>Comparative guide</span><span>Awards</span><span>Success story</span></div>
+            </div>
+            <div class="bp-col">
+              <h6>Core message</h6>
+              <p class="bp-msg">They already know us, so <b>build trust</b>. Proof, G2 &amp; Gartner credibility, and why we beat traditional staffing agencies.</p>
+            </div>
+          </div>
+          <div class="bp-strip">
+            <div class="bp-ex"><span class="exl">Examples</span><span class="exi">DoubleTree case study</span><span class="exi">G2 testimonials</span><span class="exi">Awards &amp; badges</span><span class="exi">Staffing agency vs Indeed Flex</span></div>
+            <div class="bp-lp"><span class="lpl">Landing page</span><span class="lpc">G2 testimonials</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bp-flow" aria-hidden="true">
+        <span class="bp-rmk"><span class="tag">RMK</span> Remarket everyone who engaged with Authority <span class="arw"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="bp-lane s3 reveal">
+        <div class="bp-rail">
+          <div><span class="rn">03</span><div class="rstage">RMK · Interest</div><div class="rname">Capture<br/>interest</div></div>
+          <div class="rkpi"><b>£207</b><span>cost per content lead</span></div>
+          <div class="rfun"><div class="rlab">Audience</div><div class="rbar"><i style="width:52%"></i></div></div>
+        </div>
+        <div class="bp-body">
+          <div class="bp-head">
+            <span class="bp-obj"><span class="oi">🧲</span><span><span class="gl">Goal</span><span class="gt">Turn interest into content conversions &amp; email nurture</span></span></span>
+            <span class="bp-objective"><b>Objective</b> Soft content conversions &amp; email nurture</span>
+          </div>
+          <div class="bp-okr">
+            <div class="okr-group"><span class="lab">KPIs tracked</span><div class="kpis"><span>Ebook downloads</span><span>Newsletter signups</span><span>Self-serve demos</span><span>Email sequence entries</span><span>Cost per content lead</span></div></div>
+            <div class="okr-group"><span class="lab">Ad format</span><div class="kpis fmt"><span>Search competitor &amp; RMK</span><span>Image</span><span>Animation</span><span>Convo ads</span></div></div>
+          </div>
+          <div class="bp-cols">
+            <div class="bp-col">
+              <h6>Audience &amp; targeting</h6>
+              <div class="bp-target"><span class="bp-token">Lead-magnet engagers</span><span class="bp-token">Content downloaders</span></div>
+              <p class="bp-aud">Actively researching a solution and comparing providers.</p>
+            </div>
+            <div class="bp-col">
+              <h6>Channels &amp; platforms</h6>
+              <div class="bp-logos">
+                <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+                <span><img src="assets/img/logos/meta.png" alt="Meta"/></span>
+                <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+                <span><img class="tall" src="assets/img/logos/youtube.png" alt="YouTube"/></span>
+                <span><img class="tall" src="assets/img/logos/hubspot.png" alt="HubSpot"/></span>
+              </div>
+            </div>
+            <div class="bp-col">
+              <h6>Content type</h6>
+              <div class="bp-content"><span>Gated ebook</span><span>Newsletter</span><span>Self-serve demo</span><span>Webinar / event</span><span>Interactive tool &amp; audits</span><span>Email drip sequence</span></div>
+            </div>
+            <div class="bp-col">
+              <h6>Core message</h6>
+              <p class="bp-msg">High-value gated magnets worth paying for. <b>Four-field forms</b>: core service, how we differ, expected result, cost of inaction.</p>
+            </div>
+          </div>
+          <div class="bp-strip">
+            <div class="bp-ex"><span class="exl">Examples</span><span class="exi">Market Outlook 2025</span><span class="exi">Walnut demo</span><span class="exi">Weekly newsletter</span><span class="exi">Free tools &amp; audits</span></div>
+            <div class="bp-lp"><span class="lpl">Landing page</span><span class="lpc">Market Outlook 2025</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bp-flow" aria-hidden="true">
+        <span class="bp-rmk"><span class="tag">RMK</span> Remarket your most engaged leads <span class="arw"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="bp-lane s4 reveal">
+        <div class="bp-rail">
+          <div><span class="rn">04</span><div class="rstage">BOFU · Decision</div><div class="rname">Convert</div></div>
+          <div class="rkpi"><b>17×</b><span>return on ad spend</span></div>
+          <div class="rfun"><div class="rlab">Audience</div><div class="rbar"><i style="width:38%"></i></div></div>
+        </div>
+        <div class="bp-body">
+          <div class="bp-head">
+            <span class="bp-obj"><span class="oi">🎯</span><span><span class="gl">Goal</span><span class="gt">Convert engaged leads into booked demos &amp; customers</span></span></span>
+            <span class="bp-objective"><b>Objective</b> Lead gen &amp; conversion → book a demo</span>
+          </div>
+          <div class="bp-okr">
+            <div class="okr-group"><span class="lab">KPIs tracked</span><div class="kpis"><span>Demos booked</span><span>SQLs</span><span>Closed won</span><span>ROAS</span></div></div>
+            <div class="okr-group"><span class="lab">Ad format</span><div class="kpis fmt"><span>Single image</span><span>Animation</span><span>Click-only</span></div></div>
+          </div>
+          <div class="bp-cols">
+            <div class="bp-col">
+              <h6>Audience &amp; targeting</h6>
+              <div class="bp-target"><span class="bp-token">Webinar attendees</span><span class="bp-token">Multi-asset downloaders</span></div>
+              <p class="bp-aud">High-intent, sales-ready leads showing strong buying signals.</p>
+            </div>
+            <div class="bp-col">
+              <h6>Channels &amp; platforms</h6>
+              <div class="bp-logos">
+                <span><img src="assets/img/logos/meta.png" alt="Meta"/></span>
+                <span><img src="assets/img/logos/linkedin.png" alt="LinkedIn"/></span>
+                <span><img src="assets/img/logos/google-ads.png" alt="Google Ads"/></span>
+                <span><img src="assets/img/logos/microsoft-ads.png" alt="Microsoft Ads"/></span>
+              </div>
+            </div>
+            <div class="bp-col">
+              <h6>Content type</h6>
+              <div class="bp-content"><span>Free trial</span><span>Book a demo</span><span>Strategy call</span><span>Product access</span></div>
+            </div>
+            <div class="bp-col">
+              <h6>Core message</h6>
+              <p class="bp-msg">Direct response. Click-only ads capturing <b>phone + context</b> straight to sales. Reply within hours.</p>
+            </div>
+          </div>
+          <div class="bp-strip">
+            <div class="bp-ex"><span class="exl">Examples</span><span class="exi">Book a demo</span><span class="exi">Free trial</span><span class="exi">Product access</span><span class="exi">Strategy call</span></div>
+            <div class="bp-lp"><span class="lpl">Landing page</span><span class="lpc">Book a demo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK MARQUEE ============ -->
+<div class="ddiv" aria-hidden="true"><i></i><i></i><i></i></div>
+<section class="stack" aria-label="Channels and tools">
+  <div class="wrap"><p class="lbl reveal">Planned, built and optimised across</p></div>
+  <div class="marquee reveal">
+    <div class="marquee-track">
+      <span class="chip-stack"><img src="assets/img/logos/linkedin.png" alt="LinkedIn Ads" loading="lazy" /></span>
+      <span class="chip-stack"><img src="assets/img/logos/google-ads.png" alt="Google Ads" loading="lazy" /></span>
+      <span class="chip-stack"><img src="assets/img/logos/microsoft-ads.png" alt="Microsoft Ads" loading="lazy" /></span>
+      <span class="chip-stack"><img src="assets/img/logos/meta.png" alt="Meta Ads" loading="lazy" /></span>
+      <span class="chip-stack wide"><img src="assets/img/logos/youtube.png" alt="YouTube" loading="lazy" /></span>
+      <span class="chip-stack"><img src="assets/img/logos/reddit.png" alt="Reddit" loading="lazy" /></span>
+      <span class="chip-stack"><span style="font-weight:700;color:var(--purple);font-size:16px;letter-spacing:.04em">SEO</span></span>
+      <span class="chip-stack wide"><img src="assets/img/logos/hubspot.png" alt="HubSpot CRM" loading="lazy" /></span>
+      <span class="chip-stack"><img src="assets/img/logos/g2.png" alt="G2" loading="lazy" /></span>
+      <span class="chip-stack"><img src="assets/img/logos/capterra.png" alt="Capterra" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/linkedin.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/google-ads.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/microsoft-ads.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/meta.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack wide" aria-hidden="true"><img src="assets/img/logos/youtube.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/reddit.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><span style="font-weight:700;color:var(--purple);font-size:16px;letter-spacing:.04em">SEO</span></span>
+      <span class="chip-stack wide" aria-hidden="true"><img src="assets/img/logos/hubspot.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/g2.png" alt="" loading="lazy" /></span>
+      <span class="chip-stack" aria-hidden="true"><img src="assets/img/logos/capterra.png" alt="" loading="lazy" /></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXECUTION ============ -->
+<section id="execution" class="on-dark" data-dot="Execution">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 · Paid Media Execution</span>
+      <h2>Budget as a testing engine, not a spray.</h2>
+      <p>The point of the quarter wasn't to spend more. It was to learn what worked, then pour budget into it. Here's how targeting, budget and creative were run week to week.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:26px">
+      <div class="card reveal">
+        <div class="ic">🎯</div>
+        <h3>Targeting structure</h3>
+        <p>Layered audiences per stage: <b>broad</b> (seniority × function × industry × location) at TOFU, <b>30-day retargeting</b> at authority &amp; interest, and <b>high-intent + competitor</b> keywords at BOFU. Spotlight and conversation ads for named accounts.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="ic">💷</div>
+        <h3>Budget allocation</h3>
+        <p>Doubled spend in May (£2k → £4.5k) to fund upper-funnel testing, then <b>capped at £4.5k</b> across June and July. Efficiency, not budget, drove the gains, by reallocating toward the campaign types that were compounding.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="ic">🎨</div>
+        <h3>Creative system</h3>
+        <p>Format matched to intent: <b>video &amp; carousel</b> for awareness, <b>document &amp; case-study</b> ads for authority, <b>conversation &amp; lead-gen forms</b> for interest, <b>single-image direct-response</b> for decision. Repurpose first, then build new.</p>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin:56px 0 30px">
+      <h2 style="font-size:clamp(22px,3vw,32px)">The weekly optimisation loop</h2>
+    </div>
+    <div class="loop reveal">
+      <div class="loop-step"><div class="n">MON</div><h4>Read the signal</h4><p>Review reach, CPM, CPS, CPL and lead quality by campaign and stage.</p></div>
+      <div class="loop-step"><div class="n">WED</div><h4>Cut &amp; scale</h4><p>Pause underperformers, shift budget to compounding campaigns and audiences.</p></div>
+      <div class="loop-step"><div class="n">THU</div><h4>Test creative</h4><p>Rotate new hooks, formats and lead magnets against the current control.</p></div>
+      <div class="loop-step"><div class="n">FRI</div><h4>Close the loop</h4><p>Sync with sales on lead quality, feed learnings back into next week's plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="results" data-dot="Results">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 · Metrics &amp; Measurement</span>
+      <h2>Reach up, cost down, pipeline real.</h2>
+      <p>Reported monthly to marketing leadership and sales. Two stories: efficiency at the top of the funnel, and economics at the bottom. All figures rebuilt from the campaign's own reporting.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:22px">
+      <div class="chart-card reveal">
+        <h3>Reach &amp; efficiency</h3>
+        <p class="csub">Impressions climbing while cost per impression collapses (Apr → Jun)</p>
+        <div class="chart-legend"><span><i style="background:#780080"></i>Impressions</span><span><i style="background:#de2864"></i>Cost / impression</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartReach" preserveAspectRatio="xMidYMid meet" aria-label="Impressions rising, cost per impression falling"></svg>
+      </div>
+      <div class="chart-card reveal d1">
+        <h3>Traffic &amp; cost per session</h3>
+        <p class="csub">Sessions up 3× as cost per session falls 35% (Apr → Jun)</p>
+        <div class="chart-legend"><span><i style="background:#780080"></i>Sessions</span><span><i style="background:#de2864"></i>Cost / session</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartSessions" preserveAspectRatio="xMidYMid meet" aria-label="Sessions rising, cost per session falling"></svg>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="chart-card reveal">
+        <h3>Cost per contact</h3>
+        <p class="csub">Form-submitted contact cost, −77% then −28% (£1,006 → £287 → £207)</p>
+        <div class="chart-legend"><span><i style="background:#de2864"></i>Cost per contact (£)</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartCpl" preserveAspectRatio="xMidYMid meet" aria-label="Cost per contact falling"></svg>
+      </div>
+      <div class="chart-card reveal d1">
+        <h3>Cost per SQL</h3>
+        <p class="csub">Quality improved too: cost per sales-qualified lead down about 53% a month</p>
+        <div class="chart-legend"><span><i style="background:#780080"></i>Cost per SQL (£)</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartSql" preserveAspectRatio="xMidYMid meet" aria-label="Cost per SQL falling"></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNNEL ECONOMICS ============ -->
+<section class="on-dark" data-dot="Economics" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal" style="padding-top:clamp(64px,9vw,110px)">
+      <span class="eyebrow">The bottom line</span>
+      <h2>From spend to signed customers.</h2>
+      <p>The quarter turned £10.9k of media into a qualified pipeline and closed revenue. Full-funnel economics, month by month.</p>
+    </div>
+
+    <div class="econ-flow reveal">
+      <div class="econ-node"><div class="num" data-count="39" data-suffix="">0</div><div class="lbl">Contacts (form submits)</div></div>
+      <div class="econ-node"><div class="num" data-count="6" data-suffix="">0</div><div class="lbl">Opportunities</div></div>
+      <div class="econ-node"><div class="num" data-count="2" data-suffix="">0</div><div class="lbl">Customers closed</div></div>
+      <div class="econ-node"><div class="num" data-prefix="£" data-count="182" data-suffix="k">£0</div><div class="lbl">Revenue influenced</div></div>
+    </div>
+
+    <div class="stat-row reveal d1">
+      <div class="stat"><div class="num"><span class="grad" data-prefix="£" data-count="10.9" data-decimals="1" data-suffix="k">£0</span></div><div class="lbl">Total media spend</div><div class="delta">Apr to Jun, capped at £4.5k/mo</div></div>
+      <div class="stat"><div class="num"><span class="grad" data-prefix="£" data-count="207" data-suffix="">£0</span></div><div class="lbl">Cost per contact (Jun)</div><div class="delta">↓ 77% from £1,006</div></div>
+      <div class="stat"><div class="num"><span class="grad" data-count="17" data-suffix="x">0x</span></div><div class="lbl">Blended ROAS (quarter)</div><div class="delta">29× in May, 12× in June</div></div>
+      <div class="stat"><div class="num"><span class="grad" data-count="12" data-suffix="x">0x</span></div><div class="lbl">Reach growth</div><div class="delta">16k → 204k impressions</div></div>
+    </div>
+    <p class="reveal d2" style="font-size:12.5px;color:var(--muted-on-dark);margin-top:22px">Numbers rebuilt from the campaign's own GA &amp; CRM reporting. July revenue still maturing at time of reporting; ROAS shown as blended across the quarter.</p>
+  </div>
+</section>
+
+<!-- ============ PULL QUOTE ============ -->
+<section aria-label="Core insight">
+  <div class="wrap pullquote reveal">
+    <p>We didn't spend more. We built a system that turns attention into pipeline, so every pound of media worked about <span class="grad">17× harder.</span></p>
+    <div class="attrib">The one idea behind the whole quarter</div>
+  </div>
+</section>
+
+<!-- ============ CROSS FUNCTIONAL ============ -->
+<section id="xfun" data-dot="Teams">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 · Cross-Functional Execution</span>
+      <h2>A funnel is a team sport.</h2>
+      <p>Marketing owned the media, but the funnel only worked because of four partnerships outside of it, and the honesty to fix what broke.</p>
+    </div>
+
+    <div class="xfun">
+      <div class="xfun-card reveal"><span class="who">Sales</span><h4>Speed &amp; feedback</h4><p>Agreed a &lt;3-hour lead response SLA and a weekly quality sync. Sales feedback reshaped targeting and lead-magnet offers in real time.</p></div>
+      <div class="xfun-card reveal d1"><span class="who">Brand</span><h4>Positioning &amp; voice</h4><p>Co-built strong taglines, video intros and brand positioning so TOFU creative felt like one company, not one-off ads.</p></div>
+      <div class="xfun-card reveal d2"><span class="who">Content</span><h4>The fuel</h4><p>Repurposed existing assets first, then produced gated magnets, reports and case studies good enough to charge for.</p></div>
+      <div class="xfun-card reveal d3"><span class="who">Product</span><h4>Proof &amp; access</h4><p>Stood up a demo environment, free-trial access and product-update newsletters to make BOFU tangible.</p></div>
+    </div>
+
+    <div class="wrong reveal">
+      <div class="problem">
+        <h4>When it didn't go to plan</h4>
+        <p>Early lead volume spiked but <b>lead-to-opportunity conversion lagged</b>. Sales was getting contacts, not qualified buyers. The upper-funnel push had outpaced qualification.</p>
+      </div>
+      <div class="fix">
+        <h4>How we fixed it</h4>
+        <p>Tightened lead-gen forms to four decision-oriented fields, added <b>lead enrichment</b> before hand-off, and used the sales quality sync to re-weight audiences. CPL fell <b>and</b> SQL quality rose the following month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS & AI ============ -->
+<section id="process" class="on-dark" data-dot="Process & AI">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">05 · Process &amp; Infrastructure</span>
+      <h2>The engine behind the engine.</h2>
+      <p>The campaign ran on a lightweight operational stack, plus a prospecting AI agent I built to help sales close more of what marketing generated.</p>
+    </div>
+
+    <div class="grid-4 reveal" style="margin-bottom:52px">
+      <div class="card"><div class="ic">🧱</div><h3 style="font-size:16px">CRM &amp; tracking</h3><p style="font-size:13.5px">HubSpot as the source of truth for contacts, stages, attribution and drip sequences in one place.</p></div>
+      <div class="card"><div class="ic">📊</div><h3 style="font-size:16px">Reporting layer</h3><p style="font-size:13.5px">Weekly reach/efficiency and monthly funnel-economics views leadership could read in a glance.</p></div>
+      <div class="card"><div class="ic">🔁</div><h3 style="font-size:16px">Test backlog</h3><p style="font-size:13.5px">A prioritised queue of audiences, creatives and magnets so every week shipped a learning.</p></div>
+      <div class="card"><div class="ic">🤖</div><h3 style="font-size:16px">AI outreach</h3><p style="font-size:13.5px">A prospecting agent enriching accounts and personalising multichannel outreach for sales.</p></div>
+    </div>
+
+    <div class="section-head reveal" style="margin:0 0 26px">
+      <span class="eyebrow">The build</span>
+      <h2 style="font-size:clamp(22px,3vw,34px)">The prospecting AI agent</h2>
+      <p>Goal: help sales close more deals by uncovering signal, finding the right decision-maker, prioritising actions and personalising outreach at scale, for UK and US markets.</p>
+    </div>
+    <div class="agent-flow reveal">
+      <div class="agent-node"><div class="n">1</div><h5>Company enrichment</h5><p>Firmographic &amp; signal data appended per account.</p></div>
+      <div class="agent-node"><div class="n">2</div><h5>Lead research</h5><p>Detailed research to uncover buying signals.</p></div>
+      <div class="agent-node"><div class="n">3</div><h5>Lead enrichment</h5><p>Find the right decision-maker &amp; contact path.</p></div>
+      <div class="agent-node"><div class="n">4</div><h5>Prioritise</h5><p>Rank accounts &amp; actions by likelihood to convert.</p></div>
+      <div class="agent-node"><div class="n">5</div><h5>Personalise</h5><p>High-quality, multichannel outreach content.</p></div>
+      <div class="agent-node"><div class="n">6</div><h5>Integrate</h5><p>Pushed into CRM &amp; sequences for UK/US agents.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECISIONS & TRADE-OFFS ============ -->
+<section id="decisions" class="on-dark" data-dot="Decisions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The defensible part</span>
+      <h2>The calls I made, and the ones I turned down.</h2>
+      <p>Every choice had a credible alternative. Here is what I chose, what I rejected, and the evidence that would make me change my mind.</p>
+    </div>
+    <div class="trade">
+      <div class="trade-card reveal">
+        <span class="q">Why not more keywords?</span>
+        <div class="choice">Create demand, don't just harvest it.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Pouring the whole budget into bottom-funnel PPC and competitor terms.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>Capture was already saturated. The only path to growth was reaching buyers before they searched.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>An incrementality test showed upper-funnel wasn't lifting qualified pipeline.</p></div>
+      </div>
+      <div class="trade-card reveal d1">
+        <span class="q">Why cap the budget?</span>
+        <div class="choice">Scale efficiency, not just spend.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Spending the full available budget every month to maximise raw volume.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>The goal was a repeatable engine. Capping spend forced efficiency gains that compound.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>Marginal cost per acquisition stayed flat while clear budget headroom existed.</p></div>
+      </div>
+      <div class="trade-card reveal d2">
+        <span class="q">Why short forms?</span>
+        <div class="choice">Qualified buyers over raw volume.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Maximising lead count with frictionless, minimal-qualification forms.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>Sales needed buyers, not contacts. Four decision-oriented fields plus enrichment beat volume.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>A high-volume model converted better to SQLs and closed-won downstream.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RETROSPECTIVE ============ -->
+<section id="retro" data-dot="Retrospective">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The honest part</span>
+      <h2>What I'd do differently next time.</h2>
+      <p>The quarter worked, but a rebuild is never finished. Three things I'd change if I ran it again.</p>
+    </div>
+    <div class="retro">
+      <div class="retro-card reveal"><div class="rn">01</div><h4>Qualify before I scale</h4><p>I'd stand up lead scoring and enrichment <em>before</em> opening the top of the funnel, so the sales quality gap never appears in the first place.</p></div>
+      <div class="retro-card reveal d1"><div class="rn">02</div><h4>Measure incrementality</h4><p>With more time I'd run geo or holdout tests to prove upper-funnel's true contribution, rather than relying on last-touch attribution.</p></div>
+      <div class="retro-card reveal d2"><div class="rn">03</div><h4>Longer creative runway</h4><p>Awareness creative compounds slowly. I'd give brand and content a head start so TOFU has depth from week one, not week four.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPENDIX ============ -->
+<div class="ddiv" aria-hidden="true"><i></i><i></i><i></i></div>
+<section class="appendix" id="appendix" data-dot="Appendix">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Appendix · the receipts</span>
+      <h2>Where the numbers come from.</h2>
+      <p>The charts above are rebuilt from the campaign's own reporting. Here are the raw monthly source tables, kept out of the main flow so the story stays clean.</p>
+    </div>
+    <div class="appx-grid">
+      <div class="appx-card reveal"><h4>Reach &amp; efficiency</h4><p class="cap">Spend, impressions, sessions, cost per impression and cost per session by month.</p><img src="assets/img/table-reach.png" alt="Monthly reach and efficiency source table" loading="lazy" /></div>
+      <div class="appx-card reveal d1"><h4>Funnel economics</h4><p class="cap">Contacts, opportunities, customers, revenue, and the resulting CPL, cost per customer and ROAS.</p><img src="assets/img/table-funnel.png" alt="Monthly funnel economics source table" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;color:var(--pink-2)">Thank you</span>
+    <h2>Happy to go deeper on any part of this.</h2>
+    <p>This was built as a living document. Pick any stage, chart or decision and I'll walk you through the reasoning, the trade-offs, and what the data actually said.</p>
+    <a class="btn btn-primary" href="#top">Back to the top <span aria-hidden="true">↑</span></a>
+    <div class="fmeta">
+      <span>Adrien Enjalbert · Demand Generation</span>
+      <span>Prepared for the Stravito interview team · Indeed Flex B2B campaign</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/stravito.js"></script>
+</body>
+</html>
