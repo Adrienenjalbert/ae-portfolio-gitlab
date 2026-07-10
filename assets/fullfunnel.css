@@ -688,3 +688,6 @@ h1,.hero h1{font-weight:600}
 .abm-r strong{font-size:18px;font-weight:600;letter-spacing:-.01em}
 .abm-r .sub{color:var(--muted-on-dark);font-size:14px;max-width:36ch}
 @media(max-width:760px){.abm-band{grid-template-columns:1fr}}
+
+/* ABM audience token */
+.bp-token.abm{background:var(--grad-brand);color:#fff;box-shadow:0 4px 12px rgba(30,73,230,.18)}
