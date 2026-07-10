@@ -628,3 +628,18 @@ section { position: relative; padding: clamp(64px, 9vw, 130px) 0; }
   .bp-strip { grid-template-columns: 1fr; gap: 14px; align-items: flex-start; }
   .hero-metrics { grid-template-columns: 1fr 1fr; }
 }
+
+/* ============ ABM strategy callout ============ */
+.abm-band{display:grid;grid-template-columns:1.5fr 1fr;margin-top:26px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm)}
+.abm-l{padding:clamp(24px,3vw,34px)}
+.abm-l h3{font-size:clamp(19px,2.3vw,24px);margin:14px 0 12px}
+.abm-l p{color:var(--muted);font-size:15px}
+.abm-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.abm-r{display:flex;flex-direction:column;gap:9px;padding:clamp(24px,3vw,34px);background:var(--grad-ink);color:#fff;text-decoration:none;position:relative;transition:filter .25s var(--ease)}
+.abm-r::after{content:"→";position:absolute;right:22px;bottom:20px;color:var(--pink-2);font-size:18px;transition:transform .25s var(--ease)}
+.abm-r:hover{filter:brightness(1.12)}
+.abm-r:hover::after{transform:translateX(4px)}
+.abm-r .eyebrow{color:var(--pink-2)}
+.abm-r strong{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.abm-r .sub{color:var(--muted-on-dark);font-size:14px;max-width:36ch}
+@media(max-width:760px){.abm-band{grid-template-columns:1fr}}
