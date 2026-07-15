@@ -491,6 +491,27 @@ section { position: relative; padding: clamp(64px, 9vw, 130px) 0; }
 .wrong .fix h4 { color: #7CE0B4; }
 .wrong p { color: var(--muted-on-dark); font-size: 15px; }
 
+/* ============ Contribution by stage ============ */
+.contrib { border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; background: var(--white); margin-bottom: 28px; box-shadow: var(--shadow-sm); }
+.contrib-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; padding: 13px 20px; background: rgba(19,0,19,.02); border-bottom: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+.contrib-legend > span { display: inline-flex; align-items: center; }
+.contrib-legend i { width: 12px; height: 12px; border-radius: 4px; margin-right: 8px; }
+.contrib-legend i.have { background: #16a085; }
+.contrib-legend i.build { background: var(--purple); }
+.contrib-legend .cl-teams { margin-left: auto; font-style: italic; }
+.contrib-row { display: grid; grid-template-columns: 230px 1fr; gap: 24px; padding: 20px; border-top: 1px solid var(--line); align-items: start; }
+.contrib-row:first-of-type { border-top: 0; }
+.contrib-stage .ci { display: flex; align-items: baseline; gap: 10px; }
+.contrib-stage .cn { font-size: 13px; font-weight: 700; color: var(--pink); letter-spacing: .04em; }
+.contrib-stage b { font-size: 17px; }
+.contrib-teams { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.contrib-teams span { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: rgba(19,0,19,.05); border: 1px solid var(--line); padding: 4px 9px; border-radius: 999px; }
+.contrib-content { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; }
+.contrib-content span { font-size: 13px; font-weight: 500; padding: 7px 12px; border-radius: 999px; border: 1px solid transparent; }
+.contrib-content span.have { color: #0e7a63; background: rgba(22,160,133,.10); border-color: rgba(22,160,133,.38); }
+.contrib-content span.build { color: var(--purple); background: rgba(120,0,128,.07); border-color: rgba(120,0,128,.32); }
+@media (max-width: 640px) { .contrib-row { grid-template-columns: 1fr; gap: 14px; } .contrib-legend .cl-teams { margin-left: 0; width: 100%; } }
+
 /* ============ AI agent flow ============ */
 .agent-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 10px; }
 .agent-node { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-sm); padding: 18px 14px; text-align: center; position: relative; transition: .3s; }
