@@ -205,7 +205,7 @@
     for (const k in attrs) e.setAttribute(k, attrs[k]);
     return e;
   }
-  const MONTHS = ["Apr", "May", "Jun"];
+  const MONTHS = ["Apr", "May", "Jun", "Jul"];
 
   // Combo chart: bars (primary, left axis) + line (secondary, right axis)
   function comboChart(id, bars, line, barColor, opts) {
@@ -339,10 +339,10 @@
   const kfmt = (v) => v >= 1000 ? (v / 1000).toFixed(0) + "k" : v;
 
   const players = {
-    chartReach: comboChart("chartReach", [16176, 57990, 203380], [0.12, 0.07, 0.02], "#780080", { barFmt: kfmt, lineFmt: gbp2 }),
-    chartSessions: comboChart("chartSessions", [718, 1761, 2499], [2.8, 2.4, 1.8], "#780080", { barFmt: (v) => v.toLocaleString(), lineFmt: gbp1 }),
-    chartCpl: barChart("chartCpl", [1006, 287, 207], "#de2864", gbp0),
-    chartSql: barChart("chartSql", [1006, 473, 226], "#780080", gbp0),
+    chartReach: comboChart("chartReach", [16176, 57990, 203380, 98411], [0.12, 0.07, 0.02, 0.07], "#780080", { barFmt: kfmt, lineFmt: gbp2 }),
+    chartSessions: comboChart("chartSessions", [718, 1761, 2499, 2401], [2.8, 2.4, 1.8, 2.7], "#780080", { barFmt: (v) => v.toLocaleString(), lineFmt: gbp1 }),
+    chartCpl: barChart("chartCpl", [1006, 287, 207, 151], "#de2864", gbp0),
+    chartSql: barChart("chartSql", [1006, 478, 228, 167], "#780080", gbp0),
   };
 
   const chartObs = new IntersectionObserver(
