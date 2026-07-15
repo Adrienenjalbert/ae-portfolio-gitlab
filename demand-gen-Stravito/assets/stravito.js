@@ -337,12 +337,13 @@
   const gbp2 = (v) => "£" + v.toFixed(2);
   const gbp1 = (v) => "£" + v.toFixed(1);
   const kfmt = (v) => v >= 1000 ? (v / 1000).toFixed(0) + "k" : v;
+  const gbpk = (v) => "£" + (v / 1000).toFixed(1) + "k";
 
   const players = {
     chartReach: comboChart("chartReach", [16176, 57990, 203380, 98411], [0.12, 0.07, 0.02, 0.07], "#780080", { barFmt: kfmt, lineFmt: gbp2 }),
     chartSessions: comboChart("chartSessions", [718, 1761, 2499, 2401], [2.8, 2.4, 1.8, 2.7], "#780080", { barFmt: (v) => v.toLocaleString(), lineFmt: gbp1 }),
-    chartCpl: barChart("chartCpl", [1006, 287, 207, 151], "#de2864", gbp0),
-    chartSql: barChart("chartSql", [1006, 478, 228, 167], "#780080", gbp0),
+    chartCpl: comboChart("chartCpl", [2012, 4301, 4565, 6494], [1006, 287, 207, 151], "#780080", { barFmt: gbpk, lineFmt: gbp0 }),
+    chartSql: comboChart("chartSql", [2, 9, 20, 39], [1006, 478, 228, 167], "#780080", { barFmt: (v) => v, lineFmt: gbp0 }),
   };
 
   const chartObs = new IntersectionObserver(
