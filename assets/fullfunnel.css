@@ -498,7 +498,7 @@ section { position: relative; padding: clamp(64px, 9vw, 130px) 0; }
 .contrib-legend i { width: 12px; height: 12px; border-radius: 4px; margin-right: 8px; }
 .contrib-legend i.have { background: #16a085; }
 .contrib-legend i.build { background: var(--pink); }
-.contrib-legend .cl-teams { margin-left: auto; font-style: italic; }
+.contrib-legend .cl-teams { margin-left: auto; font-weight: 600; color: var(--ink); }
 .contrib-row { display: grid; grid-template-columns: 230px 1fr; gap: 24px; padding: 20px; border-top: 1px solid var(--line); align-items: start; }
 .contrib-row:first-of-type { border-top: 0; }
 .contrib-stage .ci { display: flex; align-items: baseline; gap: 10px; }
@@ -511,6 +511,27 @@ section { position: relative; padding: clamp(64px, 9vw, 130px) 0; }
 .contrib-content span.have { color: #0e7a63; background: rgba(22,160,133,.10); border-color: rgba(22,160,133,.38); }
 .contrib-content span.build { color: #16307f; background: rgba(30,73,230,.08); border-color: rgba(30,73,230,.32); }
 @media (max-width: 640px) { .contrib-row { grid-template-columns: 1fr; gap: 14px; } .contrib-legend .cl-teams { margin-left: 0; width: 100%; } }
+.xfun-bridge { font-size: 15.5px; color: var(--muted); max-width: 640px; margin: 4px 0 22px; }
+
+/* ============ Leaks -> loop (before/after) ============ */
+.leaks { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; background: var(--white); box-shadow: var(--shadow-sm); }
+.leaks-head { display: grid; grid-template-columns: 1fr 1fr; }
+.leaks-head span { padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.leaks-head .lh-bad { color: #b4305a; background: rgba(222,40,100,.06); }
+.leaks-head .lh-good { color: #0e7a63; background: rgba(22,160,133,.08); border-left: 1px solid var(--line); }
+.leak-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.leak { display: flex; gap: 11px; padding: 15px 20px; font-size: 14px; align-items: flex-start; }
+.leak.good { border-left: 1px solid var(--line); }
+.leak .ico { flex: none; line-height: 1.4; }
+.leak p { color: var(--muted); }
+.leak.good p { color: var(--ink); }
+.leak p b { color: var(--ink); font-weight: 600; }
+@media (max-width: 640px) {
+  .leaks-head { grid-template-columns: 1fr; }
+  .leaks-head .lh-good { display: none; }
+  .leak-row { grid-template-columns: 1fr; }
+  .leak.good { border-left: 0; border-top: 1px solid var(--line); }
+}
 
 /* ============ AI agent flow ============ */
 .agent-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 10px; }
