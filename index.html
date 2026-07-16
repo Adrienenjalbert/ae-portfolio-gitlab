@@ -181,6 +181,9 @@ h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spac
 .xnav .tabs a:hover{color:var(--ink);text-decoration:none;background:rgba(30,73,230,.06)}
 .xnav .tabs a.on{color:#fff;background:var(--ink-2)}
 .xnav .tabs a.cv{color:var(--accent);border:1px solid var(--line-2)}
+.xnav .tabs a.case{color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.xnav .tabs a.case::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(30,73,230,.14)}
+.xnav .tabs a.case:hover{background:rgba(30,73,230,.08)}
 .xnav .tabs .sep{width:1px;height:18px;background:var(--line);margin:0 4px}
 
 .app{display:grid;grid-template-columns:var(--nav-w) 1fr;position:relative;z-index:1}
@@ -427,6 +430,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="msc-ai.html">MSc</a>
       <a href="builds.html">Builds</a>
       <a href="spotlight.html">Spotlight</a>
+      <a href="ai-growth-Tripadvisor/index.html" class="case">Tripadvisor&nbsp;case</a>
       <a href="cv.html" class="cv">CV</a>
     </div>
   </div>
@@ -461,6 +465,7 @@ footer{padding:30px 0 60px;color:var(--mute);font-family:"IBM Plex Mono",monospa
       <a href="#contact"><span class="bar"></span><span class="ix">10</span>Contact</a>
       <div class="navgroup">Tailored for this role</div>
       <a class="navsub" href="for-ai.html"><span class="ix">&rsaquo;</span>The AI / MarTech one-pager &rarr;</a>
+      <a class="navsub" href="ai-growth-Tripadvisor/index.html"><span class="ix">&rsaquo;</span>Tripadvisor AI incentives case &rarr;</a>
     </nav>
     <div class="foot">
       <a href="https://linkedin.com/in/adrien-enjalbert">linkedin.com/in/adrien-enjalbert</a><br>

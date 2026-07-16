@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spend Less, Learn More · AI Personalization Case Study · Adrien Enjalbert × Tripadvisor</title>
+<meta name="description" content="My submission for the AI Systems, Personalization & Growth Manager case study: an honest read of the incentive data, the three experiments worth running, the AI operating system that launches them 60% faster, why the German recommendation failed, and how I'd align Finance and the Incentives Lead. Built for Tripadvisor by Adrien Enjalbert." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/tripadvisor.css?v=6" />
+</head>
+<body>
+<a class="skip" href="#read">Skip to content</a>
+
+<div class="progress" id="progress"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Adrien Enjalbert portfolio home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="url(#navg)"/>
+        <circle cx="13.6" cy="17" r="6.4" fill="#fff"/>
+        <circle cx="26.4" cy="17" r="6.4" fill="#fff"/>
+        <circle cx="13.6" cy="17.4" r="2.7" fill="#0a1512"/>
+        <circle cx="26.4" cy="17.4" r="2.7" fill="#0a1512"/>
+        <path d="M16.8 25.2 L20 28.6 L23.2 25.2 Z" fill="#0a1512"/>
+        <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00976E"/><stop offset="1" stop-color="#34E0A1"/></linearGradient></defs>
+      </svg>
+      <span>Adrien Enjalbert<small>AI Personalization &amp; Growth · for Tripadvisor</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#read">The Read</a>
+      <a href="#reality">The 90%</a>
+      <a href="#evaluate">Evaluate</a>
+      <a href="#experiments">Experiments</a>
+      <a href="#system">The System</a>
+      <a href="#invest">Invest</a>
+      <a href="#personas">Personas</a>
+      <a href="#debug">Debug</a>
+      <a class="nav-cta" href="#room">Stakeholders</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="dots-nav" id="dotsNav" aria-label="Section navigation"></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="hero-kicker"><span class="pulse"></span> Interview case study · <b>AI Systems, Personalization &amp; Growth</b> · International Incentives</span>
+      <h1>Spend less.<br/>Learn more.<br/><span class="grad">Launch smarter.</span></h1>
+      <p class="hero-sub">The Incentives team runs a flat 15% discount and moves slowly. My submission reads the data honestly, redesigns the three experiments worth running, and lays out an AI operating system that takes an idea from hypothesis to validated learning about 60% faster. The model is the easy part. This is built to land in a real organisation.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#read">Start with the read <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-ghost" href="#system">Jump to the AI system</a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric reveal"><div class="num"><span data-count="3" data-suffix="">0</span> <span style="font-size:.5em;color:var(--muted-on-dark)">/ qtr</span></div><div class="lbl">Experiments we can run</div><span class="cap">The real constraint</span></div>
+      <div class="hero-metric reveal d1"><div class="num up"><span data-count="60" data-prefix="&minus;" data-suffix="%">0%</span></div><div class="lbl">Target cut in time-to-launch</div><span class="cap">Leadership's ask</span></div>
+      <div class="hero-metric reveal d2"><div class="num up"><span data-count="71" data-suffix="%">0%</span></div><div class="lbl">Incrementality, UK first purchase</div><span class="cap">Value creating</span></div>
+      <div class="hero-metric reveal d3"><div class="num down"><span data-count="28" data-suffix="%">0%</span></div><div class="lbl">Incrementality, German repeat</div><span class="cap">Value destroying</span></div>
+      <div class="hero-note reveal d3"><span aria-hidden="true">&#9888;</span><span>One flat 15% rule is running across nine very different segments. It is quietly subsidising loyal customers who would have booked anyway. That gap is the whole exercise.</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="dot"></span></div>
+</header>
+
+<!-- ============ EXECUTIVE READ SUMMARY ============ -->
+<section class="summary" id="read" data-dot="The Read" style="padding:0">
+  <div class="wrap">
+    <div class="summary-grid">
+      <div class="summary-item reveal"><span class="k"><b>1</b> The read</span><h4>One rule, two businesses</h4><p>First-purchase discounts create real value. Repeat-customer discounts destroy it. Incrementality, not redemption, is the metric that tells them apart.</p></div>
+      <div class="summary-item reveal d1"><span class="k"><b>2</b> The bet</span><h4>Three experiments, one theme</h4><p>Stop subsidising loyal customers, test Germany's fixed-value hypothesis cleanly, and find the discount depth that holds bookings for less.</p></div>
+      <div class="summary-item reveal d2"><span class="k"><b>3</b> The system</span><h4>Build the loop, then show it</h4><p>A spec generator for quality and a dashboard for adoption before the recommendation engine, so the system gets smarter and actually gets used.</p></div>
+      <div class="summary-item reveal d3"><span class="k"><b>4</b> The debug</span><h4>A framing error, not magic</h4><p>The German recommendation mostly failed because a fixed value under-priced the offer and hit the wrong segment on correlational data.</p></div>
+      <div class="summary-item reveal d4"><span class="k"><b>5</b> The room</span><h4>Both stakeholders are right</h4><p>Finance and the Incentives Lead disagree for good reasons. A holdout on repeat customers turns the argument into evidence, at almost no risk.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE 90% (reframe) ============ -->
+<section id="reality" class="on-dark" data-dot="The 90%">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The operating reality</span>
+      <h2>In a big organisation, the model is the easy <span class="grad">10%</span>.</h2>
+      <p>A recommendation engine is close to a weekend prototype. Getting it trusted, plugged into the stack teams already run, adopted in the flow of work, and resourced past the demo is the real year of work. So this submission spends its effort on the four things that actually decide whether AI creates value here.</p>
+    </div>
+
+    <div class="splitbar reveal">
+      <div class="track">
+        <div class="seg model"><span>Model</span><b>10%</b></div>
+        <div class="seg rest"><span>The 90% that decides success</span></div>
+      </div>
+    </div>
+
+    <div class="pillars reveal">
+      <a class="pillar" href="#evaluate">
+        <span class="pn">01</span>
+        <div class="pic">&#128202;</div>
+        <h3>Data &amp; ETL</h3>
+        <p>Investigate, clean and validate the data so a result can be trusted. The "directional" flag on France and Italy is the whole job in miniature.</p>
+        <span class="jump">See the data read <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="pillar" href="#system">
+        <span class="pn">02</span>
+        <div class="pic">&#128268;</div>
+        <h3>Integration</h3>
+        <p>Sit in the middle of the warehouse, tracking and lifecycle tools, not beside them in a side app. Most of the build is connectors and permissions, not prompts.</p>
+        <span class="jump">See the system <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="pillar" href="#personas">
+        <span class="pn">03</span>
+        <div class="pic">&#129504;</div>
+        <h3>UX &amp; adoption</h3>
+        <p>Not a blank chatbot. AI that does one job, for one role, inside the tool they already work in. Adoption is what turns a clever tool into value.</p>
+        <span class="jump">See it in context <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="pillar" href="#room">
+        <span class="pn">04</span>
+        <div class="pic">&#129309;</div>
+        <h3>Change management</h3>
+        <p>Earn trust and budget in stages. Small, visible wins build the coalition that survives shifting priorities in a lean, busy team.</p>
+        <span class="jump">See the stakeholder call <span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1.1 EVALUATE ============ -->
+<section id="evaluate" data-dot="Evaluate">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">1</span> Part One · Data reasoning</span>
+      <h2>The flat discount is hiding two different businesses.</h2>
+      <p>Read row by row, the table looks like nine promotions. Read by incrementality, it is one clear pattern: the newer the customer, the more the discount actually causes a booking. We are paying the same 15% to people who need convincing and to people who were already coming.</p>
+    </div>
+
+    <div class="dtable-wrap reveal">
+      <div class="dscroll">
+      <table class="dtable">
+        <thead>
+          <tr><th>Market</th><th>Segment</th><th>Avg booking</th><th>Redemption</th><th>CVR lift</th><th>Incrementality</th><th>Promo cost</th><th>Verdict</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-pos"><td class="mkt">UK</td><td class="seg">First purchase</td><td>&pound;95</td><td>18%</td><td>+22%</td><td><b>71%</b></td><td>&pound;14.25</td><td><span class="verdict pos">Positive</span></td></tr>
+          <tr class="row-marg"><td class="mkt">UK</td><td class="seg">Lapsed</td><td>&pound;110</td><td>14%</td><td>+15%</td><td>52%</td><td>&pound;16.50</td><td><span class="verdict marg">Marginal</span></td></tr>
+          <tr class="row-neg"><td class="mkt">UK</td><td class="seg">Repeat</td><td>&pound;130</td><td>21%</td><td>+8%</td><td>31%</td><td>&pound;19.50</td><td><span class="verdict neg">Negative</span></td></tr>
+          <tr class="row-marg"><td class="mkt">France</td><td class="seg">First purchase</td><td>&euro;88</td><td>12%</td><td>+14%</td><td>58%<span class="flag">*</span></td><td>&euro;13.20</td><td><span class="verdict marg">Marginal</span></td></tr>
+          <tr class="row-neg"><td class="mkt">France</td><td class="seg">Lapsed</td><td>&euro;92</td><td>9%</td><td>+11%</td><td>44%<span class="flag">*</span></td><td>&euro;13.80</td><td><span class="verdict neg">Negative</span></td></tr>
+          <tr class="row-pos"><td class="mkt">Germany</td><td class="seg">First purchase</td><td>&euro;102</td><td>11%</td><td>+16%</td><td><b>63%</b></td><td>&euro;15.30</td><td><span class="verdict pos">Positive</span></td></tr>
+          <tr class="row-neg"><td class="mkt">Germany</td><td class="seg">Repeat</td><td>&euro;120</td><td>14%</td><td>+7%</td><td>28%</td><td>&euro;18.00</td><td><span class="verdict neg">Negative</span></td></tr>
+          <tr class="row-marg"><td class="mkt">Italy</td><td class="seg">First purchase</td><td>&euro;79</td><td>10%</td><td>+12%</td><td>51%<span class="flag">*</span></td><td>&euro;11.85</td><td><span class="verdict marg">Marginal</span></td></tr>
+          <tr class="row-marg"><td class="mkt">Spain</td><td class="seg">First purchase</td><td>&euro;75</td><td>9%</td><td>+11%</td><td>48%</td><td>&euro;11.25</td><td><span class="verdict marg">Marginal</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="dtable-note"><span aria-hidden="true">&#9888;</span><span><b class="flag">*</b>&nbsp;France and Italy had targeting issues during the holdout, so their incrementality is directional only. Promo cost is the 15% discount value per redemption, which is why it rises with basket size even when incrementality falls.</span></div>
+    </div>
+
+    <div class="read-split reveal">
+      <div class="rs-col good">
+        <h3>Where value is being created</h3>
+        <p class="rs-sub">High incrementality: the discount is genuinely changing behaviour.</p>
+        <div class="rs-item"><div class="rs-name">UK · First purchase <span>New customers, strong lift</span></div><div class="rs-num">71%</div></div>
+        <div class="rs-item"><div class="rs-name">Germany · First purchase <span>New customers, positive net</span></div><div class="rs-num">63%</div></div>
+        <div class="rs-item"><div class="rs-name">UK · Lapsed <span>Reactivation, worth protecting</span></div><div class="rs-num">52%</div></div>
+      </div>
+      <div class="rs-col bad">
+        <h3>Where value is being destroyed</h3>
+        <p class="rs-sub">Low incrementality: we are discounting people who would book anyway.</p>
+        <div class="rs-item"><div class="rs-name">Germany · Repeat <span>Highest cost, lowest lift</span></div><div class="rs-num">28%</div></div>
+        <div class="rs-item"><div class="rs-name">UK · Repeat <span>Top redemption, deadweight spend</span></div><div class="rs-num">31%</div></div>
+        <div class="rs-item"><div class="rs-name">France · Lapsed <span>Negative, and directional only</span></div><div class="rs-num">44%*</div></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:10px">
+      <div class="chart-card reveal">
+        <h3>Incrementality falls as loyalty rises</h3>
+        <p class="csub">Share of redemptions that were truly incremental, by market and segment (* directional)</p>
+        <div class="chart-legend"><span><i style="background:#14b083"></i>Positive</span><span><i style="background:#f2b53c"></i>Marginal</span><span><i style="background:#ff6b6b"></i>Negative</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 320" id="chartIncr" preserveAspectRatio="xMidYMid meet" aria-label="Incrementality by segment, first purchase highest, repeat lowest"></svg>
+      </div>
+      <div class="chart-card reveal d1">
+        <h3>The deadweight trap (UK)</h3>
+        <p class="csub">Repeat buyers redeem the most yet are the least incremental. High redemption is not good news.</p>
+        <div class="chart-legend"><span><i style="background:#A7BDB2"></i>Redemption</span><span><i style="background:#00976E"></i>Incrementality</span></div>
+        <svg class="svg-chart" viewBox="0 0 500 300" id="chartDead" preserveAspectRatio="xMidYMid meet" aria-label="UK redemption versus incrementality across first, lapsed and repeat"></svg>
+      </div>
+    </div>
+
+    <div class="deadweight reveal">
+      <div class="dw-find">
+        <span class="dw-eyebrow">Going one level deeper</span>
+        <h3>The same offer, opposite economics.</h3>
+        <p>Two calculations turn the verdict labels into a hard number, so the "two businesses" claim is proven with maths, not adjectives.</p>
+        <div class="dw-nums">
+          <div class="dw-num"><b><span data-count="3" data-decimals="0" data-suffix="&times;">0&times;</span></b><span>more per truly incremental booking on repeat vs first purchase</span></div>
+          <div class="dw-num"><b><span data-count="70" data-prefix="~" data-suffix="%">~0%</span></b><span>of every pound spent on repeat buyers is deadweight (UK 69%, DE 72%)</span></div>
+        </div>
+      </div>
+      <div class="dw-formula">
+        <span class="dw-lab">The two formulas</span>
+        <div class="dw-row"><code>cost / incremental booking</code><span>= promo cost &divide; incrementality</span></div>
+        <div class="dw-row"><code>deadweight spend</code><span>= promo &times; (1 &minus; incrementality)</span></div>
+        <p class="dw-next">With margin and CLV I'd extend this to incremental ROAS and LTV:CAC per segment, and use CUPED to cut variance.</p>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin:64px 0 30px">
+      <span class="eyebrow">Which numbers I'd stand on, and which I wouldn't</span>
+      <h2 style="font-size:clamp(24px,3.4vw,38px)">Trust the causal metric. Question the rest.</h2>
+    </div>
+    <div class="mtrust">
+      <div class="mtrust-col trust reveal">
+        <span class="h"><span class="bubbles pos"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Metrics I trust most</span>
+        <div class="mrow"><h5>Incrementality (clean markets)</h5><p>It comes from a holdout, so it measures cause, not correlation. In the UK and Germany it is the one number that separates real growth from subsidised habit.</p></div>
+        <div class="mrow"><h5>The direction of net revenue</h5><p>Positive versus negative tracks incrementality closely, which is a good internal consistency check. I trust the ranking even before I trust the exact figure.</p></div>
+        <div class="mrow"><h5>CVR lift as a supporting signal</h5><p>Useful alongside incrementality, and it agrees with the story: lift is highest on first purchase (+22% UK) and lowest on repeat (+7% to +8%).</p></div>
+      </div>
+      <div class="mtrust-col doubt reveal d1">
+        <span class="h"><span class="bubbles warnb"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Metrics I'd question</span>
+        <div class="mrow"><h5>France and Italy incrementality</h5><p>Flagged for targeting issues in the holdout. I would not rank, cut or roll anything out on these until the test is rerun. Directional means directional.</p></div>
+        <div class="mrow"><h5>Redemption rate on its own</h5><p>UK repeat has the highest redemption (21%) and nearly the lowest incrementality. High redemption with low incrementality is the definition of wasted spend, not success.</p></div>
+        <div class="mrow"><h5>"Net revenue" as a label</h5><p>Positive / Marginal / Negative is a bucket, not a number. I want the actual contribution margin and the assumptions behind it before I bank a saving.</p></div>
+        <div class="mrow"><h5>Everything, without a sample size</h5><p>No n and no confidence intervals are shown. A "Positive" on a small cell can be noise. I'd attach significance before treating any single row as settled.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1.2 INFO REQUESTS ============ -->
+<section id="info" class="on-dark" data-dot="What I'd Ask For">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">1</span> Part One · Before I recommend a Q3 strategy</span>
+      <h2>Six things I'd ask for, and how each one changes the call.</h2>
+      <p>I would not finalise a plan on this table alone. Each of these would move a specific decision, not just add detail. If a data point cannot change what I do, I don't wait for it.</p>
+    </div>
+
+    <div class="inforeq">
+      <div class="ireq reveal">
+        <div class="ic">&#128176;</div>
+        <h4>Customer lifetime value</h4>
+        <p>First booking value is a snapshot. A discount that looks marginal on day one can be very profitable if it acquires a high-CLV traveller.</p>
+        <div class="why"><b>Changes:</b> whether the marginal first-purchase segments (Spain, Italy, France) are actually worth acquiring, and how much I'll pay to do it.</div>
+      </div>
+      <div class="ireq reveal d1">
+        <div class="ic">&#128202;</div>
+        <h4>Contribution margin per booking</h4>
+        <p>The promo cost is clear, the profit it eats is not. Margin differs by market and by hotel versus experiences mix.</p>
+        <div class="why"><b>Changes:</b> the real breakeven discount depth, and whether a "negative" verdict is mildly or badly negative.</div>
+      </div>
+      <div class="ireq reveal d2">
+        <div class="ic">&#127919;</div>
+        <h4>Sample size &amp; confidence</h4>
+        <p>Without n per cell I can't tell signal from noise, and the France and Italy flags make this urgent.</p>
+        <div class="why"><b>Changes:</b> whether I roll a finding out, retest it, or ignore it. It decides which rows are safe to act on at all.</div>
+      </div>
+      <div class="ireq reveal">
+        <div class="ic">&#128225;</div>
+        <h4>Traffic source</h4>
+        <p>A redemption from a coupon or loyalty site is low-incrementality by construction. Source explains a lot of the tenure pattern.</p>
+        <div class="why"><b>Changes:</b> targeting. I may exclude deal-seeker channels entirely rather than discount the same people repeatedly.</div>
+      </div>
+      <div class="ireq reveal d1">
+        <div class="ic">&#128241;</div>
+        <h4>Device &amp; app usage</h4>
+        <p>App and logged-in users skew toward loyal repeat behaviour. Device often proxies for how incremental a booking really is.</p>
+        <div class="why"><b>Changes:</b> creative and eligibility. I might suppress the offer for high-frequency app users who convert without it.</div>
+      </div>
+      <div class="ireq reveal d2">
+        <div class="ic">&#128269;</div>
+        <h4>Holdout integrity</h4>
+        <p>The France and Italy targeting issue is the biggest unknown. I need the methodology, exposure and any leakage before trusting those rows.</p>
+        <div class="why"><b>Changes:</b> whether France and Italy get an experiment slot this quarter, or a measurement fix first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1.3 EXPERIMENTS ============ -->
+<section id="experiments" data-dot="Experiments">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">1</span> Part One · The three experiments I'd run</span>
+      <h2>Only three slots. I'd spend them on learning that pays.</h2>
+      <p>Each one is chosen to answer a question we can act on, and each protects the base while it learns. Together they serve Finance's goal of spending less without losing bookings, and they set up the AI system in Part Two with clean, causal data.</p>
+    </div>
+
+    <div class="exps">
+      <div class="exp-card reveal">
+        <div class="exp-head">
+          <span class="en">Experiment 01 · Highest saving</span>
+          <h4>Stop paying loyal customers</h4>
+          <span class="tgt">UK &amp; Germany · Repeat buyers</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-field"><span class="fl">Offer</span><p>Holdout test: 15% versus 0% versus a non-cash perk (free cancellation or loyalty points), matched by cell.</p></div>
+          <div class="exp-field"><span class="fl">Why this one</span><p>Repeat is the clearest value-destroyer (<b>28% and 31%</b> incrementality). It is the biggest, fastest saving available and directly answers Finance.</p></div>
+          <div class="exp-field"><span class="fl">Expected learning</span><p>How much repeat revenue is truly incremental, and whether a perk holds loyalty for less than a discount.</p></div>
+          <div class="exp-risk"><span class="fl">Business risk</span> Some repeat bookings may be incremental. The holdout caps exposure, and I'd watch retention, not just the next booking.</div>
+        </div>
+      </div>
+
+      <div class="exp-card reveal d1">
+        <div class="exp-head">
+          <span class="en">Experiment 02 · Test the hypothesis</span>
+          <h4>Fixed value vs percentage</h4>
+          <span class="tgt">Germany · First purchase</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-field"><span class="fl">Offer</span><p>A/B a &euro;15 fixed voucher against the 15% discount. On a &euro;102 basket the two cost almost the same, so it is a clean framing test.</p></div>
+          <div class="exp-field"><span class="fl">Why this one</span><p>Qualitative research says Germans prefer fixed value. I'd test it on the proven positive segment, not assume it, and not on repeat buyers.</p></div>
+          <div class="exp-field"><span class="fl">Expected learning</span><p>Whether framing lifts incrementality at equal cost. If it does, it reshapes every DACH offer for free.</p></div>
+          <div class="exp-risk"><span class="fl">Business risk</span> The effect may be small. Cost is matched, so the downside is a quarter's slot, not budget. It also de-risks the Part Three failure.</div>
+        </div>
+      </div>
+
+      <div class="exp-card reveal d2">
+        <div class="exp-head">
+          <span class="en">Experiment 03 · Efficient frontier</span>
+          <h4>How shallow can we go?</h4>
+          <span class="tgt">Spain · First purchase</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-field"><span class="fl">Offer</span><p>Test discount depth: 10% versus 15%, plus a "&euro;10 off &euro;75+" threshold variant.</p></div>
+          <div class="exp-field"><span class="fl">Why this one</span><p>Spain is marginal (48%) but not flagged, on the lowest basket (&euro;75). It's the cleanest place to find the depth that still acquires.</p></div>
+          <div class="exp-field"><span class="fl">Expected learning</span><p>The discount elasticity for acquisition, which answers Finance directly: can we hold incremental bookings for less?</p></div>
+          <div class="exp-risk"><span class="fl">Business risk</span> Under-discounting could slow acquisition. I'd measure downstream CLV, not just first-booking volume, before scaling.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-hold reveal">
+      <span class="x" aria-hidden="true">&#9995;</span>
+      <div>
+        <h4>What I deliberately would not test yet: France and Italy.</h4>
+        <p>Their incrementality is flagged for targeting issues, so any experiment built on that data risks learning the wrong thing. Spending a scarce slot there would be a mistake. I'd fix the holdout first, then earn a slot next quarter. Choosing not to act on broken data is itself a decision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2.1 WORKFLOW ============ -->
+<section id="system" class="on-dark" data-dot="The System">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">2</span> Part Two · The AI operating system</span>
+      <h2>From an idea to an approved launch, without the meeting marathon.</h2>
+      <p>Today a launch waits on manual pulls, hand-drafted specs, sequential reviews and several rounds of meetings. The 60% comes from collapsing that into one assisted pipeline with async approval gates. It's built on CRISP-DM, the framework I used to ship a multi-agent system at Indeed Flex, so business and data understanding come before modelling, which is exactly what most failed enterprise AI skips. AI does the drafting and the recall. Humans own the judgement.</p>
+    </div>
+
+    <div class="grid-3 reveal" style="margin-bottom:38px">
+      <div class="card"><div class="ic">&#128229;</div><h3 style="font-size:16px">Inputs</h3><p style="font-size:13.5px">A structured hypothesis: market, segment, offer idea, the decision it informs, and the budget and slot it needs.</p></div>
+      <div class="card"><div class="ic">&#128190;</div><h3 style="font-size:16px">Data sources</h3><p style="font-size:13.5px">The experiment knowledge base, booking and CRM data, margin and CLV, and holdout incrementality results.</p></div>
+      <div class="card"><div class="ic">&#129302;</div><h3 style="font-size:16px">AI capabilities</h3><p style="font-size:13.5px">Recall prior learnings, draft a powered spec, run design QA, summarise results, and write the learning brief.</p></div>
+      <div class="card"><div class="ic">&#9989;</div><h3 style="font-size:16px">Human review points</h3><p style="font-size:13.5px">The hypothesis and ICP, the spec sign-off, any QA exception, and validation of every new learning.</p></div>
+      <div class="card"><div class="ic">&#128228;</div><h3 style="font-size:16px">Outputs</h3><p style="font-size:13.5px">An approved, powered experiment spec, a live dashboard, and a structured, searchable learning brief.</p></div>
+      <div class="card"><div class="ic">&#128260;</div><h3 style="font-size:16px">Feedback loops</h3><p style="font-size:13.5px">Every validated learning writes back to the knowledge base, so the next spec starts smarter than the last.</p></div>
+    </div>
+
+    <div class="section-head reveal" style="margin:0 0 24px">
+      <span class="eyebrow">Idea to launch</span>
+      <h2 style="font-size:clamp(22px,3vw,32px)">The pipeline</h2>
+    </div>
+    <div class="agent-flow reveal">
+      <div class="agent-node"><div class="n">1</div><h5>Intake</h5><p>A hypothesis goes in through a structured form, not a meeting invite.</p></div>
+      <div class="agent-node"><div class="n">2</div><h5>Recall priors</h5><p>AI searches the knowledge base: have we tested this, and what happened?</p></div>
+      <div class="agent-node"><div class="n">3</div><h5>Draft spec</h5><p>AI drafts audience, offer, sample size, guardrails and success metric.</p></div>
+      <div class="agent-node human"><div class="n">&#10003;</div><h5>Human review</h5><p>A PM or marketer edits and approves the design. Judgement stays human.</p></div>
+      <div class="agent-node"><div class="n">4</div><h5>QA check</h5><p>AI sanity-checks currency, budget, overlap and holdout before launch.</p></div>
+      <div class="agent-node"><div class="n">5</div><h5>Approve &amp; launch</h5><p>A lightweight async gate replaces the stakeholder meeting.</p></div>
+    </div>
+    <div class="loopnote reveal"><span class="arc" aria-hidden="true">&#8635;</span><span>After launch: AI summarises the dashboard &rarr; drafts a learning brief &rarr; a human validates it &rarr; it writes back to the knowledge base &rarr; which powers step 2 of the next idea.</span></div>
+  </div>
+</section>
+
+<!-- ============ PART 2.2 INVESTMENTS ============ -->
+<section id="invest" data-dot="Invest">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">2</span> Part Two · Two engineering slots</span>
+      <h2>What I'd build first, and what I'd hold back.</h2>
+      <p>With capacity for only two projects, I'd build one for quality and one for adoption: the spec generator that makes every experiment better, and the dashboard that makes progress visible. Cleverness doesn't decide ROI, adoption and buy-in do. The tempting one is deliberately last, because it is exactly what failed in Part Three.</p>
+    </div>
+
+    <div class="ranklist">
+      <div class="rank build reveal">
+        <div class="pos">1</div>
+        <div class="rk-body"><h4>AI experiment specification generator</h4><p>The biggest bite out of the 60%. It turns a hypothesis plus history into a structured, powered, reviewable spec, replacing the slowest manual step. <span class="rk-tag">Build now</span></p></div>
+      </div>
+      <div class="rank build reveal d1">
+        <div class="pos">2</div>
+        <div class="rk-body"><h4>AI dashboard summarisation</h4><p>The adoption engine. Visible, plain-English results are how the system earns buy-in and budget. If progress isn't shown it isn't used, and an unseen system doesn't get resourced. <span class="rk-tag">Build now</span></p></div>
+      </div>
+      <div class="rank later reveal">
+        <div class="pos">3</div>
+        <div class="rk-body"><h4>AI learning brief generator</h4><p>The loop-closer. It turns each result into graded knowledge in the evidence base, so we stop retesting the same ideas. Low risk, since it summarises results we own. <span class="rk-tag">Sequence next</span></p></div>
+      </div>
+      <div class="rank later reveal d1">
+        <div class="pos">4</div>
+        <div class="rk-body"><h4>AI QA assistant for launches</h4><p>The safety net that would have caught the German currency error. I'd fast-follow it once the spec generator gives it something structured to check. <span class="rk-tag">Sequence next</span></p></div>
+      </div>
+      <div class="rank later reveal">
+        <div class="pos">5</div>
+        <div class="rk-body"><h4>AI promotion recommendation engine</h4><p>The most powerful and the highest risk. It is precisely the tool that failed in Part Three. I'd only build it once the knowledge base, guardrails and QA exist to keep it honest. <span class="rk-tag">Earns its place later</span></p></div>
+      </div>
+      <div class="rank later reveal d1">
+        <div class="pos">6</div>
+        <div class="rk-body"><h4>AI customer persona simulator</h4><p>Valuable for a pre-launch sanity check, but it is decision-support built on the same data foundation, and it carries confirmation-bias risk. Build it after the loop is trusted. <span class="rk-tag">Earns its place later</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2.3 KNOWLEDGE ============ -->
+<section id="knowledge" class="on-dark" data-dot="Knowledge">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">2</span> Part Two · Knowledge management</span>
+      <h2>Every experiment should make the next one smarter.</h2>
+      <p>The point of the loop is that learning compounds instead of leaving with whoever ran the test. Capture it in a structured registry, retrieve it before designing anything, and keep a human as the gatekeeper of what counts as knowledge.</p>
+    </div>
+    <div class="grid-4 reveal">
+      <div class="card"><div class="ic">&#128221;</div><h3 style="font-size:16.5px">Capture</h3><p style="font-size:13.5px">Hypothesis, design, audience, offer, sample size, result (incrementality, CVR, margin), confidence, the decision taken, and caveats like the France targeting issue.</p></div>
+      <div class="card"><div class="ic">&#128193;</div><h3 style="font-size:16.5px">Store</h3><p style="font-size:13.5px">A structured experiment registry for the facts, plus a vector index for the narrative, on one taxonomy of market, segment and offer type.</p></div>
+      <div class="card"><div class="ic">&#128270;</div><h3 style="font-size:16.5px">Retrieve</h3><p style="font-size:13.5px">Before a new design, AI surfaces similar past experiments and their confidence, so we build on evidence and stop repeating tests.</p></div>
+      <div class="card"><div class="ic">&#128100;</div><h3 style="font-size:16.5px">Validate</h3><p style="font-size:13.5px">A human signs off each learning with a confidence tag and an owner. Contradictions get flagged, and low-confidence entries can't masquerade as fact.</p></div>
+    </div>
+
+    <div class="graderule reveal">
+      <div class="grades">
+        <span class="glab">Evidence grade</span>
+        <div class="gchips">
+          <span class="gchip a">A · clean holdout</span>
+          <span class="gchip b">B · flawed test</span>
+          <span class="gchip c">C · observed</span>
+          <span class="gchip d">D · hunch</span>
+        </div>
+      </div>
+      <p class="grule"><span aria-hidden="true">&#9889;</span> The one rule that would have caught the German failure: <b>a grade-D hunch can never overrule a grade-A holdout.</b> Evidence quality decides, not recency or seniority.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2.4 PERSONAS ============ -->
+<section id="personas" data-dot="Personas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">2</span> Part Two · AI personas</span>
+      <h2>Five personas, built from behaviour, not stereotypes.</h2>
+      <p>A persona is a hypothesis generator, a way to pressure-test an offer before we spend a slot on it. It is grounded in what each market actually did in the data, and it is only ever an input to a real test, never the verdict.</p>
+    </div>
+    <div class="personas reveal">
+      <div class="persona">
+        <div class="flag">&#127468;&#127463;</div>
+        <h4>United Kingdom</h4>
+        <p class="ptrait">Highest baskets and strongest promo response. Very incremental on first purchase (71%), wasteful on repeat (31%).</p>
+        <div class="plab">Best used for</div>
+        <div class="signal">Deciding <b>where to stop discounting loyal buyers</b> first.</div>
+      </div>
+      <div class="persona">
+        <div class="flag">&#127467;&#127479;</div>
+        <h4>France</h4>
+        <p class="ptrait">Read with caution. The holdout targeting issue makes its 58% directional, so it is a question, not a fact.</p>
+        <div class="plab">Best used for</div>
+        <div class="signal">Deciding <b>what to fix before we test</b> here.</div>
+      </div>
+      <div class="persona">
+        <div class="flag">&#127465;&#127466;</div>
+        <h4>Germany</h4>
+        <p class="ptrait">Strong positive first-purchase segment. Qualitative research points to fixed-value over percentage framing.</p>
+        <div class="plab">Best used for</div>
+        <div class="signal">Pre-testing <b>fixed value versus percentage</b> at equal cost.</div>
+      </div>
+      <div class="persona">
+        <div class="flag">&#127470;&#127481;</div>
+        <h4>Italy</h4>
+        <p class="ptrait">Also flagged, so 51% is directional. The low basket (&euro;79) changes the maths on any fixed-value offer.</p>
+        <div class="plab">Best used for</div>
+        <div class="signal">Sequencing: <b>measurement first</b>, spend later.</div>
+      </div>
+      <div class="persona">
+        <div class="flag">&#127466;&#127480;</div>
+        <h4>Spain</h4>
+        <p class="ptrait">Clean but marginal (48%) on the lowest basket (&euro;75). The best candidate to find the efficient discount depth.</p>
+        <div class="plab">Best used for</div>
+        <div class="signal">Testing <b>how shallow a discount</b> still acquires.</div>
+      </div>
+    </div>
+
+    <div class="mtrust" style="margin-top:24px">
+      <div class="mtrust-col trust reveal">
+        <span class="h">How I'd keep them honest</span>
+        <div class="mrow"><h5>Ground them in data, not clichés</h5><p>Every trait traces to a booking or holdout number, not a national stereotype. If it can't be sourced, it doesn't go in the persona.</p></div>
+        <div class="mrow"><h5>Score predictions against reality</h5><p>Log what the persona predicted, compare it to the live result, and recalibrate. A persona that keeps agreeing with us is a red flag, not a comfort.</p></div>
+        <div class="mrow"><h5>Never let it confirm a prior</h5><p>The persona proposes hypotheses to test. It does not get to bless a decision we'd already made. The holdout is still the judge.</p></div>
+      </div>
+      <div class="mtrust-col doubt reveal d1">
+        <span class="h">When I'd ignore the persona</span>
+        <div class="mrow"><h5>When real data contradicts it</h5><p>A live experiment always beats a simulated one. If the holdout disagrees, the persona is wrong, full stop.</p></div>
+        <div class="mrow"><h5>On thin or novel ground</h5><p>Flagged markets (France, Italy) and untested offer types sit outside what the persona actually knows. Low confidence, low weight.</p></div>
+        <div class="mrow"><h5>On high-stakes, one-way doors</h5><p>For anything expensive or hard to reverse, a persona is a prompt to test, never a substitute for evidence.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2.5 SUCCESS ============ -->
+<section id="success" class="on-dark" data-dot="Success">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">2</span> Part Two · Measuring the system at six months</span>
+      <h2>Did it get faster, better, and more trusted?</h2>
+      <p>Speed on its own is a trap: it is easy to launch worse experiments faster. So I'd pair every efficiency metric with a quality one, and watch adoption and trust as the leading indicators of whether the system actually took hold.</p>
+    </div>
+    <div class="metric-tiers">
+      <div class="mtier reveal">
+        <span class="when">Faster · the headline ask</span>
+        <h4>Speed &amp; adoption</h4>
+        <ul>
+          <li>Median time from idea to launch, against the 60% target</li>
+          <li>Analyst hours per experiment</li>
+          <li>Share of experiments run through the system</li>
+          <li>Share of specs that are AI-drafted</li>
+        </ul>
+      </div>
+      <div class="mtier reveal d1">
+        <span class="when">Better · the quality guardrail</span>
+        <h4>Quality &amp; accuracy</h4>
+        <ul>
+          <li>Share of experiments that reach significance</li>
+          <li>Share that produce a clear, reusable learning</li>
+          <li>Spec acceptance rate (how much humans edit)</li>
+          <li>QA catch rate, and recommendation hit rate</li>
+        </ul>
+      </div>
+      <div class="mtier reveal d2">
+        <span class="when">Worth it · the business case</span>
+        <h4>Impact &amp; trust</h4>
+        <ul>
+          <li>Net incremental revenue per pound of promo spend</li>
+          <li>Promo spend reduced while bookings hold (Finance's goal)</li>
+          <li>Learnings reused in new specs, and fewer duplicate tests</li>
+          <li>Stakeholder trust score from marketing, PM and Finance</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal d2" style="font-size:13px;color:var(--muted-on-dark);margin-top:24px;max-width:820px">The metric I'd protect hardest is the pairing itself. If time-to-launch drops while the significance rate also drops, the system is manufacturing speed by lowering the bar, and I'd rather catch that early than celebrate a vanity number.</p>
+  </div>
+</section>
+
+<!-- ============ PART 3 DEBUG ============ -->
+<section id="debug" data-dot="Debug">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">3</span> Part Three · AI debugging</span>
+      <h2>The engine swapped 15% for a &pound;10 offer in Germany. It flopped. Why?</h2>
+      <p>Before blaming the model, I'd notice the recommendation was quoted in pounds for a euro market, and that a flat &euro;10 is smaller than the &euro;15.30 that 15% delivered on a &euro;102 basket. That is my first suspect. Here are six, each with how I'd investigate it.</p>
+    </div>
+
+    <div class="reasons">
+      <div class="reason reveal">
+        <div class="rnum">1</div>
+        <div class="rwhy"><h4>Currency and basket mismatch</h4><p>A &euro;10 (or literally &pound;10) offer is worth less than the &euro;15.30 the 15% gave on a &euro;102 basket. The "new" offer quietly under-incentivised, so fewer people converted.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> Investigate</span><p>Compare the actual discount value delivered against the 15% baseline, check the currency field, and recompute the effective discount depth per market.</p></div>
+      </div>
+      <div class="reason reveal">
+        <div class="rnum">2</div>
+        <div class="rwhy"><h4>Applied to the wrong segment</h4><p>The fixed-value signal likely comes from first purchase. If the engine rolled it across repeat buyers (28% incremental), no offer design can rescue a segment that was already destroying value.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Investigate</span><p>Break the live result down by segment and confirm which audience actually received the offer versus which one the recommendation was derived from.</p></div>
+      </div>
+      <div class="reason reveal">
+        <div class="rnum">3</div>
+        <div class="rwhy"><h4>A soft signal treated as a hard rule</h4><p>"German users prefer fixed value" is one piece of qualitative research. It may be old, small, or true only for a subset. The engine may have promoted a hint to a law.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Investigate</span><p>Pull the original study's sample size, date and segment, and check whether the preference actually holds in the population we applied it to.</p></div>
+      </div>
+      <div class="reason reveal">
+        <div class="rnum">4</div>
+        <div class="rwhy"><h4>Optimised on correlation, not incrementality</h4><p>If the engine ranked offers by redemption or observed CVR rather than holdout incrementality, it recommended what looked good historically, not what actually causes bookings.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Investigate</span><p>Audit the objective function and features. Rerun the recommendation using incrementality only, and see if the &euro;10 pick survives.</p></div>
+      </div>
+      <div class="reason reveal">
+        <div class="rnum">5</div>
+        <div class="rwhy"><h4>No clean baseline for "worse than expected"</h4><p>Worse than what? The expectation may be miscalibrated. Germany's neighbours had targeting issues, and seasonality or a competitor promo could explain the gap.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> Investigate</span><p>Confirm a proper holdout existed, check the window for seasonality and competitor activity, and rule out tracking or attribution breakage.</p></div>
+      </div>
+      <div class="reason reveal">
+        <div class="rnum">6</div>
+        <div class="rwhy"><h4>Confident recommendation on thin data</h4><p>Fixed-value offers are rarely tested, so the engine extrapolated beyond what it had seen and presented a low-confidence guess with high confidence.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Investigate</span><p>Check training-data coverage for fixed-value offers, and whether a confidence score was attached to the recommendation and then ignored.</p></div>
+      </div>
+    </div>
+
+    <div class="exp-hold reveal" style="background:rgba(0,121,92,.06);border-color:rgba(0,121,92,.22)">
+      <span class="x" aria-hidden="true">&#128161;</span>
+      <div>
+        <h4>This is why the build order in Part Two is what it is.</h4>
+        <p>The recommendation engine is powerful but it fails quietly. The QA assistant would have caught the currency and depth error, and an incrementality-first knowledge base would have stopped it optimising on the wrong metric. Guardrails before autonomy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 4 STAKEHOLDERS ============ -->
+<section id="room" class="on-dark" data-dot="Stakeholders">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="partmark"><span class="pnum">4</span> Part Four · Stakeholder management</span>
+      <h2>Finance wants proof. The Lead wants the waste gone. Both are right.</h2>
+      <p>The disagreement is real and reasonable on both sides. My job is not to pick a winner in the room, it is to turn the argument into a test that protects the base while it settles the question.</p>
+    </div>
+
+    <div class="stake-quotes">
+      <div class="squote fin reveal">
+        <span class="who">Finance</span>
+        <p>"We've been running this promotion for months and it's delivering bookings. I'm uncomfortable reducing discounts before we have stronger evidence."</p>
+        <div class="whisper">Reasonable: they own the risk of a revenue miss.</div>
+      </div>
+      <div class="squote lead reveal d1">
+        <span class="who">Incentives Lead · privately</span>
+        <p>"We're wasting promotional budget on customers who would have booked anyway."</p>
+        <div class="whisper">Also reasonable: the incrementality data backs them.</div>
+      </div>
+    </div>
+
+    <div class="letter reveal">
+      <div class="letter-head">
+        <span class="lt">My response to both, in one room</span>
+        <span class="wc">~300 words</span>
+      </div>
+      <div class="letter-body">
+        <p>Finance and the Incentives Lead are looking at the same programme and both are right. Finance sees months of bookings tied to the promotion and doesn't want to gamble on removing it. The Lead sees budget going to people who would have booked anyway. The data supports both at once: first-purchase discounts in the UK and Germany are genuinely incremental (63% to 71%), while repeat-customer discounts are not (28% to 31%). We are running one flat rule across two very different situations.</p>
+        <p>So I wouldn't frame this as cut versus keep. I'd frame it as: <b>we can prove which pounds are working, without betting the programme on a hunch.</b></p>
+        <p>On uncertainty, I'd be honest that the incrementality read is directional. France and Italy had targeting issues in the holdout, and we don't yet have sample sizes or margin figures. That is a reason to test, not to freeze.</p>
+        <p>My recommendation is a single, low-risk experiment: <b>a clean holdout on repeat customers in one or two markets</b>, where the discount looks least incremental. The promotion keeps running everywhere else, so Finance's bookings are protected. If the holdout confirms repeat buyers convert just as well without the discount, we redirect that budget to first-purchase acquisition, which is where the incremental growth actually is. If it doesn't, we've lost nothing and learned something real.</p>
+        <p>That's how I'd reduce risk while we keep learning: change nothing we can't measure, protect the base, and let a controlled test settle the disagreement with evidence rather than opinion. And I'd bring both stakeholders the same scorecard next month, so we're all reading one number instead of three.</p>
+        <div class="sign">Adrien</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE CALLS ============ -->
+<section id="calls" data-dot="The Calls">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The defensible part</span>
+      <h2>The calls I'd make, and what would change my mind.</h2>
+      <p>Every judgement here has a credible alternative. Here's what I'd choose, what I'd reject, and the evidence that would move me, because being decisive and being open aren't opposites.</p>
+    </div>
+    <div class="trade">
+      <div class="trade-card reveal">
+        <span class="q">Which metric wins?</span>
+        <div class="choice">Incrementality over redemption.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Reading high redemption as success. UK repeat redeems the most and is nearly the least incremental.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>Only incrementality separates a booking we caused from one we subsidised. It comes from a holdout, so it measures cause.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>Sample sizes showed the incrementality splits weren't significant, or the holdout itself was compromised.</p></div>
+      </div>
+      <div class="trade-card reveal d1">
+        <span class="q">Which AI first?</span>
+        <div class="choice">The loop, not the oracle.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Building the recommendation engine first because it sounds the most transformative.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>It's exactly what failed in Part Three. It needs a knowledge base, guardrails and QA to be trustworthy. The spec generator builds the quality, the dashboard builds the adoption that gets it resourced.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>We already had a clean, incrementality-based knowledge base and QA in place.</p></div>
+      </div>
+      <div class="trade-card reveal d2">
+        <span class="q">Cut the discount now?</span>
+        <div class="choice">Test it, don't slash it.</div>
+        <div class="trade-row rej"><div class="rl">Rejected</div><p>Cutting repeat discounts across the board immediately to bank the saving Finance wants.</p></div>
+        <div class="trade-row"><div class="rl">Because</div><p>A holdout captures the same saving as evidence, keeps the base protected, and doesn't bet the programme on a read that's still directional.</p></div>
+        <div class="trade-row data"><div class="rl">Change my mind if</div><p>The margin bleed were severe enough that the cost of waiting one cycle outweighed the risk of cutting blind.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section id="close" aria-label="Core insight" style="padding-bottom:0">
+  <div class="wrap pullquote reveal">
+    <p>The flat 15% isn't a discount strategy, it's an <span class="grad">un-tested assumption</span> running across nine segments. My whole submission is one move: make the assumption testable, then let the system learn faster than we can argue.</p>
+    <div class="attrib">The one idea behind the whole case</div>
+  </div>
+  <div class="wrap needs reveal">
+    <span class="needs-lab">To start, I'd need</span>
+    <div class="needs-list">
+      <span class="need"><i aria-hidden="true">&#10003;</i> Access to warehouse &amp; experiment data</span>
+      <span class="need"><i aria-hidden="true">&#10003;</i> One engineer for the loop</span>
+      <span class="need"><i aria-hidden="true">&#10003;</i> An exec sponsor and a friendly first team</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;color:var(--blue-2)">Thank you</span>
+    <h2>Happy to defend any call, and to change my mind on the evidence.</h2>
+    <p>Everything here is a starting point built to show how I reason, not a finished answer. Push on any part, the data read, the three experiments, the AI system, the debug, or the stakeholder call, and I'll walk you through the trade-offs and what would move me.</p>
+    <a class="btn btn-primary" href="#top">Back to the top <span aria-hidden="true">&uarr;</span></a>
+    <div class="fmeta">
+      <span>Adrien Enjalbert · AI Systems, Personalization &amp; Growth candidate</span>
+      <span>Prepared for the Tripadvisor International Incentives interview team</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/tripadvisor.js?v=3"></script>
+</body>
+</html>
