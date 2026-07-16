@@ -231,4 +231,42 @@
     { threshold: 0.4 }
   );
   Object.keys(players).forEach((id) => { const n = $("#" + id); if (n && players[id]) chartObs.observe(n); });
+
+  /* ---------- CRISP-DM interactive ---------- */
+  const crispNodes = $("#crispNodes");
+  if (crispNodes) {
+    const CRISP = [
+      { n: "1", name: "Business understanding", tag: "Start here \u00B7 the gate", who: "Human-led",
+        body: "Define the decision and the success metric. Ask the honest question first: is this even worth solving, or is a simple rule enough? Sometimes the best model is no model." },
+      { n: "2", name: "Data understanding", tag: "Trust the data first", who: "Human + AI",
+        body: "This is where the \u201Cincrementality is directional\u201D flag lives. France and Italy had broken holdouts, so you cannot automate on them yet. No trust, no automation." },
+      { n: "3", name: "Data preparation", tag: "The unglamorous 60\u201370%", who: "AI-assisted",
+        body: "ETL, clean-up, de-duplication, fixed attribution and validated holdouts. Boring, and the single biggest determinant of whether anything downstream actually works." },
+      { n: "4", name: "Modelling", tag: "Simplest that works", who: "AI drafts",
+        body: "Draft the experiment or the offer. The goal is the simplest model that answers the question, not the fanciest one, with powered sample sizes and guardrails built in." },
+      { n: "\u2713", name: "Evaluation", tag: "The human gate", who: "Human sign-off",
+        body: "Holdout, incrementality and significance, reviewed by a person before anything goes live. This is the gate that would have caught the German \u00A310 mistake in Part 3." },
+      { n: "5", name: "Deployment", tag: "Launch, then loop", who: "AI + human",
+        body: "Launch, monitor, and write the learning brief. Then it loops back to Business understanding, so every experiment leaves the system smarter than it found it." },
+    ];
+    const crispPanel = $("#crispPanel");
+    crispNodes.innerHTML = "";
+    CRISP.forEach((d, i) => {
+      const b = document.createElement("button");
+      b.className = "crisp-node" + (i < 2 ? " start" : "") + (i === 0 ? " is-active" : "");
+      b.setAttribute("data-i", i);
+      b.setAttribute("aria-label", "Phase " + (i + 1) + ": " + d.name);
+      b.innerHTML = '<span class="cn-num">' + d.n + '</span><span class="cn-name">' + d.name + '</span>';
+      crispNodes.appendChild(b);
+    });
+    const crispBtns = $$(".crisp-node", crispNodes);
+    function renderCrisp(i) {
+      const d = CRISP[i];
+      crispPanel.innerHTML = '<span class="cp-tag">Phase ' + (i + 1) + ' \u00B7 ' + d.tag + '</span><h4>' + d.name + '</h4><p>' + d.body + '</p><span class="cp-who">Owned by: ' + d.who + '</span>';
+      crispBtns.forEach((n, j) => n.classList.toggle("is-active", j === i));
+    }
+    crispNodes.addEventListener("click", (e) => { const b = e.target.closest(".crisp-node"); if (b) renderCrisp(+b.dataset.i); });
+    crispNodes.addEventListener("mouseover", (e) => { const b = e.target.closest(".crisp-node"); if (b) renderCrisp(+b.dataset.i); });
+    renderCrisp(0);
+  }
 })();

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/tripadvisor.css?v=6" />
+<link rel="stylesheet" href="assets/tripadvisor.css?v=7" />
 </head>
 <body>
 <a class="skip" href="#read">Skip to content</a>
@@ -367,7 +367,18 @@
       <div class="card"><div class="ic">&#128260;</div><h3 style="font-size:16px">Feedback loops</h3><p style="font-size:13.5px">Every validated learning writes back to the knowledge base, so the next spec starts smarter than the last.</p></div>
     </div>
 
-    <div class="section-head reveal" style="margin:0 0 24px">
+    <div class="section-head reveal" style="margin:0 0 22px">
+      <span class="eyebrow">The framework</span>
+      <h2 style="font-size:clamp(22px,3vw,32px)">Built on CRISP-DM</h2>
+      <p>Tap a phase to explore it. Business and data understanding come first, the "is it worth it?" gate, then it loops, so every experiment makes the system smarter.</p>
+    </div>
+    <div class="crisp reveal">
+      <div class="crisp-nodes" id="crispNodes" aria-label="CRISP-DM phases"></div>
+      <div class="crisp-loop" aria-hidden="true"><span style="font-size:15px;color:var(--blue-2)">&#8635;</span><span>a loop, not a line &middot; Deployment feeds the next Business understanding</span></div>
+      <div class="crisp-panel" id="crispPanel" aria-live="polite"></div>
+    </div>
+
+    <div class="section-head reveal" style="margin:52px 0 24px">
       <span class="eyebrow">Idea to launch</span>
       <h2 style="font-size:clamp(22px,3vw,32px)">The pipeline</h2>
     </div>
@@ -465,35 +476,35 @@
         <h4>United Kingdom</h4>
         <p class="ptrait">Highest baskets and strongest promo response. Very incremental on first purchase (71%), wasteful on repeat (31%).</p>
         <div class="plab">Best used for</div>
-        <div class="signal">Deciding <b>where to stop discounting loyal buyers</b> first.</div>
+        <div class="puse">Deciding <b>where to stop discounting loyal buyers</b> first.</div>
       </div>
       <div class="persona">
         <div class="flag">&#127467;&#127479;</div>
         <h4>France</h4>
         <p class="ptrait">Read with caution. The holdout targeting issue makes its 58% directional, so it is a question, not a fact.</p>
         <div class="plab">Best used for</div>
-        <div class="signal">Deciding <b>what to fix before we test</b> here.</div>
+        <div class="puse">Deciding <b>what to fix before we test</b> here.</div>
       </div>
       <div class="persona">
         <div class="flag">&#127465;&#127466;</div>
         <h4>Germany</h4>
         <p class="ptrait">Strong positive first-purchase segment. Qualitative research points to fixed-value over percentage framing.</p>
         <div class="plab">Best used for</div>
-        <div class="signal">Pre-testing <b>fixed value versus percentage</b> at equal cost.</div>
+        <div class="puse">Pre-testing <b>fixed value versus percentage</b> at equal cost.</div>
       </div>
       <div class="persona">
         <div class="flag">&#127470;&#127481;</div>
         <h4>Italy</h4>
         <p class="ptrait">Also flagged, so 51% is directional. The low basket (&euro;79) changes the maths on any fixed-value offer.</p>
         <div class="plab">Best used for</div>
-        <div class="signal">Sequencing: <b>measurement first</b>, spend later.</div>
+        <div class="puse">Sequencing: <b>measurement first</b>, spend later.</div>
       </div>
       <div class="persona">
         <div class="flag">&#127466;&#127480;</div>
         <h4>Spain</h4>
         <p class="ptrait">Clean but marginal (48%) on the lowest basket (&euro;75). The best candidate to find the efficient discount depth.</p>
         <div class="plab">Best used for</div>
-        <div class="signal">Testing <b>how shallow a discount</b> still acquires.</div>
+        <div class="puse">Testing <b>how shallow a discount</b> still acquires.</div>
       </div>
     </div>
 
@@ -713,6 +724,6 @@
   </div>
 </footer>
 
-<script src="assets/tripadvisor.js?v=3"></script>
+<script src="assets/tripadvisor.js?v=4"></script>
 </body>
 </html>
