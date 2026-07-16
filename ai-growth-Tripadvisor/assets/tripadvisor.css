@@ -687,10 +687,10 @@ section { position: relative; padding: clamp(64px, 9vw, 128px) 0; }
 .squote.fin { background: rgba(255,107,107,.07); border: 1px solid rgba(255,107,107,.22); }
 .squote.lead { background: rgba(11,110,143,.07); border: 1px solid rgba(11,110,143,.22); }
 .squote .who { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-family: 'IBM Plex Mono', monospace; margin-bottom: 10px; display: block; }
-.squote.fin .who { color: #c23b3b; }
-.squote.lead .who { color: var(--blue-deep); }
-.squote p { font-size: 15.5px; font-style: italic; color: var(--ink); line-height: 1.5; }
-.squote .whisper { font-size: 11.5px; font-style: normal; color: var(--muted); margin-top: 8px; }
+.squote.fin .who { color: #f28a8a; }
+.squote.lead .who { color: var(--blue-2); }
+.squote p { font-size: 15.5px; font-style: italic; color: #e8f1ec; line-height: 1.5; }
+.squote .whisper { font-size: 11.5px; font-style: normal; color: var(--muted-on-dark); margin-top: 8px; }
 .letter { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; }
 .letter-head { padding: 20px 30px; background: var(--grad-ink); color: #fff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
 .letter-head .lt { font-size: 15px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
