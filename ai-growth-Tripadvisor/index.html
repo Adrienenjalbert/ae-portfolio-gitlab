@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/tripadvisor.css?v=8" />
+<link rel="stylesheet" href="assets/tripadvisor.css?v=9" />
 </head>
 <body>
 <a class="skip" href="#read">Skip to content</a>
@@ -369,13 +369,29 @@
 
     <div class="section-head reveal" style="margin:0 0 22px">
       <span class="eyebrow">The framework</span>
-      <h2 style="font-size:clamp(22px,3vw,32px)">Built on CRISP-DM</h2>
-      <p>Tap a phase to explore it. Business and data understanding come first, the "is it worth it?" gate, then it loops, so every experiment makes the system smarter.</p>
+      <h2 style="font-size:clamp(22px,3vw,32px)">Built on CRISP-DM, and it never stops looping</h2>
+      <p>The framework, made live. It runs itself when it scrolls into view: the loop travels through the phases, then feeds back on itself. Business and data understanding carry the most weight, evaluation is a human gate, and every deployment writes a learning back to the core, so the next idea starts smarter. Tap any phase to pin it.</p>
     </div>
-    <div class="crisp reveal">
-      <div class="crisp-nodes" id="crispNodes" aria-label="CRISP-DM phases"></div>
-      <div class="crisp-loop" aria-hidden="true"><span style="font-size:15px;color:var(--blue-2)">&#8635;</span><span>a loop, not a line &middot; Deployment feeds the next Business understanding</span></div>
-      <div class="crisp-panel" id="crispPanel" aria-live="polite"></div>
+    <div class="crisp reveal" id="crisp">
+      <div class="crisp-left">
+        <div class="crisp-stage" id="crispStage">
+          <svg class="crisp-svg" id="crispSvg" viewBox="0 0 100 100" role="img" aria-label="CRISP-DM as a repeating loop: business and data understanding, data preparation, modelling, a human evaluation gate, then deployment, which feeds learnings back to the start."></svg>
+          <div class="crisp-nodes" id="crispNodes"></div>
+        </div>
+      </div>
+      <div class="crisp-side">
+        <div class="crisp-controls">
+          <button class="crisp-play" id="crispPlay" type="button" aria-pressed="true" aria-label="Pause the loop animation"><span class="cp-ico" aria-hidden="true"></span><span class="cp-txt">Pause loop</span></button>
+          <span class="crisp-count" id="crispCount" aria-live="polite">Phase 1 / 6</span>
+        </div>
+        <div class="crisp-panel" id="crispPanel" aria-live="polite"></div>
+        <div class="crisp-legend" aria-hidden="true">
+          <span class="cl-item"><i class="cl-dot human"></i>Human-led</span>
+          <span class="cl-item"><i class="cl-dot hybrid"></i>Human + AI</span>
+          <span class="cl-item"><i class="cl-dot ai"></i>AI-assisted</span>
+          <span class="cl-item"><i class="cl-dot gate"></i>Human gate</span>
+        </div>
+      </div>
     </div>
 
     <div class="section-head reveal" style="margin:52px 0 24px">
@@ -724,6 +740,6 @@
   </div>
 </footer>
 
-<script src="assets/tripadvisor.js?v=4"></script>
+<script src="assets/tripadvisor.js?v=5"></script>
 </body>
 </html>

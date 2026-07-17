@@ -232,41 +232,198 @@
   );
   Object.keys(players).forEach((id) => { const n = $("#" + id); if (n && players[id]) chartObs.observe(n); });
 
-  /* ---------- CRISP-DM interactive ---------- */
-  const crispNodes = $("#crispNodes");
-  if (crispNodes) {
-    const CRISP = [
-      { n: "1", name: "Business understanding", tag: "Start here \u00B7 the gate", who: "Human-led",
-        body: "Define the decision and the success metric. Ask the honest question first: is this even worth solving, or is a simple rule enough? Sometimes the best model is no model." },
-      { n: "2", name: "Data understanding", tag: "Trust the data first", who: "Human + AI",
-        body: "This is where the \u201Cincrementality is directional\u201D flag lives. France and Italy had broken holdouts, so you cannot automate on them yet. No trust, no automation." },
-      { n: "3", name: "Data preparation", tag: "The unglamorous 60\u201370%", who: "AI-assisted",
-        body: "ETL, clean-up, de-duplication, fixed attribution and validated holdouts. Boring, and the single biggest determinant of whether anything downstream actually works." },
-      { n: "4", name: "Modelling", tag: "Simplest that works", who: "AI drafts",
-        body: "Draft the experiment or the offer. The goal is the simplest model that answers the question, not the fanciest one, with powered sample sizes and guardrails built in." },
-      { n: "\u2713", name: "Evaluation", tag: "The human gate", who: "Human sign-off",
-        body: "Holdout, incrementality and significance, reviewed by a person before anything goes live. This is the gate that would have caught the German \u00A310 mistake in Part 3." },
-      { n: "5", name: "Deployment", tag: "Launch, then loop", who: "AI + human",
-        body: "Launch, monitor, and write the learning brief. Then it loops back to Business understanding, so every experiment leaves the system smarter than it found it." },
+  /* ---------- CRISP-DM live loop ---------- */
+  const crispStage = $("#crispStage");
+  if (crispStage) {
+    const crisp = $("#crisp");
+    const svg = $("#crispSvg");
+    const nodesWrap = $("#crispNodes");
+    const panel = $("#crispPanel");
+    const playBtn = $("#crispPlay");
+    const countEl = $("#crispCount");
+
+    // Phase config. ang = position on the ring (deg, 0 = right, CCW+). short = ring label, name = full.
+    const PH = [
+      { n: "1", short: "Business", name: "Business understanding", role: "human", ang: 120, weighted: true,
+        tag: "Start here \u00B7 the gate", who: "Human-led",
+        body: "Define the decision and the success metric before anything else. Ask the honest question first: is this even worth solving, or is a simple rule enough? Sometimes the best model is no model.",
+        matters: "The business problem, not the algorithm, decides whether any of this creates value." },
+      { n: "2", short: "Data", name: "Data understanding", role: "hybrid", ang: 60, weighted: true,
+        tag: "Trust the data first", who: "Human + AI",
+        body: "This is where the \u201Cincrementality is directional\u201D flag lives. France and Italy had broken holdouts, so you cannot automate on them yet. No trust in the data, no automation on top of it.",
+        matters: "Get the data wrong here and every clever thing downstream is confidently wrong." },
+      { n: "3", short: "Prep", name: "Data preparation", role: "ai", ang: 0, weighted: true,
+        tag: "The unglamorous 60\u201370%", who: "AI-assisted",
+        body: "ETL, clean-up, de-duplication, fixed attribution and validated holdouts. Boring, and the single biggest determinant of whether anything downstream actually works.",
+        matters: "Most of the real effort lives in these first three phases, so most of the value does too." },
+      { n: "4", short: "Model", name: "Modelling", role: "ai", ang: -60,
+        tag: "Simplest that works", who: "AI drafts",
+        body: "Draft the experiment or the offer. The goal is the simplest model that answers the question, not the fanciest one, with powered sample sizes and guardrails built in.",
+        matters: "The model is the easy 10%. It only earns trust on top of solid data work." },
+      { n: "\u2713", short: "Evaluate", name: "Evaluation", role: "gate", ang: -120,
+        tag: "The human gate", who: "Human sign-off",
+        body: "Holdout, incrementality and significance, reviewed by a person before anything goes live. This is the gate that would have caught the German \u00A310 mistake in Part 3.",
+        matters: "Nothing ships without a human here. Judgement stays human by design." },
+      { n: "5", short: "Deploy", name: "Deployment", role: "hybrid", ang: 180,
+        tag: "Launch, then loop", who: "AI + human",
+        body: "Launch, monitor, and write the learning brief. The validated learning writes back to the knowledge core, and the loop starts again on the next idea.",
+        matters: "This closes the feedback loop: every experiment leaves the system smarter than it found it." },
     ];
-    const crispPanel = $("#crispPanel");
-    crispNodes.innerHTML = "";
-    CRISP.forEach((d, i) => {
-      const b = document.createElement("button");
-      b.className = "crisp-node" + (i < 2 ? " start" : "") + (i === 0 ? " is-active" : "");
-      b.setAttribute("data-i", i);
-      b.setAttribute("aria-label", "Phase " + (i + 1) + ": " + d.name);
-      b.innerHTML = '<span class="cn-num">' + d.n + '</span><span class="cn-name">' + d.name + '</span>';
-      crispNodes.appendChild(b);
+
+    const CX = 50, CY = 50, R = 36;
+    const rad = (d) => (d * Math.PI) / 180;
+    const pt = (a, r = R) => ({ x: CX + r * Math.cos(rad(a)), y: CY - r * Math.sin(rad(a)) });
+    const mk = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+
+    // ---- build the SVG scene ----
+    // outer dashed ring (spins), main track
+    svg.appendChild(mk("circle", { class: "ring-outer", cx: CX, cy: CY, r: R + 8 }));
+    svg.appendChild(mk("circle", { class: "ring-track", cx: CX, cy: CY, r: R }));
+
+    // clockwise flow arrowheads sitting between the nodes
+    [90, 30, -30, -90, -150, 150].forEach((a) => {
+      const p = pt(a);
+      // tangent for clockwise (decreasing angle) motion
+      const dir = Math.atan2(Math.cos(rad(a)), Math.sin(rad(a))) * 180 / Math.PI; // atan2(dy?,dx?) -> deg
+      const tri = mk("path", { class: "flow-arrow", d: "M -2.4 -1.7 L 2.4 0 L -2.4 1.7 Z" });
+      tri.setAttribute("transform", "translate(" + p.x + " " + p.y + ") rotate(" + dir + ")");
+      svg.appendChild(tri);
     });
-    const crispBtns = $$(".crisp-node", crispNodes);
-    function renderCrisp(i) {
-      const d = CRISP[i];
-      crispPanel.innerHTML = '<span class="cp-tag">Phase ' + (i + 1) + ' \u00B7 ' + d.tag + '</span><h4>' + d.name + '</h4><p>' + d.body + '</p><span class="cp-who">Owned by: ' + d.who + '</span>';
-      crispBtns.forEach((n, j) => n.classList.toggle("is-active", j === i));
+
+    // knowledge core (cylinder) at centre
+    svg.appendChild(mk("path", { class: "core-body", d: "M 39 47 L 39 55 A 11 3 0 0 0 61 55 L 61 47 Z" }));
+    svg.appendChild(mk("ellipse", { class: "core-top", cx: 50, cy: 47, rx: 11, ry: 3 }));
+    const ct1 = mk("text", { class: "core-t1", x: 50, y: 48.4 }); ct1.textContent = "DATA"; svg.appendChild(ct1);
+    const ct2 = mk("text", { class: "core-t2", x: 50, y: 53.2 }); ct2.textContent = "knowledge core"; svg.appendChild(ct2);
+
+    // iterate double-arrow between Business (120) and Data (60) across the top
+    const b = pt(120), da = pt(60);
+    svg.appendChild(mk("path", { class: "link-iterate", "marker-start": "url(#crispHeadMint)", "marker-end": "url(#crispHeadMint)",
+      d: "M " + (b.x + 4) + " " + (b.y + 1.5) + " Q 50 " + (b.y - 5) + " " + (da.x - 4) + " " + (da.y + 1.5) }));
+    const litLab = mk("text", { class: "link-lab", x: 50, y: b.y - 5, "text-anchor": "middle" }); litLab.textContent = "iterate"; svg.appendChild(litLab);
+
+    // feedback arc: Evaluation (-120) -> Business (120), bowing toward the core (the human feedback loop)
+    const ev = pt(-120);
+    svg.appendChild(mk("path", { class: "link-feedback", "marker-end": "url(#crispHeadGold)",
+      d: "M " + (ev.x + 2) + " " + (ev.y - 3) + " Q 46 50 " + (b.x + 2) + " " + (b.y + 4) }));
+    const fbLab = mk("text", { class: "link-lab warn", x: 31, y: 50, "text-anchor": "middle", transform: "rotate(-90 31 50)" });
+    fbLab.textContent = "human validates"; svg.appendChild(fbLab);
+
+    // arrow markers
+    const defs = mk("defs", {});
+    const marker = (id, cls) => {
+      const m = mk("marker", { id: id, viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 5, markerHeight: 5, orient: "auto-start-reverse" });
+      const pth = mk("path", { d: "M 0 0 L 10 5 L 0 10 z" });
+      pth.setAttribute("fill", cls);
+      m.appendChild(pth); return m;
+    };
+    defs.appendChild(marker("crispHeadMint", "#34E0A1"));
+    defs.appendChild(marker("crispHeadGold", "#f2b53c"));
+    svg.insertBefore(defs, svg.firstChild);
+
+    // comet (rides the ring)
+    const cometTail = mk("path", { class: "comet-tail" });
+    const comet = mk("circle", { class: "comet", r: 2.1 });
+    svg.appendChild(cometTail); svg.appendChild(comet);
+
+    // ---- build the HTML nodes ----
+    PH.forEach((d, i) => {
+      const p = pt(d.ang);
+      const b2 = document.createElement("button");
+      b2.type = "button";
+      b2.className = "cnode role-" + d.role + (d.weighted ? " weighted" : "");
+      b2.style.left = p.x + "%";
+      b2.style.top = p.y + "%";
+      b2.dataset.i = i;
+      b2.setAttribute("aria-label", "Phase " + (i + 1) + ": " + d.name + " (" + d.who + ")");
+      b2.innerHTML = '<span class="cn-num">' + d.n + '</span><span class="cn-name">' + d.short + '</span><span class="cn-role" aria-hidden="true"></span>';
+      nodesWrap.appendChild(b2);
+    });
+    const nodeEls = $$(".cnode", nodesWrap);
+
+    // caption under the stage
+    const cap = document.createElement("div");
+    cap.className = "crisp-cap";
+    cap.innerHTML = "&#8635; runs clockwise &middot; loops back on itself &middot; the first three phases carry the weight";
+    crispStage.after(cap);
+
+    // ---- state + render ----
+    let active = -1, pinned = false, playing = false, raf = 0, last = 0, t = 120;
+
+    function renderPanel(i) {
+      const d = PH[i];
+      panel.innerHTML = '<span class="cp-tag">Phase ' + (i + 1) + ' \u00B7 ' + d.tag + '</span>' +
+        '<h4>' + d.name + '</h4><p>' + d.body + '</p>' +
+        '<p class="cp-matters">' + d.matters + '</p>' +
+        '<span class="cp-who">Owned by: ' + d.who + '</span>';
+      countEl.textContent = "Phase " + (i + 1) + " / 6";
     }
-    crispNodes.addEventListener("click", (e) => { const b = e.target.closest(".crisp-node"); if (b) renderCrisp(+b.dataset.i); });
-    crispNodes.addEventListener("mouseover", (e) => { const b = e.target.closest(".crisp-node"); if (b) renderCrisp(+b.dataset.i); });
-    renderCrisp(0);
+    function setActive(i) {
+      if (i === active) return;
+      active = i;
+      nodeEls.forEach((n, j) => n.classList.toggle("is-active", j === i));
+      renderPanel(i);
+    }
+    function placeComet(a) {
+      const p = pt(a, R);
+      comet.setAttribute("cx", p.x); comet.setAttribute("cy", p.y);
+      const t1 = pt(a + 9, R), t2 = pt(a + 20, R);
+      cometTail.setAttribute("d", "M " + t2.x + " " + t2.y + " Q " + t1.x + " " + t1.y + " " + p.x + " " + p.y);
+    }
+    // index of phase the comet is currently at/heading through (clockwise)
+    function idxFor(angle) { let k = Math.floor((120 - angle) / 60); return ((k % 6) + 6) % 6; }
+
+    function frame(ts) {
+      if (!last) last = ts;
+      const dt = Math.min(ts - last, 60); last = ts;
+      t -= dt / 1000 * 10.6; // ~34s per full revolution
+      if (t <= -240) t += 360;
+      placeComet(t);
+      setActive(idxFor(t));
+      raf = requestAnimationFrame(frame);
+    }
+    function play() {
+      if (playing || pinned) return;
+      playing = true; crisp.classList.add("playing");
+      playBtn.setAttribute("aria-pressed", "true");
+      playBtn.setAttribute("aria-label", "Pause the loop animation");
+      playBtn.querySelector(".cp-txt").textContent = "Pause loop";
+      last = 0; raf = requestAnimationFrame(frame);
+    }
+    function pause() {
+      playing = false; crisp.classList.remove("playing");
+      cancelAnimationFrame(raf);
+      playBtn.setAttribute("aria-pressed", "false");
+      playBtn.setAttribute("aria-label", "Play the loop animation");
+      playBtn.querySelector(".cp-txt").textContent = "Play loop";
+    }
+
+    // interactions: click a node to pin it, click again / play to resume
+    nodesWrap.addEventListener("click", (e) => {
+      const btn = e.target.closest(".cnode"); if (!btn) return;
+      const i = +btn.dataset.i;
+      if (pinned && i === active) { pinned = false; play(); return; }
+      pinned = true; pause();
+      t = PH[i].ang; placeComet(t); setActive(i);
+    });
+    playBtn.addEventListener("click", () => {
+      if (playing) { pinned = true; pause(); }
+      else { pinned = false; play(); }
+    });
+
+    // start only when it scrolls into view; pause when it leaves (respects reveal-on-view preference)
+    setActive(0); placeComet(120);
+    if (reduce) {
+      // static: no autoplay, manual exploration only
+      pinned = true;
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { if (!pinned) play(); }
+          else pause();
+        });
+      }, { threshold: 0.35 });
+      io.observe(crispStage);
+    }
   }
 })();
