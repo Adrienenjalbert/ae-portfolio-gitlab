@@ -276,55 +276,63 @@
     const mk = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
 
     // ---- build the SVG scene ----
-    // outer dashed ring (spins), main track
-    svg.appendChild(mk("circle", { class: "ring-outer", cx: CX, cy: CY, r: R + 8 }));
-    svg.appendChild(mk("circle", { class: "ring-track", cx: CX, cy: CY, r: R }));
+    // arrow-head markers
+    const defs = mk("defs", {});
+    const marker = (id, fill, w) => {
+      const m = mk("marker", { id: id, viewBox: "0 0 10 10", refX: 8.5, refY: 5, markerWidth: w, markerHeight: w, orient: "auto-start-reverse" });
+      const pth = mk("path", { d: "M 0.5 1 L 9 5 L 0.5 9 Z" }); pth.setAttribute("fill", fill);
+      m.appendChild(pth); return m;
+    };
+    defs.appendChild(marker("crispHeadMint", "#34E0A1", 4.4));
+    defs.appendChild(marker("crispHeadTeal", "#46bfe0", 4.6));
+    defs.appendChild(marker("crispHeadGold", "#f2b53c", 4.6));
+    svg.appendChild(defs);
 
-    // clockwise flow arrowheads sitting between the nodes
-    [90, 30, -30, -90, -150, 150].forEach((a) => {
-      const p = pt(a);
-      // tangent for clockwise (decreasing angle) motion
-      const dir = Math.atan2(Math.cos(rad(a)), Math.sin(rad(a))) * 180 / Math.PI; // atan2(dy?,dx?) -> deg
-      const tri = mk("path", { class: "flow-arrow", d: "M -2.4 -1.7 L 2.4 0 L -2.4 1.7 Z" });
-      tri.setAttribute("transform", "translate(" + p.x + " " + p.y + ") rotate(" + dir + ")");
-      svg.appendChild(tri);
+    // faint guide ring so the loop path reads even in the gaps
+    svg.appendChild(mk("circle", { class: "guide", cx: CX, cy: CY, r: R }));
+
+    // helper: arc segment along the ring, clockwise (angles decrease), trimmed by gaps at each end
+    const arc = (aFrom, aTo, gapFrom, gapTo) => {
+      const s = pt(aFrom - gapFrom, R), e = pt(aTo + gapTo, R);
+      return "M " + s.x.toFixed(2) + " " + s.y.toFixed(2) + " A " + R + " " + R + " 0 0 1 " + e.x.toFixed(2) + " " + e.y.toFixed(2);
+    };
+    // directional connector arcs between adjacent phases (Business->Data is handled by the iterate double-arrow)
+    const GAP = 15;
+    [[60, 0], [0, -60], [-60, -120], [-120, -180], [-180, -240]].forEach(([a1, a2]) => {
+      svg.appendChild(mk("path", { class: "flow-seg", "marker-end": "url(#crispHeadMint)", d: arc(a1, a2, GAP, GAP) }));
     });
 
     // knowledge core (cylinder) at centre
-    svg.appendChild(mk("path", { class: "core-body", d: "M 39 47 L 39 55 A 11 3 0 0 0 61 55 L 61 47 Z" }));
-    svg.appendChild(mk("ellipse", { class: "core-top", cx: 50, cy: 47, rx: 11, ry: 3 }));
-    const ct1 = mk("text", { class: "core-t1", x: 50, y: 48.4 }); ct1.textContent = "DATA"; svg.appendChild(ct1);
-    const ct2 = mk("text", { class: "core-t2", x: 50, y: 53.2 }); ct2.textContent = "knowledge core"; svg.appendChild(ct2);
+    svg.appendChild(mk("path", { class: "core-body", d: "M 39.5 47 L 39.5 54.5 A 10.5 2.8 0 0 0 60.5 54.5 L 60.5 47 Z" }));
+    svg.appendChild(mk("ellipse", { class: "core-top", cx: 50, cy: 47, rx: 10.5, ry: 2.8 }));
+    const ct1 = mk("text", { class: "core-t1", x: 50, y: 48.6 }); ct1.textContent = "DATA"; svg.appendChild(ct1);
+    const ct2 = mk("text", { class: "core-t2", x: 50, y: 52.8 }); ct2.textContent = "knowledge core"; svg.appendChild(ct2);
 
-    // iterate double-arrow between Business (120) and Data (60) across the top
-    const b = pt(120), da = pt(60);
-    svg.appendChild(mk("path", { class: "link-iterate", "marker-start": "url(#crispHeadMint)", "marker-end": "url(#crispHeadMint)",
-      d: "M " + (b.x + 4) + " " + (b.y + 1.5) + " Q 50 " + (b.y - 5) + " " + (da.x - 4) + " " + (da.y + 1.5) }));
-    const litLab = mk("text", { class: "link-lab", x: 50, y: b.y - 5, "text-anchor": "middle" }); litLab.textContent = "iterate"; svg.appendChild(litLab);
+    const b = pt(120), da = pt(60), ev = pt(-120);
 
-    // feedback arc: Evaluation (-120) -> Business (120), bowing toward the core (the human feedback loop)
-    const ev = pt(-120);
+    // iterate double-arrow between Business (120) and Data (60), the canonical top relationship
+    svg.appendChild(mk("path", { class: "link-iterate", "marker-start": "url(#crispHeadTeal)", "marker-end": "url(#crispHeadTeal)",
+      d: "M " + (b.x + 6) + " " + (b.y + 2.6) + " Q 50 " + (b.y + 9) + " " + (da.x - 6) + " " + (da.y + 2.6) }));
+
+    // feedback arc: Evaluation -> Business, bowing toward the core (the human loop)
     svg.appendChild(mk("path", { class: "link-feedback", "marker-end": "url(#crispHeadGold)",
-      d: "M " + (ev.x + 2) + " " + (ev.y - 3) + " Q 46 50 " + (b.x + 2) + " " + (b.y + 4) }));
-    const fbLab = mk("text", { class: "link-lab warn", x: 31, y: 50, "text-anchor": "middle", transform: "rotate(-90 31 50)" });
-    fbLab.textContent = "human validates"; svg.appendChild(fbLab);
-
-    // arrow markers
-    const defs = mk("defs", {});
-    const marker = (id, cls) => {
-      const m = mk("marker", { id: id, viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 5, markerHeight: 5, orient: "auto-start-reverse" });
-      const pth = mk("path", { d: "M 0 0 L 10 5 L 0 10 z" });
-      pth.setAttribute("fill", cls);
-      m.appendChild(pth); return m;
-    };
-    defs.appendChild(marker("crispHeadMint", "#34E0A1"));
-    defs.appendChild(marker("crispHeadGold", "#f2b53c"));
-    svg.insertBefore(defs, svg.firstChild);
+      d: "M " + (ev.x + 3.5) + " " + (ev.y - 4) + " Q 45 50 " + (b.x + 3.5) + " " + (b.y + 5) }));
 
     // comet (rides the ring)
     const cometTail = mk("path", { class: "comet-tail" });
-    const comet = mk("circle", { class: "comet", r: 2.1 });
+    const comet = mk("circle", { class: "comet", r: 1.7 });
     svg.appendChild(cometTail); svg.appendChild(comet);
+
+    // label chips on the two special links
+    const chip = (x, y, text, cls) => {
+      const w = text.length * 1.72 + 4.6, h = 5.6;
+      const g = mk("g", { class: "chip" });
+      g.appendChild(mk("rect", { class: "chip-bg " + cls, x: x - w / 2, y: y - h / 2, width: w, height: h, rx: 2.8 }));
+      const t = mk("text", { class: "chip-tx " + cls, x: x, y: y + 0.15 }); t.textContent = text;
+      g.appendChild(t); svg.appendChild(g);
+    };
+    chip(50, b.y + 8.5, "iterate", "iterate");
+    chip(37, 67, "human validates", "feedback");
 
     // ---- build the HTML nodes ----
     PH.forEach((d, i) => {

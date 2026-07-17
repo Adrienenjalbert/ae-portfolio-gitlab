@@ -654,24 +654,28 @@ section { position: relative; padding: clamp(64px, 9vw, 128px) 0; }
 .crisp-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 
 /* SVG loop elements */
-.crisp-svg .ring-outer { fill: none; stroke: rgba(52,224,161,.20); stroke-width: .5; stroke-dasharray: 2.4 3.2; transform-origin: 50px 50px; }
-.crisp-svg .ring-track { fill: none; stroke: rgba(255,255,255,.10); stroke-width: 2.2; }
-.crisp-svg .flow-arrow { fill: rgba(52,224,161,.55); }
-.crisp-svg .link-iterate { fill: none; stroke: var(--blue-2); stroke-width: 1.1; stroke-dasharray: 2 2; opacity: .8; }
-.crisp-svg .link-feedback { fill: none; stroke: #f2b53c; stroke-width: 1.3; stroke-dasharray: 3 2.4; opacity: .9; }
-.crisp-svg .link-lab { fill: var(--muted-on-dark); font-family: 'IBM Plex Mono', monospace; font-size: 3.1px; letter-spacing: .04em; }
-.crisp-svg .link-lab.warn { fill: #f2b53c; }
-.crisp-svg .core-body { fill: rgba(52,224,161,.08); stroke: rgba(52,224,161,.5); stroke-width: .7; }
-.crisp-svg .core-top { fill: rgba(52,224,161,.16); stroke: rgba(52,224,161,.5); stroke-width: .7; }
-.crisp-svg .core-t1 { fill: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 4.4px; letter-spacing: .12em; text-anchor: middle; }
-.crisp-svg .core-t2 { fill: var(--muted-on-dark); font-family: 'IBM Plex Mono', monospace; font-size: 2.5px; text-anchor: middle; }
-.crisp-svg .comet { fill: var(--blue-2); filter: drop-shadow(0 0 3px rgba(52,224,161,.9)); }
-.crisp-svg .comet-tail { fill: none; stroke: var(--blue-2); stroke-width: 1.6; stroke-linecap: round; opacity: .55; }
+.crisp-svg .guide { fill: none; stroke: rgba(255,255,255,.06); stroke-width: 1.4; }
+.crisp-svg .flow-seg { fill: none; stroke: rgba(52,224,161,.55); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 1.8 3.2; }
+.crisp-svg .link-iterate { fill: none; stroke: #46bfe0; stroke-width: 1.7; }
+.crisp-svg .link-feedback { fill: none; stroke: #f2b53c; stroke-width: 1.6; stroke-dasharray: 3 2.2; }
+.crisp-svg .core-body { fill: rgba(52,224,161,.07); stroke: rgba(52,224,161,.42); stroke-width: .6; }
+.crisp-svg .core-top { fill: rgba(52,224,161,.15); stroke: rgba(52,224,161,.5); stroke-width: .6; }
+.crisp-svg .core-t1 { fill: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 4.2px; letter-spacing: .14em; text-anchor: middle; }
+.crisp-svg .core-t2 { fill: var(--muted-on-dark); font-family: 'IBM Plex Mono', monospace; font-size: 2.4px; letter-spacing: .04em; text-anchor: middle; }
+.crisp-svg .comet { fill: #eafff8; filter: drop-shadow(0 0 2.4px rgba(52,224,161,1)); }
+.crisp-svg .comet-tail { fill: none; stroke: var(--blue-2); stroke-width: 1.5; stroke-linecap: round; }
+/* chips (labels on the special links) */
+.crisp-svg .chip-bg { fill: var(--ink-2); stroke-width: .6; }
+.crisp-svg .chip-bg.iterate { stroke: #46bfe0; }
+.crisp-svg .chip-bg.feedback { stroke: #f2b53c; }
+.crisp-svg .chip-tx { font-family: 'IBM Plex Mono', monospace; font-size: 3px; font-weight: 600; letter-spacing: .02em; text-anchor: middle; dominant-baseline: central; }
+.crisp-svg .chip-tx.iterate { fill: #a9e6f5; }
+.crisp-svg .chip-tx.feedback { fill: #f8d38a; }
 
-.crisp.playing .ring-outer { animation: crispSpin 34s linear infinite; }
-.crisp.playing .link-feedback { animation: crispDash 1.2s linear infinite; }
-@keyframes crispSpin { to { transform: rotate(360deg); } }
-@keyframes crispDash { to { stroke-dashoffset: -10.8; } }
+.crisp.playing .flow-seg { animation: crispFlow 1.1s linear infinite; }
+.crisp.playing .link-feedback { animation: crispDash 1s linear infinite; }
+@keyframes crispFlow { to { stroke-dashoffset: -5; } }
+@keyframes crispDash { to { stroke-dashoffset: -10.4; } }
 
 /* nodes */
 .crisp-nodes { position: absolute; inset: 0; }
