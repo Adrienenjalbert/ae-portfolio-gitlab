@@ -576,7 +576,7 @@ section { position: relative; padding: clamp(64px, 9vw, 128px) 0; }
 .ireq { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); transition: transform .3s var(--ease), box-shadow .3s var(--ease); display: flex; flex-direction: column; }
 .ireq:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .ireq .ic { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(11,110,143,.14), rgba(0,121,92,.14)); font-size: 19px; margin-bottom: 14px; }
-.ireq h4 { font-size: 16.5px; margin-bottom: 8px; }
+.ireq h4 { font-size: 16.5px; margin-bottom: 8px; color: var(--ink); }
 .ireq p { font-size: 13.5px; color: var(--muted); }
 .ireq .why { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line-strong); font-size: 13px; color: var(--blue-deep); }
 .ireq .why b { color: var(--ink); }
@@ -769,6 +769,14 @@ section { position: relative; padding: clamp(64px, 9vw, 128px) 0; }
 .letter-body p:last-child { margin-bottom: 0; }
 .letter-body b { color: var(--ink); }
 .letter-body .sign { margin-top: 22px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--ink); }
+.stake-lead { font-size: 15.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 22px; }
+.stake-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: none; }
+.stake-points li { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-sm); transition: border-color .3s var(--ease), transform .3s var(--ease); }
+.stake-points li:hover { border-color: rgba(11,110,143,.35); transform: translateX(3px); }
+.stake-points .sp-n { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; color: var(--blue-deep); background: linear-gradient(135deg, rgba(11,110,143,.16), rgba(0,121,92,.16)); }
+.stake-points h5 { font-size: 14.5px; color: var(--ink); margin-bottom: 3px; }
+.stake-points p { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 0; }
+.stake-points b { color: var(--ink); font-weight: 700; }
 
 /* ---- responsive for new components ---- */
 @media (max-width: 960px) {

@@ -597,47 +597,47 @@
     <div class="section-head reveal">
       <span class="partmark"><span class="pnum">3</span> Part Three · AI debugging</span>
       <h2>The engine swapped 15% for a &pound;10 offer in Germany. It flopped. Why?</h2>
-      <p>Before blaming the model, I'd notice the recommendation was quoted in pounds for a euro market, and that a flat &euro;10 is smaller than the &euro;15.30 that 15% delivered on a &euro;102 basket. That is my first suspect. Here are six, each with how I'd investigate it.</p>
+      <p>Before I blame the AI, one thing jumps out. The offer was shown in pounds for a market that pays in euros, and a flat &euro;10 is actually smaller than the &euro;15.30 a 15% discount gave on a &euro;102 basket. So the offer was probably just too small. That's my first suspect. Here are six possible causes, and how I'd check each one.</p>
     </div>
 
     <div class="reasons">
       <div class="reason reveal">
         <div class="rnum">1</div>
-        <div class="rwhy"><h4>Currency and basket mismatch</h4><p>A &euro;10 (or literally &pound;10) offer is worth less than the &euro;15.30 the 15% gave on a &euro;102 basket. The "new" offer quietly under-incentivised, so fewer people converted.</p></div>
-        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> Investigate</span><p>Compare the actual discount value delivered against the 15% baseline, check the currency field, and recompute the effective discount depth per market.</p></div>
+        <div class="rwhy"><h4>The new offer was simply worth less</h4><p>A &euro;10 offer (or a literal &pound;10) gives the customer less than the &euro;15.30 that 15% off gave on a &euro;102 basket. People saw a weaker deal, so fewer of them booked. Nothing clever, just a smaller discount.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> Investigate</span><p>Compare what each offer was actually worth in euros, check which currency the offer was set in, and work out the real discount size in each market.</p></div>
       </div>
       <div class="reason reveal">
         <div class="rnum">2</div>
-        <div class="rwhy"><h4>Applied to the wrong segment</h4><p>The fixed-value signal likely comes from first purchase. If the engine rolled it across repeat buyers (28% incremental), no offer design can rescue a segment that was already destroying value.</p></div>
-        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Investigate</span><p>Break the live result down by segment and confirm which audience actually received the offer versus which one the recommendation was derived from.</p></div>
+        <div class="rwhy"><h4>It went to the wrong audience</h4><p>The "fixed value works" signal came from first-time buyers. If the tool applied it to repeat buyers (only 28% incremental), no offer can save an audience that was already losing money. Right idea, wrong people.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Investigate</span><p>Split the live result by audience and confirm who actually received the offer, versus the group the recommendation was based on.</p></div>
       </div>
       <div class="reason reveal">
         <div class="rnum">3</div>
-        <div class="rwhy"><h4>A soft signal treated as a hard rule</h4><p>"German users prefer fixed value" is one piece of qualitative research. It may be old, small, or true only for a subset. The engine may have promoted a hint to a law.</p></div>
-        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Investigate</span><p>Pull the original study's sample size, date and segment, and check whether the preference actually holds in the population we applied it to.</p></div>
+        <div class="rwhy"><h4>It turned one insight into a blanket rule</h4><p>"German users prefer fixed value" is a single piece of qualitative research. It could be old, based on a few people, or only true for some. The tool treated a hint as a hard fact and rolled it out to everyone.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Investigate</span><p>Find the original study's sample size, date and audience, and check whether the preference still holds for the people we applied it to.</p></div>
       </div>
       <div class="reason reveal">
         <div class="rnum">4</div>
-        <div class="rwhy"><h4>Optimised on correlation, not incrementality</h4><p>If the engine ranked offers by redemption or observed CVR rather than holdout incrementality, it recommended what looked good historically, not what actually causes bookings.</p></div>
-        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Investigate</span><p>Audit the objective function and features. Rerun the recommendation using incrementality only, and see if the &euro;10 pick survives.</p></div>
+        <div class="rwhy"><h4>It backed what looked good, not what drove sales</h4><p>This is the classic attribution trap. If the tool ranked offers by redemptions or conversion rate instead of the true incremental lift from a holdout, it picked the offer that was simply present when people booked, not the one that actually caused the booking.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Investigate</span><p>Check what the tool was told to optimise for, then rerun the pick using incremental lift only and see if the &euro;10 offer still wins.</p></div>
       </div>
       <div class="reason reveal">
         <div class="rnum">5</div>
-        <div class="rwhy"><h4>No clean baseline for "worse than expected"</h4><p>Worse than what? The expectation may be miscalibrated. Germany's neighbours had targeting issues, and seasonality or a competitor promo could explain the gap.</p></div>
-        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> Investigate</span><p>Confirm a proper holdout existed, check the window for seasonality and competitor activity, and rule out tracking or attribution breakage.</p></div>
+        <div class="rwhy"><h4>"Worse than expected" against what?</h4><p>The benchmark itself may be wrong. Germany's neighbours had tracking problems, and seasonality or a competitor's promo could explain the drop just as easily as the offer could.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> Investigate</span><p>Confirm there was a proper holdout, check the dates for seasonality and competitor activity, and rule out broken tracking or attribution.</p></div>
       </div>
       <div class="reason reveal">
         <div class="rnum">6</div>
-        <div class="rwhy"><h4>Confident recommendation on thin data</h4><p>Fixed-value offers are rarely tested, so the engine extrapolated beyond what it had seen and presented a low-confidence guess with high confidence.</p></div>
-        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Investigate</span><p>Check training-data coverage for fixed-value offers, and whether a confidence score was attached to the recommendation and then ignored.</p></div>
+        <div class="rwhy"><h4>It guessed, and sounded certain</h4><p>Fixed-value offers are rarely tested, so the tool had very little data to go on. It made a shaky guess but presented it as a confident recommendation.</p></div>
+        <div class="rhow"><span class="lab"><span class="bubbles"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> Investigate</span><p>Check how much fixed-value offer data the tool had to learn from, and whether it produced a confidence score that everyone then ignored.</p></div>
       </div>
     </div>
 
     <div class="exp-hold reveal" style="background:rgba(0,121,92,.06);border-color:rgba(0,121,92,.22)">
       <span class="x" aria-hidden="true">&#128161;</span>
       <div>
-        <h4>This is why the build order in Part Two is what it is.</h4>
-        <p>The recommendation engine is powerful but it fails quietly. The QA assistant would have caught the currency and depth error, and an incrementality-first knowledge base would have stopped it optimising on the wrong metric. Guardrails before autonomy.</p>
+        <h4>This is why Part Two is built in that order.</h4>
+        <p>The recommendation engine is powerful, but it fails quietly. A QA check would have caught the currency and discount-size error, and a knowledge base built on incremental lift would have stopped it chasing the wrong metric. Guardrails before autonomy.</p>
       </div>
     </div>
   </div>
@@ -667,15 +667,48 @@
 
     <div class="letter reveal">
       <div class="letter-head">
-        <span class="lt">My response to both, in one room</span>
-        <span class="wc">~300 words</span>
+        <span class="lt">How I'd handle the room</span>
+        <span class="wc">5 moves, not a speech</span>
       </div>
       <div class="letter-body">
-        <p>Finance and the Incentives Lead are looking at the same programme and both are right. Finance sees months of bookings tied to the promotion and doesn't want to gamble on removing it. The Lead sees budget going to people who would have booked anyway. The data supports both at once: first-purchase discounts in the UK and Germany are genuinely incremental (63% to 71%), while repeat-customer discounts are not (28% to 31%). We are running one flat rule across two very different situations.</p>
-        <p>So I wouldn't frame this as cut versus keep. I'd frame it as: <b>we can prove which pounds are working, without betting the programme on a hunch.</b></p>
-        <p>On uncertainty, I'd be honest that the incrementality read is directional. France and Italy had targeting issues in the holdout, and we don't yet have sample sizes or margin figures. That is a reason to test, not to freeze.</p>
-        <p>My recommendation is a single, low-risk experiment: <b>a clean holdout on repeat customers in one or two markets</b>, where the discount looks least incremental. The promotion keeps running everywhere else, so Finance's bookings are protected. If the holdout confirms repeat buyers convert just as well without the discount, we redirect that budget to first-purchase acquisition, which is where the incremental growth actually is. If it doesn't, we've lost nothing and learned something real.</p>
-        <p>That's how I'd reduce risk while we keep learning: change nothing we can't measure, protect the base, and let a controlled test settle the disagreement with evidence rather than opinion. And I'd bring both stakeholders the same scorecard next month, so we're all reading one number instead of three.</p>
+        <p class="stake-lead">I wouldn't try to win the argument in the room. Both sides are right, so I'd turn the disagreement into a controlled test and let the data settle it.</p>
+        <ol class="stake-points">
+          <li>
+            <span class="sp-n">1</span>
+            <div>
+              <h5>Lead with the data, not a side</h5>
+              <p>One flat rule is running across two different situations. First-purchase discounts in the UK and Germany are genuinely incremental (<b>63% to 71%</b>); repeat-customer discounts are not (<b>28% to 31%</b>). That reframes it from cut versus keep to "prove which pounds are working."</p>
+            </div>
+          </li>
+          <li>
+            <span class="sp-n">2</span>
+            <div>
+              <h5>Be transparent before the test</h5>
+              <p>I'd say plainly that the read is directional: France and Italy had holdout targeting issues, and we don't yet have sample sizes or margins. Then agree the success metric and guardrails with both stakeholders up front, so no one relitigates the result later.</p>
+            </div>
+          </li>
+          <li>
+            <span class="sp-n">3</span>
+            <div>
+              <h5>Use sampling to reduce the risk</h5>
+              <p>A clean holdout on repeat customers in one or two markets, where the discount looks least incremental. The promotion keeps running everywhere else, so Finance's bookings and the base stay protected while we learn. Exposure is capped by design.</p>
+            </div>
+          </li>
+          <li>
+            <span class="sp-n">4</span>
+            <div>
+              <h5>Be transparent after the test</h5>
+              <p>Same scorecard to both stakeholders next month, one number instead of three. If repeat buyers convert without the discount, we redirect that budget to first-purchase acquisition, where the incremental growth actually is. If they don't, we've lost nothing and learned something real.</p>
+            </div>
+          </li>
+          <li>
+            <span class="sp-n">5</span>
+            <div>
+              <h5>Change nothing we can't measure</h5>
+              <p>Protect the base, test the assumption, and let a controlled experiment settle the disagreement with evidence rather than opinion. That is how I reduce risk while we keep learning.</p>
+            </div>
+          </li>
+        </ol>
         <div class="sign">Adrien</div>
       </div>
     </div>
