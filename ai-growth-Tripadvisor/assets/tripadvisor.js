@@ -283,9 +283,9 @@
       const pth = mk("path", { d: "M 0.5 1 L 9 5 L 0.5 9 Z" }); pth.setAttribute("fill", fill);
       m.appendChild(pth); return m;
     };
-    defs.appendChild(marker("crispHeadMint", "#34E0A1", 4.4));
-    defs.appendChild(marker("crispHeadTeal", "#46bfe0", 4.6));
-    defs.appendChild(marker("crispHeadGold", "#f2b53c", 4.6));
+    defs.appendChild(marker("crispHeadMint", "#34E0A1", 4.2));
+    defs.appendChild(marker("crispHeadTeal", "#5cc7e6", 3.8));
+    defs.appendChild(marker("crispHeadGold", "#f2b53c", 4));
     svg.appendChild(defs);
 
     // faint guide ring so the loop path reads even in the gaps
@@ -302,37 +302,37 @@
       svg.appendChild(mk("path", { class: "flow-seg", "marker-end": "url(#crispHeadMint)", d: arc(a1, a2, GAP, GAP) }));
     });
 
-    // knowledge core (cylinder) at centre
-    svg.appendChild(mk("path", { class: "core-body", d: "M 39.5 47 L 39.5 54.5 A 10.5 2.8 0 0 0 60.5 54.5 L 60.5 47 Z" }));
-    svg.appendChild(mk("ellipse", { class: "core-top", cx: 50, cy: 47, rx: 10.5, ry: 2.8 }));
-    const ct1 = mk("text", { class: "core-t1", x: 50, y: 48.6 }); ct1.textContent = "DATA"; svg.appendChild(ct1);
-    const ct2 = mk("text", { class: "core-t2", x: 50, y: 52.8 }); ct2.textContent = "knowledge core"; svg.appendChild(ct2);
+    // feedback loop: Evaluation -> Business, an inner arc hugging the left, clear of the core
+    const fs = pt(-120, 25), fe = pt(120, 25);
+    svg.appendChild(mk("path", { class: "link-feedback", "marker-end": "url(#crispHeadGold)",
+      d: "M " + fs.x.toFixed(1) + " " + fs.y.toFixed(1) + " A 25 25 0 0 1 " + fe.x.toFixed(1) + " " + fe.y.toFixed(1) }));
 
-    const b = pt(120), da = pt(60), ev = pt(-120);
+    // knowledge core (cylinder) at centre, kept clean
+    svg.appendChild(mk("path", { class: "core-body", d: "M 40.5 46.5 L 40.5 53.5 A 9.5 2.6 0 0 0 59.5 53.5 L 59.5 46.5 Z" }));
+    svg.appendChild(mk("ellipse", { class: "core-top", cx: 50, cy: 46.5, rx: 9.5, ry: 2.6 }));
+    const ct1 = mk("text", { class: "core-t1", x: 50, y: 51.2 }); ct1.textContent = "DATA"; svg.appendChild(ct1);
+    const ct2 = mk("text", { class: "core-t2", x: 50, y: 58.8 }); ct2.textContent = "knowledge core"; svg.appendChild(ct2);
+
+    const b = pt(120), da = pt(60);
 
     // iterate double-arrow between Business (120) and Data (60), the canonical top relationship
     svg.appendChild(mk("path", { class: "link-iterate", "marker-start": "url(#crispHeadTeal)", "marker-end": "url(#crispHeadTeal)",
-      d: "M " + (b.x + 6) + " " + (b.y + 2.6) + " Q 50 " + (b.y + 9) + " " + (da.x - 6) + " " + (da.y + 2.6) }));
-
-    // feedback arc: Evaluation -> Business, bowing toward the core (the human loop)
-    svg.appendChild(mk("path", { class: "link-feedback", "marker-end": "url(#crispHeadGold)",
-      d: "M " + (ev.x + 3.5) + " " + (ev.y - 4) + " Q 45 50 " + (b.x + 3.5) + " " + (b.y + 5) }));
+      d: "M " + (b.x + 6.5).toFixed(1) + " " + (b.y + 2.4).toFixed(1) + " Q 50 " + (b.y + 6.8).toFixed(1) + " " + (da.x - 6.5).toFixed(1) + " " + (da.y + 2.4).toFixed(1) }));
 
     // comet (rides the ring)
     const cometTail = mk("path", { class: "comet-tail" });
     const comet = mk("circle", { class: "comet", r: 1.7 });
     svg.appendChild(cometTail); svg.appendChild(comet);
 
-    // label chips on the two special links
+    // "iterate" pill sits on the top double-arrow
     const chip = (x, y, text, cls) => {
-      const w = text.length * 1.72 + 4.6, h = 5.6;
+      const w = text.length * 1.72 + 5, h = 5.6;
       const g = mk("g", { class: "chip" });
       g.appendChild(mk("rect", { class: "chip-bg " + cls, x: x - w / 2, y: y - h / 2, width: w, height: h, rx: 2.8 }));
       const t = mk("text", { class: "chip-tx " + cls, x: x, y: y + 0.15 }); t.textContent = text;
       g.appendChild(t); svg.appendChild(g);
     };
-    chip(50, b.y + 8.5, "iterate", "iterate");
-    chip(37, 67, "human validates", "feedback");
+    chip(50, b.y + 7.6, "iterate", "iterate");
 
     // ---- build the HTML nodes ----
     PH.forEach((d, i) => {
@@ -349,11 +349,14 @@
     });
     const nodeEls = $$(".cnode", nodesWrap);
 
-    // caption under the stage
-    const cap = document.createElement("div");
-    cap.className = "crisp-cap";
-    cap.innerHTML = "&#8635; runs clockwise &middot; loops back on itself &middot; the first three phases carry the weight";
-    crispStage.after(cap);
+    // link colour key under the stage (keeps labels off the diagram)
+    const key = document.createElement("div");
+    key.className = "crisp-linkkey";
+    key.innerHTML =
+      '<span class="lk"><i class="lk-ico mint"></i>sequence, clockwise</span>' +
+      '<span class="lk"><i class="lk-ico teal"></i>iterate \u00B7 business \u2194 data</span>' +
+      '<span class="lk"><i class="lk-ico gold"></i>human validates, writes back to the core</span>';
+    crispStage.after(key);
 
     // ---- state + render ----
     let active = -1, pinned = false, playing = false, raf = 0, last = 0, t = 120;
@@ -378,8 +381,8 @@
       const t1 = pt(a + 9, R), t2 = pt(a + 20, R);
       cometTail.setAttribute("d", "M " + t2.x + " " + t2.y + " Q " + t1.x + " " + t1.y + " " + p.x + " " + p.y);
     }
-    // index of phase the comet is currently at/heading through (clockwise)
-    function idxFor(angle) { let k = Math.floor((120 - angle) / 60); return ((k % 6) + 6) % 6; }
+    // index of the phase the comet is nearest, so the lit node always has the comet on it
+    function idxFor(angle) { let k = Math.round((120 - angle) / 60); return ((k % 6) + 6) % 6; }
 
     function frame(ts) {
       if (!last) last = ts;
