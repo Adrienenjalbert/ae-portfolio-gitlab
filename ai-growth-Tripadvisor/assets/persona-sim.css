@@ -107,6 +107,10 @@
 .pl-kpi.conf .conf-word { font-size: 14px; color: var(--ink-soft); font-weight: 600; }
 
 /* reaction card */
+/* NB: these cards use <section>, which inherits a large global vertical
+   padding from tripadvisor.css; reset it so the cards are tight.
+   (.pl-guard sets its own padding, so it is intentionally excluded.) */
+.pl-reaction, .pl-tablewrap { padding: 0; }
 .pl-reaction { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
 .pl-react-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 20px 24px; background: var(--grad-ink); color: #fff; flex-wrap: wrap; }
 #personaHead { display: flex; align-items: center; gap: 14px; }
