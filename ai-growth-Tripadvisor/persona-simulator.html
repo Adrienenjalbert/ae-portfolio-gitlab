@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/tripadvisor.css?v=8" />
-<link rel="stylesheet" href="assets/persona-sim.css?v=1" />
+<link rel="stylesheet" href="assets/persona-sim.css?v=2" />
 </head>
 <body>
 <a class="skip" href="#dashboard">Skip to the simulator</a>
@@ -141,6 +141,14 @@
       <!-- ---------- DASHBOARD ---------- -->
       <div class="pl-dash" id="dashboard">
 
+        <!-- preset scenarios (the case's three experiments) -->
+        <div class="pl-presets" role="group" aria-label="Preset scenarios">
+          <span class="pl-presets-lab">Try</span>
+          <button class="pl-preset" type="button" data-mk="UK" data-seg="repeat" data-offer="pct" data-depth="15">UK repeat: the waste</button>
+          <button class="pl-preset" type="button" data-mk="DE" data-seg="first" data-offer="fixed" data-voucher="15">Germany: fixed vs %</button>
+          <button class="pl-preset" type="button" data-mk="ES" data-seg="first" data-offer="pct" data-depth="10">Spain: how shallow?</button>
+        </div>
+
         <!-- plain-English scenario readout -->
         <p class="pl-scenario" id="scenarioLine" aria-live="polite"></p>
 
@@ -153,6 +161,9 @@
           <div class="pl-kpi"><div class="klbl">Incrementality</div><div class="knum" id="kpiIncr">&ndash;</div><div class="kfoot">Share of redemptions truly caused</div></div>
           <div class="pl-kpi conf"><div class="klbl">Data confidence</div><div class="knum" id="kpiConfidence"></div><div class="kfoot">How much to trust this read</div></div>
         </div>
+
+        <!-- delta vs the flat-15% status quo -->
+        <div class="pl-compare" id="compareStrip" aria-live="polite"></div>
 
         <!-- reaction -->
         <section class="pl-reaction" aria-label="Persona reaction">
@@ -169,6 +180,7 @@
               <div class="pl-mini"><div class="mn" id="statSpend">&ndash;</div><div class="ml">Total promo spend</div></div>
               <div class="pl-mini"><div class="mn" id="statDwShare">&ndash;</div><div class="ml">Deadweight share</div></div>
             </div>
+            <div class="pl-breakeven" id="breakevenLine"></div>
           </div>
           <div class="pl-reco" id="recoStrip"></div>
         </section>
@@ -259,6 +271,6 @@
   </div>
 </footer>
 
-<script src="assets/persona-sim.js?v=1"></script>
+<script src="assets/persona-sim.js?v=2"></script>
 </body>
 </html>

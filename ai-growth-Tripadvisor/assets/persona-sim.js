@@ -346,6 +346,43 @@
     return who + " at " + offer + " \u2192 " + fmtInt(r.incrementalBookings) + " incremental bookings for " + fmtMoney(r.market, r.netIncremental, 0) + " net, at " + Math.round(r.incr) + "% incrementality.";
   }
 
+  /* ---------------- Compare vs status quo + breakeven ---------------- */
+  function signedMoney(market, v) {
+    const sign = v > 0 ? "+" : v < 0 ? "\u2212" : "";
+    return sign + MARKETS[market].sym + fmtInt(Math.abs(v));
+  }
+  function signedInt(v) {
+    const sign = v > 0 ? "+" : v < 0 ? "\u2212" : "";
+    return sign + fmtInt(Math.abs(v));
+  }
+  function deltaChip(label, val, market, higherBetter, isInt) {
+    const cls = Math.abs(val) < 0.5 ? "flat" : (higherBetter ? val > 0 : val < 0) ? "up" : "down";
+    const v = isInt ? signedInt(val) : signedMoney(market, val);
+    return '<span class="cmp ' + cls + '">' + label + " " + v + "</span>";
+  }
+  function compareHTML(r, base) {
+    const isBaseline = state.offer === "pct" && Math.abs(state.depth - 15) < 0.01;
+    if (isBaseline) return '<span class="cmp-base">This is today\u2019s flat 15% baseline, the status quo you are comparing against.</span>';
+    const netD = r.netIncremental - base.netIncremental;
+    const dwD = r.deadweightSpend - base.deadweightSpend;
+    const bkD = r.incrementalBookings - base.incrementalBookings;
+    return '<span class="cmp-lab">vs today\u2019s flat 15%</span>' +
+      deltaChip("Net", netD, r.market, true, false) +
+      deltaChip("Deadweight", dwD, r.market, false, false) +
+      deltaChip("Incremental bookings", bkD, null, true, true);
+  }
+  function breakevenHTML(r) {
+    if (r.holdout) return "No offer here, so there is no breakeven to clear. This is your zero-spend control.";
+    const bIncr = (r.promoCost / (r.cell.basket * state.margin)) * 100;
+    const bMarginRaw = (r.promoCost / ((r.incr / 100) * r.cell.basket)) * 100;
+    const bMargin = bMarginRaw > 100 ? "&gt;100%" : Math.round(bMarginRaw) + "%";
+    const ok = r.netIncremental >= 0;
+    return "Breakeven at this offer needs incrementality \u2265 <b>" + Math.round(bIncr) + "%</b> or margin \u2265 <b>" + bMargin +
+      "</b>. This cell is at " + Math.round(r.incr) + "% incrementality and " + Math.round(state.margin * 100) + "% margin, so it is <b class=\"" +
+      (ok ? "be-ok" : "be-no") + "\">" + (ok ? "net positive" : "net negative") +
+      "</b>. The verdict pill rates causal quality; this line rates profit.";
+  }
+
   /* ---------------- Render ---------------- */
   let firstPaint = true;
   function render(animate) {
@@ -370,7 +407,7 @@
     const persona = $("#personaHead");
     if (persona) persona.innerHTML = '<span class="pl-flag" aria-hidden="true">' + r.meta.flag + "</span><div><h3>" + r.meta.name + " \u00B7 " + SEGMENTS[r.seg] + "</h3><span class=\"pl-offer\">" + offerLabel(r) + "</span></div>";
     const verdictPill = $("#personaVerdict");
-    if (verdictPill) { verdictPill.className = "verdict " + r.verdict; verdictPill.textContent = VERDICT_LABEL[r.verdict]; }
+    if (verdictPill) { verdictPill.className = "verdict " + r.verdict; verdictPill.textContent = VERDICT_LABEL[r.verdict]; verdictPill.title = "Verdict reflects incrementality quality (causal), not profit. See the breakeven line for profitability."; }
     const flags = $("#personaFlags");
     if (flags) {
       let f = "";
@@ -389,6 +426,13 @@
     setText("statRedeemers", fmtInt(r.redeemers));
     setText("statSpend", fmtMoney(r.market, r.totalSpend, 0));
     setText("statDwShare", fmtPct(r.deadweightShare, 0));
+
+    // compare vs today's flat 15% + breakeven
+    const base = compute(state.market, state.seg, Object.assign({}, state, { offer: "pct", depth: 15 }));
+    const cmp = $("#compareStrip");
+    if (cmp) cmp.innerHTML = compareHTML(r, base);
+    const be = $("#breakevenLine");
+    if (be) be.innerHTML = breakevenHTML(r);
 
     // charts
     drawCurve("chartCurve", state.market, state.seg, state, animate);
@@ -553,9 +597,12 @@
       const tr = e.target.closest("tr[data-mk]");
       if (!tr) return;
       state.market = tr.dataset.mk; state.seg = tr.dataset.seg;
-      syncControlsToState();
+      syncUIFromState();
       render(false);
     });
+
+    // preset scenario chips
+    $$(".pl-preset").forEach((btn) => btn.addEventListener("click", () => applyPreset(btn.dataset)));
   }
 
   function bindRange(id, fn) {
@@ -571,9 +618,23 @@
     setText("voucherOut", MARKETS[state.market].sym + state.voucher);
   }
 
-  function syncControlsToState() {
+  function syncUIFromState() {
     $$(".pl-persona").forEach((b) => { const on = b.dataset.mk === state.market; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
     $$(".pl-seg").forEach((b) => { const on = b.dataset.seg === state.seg; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
+    $$(".pl-offer-btn").forEach((b) => { const on = b.dataset.offer === state.offer; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
+    const pc = $("#pctControl"); if (pc) pc.hidden = state.offer !== "pct";
+    const fc = $("#fixedControl"); if (fc) fc.hidden = state.offer !== "fixed";
+    const dp = $("#depth"); if (dp) dp.value = state.depth; setText("depthOut", state.depth + "%");
+    const vc = $("#voucher"); if (vc) vc.value = state.voucher; setText("voucherOut", MARKETS[state.market].sym + state.voucher);
+    const au = $("#audience"); if (au) au.value = state.audience; setText("audienceOut", fmtInt(state.audience));
+  }
+
+  function applyPreset(ds) {
+    state.market = ds.mk; state.seg = ds.seg; state.offer = ds.offer;
+    if (ds.depth != null) state.depth = +ds.depth;
+    if (ds.voucher != null) state.voucher = +ds.voucher;
+    syncUIFromState();
+    render(false);
   }
 
   /* ---------------- Shared nav / progress / reveal ---------------- */

@@ -73,6 +73,27 @@
 .verdict.hold { background: rgba(167,189,178,.28); color: var(--ink-soft); }
 .verdict.hold::before { background: var(--grey-blue); }
 
+/* preset scenario chips */
+.pl-presets { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pl-presets-lab { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+.pl-preset { font-family: inherit; font-size: 12.5px; font-weight: 600; color: var(--blue-deep); background: var(--white); border: 1px solid var(--line-strong); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: transform .2s var(--ease), box-shadow .2s, background .2s, border-color .2s; }
+.pl-preset:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); border-color: rgba(0,121,92,.4); background: var(--paper); }
+
+/* delta vs status quo strip */
+.pl-compare { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 12px 18px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+.pl-compare .cmp-lab { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+.pl-compare .cmp-base { font-size: 13px; color: var(--muted); font-style: italic; }
+.pl-compare .cmp { font-size: 13.5px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+.pl-compare .cmp.up { color: #14795c; }
+.pl-compare .cmp.down { color: #c23b3b; }
+.pl-compare .cmp.flat { color: var(--muted); }
+
+/* breakeven readout */
+.pl-breakeven { margin-top: 16px; padding: 12px 15px; border-radius: 12px; background: var(--paper); border: 1px dashed var(--line-strong); font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+.pl-breakeven b { color: var(--ink); }
+.pl-breakeven .be-ok { color: #14795c; }
+.pl-breakeven .be-no { color: #c23b3b; }
+
 /* KPI cards */
 .pl-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .pl-kpi { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm); }
