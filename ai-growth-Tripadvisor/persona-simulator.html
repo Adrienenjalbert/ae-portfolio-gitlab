@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Persona Lab · Pre-launch Incentive Simulator · Adrien Enjalbert × Tripadvisor</title>
+<meta name="description" content="Persona Lab is a working, client-side pre-launch simulator for the Tripadvisor Incentives team: pick a market persona, a segment and an offer, and instantly see the predicted incrementality, deadweight, cost per incremental booking and net revenue. Built by Adrien Enjalbert as the live version of the AI customer persona simulator." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/tripadvisor.css?v=8" />
+<link rel="stylesheet" href="assets/persona-sim.css?v=1" />
+</head>
+<body>
+<a class="skip" href="#dashboard">Skip to the simulator</a>
+
+<div class="progress" id="progress"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Adrien Enjalbert portfolio home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="url(#navg)"/>
+        <circle cx="13.6" cy="17" r="6.4" fill="#fff"/>
+        <circle cx="26.4" cy="17" r="6.4" fill="#fff"/>
+        <circle cx="13.6" cy="17.4" r="2.7" fill="#0a1512"/>
+        <circle cx="26.4" cy="17.4" r="2.7" fill="#0a1512"/>
+        <path d="M16.8 25.2 L20 28.6 L23.2 25.2 Z" fill="#0a1512"/>
+        <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00976E"/><stop offset="1" stop-color="#34E0A1"/></linearGradient></defs>
+      </svg>
+      <span>Adrien Enjalbert<small>Persona Lab · for Tripadvisor</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">The case study</a>
+      <a href="index.html#evaluate">Data read</a>
+      <a href="index.html#invest">Investments</a>
+      <a href="index.html#personas">Personas</a>
+      <a class="nav-cta active" href="persona-simulator.html">Simulator</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="pl-hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">Part Two · 2.2 · the persona simulator, built</span>
+    <h1>Persona Lab: <span class="grad">simulate the reaction</span> before you spend a slot.</h1>
+    <p>A working pre-launch tool for the International Incentives team. Choose a market persona, a customer segment and an offer, and see the predicted incrementality, deadweight and net revenue in real time. Every number is anchored to the observed 15% case data, and the model is fully open in the Advanced panel. It is a hypothesis generator, not a verdict.</p>
+    <div class="pl-herobar">
+      <span class="pl-tag">Pre-launch simulation</span>
+      <span class="pl-live" id="liveBadge" aria-live="polite"></span>
+      <a class="pl-backlink" href="index.html#invest">&larr; Back to the case study &amp; the build order</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ APP ============ -->
+<main class="pl-app">
+  <div class="wrap">
+    <div class="pl-layout">
+
+      <!-- ---------- CONTROLS ---------- -->
+      <aside class="pl-controls" aria-label="Simulation controls">
+        <div class="ctitle">
+          <h2>Design the offer</h2>
+          <button class="pl-reset" id="resetBtn" type="button">Reset</button>
+        </div>
+        <p class="csub">Change any control to update the whole dashboard live.</p>
+
+        <div class="pl-field">
+          <span class="fl">Persona / market</span>
+          <div class="pl-persona-grid" role="group" aria-label="Choose a market persona">
+            <button class="pl-persona is-active" type="button" data-mk="UK" aria-pressed="true"><span class="pf" aria-hidden="true">&#127468;&#127463;</span><span class="pc">UK</span></button>
+            <button class="pl-persona" type="button" data-mk="DE" aria-pressed="false"><span class="pf" aria-hidden="true">&#127465;&#127466;</span><span class="pc">DE</span></button>
+            <button class="pl-persona" type="button" data-mk="FR" aria-pressed="false"><span class="pf" aria-hidden="true">&#127467;&#127479;</span><span class="pc">FR</span></button>
+            <button class="pl-persona" type="button" data-mk="IT" aria-pressed="false"><span class="pf" aria-hidden="true">&#127470;&#127481;</span><span class="pc">IT</span></button>
+            <button class="pl-persona" type="button" data-mk="ES" aria-pressed="false"><span class="pf" aria-hidden="true">&#127466;&#127480;</span><span class="pc">ES</span></button>
+          </div>
+        </div>
+
+        <div class="pl-field">
+          <span class="fl">Customer segment</span>
+          <div class="pl-seg-row" role="group" aria-label="Choose a customer segment">
+            <button class="pl-seg is-active" type="button" data-seg="first" aria-pressed="true">First purchase</button>
+            <button class="pl-seg" type="button" data-seg="lapsed" aria-pressed="false">Lapsed</button>
+            <button class="pl-seg" type="button" data-seg="repeat" aria-pressed="false">Repeat</button>
+          </div>
+        </div>
+
+        <div class="pl-field">
+          <span class="fl">Offer type</span>
+          <div class="pl-offer-row" role="group" aria-label="Choose an offer type">
+            <button class="pl-offer-btn is-active" type="button" data-offer="pct" aria-pressed="true">% discount</button>
+            <button class="pl-offer-btn" type="button" data-offer="fixed" aria-pressed="false">Fixed voucher</button>
+          </div>
+        </div>
+
+        <div class="pl-field" id="pctControl">
+          <label class="fl" for="depth">Discount depth <span class="val" id="depthOut">15%</span></label>
+          <input class="pl-range" type="range" id="depth" min="0" max="30" step="1" value="15" />
+          <div class="pl-scale"><span>0%</span><span>15%</span><span>30%</span></div>
+        </div>
+
+        <div class="pl-field" id="fixedControl" hidden>
+          <label class="fl" for="voucher">Voucher value <span class="val" id="voucherOut">&pound;15</span></label>
+          <input class="pl-range" type="range" id="voucher" min="0" max="40" step="1" value="15" />
+          <div class="pl-scale"><span>0</span><span>20</span><span>40</span></div>
+        </div>
+
+        <div class="pl-field">
+          <label class="fl" for="audience">Audience exposed <span class="val" id="audienceOut">10,000</span></label>
+          <input class="pl-range" type="range" id="audience" min="1000" max="50000" step="1000" value="10000" />
+          <div class="pl-scale"><span>1k</span><span>25k</span><span>50k</span></div>
+        </div>
+
+        <div class="pl-adv">
+          <button class="pl-adv-toggle" id="advToggle" type="button" aria-expanded="false" aria-controls="advPanel">
+            <span>Advanced · model assumptions</span><span class="chev">+</span>
+          </button>
+          <div class="pl-adv-panel" id="advPanel" hidden>
+            <p class="pl-hint">The model is transparent. These constants are the levers behind every number, exposed so it is inspectable, not a black box.</p>
+            <div class="pl-field">
+              <label class="fl" for="margin">Contribution margin <span class="val" id="marginOut">22%</span></label>
+              <input class="pl-range" type="range" id="margin" min="5" max="60" step="1" value="22" />
+            </div>
+            <div class="pl-field">
+              <label class="fl" for="beta">Uptake elasticity (&beta;) <span class="val" id="betaOut">0.60</span></label>
+              <input class="pl-range" type="range" id="beta" min="0.2" max="1.2" step="0.05" value="0.6" />
+            </div>
+            <div class="pl-field">
+              <label class="fl" for="gamma">Deadweight sensitivity (&gamma;) <span class="val" id="gammaOut">0.12</span></label>
+              <input class="pl-range" type="range" id="gamma" min="0" max="0.4" step="0.02" value="0.12" />
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ---------- DASHBOARD ---------- -->
+      <div class="pl-dash" id="dashboard">
+
+        <!-- plain-English scenario readout -->
+        <p class="pl-scenario" id="scenarioLine" aria-live="polite"></p>
+
+        <!-- KPI cards -->
+        <div class="pl-kpis">
+          <div class="pl-kpi"><div class="klbl">Incremental bookings</div><div class="knum" id="kpiIncrBookings">&ndash;</div><div class="kfoot">Bookings the offer actually caused</div></div>
+          <div class="pl-kpi"><div class="klbl">Net incremental revenue</div><div class="knum" id="kpiNet">&ndash;</div><div class="kfoot">After promo spend, at margin</div></div>
+          <div class="pl-kpi"><div class="klbl">Cost / incremental booking</div><div class="knum" id="kpiCost">&ndash;</div><div class="kfoot">Spend divided by caused bookings</div></div>
+          <div class="pl-kpi"><div class="klbl">Deadweight spend</div><div class="knum" id="kpiDeadweight">&ndash;</div><div class="kfoot">Paid to people who'd book anyway</div></div>
+          <div class="pl-kpi"><div class="klbl">Incrementality</div><div class="knum" id="kpiIncr">&ndash;</div><div class="kfoot">Share of redemptions truly caused</div></div>
+          <div class="pl-kpi conf"><div class="klbl">Data confidence</div><div class="knum" id="kpiConfidence"></div><div class="kfoot">How much to trust this read</div></div>
+        </div>
+
+        <!-- reaction -->
+        <section class="pl-reaction" aria-label="Persona reaction">
+          <div class="pl-react-head">
+            <div id="personaHead"></div>
+            <span class="verdict pos" id="personaVerdict">Positive</span>
+          </div>
+          <div class="pl-react-body">
+            <div class="pl-flagtags" id="personaFlags"></div>
+            <p id="personaReaction" aria-live="polite"></p>
+            <div class="pl-ministats">
+              <div class="pl-mini"><div class="mn" id="statUptake">&ndash;</div><div class="ml">Predicted uptake</div></div>
+              <div class="pl-mini"><div class="mn" id="statRedeemers">&ndash;</div><div class="ml">Redeemers</div></div>
+              <div class="pl-mini"><div class="mn" id="statSpend">&ndash;</div><div class="ml">Total promo spend</div></div>
+              <div class="pl-mini"><div class="mn" id="statDwShare">&ndash;</div><div class="ml">Deadweight share</div></div>
+            </div>
+          </div>
+          <div class="pl-reco" id="recoStrip"></div>
+        </section>
+
+        <!-- charts -->
+        <div class="pl-charts">
+          <div class="pl-chart reveal">
+            <h3>Where is the efficient frontier?</h3>
+            <p class="csub">Net incremental revenue across discount depth for this persona. The peak is the depth that holds the most bookings for the least spend.</p>
+            <svg class="pl-svg" id="chartCurve" viewBox="0 0 520 280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Net incremental revenue against discount depth, with the current offer and the peak marked"></svg>
+            <div class="chart-legend"><span><i style="background:#00976E"></i>Net incremental revenue</span><span><i style="background:#0a1512"></i>Your current offer</span></div>
+          </div>
+          <div class="pl-chart reveal d1">
+            <h3>Predicted reaction by persona</h3>
+            <p class="csub">Incrementality of the same segment and offer across all five markets. Your selection is outlined. Dashed bars are directional or estimated data, so weight them lightly.</p>
+            <svg class="pl-svg" id="chartPersonas" viewBox="0 0 520 280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Predicted incrementality by market for the current segment and offer"></svg>
+            <div class="chart-legend"><span><i style="background:#14b083"></i>Positive</span><span><i style="background:#f2b53c"></i>Marginal</span><span><i style="background:#ff6b6b"></i>Negative</span><span><i style="background:transparent;border:1.5px dashed var(--grey-blue)"></i>Dashed = directional / estimated</span></div>
+          </div>
+        </div>
+
+        <!-- table -->
+        <section class="pl-tablewrap" aria-label="Full scenario data">
+          <div class="pl-thead">
+            <div>
+              <h3>The analytics view</h3>
+              <p>Every market and segment at your current offer. Click any row to load it.</p>
+            </div>
+          </div>
+          <div class="pl-table-scroll">
+            <table class="pl-table">
+              <thead>
+                <tr>
+                  <th>Market</th><th>Segment</th><th>Basket</th><th>Uptake</th><th>Incrementality</th><th>Incr. bookings</th><th>Cost / incr.</th><th>Deadweight</th><th>Net incremental</th>
+                </tr>
+              </thead>
+              <tbody id="gridBody"></tbody>
+            </table>
+          </div>
+          <div class="pl-table-note"><b>est</b> = segment estimated from the market's first-purchase behaviour. <b class="flag">*</b> = France and Italy had holdout targeting issues, so their reads are directional only. Currency is local to each market.</div>
+        </section>
+
+        <!-- actions -->
+        <div class="pl-actions">
+          <span class="ax-lab">Take the scenario with you</span>
+          <button class="pl-btn" id="exportCsv" type="button"><span aria-hidden="true">&#8681;</span> Export CSV</button>
+          <button class="pl-btn" id="exportJson" type="button"><span aria-hidden="true">&#123;&#125;</span> Export JSON</button>
+          <button class="pl-btn" id="printBtn" type="button"><span aria-hidden="true">&#128424;</span> Print / PDF</button>
+          <a class="pl-btn primary" href="index.html#room">See how I'd land this <span aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <!-- guardrails -->
+        <section class="pl-guard reveal" aria-label="Guardrails">
+          <span class="eyebrow">A simulation, not a verdict</span>
+          <h2>How to use this without fooling yourself.</h2>
+          <p>A persona is a hypothesis generator. It is grounded in what each market actually did, but it is only ever an input to a real test. These are the rules that keep it honest, the same ones from section 2.4 of the case study.</p>
+          <div class="pl-guard-grid">
+            <div class="pl-guard-card">
+              <h4>Never let it confirm a prior</h4>
+              <p>The simulator proposes offers to test. It does not get to bless a decision you already made. A persona that keeps agreeing with you is a red flag, not a comfort. The holdout is still the judge.</p>
+            </div>
+            <div class="pl-guard-card">
+              <h4>Directional means directional</h4>
+              <p>France and Italy had holdout targeting issues, so their reads are marked directional and scored low confidence. Estimated segments are inferred, not measured. Weight them accordingly.</p>
+            </div>
+            <div class="pl-guard-card">
+              <h4>Real data always wins</h4>
+              <p>When a live experiment contradicts the simulation, the simulation is wrong, full stop. For expensive, one-way decisions, treat this as a prompt to test, never a substitute for evidence.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;color:var(--blue-2)">Persona Lab</span>
+    <h2>The model is the easy part. This is what a trusted one looks like.</h2>
+    <p>Built as the working version of item 6 in the AI investment ranking: a transparent, adjustable persona simulator with confidence baked in and confirmation bias called out. Happy to walk through the model and where I'd take it next.</p>
+    <a class="btn btn-primary" href="index.html">Back to the full case study <span aria-hidden="true">&rarr;</span></a>
+    <div class="fmeta">
+      <span>Adrien Enjalbert · AI Systems, Personalization &amp; Growth candidate</span>
+      <span>Prepared for the Tripadvisor International Incentives interview team</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/persona-sim.js?v=1"></script>
+</body>
+</html>
