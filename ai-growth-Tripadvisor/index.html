@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/tripadvisor.css?v=11" />
+<link rel="stylesheet" href="assets/tripadvisor.css?v=13" />
 </head>
 <body>
 <a class="skip" href="#read">Skip to content</a>
@@ -32,14 +32,18 @@
       <span>Adrien Enjalbert<small>AI Personalization &amp; Growth · for Tripadvisor</small></span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#read">The Read</a>
+      <a href="#read">Read</a>
       <a href="#reality">The 90%</a>
       <a href="#evaluate">Evaluate</a>
+      <a href="#info">Ask</a>
       <a href="#experiments">Experiments</a>
-      <a href="#system">The System</a>
+      <a href="#system">System</a>
       <a href="#invest">Invest</a>
+      <a href="#knowledge">Knowledge</a>
       <a href="#personas">Personas</a>
+      <a href="#success">Success</a>
       <a href="#debug">Debug</a>
+      <a href="#calls">Calls</a>
       <a href="persona-simulator.html">Simulator <span style="font-size:9px;font-weight:700;letter-spacing:.06em;background:var(--blue-2);color:var(--ink);padding:2px 6px;border-radius:6px;vertical-align:middle;font-family:'IBM Plex Mono',monospace">LIVE</span></a>
       <a class="nav-cta" href="#room">Stakeholders</a>
     </div>
@@ -66,7 +70,7 @@
       <div class="hero-metric reveal d1"><div class="num up"><span data-count="60" data-prefix="&minus;" data-suffix="%">0%</span></div><div class="lbl">Target cut in time-to-launch</div><span class="cap">Leadership's ask</span></div>
       <div class="hero-metric reveal d2"><div class="num up"><span data-count="71" data-suffix="%">0%</span></div><div class="lbl">Incrementality, UK first purchase</div><span class="cap">Value creating</span></div>
       <div class="hero-metric reveal d3"><div class="num down"><span data-count="28" data-suffix="%">0%</span></div><div class="lbl">Incrementality, German repeat</div><span class="cap">Value destroying</span></div>
-      <div class="hero-note reveal d3"><span aria-hidden="true">&#9888;</span><span>One flat 15% rule is running across nine very different segments. It is quietly subsidising loyal customers who would have booked anyway. That gap is the whole exercise.</span></div>
+      <div class="hero-note reveal d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;flex:none;margin-top:2px;color:#ff8fa3"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17.4h.01"/></svg><span>One flat 15% rule is running across nine very different segments. It is quietly subsidising loyal customers who would have booked anyway. That gap is the whole exercise.</span></div>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><span class="dot"></span></div>
@@ -104,28 +108,28 @@
     <div class="pillars reveal">
       <a class="pillar" href="#evaluate">
         <span class="pn">01</span>
-        <div class="pic">&#128202;</div>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg></div>
         <h3>Data &amp; ETL</h3>
         <p>Investigate, clean and validate the data so a result can be trusted. The "directional" flag on France and Italy is the whole job in miniature.</p>
         <span class="jump">See the data read <span aria-hidden="true">&rarr;</span></span>
       </a>
       <a class="pillar" href="#system">
         <span class="pn">02</span>
-        <div class="pic">&#128268;</div>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 14.5l5-5"/><path d="M8.5 11.5l-2.4 2.4a3.4 3.4 0 0 0 4.8 4.8l2.4-2.4"/><path d="M15.5 12.5l2.4-2.4a3.4 3.4 0 0 0-4.8-4.8L10.7 7.7"/></svg></div>
         <h3>Integration</h3>
         <p>Sit in the middle of the warehouse, tracking and lifecycle tools, not beside them in a side app. Most of the build is connectors and permissions, not prompts.</p>
         <span class="jump">See the system <span aria-hidden="true">&rarr;</span></span>
       </a>
       <a class="pillar" href="#personas">
         <span class="pn">03</span>
-        <div class="pic">&#129504;</div>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4l4.8 15 2.1-6.1 6.1-2.1z"/><path d="M13 13l5 5"/></svg></div>
         <h3>UX &amp; adoption</h3>
         <p>Not a blank chatbot. AI that does one job, for one role, inside the tool they already work in. Adoption is what turns a clever tool into value.</p>
         <span class="jump">See it in context <span aria-hidden="true">&rarr;</span></span>
       </a>
       <a class="pillar" href="#room">
         <span class="pn">04</span>
-        <div class="pic">&#129309;</div>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3"/><path d="M3 19a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3 3 0 0 1 0 5.8"/><path d="M15.5 13.5a5.5 5.5 0 0 1 5.5 5.5"/></svg></div>
         <h3>Change management</h3>
         <p>Earn trust and budget in stages. Small, visible wins build the coalition that survives shifting priorities in a lean, busy team.</p>
         <span class="jump">See the stakeholder call <span aria-hidden="true">&rarr;</span></span>
@@ -162,7 +166,7 @@
         </tbody>
       </table>
       </div>
-      <div class="dtable-note"><span aria-hidden="true">&#9888;</span><span><b class="flag">*</b>&nbsp;France and Italy had targeting issues during the holdout, so their incrementality is directional only. Promo cost is the 15% discount value per redemption, which is why it rises with basket size even when incrementality falls.</span></div>
+      <div class="dtable-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;flex:none;margin-top:2px;color:var(--warn)"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17.4h.01"/></svg><span><b class="flag">*</b>&nbsp;France and Italy had targeting issues during the holdout, so their incrementality is directional only. Promo cost is the 15% discount value per redemption, which is why it rises with basket size even when incrementality falls.</span></div>
     </div>
 
     <div class="read-split reveal">
@@ -248,37 +252,37 @@
 
     <div class="inforeq">
       <div class="ireq reveal">
-        <div class="ic">&#128176;</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v10"/><path d="M14.6 9c-.7-.8-4-1.3-4 .8s4 1 4 3-3.3 1.6-4 .8"/></svg></div>
         <h4>Customer lifetime value</h4>
         <p>First booking value is a snapshot. A discount that looks marginal on day one can be very profitable if it acquires a high-CLV traveller.</p>
         <div class="why"><b>Changes:</b> whether the marginal first-purchase segments (Spain, Italy, France) are actually worth acquiring, and how much I'll pay to do it.</div>
       </div>
       <div class="ireq reveal d1">
-        <div class="ic">&#128202;</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9h9a9 9 0 0 0-9-9z"/></svg></div>
         <h4>Contribution margin per booking</h4>
         <p>The promo cost is clear, the profit it eats is not. Margin differs by market and by hotel versus experiences mix.</p>
         <div class="why"><b>Changes:</b> the real breakeven discount depth, and whether a "negative" verdict is mildly or badly negative.</div>
       </div>
       <div class="ireq reveal d2">
-        <div class="ic">&#127919;</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="12" cy="12" r="0.6" fill="currentColor" stroke="none"/></svg></div>
         <h4>Sample size &amp; confidence</h4>
         <p>Without n per cell I can't tell signal from noise, and the France and Italy flags make this urgent.</p>
         <div class="why"><b>Changes:</b> whether I roll a finding out, retest it, or ignore it. It decides which rows are safe to act on at all.</div>
       </div>
       <div class="ireq reveal">
-        <div class="ic">&#128225;</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.2"/><path d="M8.6 8.6a4.8 4.8 0 0 0 0 6.8M15.4 8.6a4.8 4.8 0 0 1 0 6.8"/><path d="M6.2 6.2a8.2 8.2 0 0 0 0 11.6M17.8 6.2a8.2 8.2 0 0 1 0 11.6"/></svg></div>
         <h4>Traffic source</h4>
         <p>A redemption from a coupon or loyalty site is low-incrementality by construction. Source explains a lot of the tenure pattern.</p>
         <div class="why"><b>Changes:</b> targeting. I may exclude deal-seeker channels entirely rather than discount the same people repeatedly.</div>
       </div>
       <div class="ireq reveal d1">
-        <div class="ic">&#128241;</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.2"/><path d="M11 17.5h2"/></svg></div>
         <h4>Device &amp; app usage</h4>
         <p>App and logged-in users skew toward loyal repeat behaviour. Device often proxies for how incremental a booking really is.</p>
         <div class="why"><b>Changes:</b> creative and eligibility. I might suppress the offer for high-frequency app users who convert without it.</div>
       </div>
       <div class="ireq reveal d2">
-        <div class="ic">&#128269;</div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.3"/><path d="M19.5 19.5l-4-4"/></svg></div>
         <h4>Holdout integrity</h4>
         <p>The France and Italy targeting issue is the biggest unknown. I need the methodology, exposure and any leakage before trusting those rows.</p>
         <div class="why"><b>Changes:</b> whether France and Italy get an experiment slot this quarter, or a measurement fix first.</div>
@@ -293,7 +297,7 @@
     <div class="section-head reveal">
       <span class="partmark"><span class="pnum">1</span> Part One · The three experiments I'd run</span>
       <h2>Only three slots. I'd spend them on learning that pays.</h2>
-      <p>Each one is chosen to answer a question we can act on, and each protects the base while it learns. Together they serve Finance's goal of spending less without losing bookings, and they set up the AI system in Part Two with clean, causal data.</p>
+      <p>Each one is chosen to answer a question we can act on, and each protects the base while it learns. Together they serve Finance's goal of spending less without losing bookings, and they set up the AI system in Part Two with clean, causal data. Spending less on people who would book anyway also frees budget to put a genuinely relevant offer in front of the travellers a discount actually moves, which is the traveller-first version of growth.</p>
     </div>
 
     <div class="exps">
@@ -307,6 +311,7 @@
           <div class="exp-field"><span class="fl">Offer</span><p>Holdout test: 15% versus 0% versus a non-cash perk (free cancellation or loyalty points), matched by cell.</p></div>
           <div class="exp-field"><span class="fl">Why this one</span><p>Repeat is the clearest value-destroyer (<b>28% and 31%</b> incrementality). It is the biggest, fastest saving available and directly answers Finance.</p></div>
           <div class="exp-field"><span class="fl">Expected learning</span><p>How much repeat revenue is truly incremental, and whether a perk holds loyalty for less than a discount.</p></div>
+          <div class="exp-field"><span class="fl">Sizing</span><p>Powered for a 3pt shift in repeat booking rate at 80% power and 95% confidence: roughly 14k per arm, a two to three week read at current repeat volume. I'd pre-register retention as the guardrail metric.</p></div>
           <div class="exp-risk"><span class="fl">Business risk</span> Some repeat bookings may be incremental. The holdout caps exposure, and I'd watch retention, not just the next booking.</div>
         </div>
       </div>
@@ -321,6 +326,7 @@
           <div class="exp-field"><span class="fl">Offer</span><p>A/B a &euro;15 fixed voucher against the 15% discount. On a &euro;102 basket the two cost almost the same, so it is a clean framing test.</p></div>
           <div class="exp-field"><span class="fl">Why this one</span><p>Qualitative research says Germans prefer fixed value. I'd test it on the proven positive segment, not assume it, and not on repeat buyers.</p></div>
           <div class="exp-field"><span class="fl">Expected learning</span><p>Whether framing lifts incrementality at equal cost. If it does, it reshapes every DACH offer for free.</p></div>
+          <div class="exp-field"><span class="fl">Sizing</span><p>About 12k per arm to detect a 2pt CVR difference at 80% power and 95% confidence, roughly two to three weeks. Cost is matched across arms, so the framing read stays clean.</p></div>
           <div class="exp-risk"><span class="fl">Business risk</span> The effect may be small. Cost is matched, so the downside is a quarter's slot, not budget. It also de-risks the Part Three failure.</div>
         </div>
       </div>
@@ -335,13 +341,14 @@
           <div class="exp-field"><span class="fl">Offer</span><p>Test discount depth: 10% versus 15%, plus a "&euro;10 off &euro;75+" threshold variant.</p></div>
           <div class="exp-field"><span class="fl">Why this one</span><p>Spain is marginal (48%) but not flagged, on the lowest basket (&euro;75). It's the cleanest place to find the depth that still acquires.</p></div>
           <div class="exp-field"><span class="fl">Expected learning</span><p>The discount elasticity for acquisition, which answers Finance directly: can we hold incremental bookings for less?</p></div>
+          <div class="exp-field"><span class="fl">Sizing</span><p>Three arms, around 11k each for a 3pt CVR delta at 80% power and 95% confidence, roughly three weeks. I'd pre-register the depth-elasticity read so we act on the curve, not one point.</p></div>
           <div class="exp-risk"><span class="fl">Business risk</span> Under-discounting could slow acquisition. I'd measure downstream CLV, not just first-booking volume, before scaling.</div>
         </div>
       </div>
     </div>
 
     <div class="exp-hold reveal">
-      <span class="x" aria-hidden="true">&#9995;</span>
+      <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--neg)"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></span>
       <div>
         <h4>What I deliberately would not test yet: France and Italy.</h4>
         <p>Their incrementality is flagged for targeting issues, so any experiment built on that data risks learning the wrong thing. Spending a scarce slot there would be a mistake. I'd fix the holdout first, then earn a slot next quarter. Choosing not to act on broken data is itself a decision.</p>
@@ -355,8 +362,8 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="partmark"><span class="pnum">2</span> Part Two · The AI operating system</span>
-      <h2>From an idea to an approved launch, without the meeting marathon.</h2>
-      <p>Today a launch waits on manual data pulls, hand-drafted specs and several rounds of meetings. The 60% saving comes from collapsing that into one assisted pipeline with quick async sign-offs. AI does the drafting and the recall. Humans keep the judgement.</p>
+      <h2><span class="grad">60% faster</span> to launch, and not one shortcut taken.</h2>
+      <p>AI drafts the spec, recalls what we already proved and QAs the setup. A human signs off every launch, so speed comes from less waiting, never a lower bar.</p>
     </div>
 
     <div class="section-head reveal" style="margin:0 0 22px">
@@ -388,17 +395,57 @@
 
     <div class="section-head reveal" style="margin:52px 0 24px">
       <span class="eyebrow">Idea to launch</span>
-      <h2 style="font-size:clamp(22px,3vw,32px)">The pipeline</h2>
+      <h2 style="font-size:clamp(22px,3vw,32px)">The pipeline, and the memory underneath it</h2>
+      <p>A straight line from hypothesis to live, drafted and checked by AI, approved by a human. Underneath it sits a second brain: a structured memory that every step reads from and writes back to, so the pipeline gets smarter each time it runs.</p>
     </div>
     <div class="agent-flow reveal">
-      <div class="agent-node"><div class="n">1</div><h5>Intake</h5><p>A hypothesis goes in through a structured form, not a meeting invite.</p></div>
-      <div class="agent-node"><div class="n">2</div><h5>Recall priors</h5><p>AI searches the knowledge base: have we tested this, and what happened?</p></div>
-      <div class="agent-node"><div class="n">3</div><h5>Draft spec</h5><p>AI drafts audience, offer, sample size, guardrails and success metric.</p></div>
-      <div class="agent-node human"><div class="n">&#10003;</div><h5>Human review</h5><p>A PM or marketer edits and approves the design. Judgement stays human.</p></div>
-      <div class="agent-node"><div class="n">4</div><h5>QA check</h5><p>AI sanity-checks currency, budget, overlap and holdout before launch.</p></div>
-      <div class="agent-node"><div class="n">5</div><h5>Approve &amp; launch</h5><p>A lightweight async gate replaces the stakeholder meeting.</p></div>
+      <div class="agent-node"><div class="n">1</div><h5>Intake</h5><p>A hypothesis goes in through a structured form, not a meeting invite.</p><span class="role">Human</span></div>
+      <div class="agent-node mem"><div class="n">2</div><h5>Recall priors</h5><p>AI pulls the relevant past experiments and their evidence grade from the second brain.</p><span class="role mem">AI &middot; reads memory</span></div>
+      <div class="agent-node"><div class="n">3</div><h5>Draft the case</h5><p>AI builds the spec: audience, offer, powered sample size, guardrails and success metric.</p><span class="role">AI</span></div>
+      <div class="agent-node"><div class="n">4</div><h5>QA check</h5><p>AI sanity-checks currency, budget, overlap and holdout, so the human reviews a clean draft.</p><span class="role">AI</span></div>
+      <div class="agent-node human mem"><div class="n">&#10003;</div><h5>Human review</h5><p>One screen in the tool they already use: clear before-and-after, edit, approve. The approved case writes back to memory.</p><span class="role mem">Human &middot; writes memory</span></div>
+      <div class="agent-node mem"><div class="n">5</div><h5>Launch &amp; measure</h5><p>An async gate launches it, KPIs are set, and the dashboard tracks results straight back into memory.</p><span class="role mem">AI + human &middot; writes memory</span></div>
     </div>
-    <div class="loopnote reveal"><span class="arc" aria-hidden="true">&#8635;</span><span>After launch: AI summarises the dashboard &rarr; drafts a learning brief &rarr; a human validates it &rarr; it writes back to the knowledge base &rarr; which powers step 2 of the next idea.</span></div>
+
+    <div class="brainloop reveal">
+      <div class="bl-core">
+        <svg viewBox="0 0 120 92" fill="none" aria-hidden="true">
+          <g stroke="#34E0A1" stroke-opacity=".45" stroke-width="1.4">
+            <path d="M60 46 L26 24"/><path d="M60 46 L60 16"/><path d="M60 46 L96 26"/>
+            <path d="M60 46 L24 66"/><path d="M60 46 L58 78"/><path d="M60 46 L98 66"/>
+            <path d="M26 24 L60 16"/><path d="M96 26 L98 66"/><path d="M24 66 L58 78"/>
+          </g>
+          <g fill="#0d1a15" stroke="#34E0A1" stroke-width="1.6">
+            <circle cx="26" cy="24" r="5"/><circle cx="60" cy="16" r="5"/><circle cx="96" cy="26" r="5"/>
+            <circle cx="24" cy="66" r="5"/><circle cx="58" cy="78" r="5"/><circle cx="98" cy="66" r="5"/>
+          </g>
+          <circle cx="60" cy="46" r="9" fill="#34E0A1"/>
+          <circle cx="60" cy="46" r="3.4" fill="#0a1512"/>
+        </svg>
+        <span class="bl-tag">The second brain</span>
+        <h4>A structured memory of every experiment</h4>
+        <p>Not a folder of decks. Each entry is tagged by market, segment and offer, graded by evidence quality and versioned, so the AI can retrieve the right prior in seconds.</p>
+      </div>
+      <div class="bl-ties">
+        <div class="bl-tie out"><span class="bl-dir">Feeds &rarr;</span><b>Recall priors</b><p>Every draft starts from what we already proved, never a blank page.</p></div>
+        <div class="bl-tie in"><span class="bl-dir">&larr; Writes back</span><b>Approved cases</b><p>The moment a human approves a spec it becomes graded, reusable knowledge.</p></div>
+        <div class="bl-tie in"><span class="bl-dir">&larr; Writes back</span><b>Measured results</b><p>Post-launch KPIs flow back in, so the brain can surface the next question worth testing on its own.</p></div>
+      </div>
+    </div>
+    <div class="loopnote reveal"><span class="arc" aria-hidden="true">&#8635;</span><span>Read out to inform every draft, written back after approval and after launch. That is the loop that turns each experiment into compounding, data-driven research.</span></div>
+
+    <div class="section-head reveal" style="margin:56px 0 22px">
+      <span class="eyebrow">How this maps to the stack</span>
+      <h2 style="font-size:clamp(22px,3vw,32px)">The same system, in the language of the role</h2>
+      <p>Nothing here is a new tool for its own sake. Each part of the loop is a concrete piece of the growth and MarTech stack, so it plugs into what the traveller engagement and loyalty team already runs rather than sitting beside it.</p>
+    </div>
+    <div class="stackmap reveal">
+      <div class="sm-item"><span class="sm-term">RAG</span><p>The <b>recall-priors</b> step. Every new idea retrieves similar past experiments and their evidence grade from the registry before a spec is drafted, so we build on what we already proved.</p></div>
+      <div class="sm-item"><span class="sm-term">AI agents</span><p>The <b>pipeline itself</b>. Intake, recall, draft, QA and write-back run as coordinated agents, with a human approval gate in the middle. This is the multi-agent pattern I shipped at Indeed Flex.</p></div>
+      <div class="sm-item"><span class="sm-term">Prompt engineering</span><p>The <b>spec generator</b>. Structured, guard-railed prompts turn a hypothesis plus history into a powered, reviewable experiment design, which is the slowest manual step today.</p></div>
+      <div class="sm-item"><span class="sm-term">Uplift modelling</span><p>The <b>reads</b>. Incrementality from clean holdouts is uplift, not correlation, and it is the metric the whole system optimises for. CUPED cuts the variance so we learn faster.</p></div>
+      <div class="sm-item"><span class="sm-term">CDP &amp; reverse-ETL</span><p><b>Activation</b>. Audiences and offers sync from the warehouse to the lifecycle tools through a CDP like Hightouch, which is why most of the build is connectors and permissions, not prompts.</p></div>
+    </div>
   </div>
 </section>
 
@@ -449,10 +496,10 @@
       <p>The point of the loop is that learning compounds instead of leaving with whoever ran the test. Capture it in a structured registry, retrieve it before designing anything, and keep a human as the gatekeeper of what counts as knowledge.</p>
     </div>
     <div class="grid-4 reveal">
-      <div class="card"><div class="ic">&#128221;</div><h3 style="font-size:16.5px">Capture</h3><p style="font-size:13.5px">Hypothesis, design, audience, offer, sample size, result (incrementality, CVR, margin), confidence, the decision taken, and caveats like the France targeting issue.</p></div>
-      <div class="card"><div class="ic">&#128193;</div><h3 style="font-size:16.5px">Store</h3><p style="font-size:13.5px">A structured experiment registry for the facts, plus a vector index for the narrative, on one taxonomy of market, segment and offer type.</p></div>
-      <div class="card"><div class="ic">&#128270;</div><h3 style="font-size:16.5px">Retrieve</h3><p style="font-size:13.5px">Before a new design, AI surfaces similar past experiments and their confidence, so we build on evidence and stop repeating tests.</p></div>
-      <div class="card"><div class="ic">&#128100;</div><h3 style="font-size:16.5px">Validate</h3><p style="font-size:13.5px">A human signs off each learning with a confidence tag and an owner. Contradictions get flagged, and low-confidence entries can't masquerade as fact.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H13l6 6v10.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5z"/><path d="M13 3v6h6"/><path d="M8.5 13h7M8.5 16.5h4.5"/></svg></div><h3 style="font-size:16.5px">Capture</h3><p style="font-size:13.5px">Hypothesis, design, audience, offer, sample size, result (incrementality, CVR, margin), confidence, the decision taken, and caveats like the France targeting issue.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div><h3 style="font-size:16.5px">Store</h3><p style="font-size:13.5px">A structured experiment registry for the facts, plus a vector index for the narrative, on one taxonomy of market, segment and offer type.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.3"/><path d="M19.5 19.5l-4-4"/></svg></div><h3 style="font-size:16.5px">Retrieve</h3><p style="font-size:13.5px">Before a new design, AI surfaces similar past experiments and their confidence, so we build on evidence and stop repeating tests.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="3.3"/><path d="M4 19.5a6 6 0 0 1 11-3.4"/><path d="M14.5 18l2 2 3.5-4"/></svg></div><h3 style="font-size:16.5px">Validate</h3><p style="font-size:13.5px">A human signs off each learning with a confidence tag and an owner. Contradictions get flagged, and low-confidence entries can't masquerade as fact.</p></div>
     </div>
 
     <div class="graderule reveal">
@@ -465,7 +512,7 @@
           <span class="gchip d">D · hunch</span>
         </div>
       </div>
-      <p class="grule"><span aria-hidden="true">&#9889;</span> The one rule that would have caught the German failure: <b>a grade-D hunch can never overrule a grade-A holdout.</b> Evidence quality decides, not recency or seniority.</p>
+      <p class="grule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;color:var(--blue-2);vertical-align:-2px"><path d="M13 2L5 13h6l-1 9 8-11h-6z"/></svg> The one rule that would have caught the German failure: <b>a grade-D hunch can never overrule a grade-A holdout.</b> Evidence quality decides, not recency or seniority.</p>
     </div>
   </div>
 </section>
@@ -625,7 +672,7 @@
     </div>
 
     <div class="exp-hold reveal" style="background:rgba(0,121,92,.06);border-color:rgba(0,121,92,.22)">
-      <span class="x" aria-hidden="true">&#128161;</span>
+      <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--warn)"><path d="M9.5 18h5"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg></span>
       <div>
         <h4>This is why Part Two is built in that order.</h4>
         <p>The recommendation engine is powerful, but it fails quietly. A QA check would have caught the currency and discount-size error, and a knowledge base built on incremental lift would have stopped it chasing the wrong metric. Guardrails before autonomy.</p>
