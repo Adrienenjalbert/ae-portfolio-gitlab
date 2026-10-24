@@ -1,8 +1,8 @@
 # PRD: AI Customer Persona Simulator ("Persona Lab")
 
-Status: v1, implemented as a standalone interactive page in the Tripadvisor case study.
+Status: v2, the page is backed by a small API (anchors served and model run server-side), with an in-browser fallback.
 Owner: Adrien Enjalbert.
-Location: `ai-growth-Tripadvisor/persona-simulator.html` with `assets/persona-sim.js` and `assets/persona-sim.css`.
+Location: `ai-growth-Tripadvisor/persona-simulator.html` with `assets/persona-sim.js`, `assets/persona-sim.css`, the shared model `assets/persona-model.js`, the data `assets/persona-anchors.json`, and the API in `ai-growth-Tripadvisor/backend/`.
 
 ## 1. Summary
 
@@ -25,7 +25,7 @@ Persona Lab gives the team a cheap, instant, first-pass answer that is grounded 
 ## 4. Non-goals
 
 - It is not a replacement for a holdout experiment. It never returns a verdict, only a hypothesis to test.
-- It does not connect to live warehouse or CRM data in v1. It is fully client-side and uses the case-study anchors.
+- It does not connect to live warehouse or CRM data. The backend serves the case-study anchors only, so the public page never carries internal Tripadvisor data.
 - It does not store or transmit any personal data.
 
 ## 5. Data foundation
@@ -52,6 +52,20 @@ Cells not measured directly (for example Germany Lapsed, Spain Repeat) are estim
 - Repeat factor = 31 / 71 = 0.44 of first-purchase incrementality.
 
 This keeps the full market x segment grid usable while staying honest about which numbers are observed and which are inferred.
+
+## 5a. Architecture (v2)
+
+- **Backend API** (`ai-growth-Tripadvisor/backend/server.js`, Node 18+, no dependencies). It owns the anchors and runs the model.
+  - `GET /api/health`: liveness and data version.
+  - `GET /api/anchors`: observed cells, market and segment metadata, input limits and defaults.
+  - `POST /api/simulate`: a scenario in, the full dashboard payload out (scenario, flat 15% baseline, depth curve, five personas, 15-row grid).
+  - Inputs are type-checked and clamped to the slider limits. Bodies over 4 KB are rejected.
+- **Shared model** (`assets/persona-model.js`). One pure module, loaded by the browser and by the server. Both sides produce identical numbers.
+- **Front end** (`assets/persona-sim.js`). A view only. It reads anchors and simulations from the API and debounces slider drags to one request each.
+- **Static fallback.** If no API answers, the page runs the same model in the browser against `assets/persona-anchors.json`. The GitHub Pages copy works this way. The header badge shows which mode is active, and the page drops to static mode if the API stops answering mid-session.
+- **Verification.** `node --test ai-growth-Tripadvisor/backend/test/persona-api.test.js` covers the hand-calculated UK case, the estimated-cell rules, validation, and the HTTP routes. The v2 model was compared with the v1 browser model on 14,580 scenarios with zero mismatches.
+
+Run locally: `node ai-growth-Tripadvisor/backend/server.js`, then open `http://127.0.0.1:8787/persona-simulator.html`.
 
 ## 6. The model
 
@@ -124,8 +138,9 @@ As a portfolio artifact:
 
 ## 10. Roadmap (v2+)
 
-- Wire to real warehouse and holdout data behind auth, replacing the static anchors.
+- Move the anchors from the JSON file to a warehouse or holdout table behind auth. The API contract stays the same.
 - Calibrate `beta` and `gamma` per market from historical depth tests instead of global defaults.
 - Add CLV and margin by market and product mix (hotels versus experiences).
 - Log each simulation and compare it to the eventual live result to score and recalibrate the personas.
 - Push an approved scenario straight into the experiment specification generator (item 1 in section 2.2).
+- Deploy the API to a Node host so the live page can call it from a public URL. The GitHub Pages copy keeps working through the static fallback.

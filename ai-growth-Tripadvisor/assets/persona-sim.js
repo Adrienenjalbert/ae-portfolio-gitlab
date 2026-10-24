@@ -1,9 +1,13 @@
 /* =========================================================
-   Persona Lab - pre-launch incentive simulator
+   Persona Lab - pre-launch incentive simulator (front end)
    Tripadvisor x Adrien Enjalbert - AI Personalization case study
-   A functional, transparent, client-side simulation of how each
-   market persona would react to a percentage or fixed-value offer.
-   All numbers are anchored to the observed flat-15% case data.
+
+   The page is a view. Data and the model come from the backend:
+   - live mode:   GET /api/anchors once, POST /api/simulate per change
+   - static mode: the same model (assets/persona-model.js) runs in the
+                  browser against assets/persona-anchors.json, used when no
+                  API is reachable (e.g. the GitHub Pages copy).
+   Both modes read the same anchors and return the same payload shape.
    ========================================================= */
 (function () {
   "use strict";
@@ -12,62 +16,18 @@
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const NS = "http://www.w3.org/2000/svg";
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const API_BASE = ((document.querySelector('meta[name="persona-api"]') || {}).content || "/api").replace(/\/$/, "");
+  const STATIC_ANCHORS = "assets/persona-anchors.json";
+  const LIVE_DEBOUNCE_MS = 120;
 
-  /* ---------------- Data foundation (observed at flat 15%) ---------------- */
-  // basket in local currency, redemption %, incrementality %, directional flag
-  const MARKETS = {
-    UK: { name: "United Kingdom", flag: "\uD83C\uDDEC\uD83C\uDDE7", code: "UK", ccy: "GBP", sym: "\u00A3", base: 5 },
-    FR: { name: "France",        flag: "\uD83C\uDDEB\uD83C\uDDF7", code: "FR", ccy: "EUR", sym: "\u20AC", base: 2, directional: true },
-    DE: { name: "Germany",       flag: "\uD83C\uDDE9\uD83C\uDDEA", code: "DE", ccy: "EUR", sym: "\u20AC", base: 5 },
-    IT: { name: "Italy",         flag: "\uD83C\uDDEE\uD83C\uDDF9", code: "IT", ccy: "EUR", sym: "\u20AC", base: 2, directional: true },
-    ES: { name: "Spain",         flag: "\uD83C\uDDEA\uD83C\uDDF8", code: "ES", ccy: "EUR", sym: "\u20AC", base: 4 },
-  };
-  const MARKET_ORDER = ["UK", "DE", "FR", "IT", "ES"];
-  const SEGMENTS = { first: "First purchase", lapsed: "Lapsed", repeat: "Repeat" };
-
-  // Observed cells only. Missing cells are estimated from UK-derived segment factors.
-  const OBSERVED = {
-    "UK|first":  { basket: 95,  red: 18, incr: 71 },
-    "UK|lapsed": { basket: 110, red: 14, incr: 52 },
-    "UK|repeat": { basket: 130, red: 21, incr: 31 },
-    "DE|first":  { basket: 102, red: 11, incr: 63 },
-    "DE|repeat": { basket: 120, red: 14, incr: 28 },
-    "FR|first":  { basket: 88,  red: 12, incr: 58 },
-    "FR|lapsed": { basket: 92,  red: 9,  incr: 44 },
-    "IT|first":  { basket: 79,  red: 10, incr: 51 },
-    "ES|first":  { basket: 75,  red: 9,  incr: 48 },
-  };
-  // Segment factors derived from the UK cells (the only market with all three).
-  const SEG_FACTOR = {
-    first:  { basket: 1,    red: 1,    incr: 1 },
-    lapsed: { basket: 1.16, red: 0.78, incr: 0.73 }, // UK lapsed / UK first
-    repeat: { basket: 1.37, red: 1.17, incr: 0.44 }, // UK repeat / UK first
-  };
-
-  function getCell(market, seg) {
-    const key = market + "|" + seg;
-    if (OBSERVED[key]) {
-      return Object.assign({ estimated: false }, OBSERVED[key]);
-    }
-    // estimate from this market's first-purchase anchor
-    const first = OBSERVED[market + "|first"];
-    const f = SEG_FACTOR[seg];
-    return {
-      estimated: true,
-      basket: Math.round(first.basket * f.basket),
-      red: +(first.red * f.red).toFixed(1),
-      incr: Math.round(first.incr * f.incr),
-    };
-  }
-
-  function confidenceOf(market, seg, cell) {
-    const m = MARKETS[market];
-    let c = m.base;
-    if (cell.estimated) c -= 1;
-    if (seg !== "first") c -= 1;
-    if (m.directional) c = Math.min(c, 2);
-    return clamp(c, 1, 5);
-  }
+  /* ---------------- Data (filled from the backend or the static fallback) ---------------- */
+  let anchors = null;      // the anchors object, same shape in both modes
+  let localModel = null;   // PersonaModel instance, used for static mode and API failures
+  let MARKETS = {};
+  let MARKET_ORDER = [];
+  let SEGMENTS = {};
+  let mode = "connecting"; // "live" | "static"
+  let dataVersion = "";
 
   /* ---------------- Formatters ---------------- */
   const nf = new Intl.NumberFormat("en-GB");
@@ -76,82 +36,9 @@
     const m = MARKETS[market];
     const neg = v < 0;
     const s = Math.abs(v).toLocaleString("en-GB", { maximumFractionDigits: dec || 0, minimumFractionDigits: dec || 0 });
-    return (neg ? "\u2212" : "") + m.sym + s;
+    return (neg ? "−" : "") + m.sym + s;
   }
   const fmtPct = (v, dec) => (v).toFixed(dec || 0) + "%";
-
-  /* ---------------- The model ---------------- */
-  function compute(market, seg, state) {
-    const cell = getCell(market, seg);
-    const b = cell.basket;
-    const r0 = cell.red, i0 = cell.incr;
-    let d, promoCost, voucher = null;
-    if (state.offer === "fixed") {
-      voucher = state.voucher;
-      d = clamp((voucher / b) * 100, 0, 30);
-      promoCost = voucher;
-    } else {
-      d = state.depth;
-      promoCost = (d / 100) * b;
-    }
-
-    const out = {
-      market, seg, meta: MARKETS[market], cell,
-      effDepth: d, voucher, promoCost,
-      confidence: confidenceOf(market, seg, cell),
-      directional: !!MARKETS[market].directional,
-      estimated: cell.estimated,
-      fixedBonus: false,
-    };
-
-    if (d <= 0.1) {
-      Object.assign(out, {
-        uptake: 0, incr: 0, redeemers: 0, incrementalBookings: 0,
-        totalSpend: 0, deadweightSpend: 0, deadweightShare: 0,
-        costPerIncr: null, incrementalRevenue: 0, netIncremental: 0,
-        verdict: "hold", holdout: true,
-      });
-      return out;
-    }
-
-    let uptake = clamp(r0 * Math.pow(d / 15, state.beta), 0, 50);
-    let incr = clamp(i0 * Math.pow(15 / d, state.gamma), 0, 92);
-    // Fixed-value framing bonus: qualitative signal, Germany first purchase only.
-    if (state.offer === "fixed" && market === "DE" && seg === "first") {
-      incr = clamp(incr * 1.08, 0, 92);
-      out.fixedBonus = true;
-    }
-
-    const redeemers = state.audience * (uptake / 100);
-    const incrementalBookings = redeemers * (incr / 100);
-    const totalSpend = redeemers * promoCost;
-    const deadweightShare = 100 - incr;
-    const deadweightSpend = totalSpend * (deadweightShare / 100);
-    const costPerIncr = incrementalBookings > 0 ? totalSpend / incrementalBookings : null;
-    const incrementalRevenue = incrementalBookings * b;
-    const netIncremental = incrementalRevenue * state.margin - totalSpend;
-    const verdict = incr >= 55 ? "pos" : incr >= 40 ? "marg" : "neg";
-
-    Object.assign(out, {
-      uptake, incr, redeemers, incrementalBookings, totalSpend,
-      deadweightSpend, deadweightShare, costPerIncr, incrementalRevenue,
-      netIncremental, verdict,
-    });
-    return out;
-  }
-
-  // Net incremental revenue at an arbitrary percentage depth (for the curve).
-  function netAtDepth(market, seg, d, state) {
-    const cell = getCell(market, seg);
-    const b = cell.basket;
-    if (d <= 0.1) return 0;
-    const uptake = clamp(cell.red * Math.pow(d / 15, state.beta), 0, 50);
-    let incr = clamp(cell.incr * Math.pow(15 / d, state.gamma), 0, 92);
-    const redeemers = state.audience * (uptake / 100);
-    const incrementalBookings = redeemers * (incr / 100);
-    const totalSpend = redeemers * ((d / 100) * b);
-    return incrementalBookings * b * state.margin - totalSpend;
-  }
 
   /* ---------------- SVG helpers ---------------- */
   function el(name, attrs) {
@@ -160,17 +47,16 @@
     return e;
   }
 
-  function drawCurve(svgId, market, seg, state, animate) {
+  function drawCurve(svgId, market, curve, animate) {
     const svg = $("#" + svgId);
     if (!svg) return;
     svg.innerHTML = "";
     const W = 520, H = 280, pl = 52, pr = 20, pt = 22, pb = 40;
     const plotW = W - pl - pr, plotH = H - pt - pb;
 
-    const pts = [];
-    for (let d = 0; d <= 30; d += 1) pts.push({ x: d, y: netAtDepth(market, seg, d, state) });
-    let maxY = Math.max.apply(null, pts.map((p) => p.y));
-    let minY = Math.min.apply(null, pts.map((p) => p.y));
+    const pts = curve.points;
+    let maxY = Math.max.apply(null, pts.map((p) => p.net));
+    let minY = Math.min.apply(null, pts.map((p) => p.net));
     if (maxY === minY) maxY = minY + 1;
     // pad and always include zero
     maxY = Math.max(maxY, 0); minY = Math.min(minY, 0);
@@ -203,8 +89,8 @@
     // area + line
     let dLine = "", dArea = "M" + sx(0) + " " + sy(0);
     pts.forEach((p, i) => {
-      dLine += (i === 0 ? "M" : "L") + sx(p.x) + " " + sy(p.y) + " ";
-      dArea += "L" + sx(p.x) + " " + sy(p.y) + " ";
+      dLine += (i === 0 ? "M" : "L") + sx(p.depth) + " " + sy(p.net) + " ";
+      dArea += "L" + sx(p.depth) + " " + sy(p.net) + " ";
     });
     dArea += "L" + sx(30) + " " + sy(0) + " Z";
 
@@ -218,19 +104,18 @@
 
     // peak marker
     let peak = pts[0];
-    pts.forEach((p) => { if (p.y > peak.y) peak = p; });
-    if (peak.y > 0) {
-      svg.appendChild(el("circle", { cx: sx(peak.x), cy: sy(peak.y), r: 4, fill: "#00976E" }));
-      const pl2 = el("text", { class: "psvg-peak", x: sx(peak.x), y: sy(peak.y) - 10, "text-anchor": "middle" });
-      pl2.textContent = "peak " + peak.x + "%";
+    pts.forEach((p) => { if (p.net > peak.net) peak = p; });
+    if (peak.net > 0) {
+      svg.appendChild(el("circle", { cx: sx(peak.depth), cy: sy(peak.net), r: 4, fill: "#00976E" }));
+      const pl2 = el("text", { class: "psvg-peak", x: sx(peak.depth), y: sy(peak.net) - 10, "text-anchor": "middle" });
+      pl2.textContent = "peak " + peak.depth + "%";
       svg.appendChild(pl2);
     }
 
     // current marker
-    const cx = clamp(state.offer === "fixed" ? (compute(market, seg, state).effDepth) : state.depth, 0, 30);
-    const cyVal = netAtDepth(market, seg, cx, state);
+    const cx = curve.markerDepth;
     svg.appendChild(el("line", { class: "psvg-cur", x1: sx(cx), y1: pt, x2: sx(cx), y2: pt + plotH }));
-    svg.appendChild(el("circle", { cx: sx(cx), cy: sy(cyVal), r: 5, fill: "#0a1512", stroke: "#34E0A1", "stroke-width": 2 }));
+    svg.appendChild(el("circle", { cx: sx(cx), cy: sy(curve.markerNet), r: 5, fill: "#0a1512", stroke: "#34E0A1", "stroke-width": 2 }));
 
     if (animate && !reduce) {
       const len = line.getTotalLength();
@@ -296,11 +181,12 @@
     depth: 15, voucher: 15, audience: 10000,
     margin: 0.22, beta: 0.6, gamma: 0.12,
   };
+  let lastSim = null;
 
   const VERDICT_LABEL = { pos: "Positive", marg: "Marginal", neg: "Negative", hold: "Holdout" };
 
   function reactionText(r) {
-    const m = r.meta.name, seg = SEGMENTS[r.seg].toLowerCase();
+    const m = r.meta.name, seg = SEGMENTS[r.segment].toLowerCase();
     const dw = Math.round(r.deadweightShare);
     if (r.verdict === "hold") {
       return "This is the holdout: no discount, no promotional spend. It is the clean baseline for what " + m + " " + seg + " travellers do without an incentive. Raise the offer to see what each pound actually buys.";
@@ -321,7 +207,7 @@
   }
 
   function recommendationText(r) {
-    const m = r.meta.name, seg = SEGMENTS[r.seg].toLowerCase();
+    const m = r.meta.name, seg = SEGMENTS[r.segment].toLowerCase();
     const dw = Math.round(r.deadweightShare);
     if (r.verdict === "hold") {
       return "Use this zero-spend cell as your control. Every paid offer above should beat this baseline on incremental bookings, or it is not worth the budget.";
@@ -336,23 +222,23 @@
   }
 
   function scenarioSentence(r) {
-    const who = fmtInt(state.audience) + " " + r.meta.name + " " + SEGMENTS[r.seg].toLowerCase() + " travellers";
+    const who = fmtInt(state.audience) + " " + r.meta.name + " " + SEGMENTS[r.segment].toLowerCase() + " travellers";
     if (r.verdict === "hold") {
       return who + ", no offer. This is your zero-spend baseline for what they do without an incentive.";
     }
     const offer = state.offer === "fixed"
       ? ("a " + r.meta.sym + state.voucher + " voucher (" + Math.round(r.effDepth) + "% effective)")
       : ("a " + state.depth + "% discount");
-    return who + " at " + offer + " \u2192 " + fmtInt(r.incrementalBookings) + " incremental bookings for " + fmtMoney(r.market, r.netIncremental, 0) + " net, at " + Math.round(r.incr) + "% incrementality.";
+    return who + " at " + offer + " → " + fmtInt(r.incrementalBookings) + " incremental bookings for " + fmtMoney(r.market || state.market, r.netIncremental, 0) + " net, at " + Math.round(r.incr) + "% incrementality.";
   }
 
   /* ---------------- Compare vs status quo + breakeven ---------------- */
   function signedMoney(market, v) {
-    const sign = v > 0 ? "+" : v < 0 ? "\u2212" : "";
+    const sign = v > 0 ? "+" : v < 0 ? "−" : "";
     return sign + MARKETS[market].sym + fmtInt(Math.abs(v));
   }
   function signedInt(v) {
-    const sign = v > 0 ? "+" : v < 0 ? "\u2212" : "";
+    const sign = v > 0 ? "+" : v < 0 ? "−" : "";
     return sign + fmtInt(Math.abs(v));
   }
   function deltaChip(label, val, market, higherBetter, isInt) {
@@ -362,13 +248,13 @@
   }
   function compareHTML(r, base) {
     const isBaseline = state.offer === "pct" && Math.abs(state.depth - 15) < 0.01;
-    if (isBaseline) return '<span class="cmp-base">This is today\u2019s flat 15% baseline, the status quo you are comparing against.</span>';
+    if (isBaseline) return '<span class="cmp-base">This is today’s flat 15% baseline, the status quo you are comparing against.</span>';
     const netD = r.netIncremental - base.netIncremental;
     const dwD = r.deadweightSpend - base.deadweightSpend;
     const bkD = r.incrementalBookings - base.incrementalBookings;
-    return '<span class="cmp-lab">vs today\u2019s flat 15%</span>' +
-      deltaChip("Net", netD, r.market, true, false) +
-      deltaChip("Deadweight", dwD, r.market, false, false) +
+    return '<span class="cmp-lab">vs today’s flat 15%</span>' +
+      deltaChip("Net", netD, r.meta.code, true, false) +
+      deltaChip("Deadweight", dwD, r.meta.code, false, false) +
       deltaChip("Incremental bookings", bkD, null, true, true);
   }
   function breakevenHTML(r) {
@@ -377,16 +263,16 @@
     const bMarginRaw = (r.promoCost / ((r.incr / 100) * r.cell.basket)) * 100;
     const bMargin = bMarginRaw > 100 ? "&gt;100%" : Math.round(bMarginRaw) + "%";
     const ok = r.netIncremental >= 0;
-    return "Breakeven at this offer needs incrementality \u2265 <b>" + Math.round(bIncr) + "%</b> or margin \u2265 <b>" + bMargin +
+    return "Breakeven at this offer needs incrementality ≥ <b>" + Math.round(bIncr) + "%</b> or margin ≥ <b>" + bMargin +
       "</b>. This cell is at " + Math.round(r.incr) + "% incrementality and " + Math.round(state.margin * 100) + "% margin, so it is <b class=\"" +
       (ok ? "be-ok" : "be-no") + "\">" + (ok ? "net positive" : "net negative") +
       "</b>. The verdict pill rates causal quality; this line rates profit.";
   }
 
   /* ---------------- Render ---------------- */
-  let firstPaint = true;
-  function render(animate) {
-    const r = compute(state.market, state.seg, state);
+  function render(sim, animate) {
+    const r = sim.scenario;
+    const base = sim.baseline;
 
     // plain-English scenario line
     const scn = $("#scenarioLine");
@@ -394,9 +280,9 @@
 
     // KPI cards
     setKpi("kpiIncrBookings", fmtInt(r.incrementalBookings));
-    setKpi("kpiNet", fmtMoney(r.market, r.netIncremental, 0), r.netIncremental >= 0 ? "up" : "down");
-    setKpi("kpiCost", r.costPerIncr == null ? "\u2013" : fmtMoney(r.market, r.costPerIncr, 2));
-    setKpi("kpiDeadweight", fmtMoney(r.market, r.deadweightSpend, 0), "down");
+    setKpi("kpiNet", fmtMoney(r.meta.code, r.netIncremental, 0), r.netIncremental >= 0 ? "up" : "down");
+    setKpi("kpiCost", r.costPerIncr == null ? "–" : fmtMoney(r.meta.code, r.costPerIncr, 2));
+    setKpi("kpiDeadweight", fmtMoney(r.meta.code, r.deadweightSpend, 0), "down");
     setKpi("kpiIncr", fmtPct(r.incr, 0), r.verdict === "pos" ? "up" : r.verdict === "neg" ? "down" : r.verdict === "hold" ? "" : "warn");
 
     // confidence
@@ -405,7 +291,7 @@
 
     // reaction card
     const persona = $("#personaHead");
-    if (persona) persona.innerHTML = '<span class="pl-flag" aria-hidden="true">' + r.meta.flag + "</span><div><h3>" + r.meta.name + " \u00B7 " + SEGMENTS[r.seg] + "</h3><span class=\"pl-offer\">" + offerLabel(r) + "</span></div>";
+    if (persona) persona.innerHTML = '<span class="pl-flag" aria-hidden="true">' + r.meta.flag + "</span><div><h3>" + r.meta.name + " · " + SEGMENTS[r.segment] + "</h3><span class=\"pl-offer\">" + offerLabel(r) + "</span></div>";
     const verdictPill = $("#personaVerdict");
     if (verdictPill) { verdictPill.className = "verdict " + r.verdict; verdictPill.textContent = VERDICT_LABEL[r.verdict]; verdictPill.title = "Verdict reflects incrementality quality (causal), not profit. See the breakeven line for profitability."; }
     const flags = $("#personaFlags");
@@ -419,32 +305,30 @@
     const react = $("#personaReaction");
     if (react) react.textContent = reactionText(r);
     const reco = $("#recoStrip");
-    if (reco) reco.innerHTML = '<span class="reco-ic" aria-hidden="true">\u2192</span><span>' + recommendationText(r) + "</span>";
+    if (reco) reco.innerHTML = '<span class="reco-ic" aria-hidden="true">→</span><span>' + recommendationText(r) + "</span>";
 
     // mini stats under reaction
     setText("statUptake", fmtPct(r.uptake, 1));
     setText("statRedeemers", fmtInt(r.redeemers));
-    setText("statSpend", fmtMoney(r.market, r.totalSpend, 0));
+    setText("statSpend", fmtMoney(r.meta.code, r.totalSpend, 0));
     setText("statDwShare", fmtPct(r.deadweightShare, 0));
 
     // compare vs today's flat 15% + breakeven
-    const base = compute(state.market, state.seg, Object.assign({}, state, { offer: "pct", depth: 15 }));
     const cmp = $("#compareStrip");
     if (cmp) cmp.innerHTML = compareHTML(r, base);
     const be = $("#breakevenLine");
     if (be) be.innerHTML = breakevenHTML(r);
 
     // charts
-    drawCurve("chartCurve", state.market, state.seg, state, animate);
-    const items = MARKET_ORDER.map((mk) => {
-      const rr = compute(mk, state.seg, state);
-      const color = rr.verdict === "pos" ? "#14b083" : rr.verdict === "marg" ? "#f2b53c" : rr.verdict === "hold" ? "#A7BDB2" : "#ff6b6b";
-      return { label: MARKETS[mk].code, sub: MARKETS[mk].flag, value: rr.incr, color, dashed: rr.directional || rr.estimated, directional: rr.directional, current: mk === state.market };
+    drawCurve("chartCurve", state.market, sim.curve, animate);
+    const items = sim.personas.map((p) => {
+      const color = p.verdict === "pos" ? "#14b083" : p.verdict === "marg" ? "#f2b53c" : p.verdict === "hold" ? "#A7BDB2" : "#ff6b6b";
+      return { label: p.meta.code, sub: p.meta.flag, value: p.incr, color, dashed: p.directional || p.estimated, directional: p.directional, current: p.current };
     });
     drawBars("chartPersonas", items, animate);
 
     // table
-    renderTable();
+    renderTable(sim.grid);
 
     // header confidence badge
     const badge = $("#liveBadge");
@@ -452,8 +336,8 @@
   }
 
   function offerLabel(r) {
-    if (state.offer === "fixed") return "Fixed voucher " + r.meta.sym + state.voucher + " \u00B7 " + Math.round(r.effDepth) + "% effective";
-    return state.depth + "% discount \u00B7 " + fmtMoney(r.market, r.promoCost, 2) + " per redeemer";
+    if (state.offer === "fixed") return "Fixed voucher " + r.meta.sym + state.voucher + " · " + Math.round(r.effDepth) + "% effective";
+    return state.depth + "% discount · " + fmtMoney(r.meta.code, r.promoCost, 2) + " per redeemer";
   }
 
   function setKpi(id, val, tone) {
@@ -465,48 +349,43 @@
   }
   function setText(id, v) { const e = $("#" + id); if (e) e.textContent = v; }
 
-  function renderTable() {
+  function renderTable(grid) {
     const tbody = $("#gridBody");
     if (!tbody) return;
     let html = "";
-    MARKET_ORDER.forEach((mk) => {
-      Object.keys(SEGMENTS).forEach((seg) => {
-        const r = compute(mk, seg, state);
-        const rowCls = r.verdict === "pos" ? "row-pos" : r.verdict === "neg" ? "row-neg" : r.verdict === "hold" ? "" : "row-marg";
-        const active = (mk === state.market && seg === state.seg) ? " is-active" : "";
-        const est = r.estimated ? '<span class="tflag" title="Estimated from first-purchase behaviour">est</span>' : "";
-        const dir = r.directional ? '<span class="tflag warn" title="Directional data only">*</span>' : "";
-        html += '<tr class="' + rowCls + active + '" data-mk="' + mk + '" data-seg="' + seg + '">' +
-          '<td class="mkt">' + r.meta.flag + " " + r.meta.code + "</td>" +
-          '<td class="seg">' + SEGMENTS[seg] + " " + est + dir + "</td>" +
-          "<td>" + fmtMoney(mk, r.cell.basket, 0) + "</td>" +
-          "<td>" + fmtPct(r.uptake, 1) + "</td>" +
-          "<td><b>" + fmtPct(r.incr, 0) + "</b></td>" +
-          "<td>" + fmtInt(r.incrementalBookings) + "</td>" +
-          "<td>" + (r.costPerIncr == null ? "\u2013" : fmtMoney(mk, r.costPerIncr, 2)) + "</td>" +
-          "<td>" + fmtMoney(mk, r.deadweightSpend, 0) + "</td>" +
-          '<td class="netcell ' + (r.netIncremental >= 0 ? "pos" : "neg") + '">' + fmtMoney(mk, r.netIncremental, 0) + "</td>" +
-          "</tr>";
-      });
+    grid.forEach((r) => {
+      const rowCls = r.verdict === "pos" ? "row-pos" : r.verdict === "neg" ? "row-neg" : r.verdict === "hold" ? "" : "row-marg";
+      const active = (r.meta.code === state.market && r.segment === state.seg) ? " is-active" : "";
+      const est = r.estimated ? '<span class="tflag" title="Estimated from first-purchase behaviour">est</span>' : "";
+      const dir = r.directional ? '<span class="tflag warn" title="Directional data only">*</span>' : "";
+      const mk = r.meta.code;
+      html += '<tr class="' + rowCls + active + '" data-mk="' + mk + '" data-seg="' + r.segment + '">' +
+        '<td class="mkt">' + r.meta.flag + " " + mk + "</td>" +
+        '<td class="seg">' + SEGMENTS[r.segment] + " " + est + dir + "</td>" +
+        "<td>" + fmtMoney(mk, r.cell.basket, 0) + "</td>" +
+        "<td>" + fmtPct(r.uptake, 1) + "</td>" +
+        "<td><b>" + fmtPct(r.incr, 0) + "</b></td>" +
+        "<td>" + fmtInt(r.incrementalBookings) + "</td>" +
+        "<td>" + (r.costPerIncr == null ? "–" : fmtMoney(mk, r.costPerIncr, 2)) + "</td>" +
+        "<td>" + fmtMoney(mk, r.deadweightSpend, 0) + "</td>" +
+        '<td class="netcell ' + (r.netIncremental >= 0 ? "pos" : "neg") + '">' + fmtMoney(mk, r.netIncremental, 0) + "</td>" +
+        "</tr>";
     });
     tbody.innerHTML = html;
   }
 
   /* ---------------- Export ---------------- */
-  function scenarioRows() {
+  function scenarioRows(grid) {
     const rows = [["Market", "Segment", "Offer", "Effective depth %", "Uptake %", "Incrementality %", "Incremental bookings", "Promo spend", "Deadweight spend", "Cost per incremental booking", "Net incremental", "Currency", "Estimated", "Directional"]];
-    MARKET_ORDER.forEach((mk) => {
-      Object.keys(SEGMENTS).forEach((seg) => {
-        const r = compute(mk, seg, state);
-        rows.push([
-          mk, SEGMENTS[seg],
-          state.offer === "fixed" ? ("Fixed " + MARKETS[mk].sym + state.voucher) : (state.depth + "%"),
-          r.effDepth.toFixed(1), r.uptake.toFixed(1), r.incr.toFixed(1),
-          Math.round(r.incrementalBookings), Math.round(r.totalSpend), Math.round(r.deadweightSpend),
-          r.costPerIncr == null ? "" : r.costPerIncr.toFixed(2), Math.round(r.netIncremental),
-          MARKETS[mk].ccy, r.estimated ? "yes" : "no", r.directional ? "yes" : "no",
-        ]);
-      });
+    grid.forEach((r) => {
+      rows.push([
+        r.meta.code, SEGMENTS[r.segment],
+        state.offer === "fixed" ? ("Fixed " + r.meta.sym + state.voucher) : (state.depth + "%"),
+        r.effDepth.toFixed(1), r.uptake.toFixed(1), r.incr.toFixed(1),
+        Math.round(r.incrementalBookings), Math.round(r.totalSpend), Math.round(r.deadweightSpend),
+        r.costPerIncr == null ? "" : r.costPerIncr.toFixed(2), Math.round(r.netIncremental),
+        r.meta.ccy, r.estimated ? "yes" : "no", r.directional ? "yes" : "no",
+      ]);
     });
     return rows;
   }
@@ -519,23 +398,152 @@
     document.body.removeChild(a); URL.revokeObjectURL(url);
   }
   function exportCSV() {
-    const csv = scenarioRows().map((r) => r.map((c) => {
+    if (!lastSim) return;
+    const csv = scenarioRows(lastSim.grid).map((r) => r.map((c) => {
       const s = String(c);
       return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
     }).join(",")).join("\n");
     download("persona-lab-scenario.csv", "text/csv;charset=utf-8", csv);
   }
   function exportJSON() {
+    if (!lastSim) return;
+    const rows = scenarioRows(lastSim.grid);
+    const header = rows[0];
     const data = {
       generatedAt: new Date().toISOString(),
+      dataSource: mode === "live" ? "api" : "static",
+      dataVersion: dataVersion,
       controls: { offer: state.offer, depth: state.depth, voucher: state.voucher, audience: state.audience, margin: state.margin, beta: state.beta, gamma: state.gamma },
       selected: state.market + " / " + SEGMENTS[state.seg],
-      results: scenarioRows().slice(1).map((row) => {
-        const h = scenarioRows()[0];
-        const o = {}; h.forEach((k, i) => (o[k] = row[i])); return o;
+      results: rows.slice(1).map((row) => {
+        const o = {}; header.forEach((k, i) => (o[k] = row[i])); return o;
       }),
     };
     download("persona-lab-scenario.json", "application/json", JSON.stringify(data, null, 2));
+  }
+
+  /* ---------------- Data loading and refresh ---------------- */
+  function setSource(kind, detail) {
+    const badge = $("#sourceBadge");
+    if (!badge) return;
+    const text = {
+      connecting: "Connecting to data",
+      live: "Live data · API v" + dataVersion,
+      static: "Static mode · model runs in your browser",
+    }[kind];
+    badge.textContent = detail ? text + " · " + detail : text;
+    badge.dataset.mode = kind;
+    badge.title = kind === "live"
+      ? "Anchors and simulations are served by the Persona Lab API (backend/server.js)."
+      : "No API reachable, so the same model runs in your browser against the bundled anchors.";
+  }
+
+  function applyAnchors(data) {
+    anchors = data;
+    dataVersion = data.version;
+    MARKETS = data.markets;
+    MARKET_ORDER = data.marketOrder;
+    SEGMENTS = data.segments;
+    localModel = PersonaModel.createModel(anchors);
+  }
+
+  function fetchJson(url, body, timeoutMs) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs || 4000);
+    const opts = { signal: ctrl.signal, cache: "no-store" };
+    if (body) {
+      opts.method = "POST";
+      opts.headers = { "Content-Type": "application/json" };
+      opts.body = JSON.stringify(body);
+    }
+    return fetch(url, opts).then((res) => {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    }).finally(() => clearTimeout(timer));
+  }
+
+  async function loadData() {
+    try {
+      applyAnchors(await fetchJson(API_BASE + "/anchors", null, 2500));
+      mode = "live";
+    } catch (err) {
+      try {
+        applyAnchors(await fetchJson(STATIC_ANCHORS, null, 4000));
+        mode = "static";
+      } catch (err2) {
+        setSource("static", "data unavailable");
+        throw err2;
+      }
+    }
+    setSource(mode);
+  }
+
+  function scenarioPayload() {
+    return {
+      market: state.market,
+      segment: state.seg,
+      offer: state.offer,
+      depth: state.depth,
+      voucher: state.voucher,
+      audience: state.audience,
+      margin: state.margin,
+      beta: state.beta,
+      gamma: state.gamma,
+    };
+  }
+
+  // Resolve a simulation for the current state. Live mode calls the API and
+  // drops to the in-browser model if the API stops answering.
+  async function getSim() {
+    const payload = scenarioPayload();
+    if (mode === "live") {
+      try {
+        return await fetchJson(API_BASE + "/simulate", payload, 5000);
+      } catch (err) {
+        // Network error, timeout (AbortError) or a non-2xx: drop to the in-browser model.
+        mode = "static";
+        setSource("static", "API unreachable");
+      }
+    }
+    const scenario = PersonaModel.normaliseState(anchors, payload);
+    return localModel.simulate(scenario);
+  }
+
+  let reqSeq = 0;
+  let liveTimer = null;
+  let pendingAnimate = false;
+
+  async function refresh(animate) {
+    const seq = ++reqSeq;
+    let sim;
+    try {
+      sim = await getSim();
+    } catch (err) {
+      if (err.name === "AbortError") return;
+      setSource(mode, "request failed");
+      return;
+    }
+    if (seq !== reqSeq) return;
+    lastSim = sim;
+    render(sim, animate);
+  }
+
+  // Live mode debounces slider drags so one drag is one request.
+  // Static mode is instant, so it renders synchronously.
+  function scheduleRender(animate) {
+    if (animate) pendingAnimate = true;
+    if (mode !== "live") {
+      const go = pendingAnimate;
+      pendingAnimate = false;
+      refresh(go);
+      return;
+    }
+    clearTimeout(liveTimer);
+    liveTimer = setTimeout(() => {
+      const go = pendingAnimate;
+      pendingAnimate = false;
+      refresh(go);
+    }, LIVE_DEBOUNCE_MS);
   }
 
   /* ---------------- Controls wiring ---------------- */
@@ -546,14 +554,14 @@
       $$(".pl-persona").forEach((b) => b.classList.toggle("is-active", b === btn));
       $$(".pl-persona").forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
       syncVoucherMax();
-      render(false);
+      scheduleRender(false);
     }));
     // segment buttons
     $$(".pl-seg").forEach((btn) => btn.addEventListener("click", () => {
       state.seg = btn.dataset.seg;
       $$(".pl-seg").forEach((b) => b.classList.toggle("is-active", b === btn));
       $$(".pl-seg").forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
-      render(false);
+      scheduleRender(false);
     }));
     // offer toggle
     $$(".pl-offer-btn").forEach((btn) => btn.addEventListener("click", () => {
@@ -562,7 +570,7 @@
       $$(".pl-offer-btn").forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
       $("#pctControl").hidden = state.offer !== "pct";
       $("#fixedControl").hidden = state.offer !== "fixed";
-      render(false);
+      scheduleRender(false);
     }));
     // sliders / inputs
     bindRange("depth", (v) => { state.depth = +v; setText("depthOut", v + "%"); });
@@ -579,7 +587,7 @@
       const open = panel.hidden;
       panel.hidden = !open;
       advBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      advBtn.querySelector(".chev").textContent = open ? "\u2212" : "+";
+      advBtn.querySelector(".chev").textContent = open ? "−" : "+";
     });
 
     // reset
@@ -598,7 +606,7 @@
       if (!tr) return;
       state.market = tr.dataset.mk; state.seg = tr.dataset.seg;
       syncUIFromState();
-      render(false);
+      scheduleRender(false);
     });
 
     // preset scenario chips
@@ -608,13 +616,13 @@
   function bindRange(id, fn) {
     const inp = $("#" + id);
     if (!inp) return;
-    inp.addEventListener("input", () => { fn(inp.value); render(false); });
+    inp.addEventListener("input", () => { fn(inp.value); scheduleRender(false); });
   }
 
   function syncVoucherMax() {
     // keep voucher within a sensible band for the market basket
     const inp = $("#voucher");
-    if (!inp) return;
+    if (!inp || !MARKETS[state.market]) return;
     setText("voucherOut", MARKETS[state.market].sym + state.voucher);
   }
 
@@ -625,7 +633,7 @@
     const pc = $("#pctControl"); if (pc) pc.hidden = state.offer !== "pct";
     const fc = $("#fixedControl"); if (fc) fc.hidden = state.offer !== "fixed";
     const dp = $("#depth"); if (dp) dp.value = state.depth; setText("depthOut", state.depth + "%");
-    const vc = $("#voucher"); if (vc) vc.value = state.voucher; setText("voucherOut", MARKETS[state.market].sym + state.voucher);
+    const vc = $("#voucher"); if (vc) vc.value = state.voucher; if (MARKETS[state.market]) setText("voucherOut", MARKETS[state.market].sym + state.voucher);
     const au = $("#audience"); if (au) au.value = state.audience; setText("audienceOut", fmtInt(state.audience));
   }
 
@@ -634,7 +642,7 @@
     if (ds.depth != null) state.depth = +ds.depth;
     if (ds.voucher != null) state.voucher = +ds.voucher;
     syncUIFromState();
-    render(false);
+    scheduleRender(false);
   }
 
   /* ---------------- Shared nav / progress / reveal ---------------- */
@@ -660,9 +668,15 @@
   }
 
   /* ---------------- Init ---------------- */
-  function init() {
+  async function init() {
     chrome();
     wire();
+    setSource("connecting");
+    try {
+      await loadData();
+    } catch (err) {
+      return; // the badge already says data is unavailable
+    }
     // initial control labels
     setText("depthOut", state.depth + "%");
     setText("voucherOut", MARKETS[state.market].sym + state.voucher);
@@ -671,20 +685,19 @@
     setText("betaOut", state.beta.toFixed(2));
     setText("gammaOut", state.gamma.toFixed(2));
 
-    // render on first viewport entry of the dashboard (animate charts on entry, not page load)
+    // Paint numbers immediately (no chart entrance) so nothing looks empty,
+    // then animate the charts the first time the dashboard scrolls into view.
+    let firstPaint = true;
     const dash = $("#dashboard");
     if (dash && "IntersectionObserver" in window) {
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting && firstPaint) { firstPaint = false; render(true); obs.unobserve(e.target); }
+          if (e.isIntersecting && firstPaint) { firstPaint = false; scheduleRender(true); obs.unobserve(e.target); }
         });
       }, { threshold: 0.12 });
       obs.observe(dash);
-      // paint numbers immediately (without chart entrance) so nothing looks empty
-      render(false);
-    } else {
-      render(true);
     }
+    refresh(false);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

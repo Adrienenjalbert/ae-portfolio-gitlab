@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "source": "Observed flat 15% discount read from the Tripadvisor International Incentives case brief (see docs/persona-simulator-prd.md, section 5).",
+  "markets": {
+    "UK": { "name": "United Kingdom", "flag": "🇬🇧", "code": "UK", "ccy": "GBP", "sym": "£", "base": 5, "directional": false },
+    "DE": { "name": "Germany", "flag": "🇩🇪", "code": "DE", "ccy": "EUR", "sym": "€", "base": 5, "directional": false },
+    "FR": { "name": "France", "flag": "🇫🇷", "code": "FR", "ccy": "EUR", "sym": "€", "base": 2, "directional": true },
+    "IT": { "name": "Italy", "flag": "🇮🇹", "code": "IT", "ccy": "EUR", "sym": "€", "base": 2, "directional": true },
+    "ES": { "name": "Spain", "flag": "🇪🇸", "code": "ES", "ccy": "EUR", "sym": "€", "base": 4, "directional": false }
+  },
+  "marketOrder": ["UK", "DE", "FR", "IT", "ES"],
+  "segments": {
+    "first": "First purchase",
+    "lapsed": "Lapsed",
+    "repeat": "Repeat"
+  },
+  "segmentOrder": ["first", "lapsed", "repeat"],
+  "observed": {
+    "UK|first": { "basket": 95, "red": 18, "incr": 71 },
+    "UK|lapsed": { "basket": 110, "red": 14, "incr": 52 },
+    "UK|repeat": { "basket": 130, "red": 21, "incr": 31 },
+    "DE|first": { "basket": 102, "red": 11, "incr": 63 },
+    "DE|repeat": { "basket": 120, "red": 14, "incr": 28 },
+    "FR|first": { "basket": 88, "red": 12, "incr": 58 },
+    "FR|lapsed": { "basket": 92, "red": 9, "incr": 44 },
+    "IT|first": { "basket": 79, "red": 10, "incr": 51 },
+    "ES|first": { "basket": 75, "red": 9, "incr": 48 }
+  },
+  "segmentFactors": {
+    "first": { "basket": 1, "red": 1, "incr": 1 },
+    "lapsed": { "basket": 1.16, "red": 0.78, "incr": 0.73 },
+    "repeat": { "basket": 1.37, "red": 1.17, "incr": 0.44 }
+  },
+  "limits": {
+    "depth": [0, 30],
+    "voucher": [0, 40],
+    "audience": [1000, 50000],
+    "margin": [0.05, 0.6],
+    "beta": [0.2, 1.2],
+    "gamma": [0, 0.4]
+  },
+  "defaults": {
+    "market": "UK",
+    "segment": "first",
+    "offer": "pct",
+    "depth": 15,
+    "voucher": 15,
+    "audience": 10000,
+    "margin": 0.22,
+    "beta": 0.6,
+    "gamma": 0.12
+  }
+}

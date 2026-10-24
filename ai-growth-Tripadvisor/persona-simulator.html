@@ -10,7 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/tripadvisor.css?v=12" />
-<link rel="stylesheet" href="assets/persona-sim.css?v=3" />
+<link rel="stylesheet" href="assets/persona-sim.css?v=4" />
+<!-- Backend base for the Persona Lab API. Defaults to /api on the same host. -->
+<meta name="persona-api" content="/api" />
 </head>
 <body>
 <a class="skip" href="#dashboard">Skip to the simulator</a>
@@ -49,10 +51,11 @@
   <div class="wrap">
     <span class="eyebrow">Part Two · 2.2 · the persona simulator, built</span>
     <h1>Persona Lab: <span class="grad">simulate the reaction</span> before you spend a slot.</h1>
-    <p>A working pre-launch tool for the International Incentives team. Choose a market persona, a customer segment and an offer, and see the predicted incrementality, deadweight and net revenue in real time. Every number is anchored to the observed 15% case data, and the model is fully open in the Advanced panel. It is a hypothesis generator, not a verdict.</p>
+    <p>A working pre-launch tool for the International Incentives team. Choose a market persona, a customer segment and an offer, and see the predicted incrementality, deadweight and net revenue in real time. The anchors and the model run on a small backend API, so every read comes from one versioned data source. Every number is anchored to the observed 15% case data, and the model is fully open in the Advanced panel. It is a hypothesis generator, not a verdict.</p>
     <div class="pl-herobar">
       <span class="pl-tag">Pre-launch simulation</span>
       <span class="pl-live" id="liveBadge" aria-live="polite"></span>
+      <span class="pl-source" id="sourceBadge" data-mode="connecting" aria-live="polite">Connecting to data</span>
       <a class="pl-backlink" href="index.html#invest">&larr; Back to the case study &amp; the build order</a>
     </div>
   </div>
@@ -272,6 +275,7 @@
   </div>
 </footer>
 
-<script src="assets/persona-sim.js?v=3"></script>
+<script src="assets/persona-model.js?v=1"></script>
+<script src="assets/persona-sim.js?v=4"></script>
 </body>
 </html>

@@ -15,6 +15,11 @@
 .pl-herobar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
 .pl-live { display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; color: #fff; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); padding: 8px 14px; border-radius: 999px; }
 .pl-live .bubbles i { width: 11px; height: 11px; }
+/* data source: live API (green dot) vs in-browser fallback (amber dot) */
+.pl-source { display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(255,255,255,.78); padding: 8px 12px; border-radius: 999px; border: 1px dashed rgba(255,255,255,.22); }
+.pl-source::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #A7BDB2; }
+.pl-source[data-mode="live"]::before { background: #34E0A1; box-shadow: 0 0 0 3px rgba(52,224,161,.18); }
+.pl-source[data-mode="static"]::before { background: #f2b53c; }
 .pl-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); background: var(--blue-2); padding: 6px 12px; border-radius: 999px; font-family: 'IBM Plex Mono', monospace; }
 .pl-backlink { font-size: 13px; color: var(--muted-on-dark); font-weight: 500; }
 .pl-backlink:hover { color: #fff; }
