@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>International Growth Learning Repository · Growth Toolkit</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/toolkit.css" />
+</head>
+<body>
+
+<nav class="gt-nav">
+  <div class="wrap row">
+    <a class="gt-brand" href="../index.html"><span class="dot"></span><span>Growth Toolkit<small>International Growth Learning Repository</small></span></a>
+    <div class="gt-links"><a href="../index.html">← Library</a></div>
+  </div>
+</nav>
+
+<header class="gt-tool-hero">
+  <div class="wrap">
+    <div class="tags"><span class="badge live">Live demo</span><span class="badge spec">M4 / Layer E</span></div>
+    <h1 style="font-size:clamp(26px,3.4vw,38px)">Stop re-testing the same losing idea in a new market.</h1>
+    <p class="lede">Learnings from CRM, Incentives and Rewards tests currently live across dashboards, Slack threads, readout docs and personal memory. When someone leaves or moves teams, that memory is gone. This is the first version of Layer E: a searchable, tagged store of what has already been tested and decided.</p>
+  </div>
+</header>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>The data behind it</h2>
+    <div class="evidence-grid">
+      <div class="evidence-stat"><b>141</b><span>CRM Slack test posts seeding this repository</span></div>
+      <div class="evidence-stat"><b>34%</b><span>CRM posts with no matching TEL row before reconciliation</span></div>
+      <div class="evidence-stat"><b>10</b><span>duplicate TEL IDs found during the audit</span></div>
+      <div class="evidence-stat ok"><b>5</b><span>tag dimensions: journey, lever, brand, market, metric</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>Skills &amp; agents used</h2>
+    <div class="skillbar">
+      <span class="skillchip"><span class="ic"></span>data:explore-data — tags and dedupes the source corpus</span>
+      <span class="skillchip"><span class="ic"></span>retrieval / search skill — query-to-closest-tests matching</span>
+      <span class="skillchip"><span class="ic"></span>readout-drafter (tool) — writes new entries on approval</span>
+      <span class="skillchip"><span class="ic"></span>weekly ingest loop — gaps, contradictions, stale roll-outs surfaced for human review</span>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section" id="studio">
+  <div class="wrap">
+    <h2>Search prior tests</h2>
+    <p class="sub">Try: &ldquo;welcome email Italy&rdquo;, &ldquo;abandoned cart&rdquo;, &ldquo;DE lapsed&rdquo;, &ldquo;subject line personalization&rdquo;.</p>
+    <div class="panel">
+      <input class="gt-search" style="width:100%; margin:0 0 16px" id="q" type="text" placeholder="Query the learning repository…" />
+      <div id="results"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">PRD for this tool: <a href="../prds/learning-repository.md">learning-repository.md</a>. Part of the Growth Toolkit library.</footer>
+
+<script src="../assets/toolkit.js"></script>
+<script>
+(function(){
+  var ENTRIES = [
+    {market:"Italy", journey:"Welcome", lever:"Imagery", metric:"CVR", result:"lost", summary:"Generic destination imagery under-performed Rome/Milan-specific imagery by 4% CVR in the IT welcome series.", tags:["italy","welcome email","imagery","cvr"]},
+    {market:"Italy", journey:"Welcome", lever:"Subject line", metric:"OR", result:"won", summary:"Urgency framing in the subject line lifted open rate +12% in the IT welcome series.", tags:["italy","welcome email","subject line","urgency","or"]},
+    {market:"France", journey:"Acquisition", lever:"Timing", metric:"CVR", result:"won", summary:"Specific timing framing (\"book your August trip\") outperformed aspirational framing (\"plan your summer escape\") for FR travelers.", tags:["france","persona","timing","copy"]},
+    {market:"Germany", journey:"Win-back", lever:"Offer framing", metric:"Redemption", result:"insight", summary:"Fixed-value EUR offers (e.g. €15 off) outperform percentage-off framing for DE lapsed bookers; concrete savings read as more credible.", tags:["germany","lapsed","offer","incentives"]},
+    {market:"UK", journey:"Second booking", lever:"Personalization", metric:"OR", result:"won", summary:"First-name personalization in the subject line lifted open rate +10.5% in a UK second-booking nudge test.", tags:["uk","second booking","personalization","subject line"]},
+    {market:"DE / FR", journey:"Cart recovery", lever:"Subject line", metric:"CVR", result:"lost", summary:"Naming the specific abandoned product in the subject line lost twice across DE and FR cart-recovery sends; a generic reminder outperformed it.", tags:["abandoned cart", "germany", "france", "subject line"]},
+    {market:"All FIGS", journey:"Pre-launch QA", lever:"Persona review", metric:"Concept score", result:"insight", summary:"Pre-launch persona scoring predicts lower-than-expected live performance when cultural resonance scores below 6/10, flagging concepts before they reach a live test.", tags:["persona", "pre-launch", "qa", "figs"]},
+    {market:"UK", journey:"Re-engagement", lever:"Rewards adaptation", metric:"Proposal only", result:"proposed", summary:"US \"book 2, earn $25 credit\" mechanic adapted to a UK CRM/incentives play: complete 2 bookings in 60 days, get £15 off the next — no loyalty program required.", tags:["rewards","uk","adaptation","incentives"]}
+  ];
+
+  function render(list){
+    var out = document.getElementById("results");
+    if(!list.length){ out.innerHTML = '<p class="sub">No matches. Try a broader term, or this is a genuine gap worth logging as a new test.</p>'; return; }
+    out.innerHTML = list.map(function(e){
+      var badge = e.result === "won" ? "live" : (e.result === "lost" ? "gated" : "spec");
+      return '<div class="variant"><div class="txt"><strong>' + e.market + ' · ' + e.journey + ' · ' + e.lever + '</strong>' +
+        '<div class="rationale">' + e.summary + '</div></div><span class="badge ' + badge + '">' + e.result + '</span></div>';
+    }).join("");
+  }
+
+  function search(q){
+    q = q.trim().toLowerCase();
+    if(!q) return ENTRIES;
+    return ENTRIES.filter(function(e){
+      var hay = (e.market + " " + e.journey + " " + e.lever + " " + e.metric + " " + e.summary + " " + e.tags.join(" ")).toLowerCase();
+      return q.split(/\s+/).every(function(term){ return hay.indexOf(term) > -1; });
+    });
+  }
+
+  var input = document.getElementById("q");
+  render(ENTRIES);
+  input.addEventListener("input", function(){ render(search(input.value)); });
+})();
+</script>
+</body>
+</html>

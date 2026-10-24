@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Test Readout &amp; Realised-Impact Drafter · Growth Toolkit</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/toolkit.css" />
+</head>
+<body>
+
+<nav class="gt-nav">
+  <div class="wrap row">
+    <a class="gt-brand" href="../index.html"><span class="dot"></span><span>Growth Toolkit<small>Test Readout &amp; Realised-Impact Drafter</small></span></a>
+    <div class="gt-links"><a href="../index.html">← Library</a></div>
+  </div>
+</nav>
+
+<header class="gt-tool-hero">
+  <div class="wrap">
+    <div class="tags"><span class="badge live">Live demo · Tier A</span><span class="badge spec">Project B</span></div>
+    <h1 style="font-size:clamp(26px,3.4vw,38px)">From raw numbers to a decision-ready readout in one paste.</h1>
+    <p class="lede">54 result posts in the CRM Slack history are mostly free text, readouts land late and inconsistent, and 3 CRM tests are currently overdue in MEL with no check that a scaled roll-out ever delivered the revenue it was estimated to. This tool drafts the readout in the house format from pasted metrics, and flags the realised-vs-estimated gap.</p>
+  </div>
+</header>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>The data behind it</h2>
+    <p class="sub">Tiering is deliberate: start with a deterministic drafter from pasted numbers (Tier A, built here), add a calculator with real stats in code (Tier B), only automate the warehouse pull last (Tier C) once Canvas IDs are in TEL and data access is approved.</p>
+    <div class="evidence-grid">
+      <div class="evidence-stat"><b>54</b><span>free-text result posts in CRM Slack history</span></div>
+      <div class="evidence-stat"><b>3</b><span>CRM tests currently overdue for readout in MEL</span></div>
+      <div class="evidence-stat ok"><b>7 days</b><span>target: results delivered within 7 days of test end</span></div>
+      <div class="evidence-stat"><b>0</b><span>current checks that realised revenue matched the original estimate</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>Skills &amp; agents used</h2>
+    <div class="skillbar">
+      <span class="skillchip"><span class="ic"></span>data:statistical-analysis — significance and lift checks (Tier B)</span>
+      <span class="skillchip"><span class="ic"></span>data:validate-data — sanity checks before draft is shown</span>
+      <span class="skillchip"><span class="ic"></span>readout-template skill — house format (objective, result, driver, action, learning)</span>
+      <span class="skillchip"><span class="ic"></span>learning-repository (tool) — logs the learning entry on approval</span>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section" id="studio">
+  <div class="wrap gt-cols">
+    <div>
+      <h2>Paste the numbers</h2>
+      <div class="panel">
+        <div class="field"><label for="objective">Test objective (one line)</label>
+          <input id="objective" type="text" value="Improve welcome email conversion in France" /></div>
+        <div class="field"><label for="market">Market</label>
+          <input id="market" type="text" value="France" /></div>
+        <div class="field"><label for="segA">Segment A label / result</label>
+          <input id="segA" type="text" value="25-34 age segment: +18% conversion" /></div>
+        <div class="field"><label for="segB">Segment B label / result</label>
+          <input id="segB" type="text" value="35+ age segment: flat (+0.4%)" /></div>
+        <div class="field"><label for="estRev">Estimated revenue impact at launch (annualized)</label>
+          <input id="estRev" type="text" value="€42,000" /></div>
+        <div class="field"><label for="realRev">Realised revenue so far (30/90-day check)</label>
+          <input id="realRev" type="text" value="€31,500" /></div>
+        <button class="btn" id="draft">Draft readout</button>
+      </div>
+    </div>
+    <div>
+      <h2>Draft</h2>
+      <p class="sub" id="draftSub">First draft only &mdash; a human signs off before this becomes the decision of record.</p>
+      <div class="panel" id="draftOut"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section">
+  <div class="wrap">
+    <h2>Gates</h2>
+    <div class="gate-note">Tier A and B run on pasted or exported numbers only &mdash; no Snowflake or BigQuery query runs without asking Analytics (Elise) first, per the programme rule. Metric definitions and approved data routes are agreed with Analytics before Tier C is built.</div>
+  </div>
+</section>
+
+<footer class="wrap">PRD for this tool: <a href="../prds/readout-drafter.md">readout-drafter.md</a>. Part of the Growth Toolkit library.</footer>
+
+<script src="../assets/toolkit.js"></script>
+<script>
+(function(){
+  function parseMoney(s){
+    var n = parseFloat(String(s).replace(/[^0-9.\-]/g, ""));
+    return isNaN(n) ? null : n;
+  }
+  document.getElementById("draft").addEventListener("click", function(){
+    var objective = document.getElementById("objective").value;
+    var market = document.getElementById("market").value;
+    var segA = document.getElementById("segA").value;
+    var segB = document.getElementById("segB").value;
+    var est = parseMoney(document.getElementById("estRev").value);
+    var real = parseMoney(document.getElementById("realRev").value);
+    var gapPct = (est && real) ? Math.round(((real - est) / est) * 100) : null;
+    var gapNote = "";
+    if(gapPct !== null){
+      if(gapPct <= -15){
+        gapNote = '<div class="evidence-stat" style="margin-top:10px"><b style="color:var(--bad)">' + gapPct + '%</b><span>realised vs. estimated &mdash; materially under plan, flag to owner</span></div>';
+      } else if(gapPct >= 10){
+        gapNote = '<div class="evidence-stat ok" style="margin-top:10px"><b>+' + gapPct + '%</b><span>realised ahead of estimate</span></div>';
+      } else {
+        gapNote = '<div class="evidence-stat ok" style="margin-top:10px"><b>' + gapPct + '%</b><span>realised broadly in line with estimate</span></div>';
+      }
+    }
+    var html =
+      '<p><strong>Test objective:</strong> ' + objective + '</p>' +
+      '<p><strong>Market-level performance:</strong> ' + market + '</p>' +
+      '<p><strong>Audience-level performance:</strong> ' + segA + '; ' + segB + '</p>' +
+      '<p><strong>Likely driver:</strong> the lever that moved the younger/responsive segment did not move the other &mdash; check messaging fit by segment before scaling broadly.</p>' +
+      '<p><strong>Recommended next action:</strong> scale to the responsive segment; run a segment-specific variant for the flat segment rather than a blanket rollout.</p>' +
+      '<p><strong>Learning to save:</strong> record the segment split and the driver hypothesis in the Learning Repository so the next market test starts from this evidence.</p>' +
+      gapNote;
+    document.getElementById("draftOut").innerHTML = html;
+    document.getElementById("draftSub").textContent = "Draft generated. Edit before sharing — this is Tier A, a structured first draft, not a verified analysis.";
+  });
+})();
+</script>
+</body>
+</html>

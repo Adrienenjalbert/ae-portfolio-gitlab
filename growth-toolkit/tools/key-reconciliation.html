@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MEL ↔ TEL Shared Key & Field Ownership · Growth Toolkit</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/toolkit.css" />
+</head>
+<body>
+
+<nav class="gt-nav">
+  <div class="wrap row">
+    <a class="gt-brand" href="../index.html"><span class="dot"></span><span>Growth Toolkit<small>MEL ↔ TEL Shared Key & Field Ownership</small></span></a>
+    <div class="gt-links"><a href="../index.html">← Library</a></div>
+  </div>
+</nav>
+
+<header class="gt-tool-hero">
+  <div class="wrap">
+    <div class="tags"><span class="badge spec">Spec + data</span><span class="badge spec" style="background:var(--line-soft);color:var(--ink-soft)">Data infra</span><span class="badge spec" style="background:var(--line-soft);color:var(--ink-soft)">P1</span><span class="badge spec" style="background:var(--line-soft);color:var(--ink-soft)">Owner: Adrien</span></div>
+    <h1 style="font-size:clamp(26px,3.4vw,38px)">One ID, so TEL and MEL stop telling two different stories about the same test.</h1>
+    <p class="lede">The same test is typed independently in TEL, Asana and MEL today. 56 TEL rows marked Running or Complete have no matching post found anywhere, and 10 TEL IDs are flat-out duplicated. This is the foundational fix every other tool on this page depends on.</p>
+    
+  </div>
+</header>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>The data behind it</h2>
+    <div class="evidence-grid">
+      <div class="evidence-stat"><b>56</b><span>TEL Running/Complete rows with no matching post found</span></div><div class="evidence-stat"><b>10</b><span>duplicate TEL IDs found in the audit</span></div><div class="evidence-stat"><b>34%</b><span>CRM Slack posts with no matching TEL row</span></div><div class="evidence-stat ok"><b>1</b><span>shared key: MEL owns status/results, TEL owns idea-to-backlog and CRM fields</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>Skills &amp; agents used</h2>
+    <div class="skillbar">
+      <span class="skillchip"><span class="ic"></span>data:explore-data &mdash; the audit that found the 56 orphan rows and 10 duplicates</span><span class="skillchip"><span class="ic"></span>backfill workflow &mdash; reconciles Past Test Match with owner confirmation</span><span class="skillchip"><span class="ic"></span>sync skill &mdash; auto-fills TEL status/verdict from MEL once an export or API exists</span>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section">
+  <div class="wrap">
+    <h2>Gate</h2>
+    <div class="gate-note">Agree the field split with Melissa, then Allie. Confirm whether an MEL export or API exists; if not, parse Slack result posts weekly as a fallback.</div>
+  </div>
+</section>
+
+<footer class="wrap">Project A in the Programme for Mason tracker &mdash; the prerequisite for projects B through F. Part of the <a href="../index.html">Growth Toolkit</a> library.</footer>
+
+<script src="../assets/toolkit.js"></script>
+</body>
+</html>

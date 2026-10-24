@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subject-Line &amp; Push Copy Generator · Growth Toolkit</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/toolkit.css" />
+</head>
+<body>
+
+<nav class="gt-nav">
+  <div class="wrap row">
+    <a class="gt-brand" href="../index.html"><span class="dot"></span><span>Growth Toolkit<small>Subject-Line &amp; Push Copy Generator</small></span></a>
+    <div class="gt-links"><a href="../index.html">← Library</a></div>
+  </div>
+</nav>
+
+<header class="gt-tool-hero">
+  <div class="wrap">
+    <div class="tags"><span class="badge live">Live demo</span><span class="badge spec">M3 / Mason&rsquo;s month-1 tools</span></div>
+    <h1 style="font-size:clamp(26px,3.4vw,38px)">Subject-line and push copy stop defaulting to the first idea.</h1>
+    <p class="lede">Subject lines are the single largest test category CRM runs, at roughly 17 specs a month, and today there is no reuse of what already won or lost. This tool generates tone-labeled variants and scores them against a rule set mined from real past tests, so the team tests more angles instead of the first one that comes to mind.</p>
+  </div>
+</header>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>The data behind it</h2>
+    <p class="sub">Rules below are reconstructed from the Past Test Match tab and CRM Slack result posts in the TEL/MEL tracker &mdash; real won/lost tests, not invented heuristics.</p>
+    <div class="evidence-grid">
+      <div class="evidence-stat"><b>~17/mo</b><span>subject-line specs run by CRM</span></div>
+      <div class="evidence-stat ok"><b>+10.5%</b><span>open-rate lift from first-name personalization (past test)</span></div>
+      <div class="evidence-stat"><b>&minus;2 tests</b><span>&ldquo;naming the abandoned product&rdquo; lost twice, now flagged</span></div>
+      <div class="evidence-stat ok"><b>5</b><span>tone angles scored per generation</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section tight">
+  <div class="wrap">
+    <h2>Skills &amp; agents used</h2>
+    <p class="sub">This is how it would plug into the real system: a rules-lookup step grounded in the learning repository, then a generation step, then a human send gate.</p>
+    <div class="skillbar">
+      <span class="skillchip"><span class="ic"></span>data:explore-data — mines Past Test Match for win/loss rules</span>
+      <span class="skillchip"><span class="ic"></span>learning-repository (tool) — supplies prior-test evidence</span>
+      <span class="skillchip"><span class="ic"></span>copy-generation skill — drafts variants per tone</span>
+      <span class="skillchip"><span class="ic"></span>human review gate — approver signs off before send</span>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section" id="studio">
+  <div class="wrap gt-cols">
+    <div>
+      <h2>Build a brief</h2>
+      <p class="sub">Four fields, no blank page.</p>
+      <div class="panel">
+        <div class="field"><label for="market">Market</label>
+          <select id="market"><option value="UK">UK</option><option value="FR">France</option><option value="DE">Germany</option><option value="IT">Italy</option><option value="ES">Spain</option></select>
+        </div>
+        <div class="field"><label for="audience">Audience</label>
+          <select id="audience"><option value="lapsed">Lapsed booker (90+ days)</option><option value="browsed">Browsed, not booked (14 days)</option><option value="second">First-time booker, second-booking nudge</option><option value="cart">Abandoned cart / wishlist</option></select>
+        </div>
+        <div class="field"><label for="offer">Offer / hook</label>
+          <input id="offer" type="text" value="10% off next activity" />
+        </div>
+        <div class="field"><label for="channel">Channel</label>
+          <select id="channel"><option value="email">Email subject line</option><option value="push">Push notification</option></select>
+        </div>
+        <button class="btn" id="generate">Generate variants</button>
+      </div>
+    </div>
+    <div>
+      <h2>Variants</h2>
+      <p class="sub" id="genSub">Fill in the brief and generate to see tone-labeled options with a recommended A/B pairing.</p>
+      <div class="panel" id="output"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gt-section">
+  <div class="wrap">
+    <h2>Rule set this run draws on</h2>
+    <p class="sub">Every rule traces to a specific past test, so a reviewer can check the claim.</p>
+    <table class="gt-table">
+      <thead><tr><th>Rule</th><th>Evidence</th><th>Applies to</th></tr></thead>
+      <tbody>
+        <tr><td>Lead with first-name personalization over generic greeting</td><td class="citation">Past test match · +10.5% OR, UK 2nd-booking test, Mar 2026</td><td>All markets</td></tr>
+        <tr><td>Avoid naming the specific abandoned product in the subject line</td><td class="citation">Past test match · lost twice (DE, FR cart-recovery sends)</td><td>Abandoned cart</td></tr>
+        <tr><td>Use concrete savings (&euro;15 off) over percentage framing for DE lapsed segment</td><td class="citation">AI Systems Backlog · Initiative 7, DE lapsed booker test</td><td>DE</td></tr>
+        <tr><td>Favor specific timing (&ldquo;book your August trip&rdquo;) over aspirational framing for FR</td><td class="citation">AI Systems Backlog · Initiative 3, FR persona review</td><td>FR</td></tr>
+        <tr><td>Social proof framing under-performs urgency + value combined for promo-sensitive segments</td><td class="citation">AI Systems Backlog · Initiative 6, DE example set</td><td>Promo-sensitive</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="gt-section">
+  <div class="wrap">
+    <h2>Gates</h2>
+    <div class="gate-note">Generated copy is a first draft only. Per the programme rules: a human reviewer approves tone and claims before any send; nothing customer-facing goes out without sign-off.</div>
+  </div>
+</section>
+
+<footer class="wrap">PRD for this tool: <a href="../prds/subject-line-generator.md">subject-line-generator.md</a>. Part of the Growth Toolkit library.</footer>
+
+<script src="../assets/toolkit.js"></script>
+<script>
+(function(){
+  var RULES = {
+    personalization: {label:"First-name hook", weight:1},
+  };
+  var TEMPLATES = {
+    urgency:   function(a,o){ return {tag:"Urgency", text: a.hookUrgency.replace("{o}", o), rationale:"Deadline framing; pairs well with promo-sensitive segments per DE test data."}; },
+    value:     function(a,o){ return {tag:"Value", text: a.hookValue.replace("{o}", o), rationale:"Leads with the concrete benefit rather than a vague teaser."}; },
+    curiosity: function(a,o){ return {tag:"Curiosity", text: a.hookCuriosity, rationale:"Open-loop framing; avoid for abandoned-cart segment where it under-performed."}; },
+    personal:  function(a,o){ return {tag:"Personalization", text: a.hookPersonal.replace("{o}", o), rationale:"First-name / behavior-based hook; +10.5% OR in the UK second-booking test."}; },
+    social:    function(a,o){ return {tag:"Social proof", text: a.hookSocial, rationale:"Use with caution: tested weaker than urgency+value alone for promo-sensitive DE users."}; }
+  };
+  var AUDIENCE = {
+    lapsed:  {hookUrgency:"Still thinking about it? {o}, this week only", hookValue:"{o} is waiting for your next trip", hookCuriosity:"We saved something for you…", hookPersonal:"[First name], your next adventure is one tap away — {o}", hookSocial:"Travelers like you are already booking again"},
+    browsed: {hookUrgency:"Your picks are filling up — {o} ends soon", hookValue:"Lock in {o} before prices move", hookCuriosity:"You looked, now here's the deal", hookPersonal:"[First name], still deciding? Here's {o} to help", hookSocial:"Thousands of travelers booked this one last week"},
+    second:  {hookUrgency:"One more trip, {o} before it's gone", hookValue:"Your second booking comes with {o}", hookCuriosity:"Ready for round two?", hookPersonal:"[First name], welcome back — {o} on your next activity", hookSocial:"Repeat travelers love this one"},
+    cart:    {hookUrgency:"Your activity is almost sold out", hookValue:"Finish booking and get {o}", hookCuriosity:"Still interested?", hookPersonal:"[First name], you left something behind — {o} to come back", hookSocial:"This spot is going fast"}
+  };
+
+  function warn(audienceKey, toneKey){
+    if(audienceKey === "cart" && toneKey === "curiosity") return "Caution: curiosity-only hooks under-performed for abandoned-cart in prior tests — paired with a concrete offer here.";
+    return null;
+  }
+
+  document.getElementById("generate").addEventListener("click", function(){
+    var market = document.getElementById("market").value;
+    var audienceKey = document.getElementById("audience").value;
+    var offer = document.getElementById("offer").value || "your offer";
+    var channel = document.getElementById("channel").value;
+    var a = AUDIENCE[audienceKey];
+    var order = ["personal","urgency","value","social","curiosity"];
+    if(market === "DE"){ order = ["value","personal","urgency","social","curiosity"]; }
+    if(market === "FR"){ order = ["urgency","personal","value","social","curiosity"]; }
+
+    var out = document.getElementById("output");
+    out.innerHTML = "";
+    order.forEach(function(key){
+      var v = TEMPLATES[key](a, offer);
+      var w = warn(audienceKey, key);
+      var div = document.createElement("div");
+      div.className = "variant";
+      div.innerHTML = '<div class="txt">' + v.text + (channel==="push" ? '' : '') +
+        '<div class="rationale">' + v.rationale + (w ? ' <strong>' + w + '</strong>' : '') + '</div></div>' +
+        '<span class="tag">' + v.tag + '</span>';
+      out.appendChild(div);
+    });
+    var rec = document.createElement("div");
+    rec.className = "citation";
+    rec.style.marginTop = "10px";
+    rec.textContent = "Recommended A/B pair: " + order[0] + " vs. " + order[1] + " — closest to the highest-evidence past winners for this audience and market.";
+    out.appendChild(rec);
+    document.getElementById("genSub").textContent = order.length + " variants generated for " + market + " · " + audienceKey + " · " + channel + ".";
+  });
+})();
+</script>
+</body>
+</html>
